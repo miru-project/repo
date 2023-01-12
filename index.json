@@ -1,0 +1,22 @@
+[
+    {
+        "name": "动漫之家(kk151)",
+        "package": "dev.0n0.miru.kk151",
+        "author": "MiaoMint",
+        "lang": "zh-cn,en",
+        "icon": "https://www.kk151.com/templets/dm/images/logo.png",
+        "license": "MIT",
+        "version": "v0.0.1",
+        "url": "kk151.js"
+    },
+    {
+        "name": "sakura(樱花动漫)2",
+        "package": "dev.0n0.miru.sakura2",
+        "author": "MiaoMint",
+        "lang": "zh-cn,en",
+        "icon": "http://www.yinghuacd.com/js/20180601/0601.png",
+        "license": "MIT",
+        "version": "v0.0.1",
+        "url": "sakura2.js"
+    }
+]

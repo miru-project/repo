@@ -1,10 +1,11 @@
 // ==MiruUserScript==
 // @name         动漫之家(kk151)
-// @version      0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
-// @icon         http://www.yinghuacd.com/js/20180601/0601.png
+// @package      dev.0n0.miru.kk151
+// @icon         https://www.kk151.com/templets/dm/images/favicon.ico
 // ==/MiruUserScript==
 
 

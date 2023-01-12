@@ -1,10 +1,11 @@
 // ==MiruUserScript==
-// @name         Sakura（樱花动漫）
-// @version      0.0.1
+// @name         Sakura(樱花动漫)2
+// @version      v0.0.1
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
 // @icon         http://www.yinghuacd.com/js/20180601/0601.png
+// @package      dev.0n0.miru.sakura2
 // ==/MiruUserScript==
 
 

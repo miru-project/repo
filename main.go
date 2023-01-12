@@ -40,7 +40,7 @@ func main() {
 `
 
 	for _, v := range expands {
-		url := fmt.Sprintf("[查看](%s)", "/blob/main/repo/"+v["url"])
+		url := fmt.Sprintf("[查看](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
 		readme += fmt.Sprintf("| %s | %s | %s | %s |\n", v["name"], v["package"], v["version"], url)
 	}
 	f2.WriteString(readme)

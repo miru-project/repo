@@ -1,6 +1,6 @@
 // ==MiruUserScript==
 // @name         Sakura(樱花动漫)1
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -68,6 +68,26 @@ miru.info = async (url) => {
         title
     }
 };
+
+// 最近更新
+miru.new = async () => {
+    const bangumi = []
+    const res = await miru.request('/list/?order=%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4')
+    let pattern = /<div class="lpic">([\s\S]+?)<div class="pages">/g;
+    const bangumisStr = pattern.exec(res)[0]
+    pattern = /<li>([\s\S]+?)<\/li>/g
+    bangumisStr.match(pattern).forEach(e => {
+        const cover = /src="(.+?)"/
+        const title = /<a([\s\S]+?)>(.+?)<\/a>/
+        const url = /href="(.+?)"/
+        bangumi.push({
+            cover: e.match(cover)[1],
+            title: e.match(title)[2],
+            url: e.match(url)[1],
+        })
+    })
+    return bangumi
+}
 
 // 观看
 miru.watch = async (url) => {

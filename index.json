@@ -1,32 +1,32 @@
 [
-    {
-        "name": "动漫之家(kk151)",
-        "package": "dev.0n0.miru.kk151",
-        "author": "MiaoMint",
-        "lang": "zh-cn",
-        "icon": "https://www.kk151.com/templets/dm/images/logo.png",
-        "license": "MIT",
-        "version": "v0.0.2",
-        "url": "kk151.js"
-    },
-    {
-        "name": "sakura(樱花动漫)1",
-        "package": "dev.0n0.miru.sakura1",
-        "author": "MiaoMint",
-        "lang": "zh-cn",
-        "icon": "https://www.xmfans.me/yxsf/yh_css/yh_logo.png",
-        "license": "MIT",
-        "version": "v0.0.1",
-        "url": "sakura1.js"
-    },
-    {
-        "name": "sakura(樱花动漫)2",
-        "package": "dev.0n0.miru.sakura2",
-        "author": "MiaoMint",
-        "lang": "zh-cn",
-        "icon": "http://www.yinghuacd.com/js/20180601/0601.png",
-        "license": "MIT",
-        "version": "v0.0.1",
-        "url": "sakura2.js"
-    }
+ {
+  "author": "MiaoMint",
+  "icon": "https://www.kk151.com/templets/dm/images/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "动漫之家(kk151)",
+  "package": "dev.0n0.miru.kk151",
+  "url": "kk151.js",
+  "version": "v0.0.2"
+ },
+ {
+  "author": "MiaoMint",
+  "icon": "https://www.xmfans.me/yxsf/yh_css/yh_logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "Sakura(樱花动漫)1",
+  "package": "dev.0n0.miru.sakura1",
+  "url": "sakura1.js",
+  "version": "v0.0.1"
+ },
+ {
+  "author": "MiaoMint",
+  "icon": "http://www.yinghuacd.com/js/20180601/0601.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "Sakura(樱花动漫)2",
+  "package": "dev.0n0.miru.sakura2",
+  "url": "sakura2.js",
+  "version": "v0.0.1"
+ }
 ]

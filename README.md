@@ -8,4 +8,4 @@
 |  ----   | ---- | --- | ---  |
 | 动漫之家(kk151) | dev.0n0.miru.kk151 | v0.0.2 | [查看](https://github.com/miru-project/repo/blob/main/repo/kk151.js) |
 | Sakura(樱花动漫)1 | dev.0n0.miru.sakura1 | v0.0.2 | [查看](https://github.com/miru-project/repo/blob/main/repo/sakura1.js) |
-| Sakura(樱花动漫)2 | dev.0n0.miru.sakura2 | v0.0.1 | [查看](https://github.com/miru-project/repo/blob/main/repo/sakura2.js) |
+| Sakura(樱花动漫)2 | dev.0n0.miru.sakura2 | v0.0.2 | [查看](https://github.com/miru-project/repo/blob/main/repo/sakura2.js) |

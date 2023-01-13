@@ -1,6 +1,6 @@
 // ==MiruUserScript==
 // @name         Sakura(樱花动漫)2
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -9,8 +9,11 @@
 // ==/MiruUserScript==
 
 
-// 发送请求
 const miru = new Miru("http://www.yinghuacd.com");
+
+const getCover = (url) => {
+    return `https://wsrv.nl/?url=${url}&w=200&h=300`
+}
 
 // 搜索
 miru.search = async (kw, page) => {
@@ -26,7 +29,7 @@ miru.search = async (kw, page) => {
         const url = /href="(.+?)"/
         console.log(e.match(title));
         bangumi.push({
-            cover: e.match(cover)[1],
+            cover: getCover(e.match(cover)[1]),
             title: e.match(title)[1],
             url: e.match(url)[1],
         })
@@ -62,7 +65,7 @@ miru.info = async (url) => {
     return {
         watchurl,
         desc,
-        cover,
+        cover:getCover(cover),
         title
     }
 };
@@ -80,7 +83,7 @@ miru.new = async () => {
         const url = /href="(.+?)"/
         console.log(e.match(title));
         bangumi.push({
-            cover: e.match(cover)[1],
+            cover: getCover(e.match(cover)[1]),
             title: e.match(title)[1],
             url: e.match(url)[1],
         })

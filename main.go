@@ -58,7 +58,7 @@ func readRepoExpand() []map[string]string {
 			log.Println("error:", err)
 			continue
 		}
-		r, _ := regexp.Compile(`MiruUserScript([\s\S]+?)/MiruUserScript`)
+		r, _ := regexp.Compile(`MiruExpand([\s\S]+?)/MiruExpand`)
 		data := r.FindAllString(string(b), -1)
 		if len(data) < 1 {
 			log.Println("error: not expand")

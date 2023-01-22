@@ -1,6 +1,6 @@
 // ==MiruExpand==
 // @name         Sakura(樱花动漫)1
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -14,7 +14,7 @@ export default class Sakura1 extends Expand {
     }
     async search(kw, page) {
         const bangumi = []
-        const res = await this.request(`/s_all?kw=${kw}&pagesize=24&pageindex=${page - 1}`, options);
+        const res = await this.request(`/s_all?kw=${kw}&pagesize=24&pageindex=${page - 1}`);
         let pattern = /<div class="lpic">([\s\S]+?)<div class="pages">/g;
         const bangumisStr = pattern.exec(res)[0]
         pattern = /<li>([\s\S]+?)<\/li>/g

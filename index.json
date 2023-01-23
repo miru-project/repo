@@ -1,6 +1,16 @@
 [
  {
   "author": "MiaoMint",
+  "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "7喜影院",
+  "package": "dev.0n0.miru.7xi",
+  "url": "7xi.js",
+  "version": "v0.0.1"
+ },
+ {
+  "author": "MiaoMint",
   "icon": "https://www.kk151.com/templets/dm/images/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",

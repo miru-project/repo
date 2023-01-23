@@ -1,6 +1,6 @@
 // ==MiruExpand==
 // @name         Sakura(樱花动漫)1
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -9,8 +9,8 @@
 // ==/MiruExpand==
 
 export default class Sakura1 extends Expand {
-    constructor(name) {
-        super(name, "https://www.yhdmp.cc")
+    constructor() {
+        super("https://www.yhdmp.cc")
     }
     async search(kw, page) {
         const bangumi = []

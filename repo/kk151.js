@@ -1,6 +1,6 @@
 // ==MiruExpand==
 // @name         动漫之家(kk151)
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -9,8 +9,8 @@
 // ==/MiruExpand==
 
 export default class KK151 extends Expand {
-    constructor(name) {
-        super(name, "https://www.kk151.com")
+    constructor() {
+        super("https://www.kk151.com")
     }
     getCover(url) {
         if (url.indexOf("http") == -1) {

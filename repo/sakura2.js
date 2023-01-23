@@ -1,6 +1,6 @@
 // ==MiruExpand==
 // @name         Sakura(樱花动漫)2
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -9,8 +9,8 @@
 // ==/MiruExpand==
 
 export default class Sakura2 extends Expand {
-    constructor(name) {
-        super(name, "http://www.yinghuacd.com")
+    constructor() {
+        super("http://www.yinghuacd.com")
     }
     getCover(url) {
         return `https://wsrv.nl/?url=${url}&w=200&h=300`

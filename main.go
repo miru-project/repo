@@ -11,13 +11,13 @@ import (
 )
 
 func main() {
-	expands := readRepoExpand()
+	extensions := readRepoExtensions()
 	f, err := os.Create("index.json")
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer f.Close()
-	b, err := json.MarshalIndent(expands, "", " ")
+	b, err := json.MarshalIndent(extensions, "", " ")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -39,41 +39,41 @@ func main() {
 |  ----   | ---- | --- | ---  |
 `
 
-	for _, v := range expands {
+	for _, v := range extensions {
 		url := fmt.Sprintf("[查看](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
 		readme += fmt.Sprintf("| %s | %s | %s | %s |\n", v["name"], v["package"], v["version"], url)
 	}
 	f2.WriteString(readme)
 }
 
-func readRepoExpand() []map[string]string {
+func readRepoExtensions() []map[string]string {
 	de, err := os.ReadDir("repo")
 	if err != nil {
 		log.Fatal(err)
 	}
-	var expands []map[string]string
+	var extensions []map[string]string
 	for _, de2 := range de {
 		b, err := os.ReadFile(path.Join("repo", de2.Name()))
 		if err != nil {
 			log.Println("error:", err)
 			continue
 		}
-		r, _ := regexp.Compile(`MiruExpand([\s\S]+?)/MiruExpand`)
+		r, _ := regexp.Compile(`MiruExtension([\s\S]+?)/MiruExtension`)
 		data := r.FindAllString(string(b), -1)
 		if len(data) < 1 {
-			log.Println("error: not expand")
+			log.Println("error: not extension")
 			continue
 		}
 		lines := strings.Split(data[0], "\n")
-		expand := make(map[string]string)
+		extension := make(map[string]string)
 		for _, v := range lines {
 			if v[:4] == "// @" {
 				s := strings.Split(v[4:], " ")
-				expand[s[0]] = strings.Trim(s[len(s)-1], "\r")
+				extension[s[0]] = strings.Trim(s[len(s)-1], "\r")
 			}
 		}
-		expand["url"] = de2.Name()
-		expands = append(expands, expand)
+		extension["url"] = de2.Name()
+		extensions = append(extensions, extension)
 	}
-	return expands
+	return extensions
 }

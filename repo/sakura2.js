@@ -1,4 +1,4 @@
-// ==MiruExpand==
+// ==MiruExtension==
 // @name         Sakura(樱花动漫)2
 // @version      v0.0.4
 // @author       MiaoMint
@@ -6,9 +6,9 @@
 // @license      MIT
 // @icon         http://www.yinghuacd.com/js/20180601/0601.png
 // @package      dev.0n0.miru.sakura2
-// ==/MiruExpand==
+// ==/MiruExtension==
 
-export default class Sakura2 extends Expand {
+export default class Sakura2 extends Extension {
     constructor() {
         super("http://www.yinghuacd.com")
     }

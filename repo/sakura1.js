@@ -1,4 +1,4 @@
-// ==MiruExpand==
+// ==MiruExtension==
 // @name         Sakura(樱花动漫)1
 // @version      v0.0.5
 // @author       MiaoMint
@@ -6,9 +6,9 @@
 // @license      MIT
 // @icon         https://www.xmfans.me/yxsf/yh_css/yh_logo.png
 // @package      dev.0n0.miru.sakura1
-// ==/MiruExpand==
+// ==/MiruExtension==
 
-export default class Sakura1 extends Expand {
+export default class Sakura1 extends Extension {
     constructor() {
         super("https://www.yhdmp.cc")
     }

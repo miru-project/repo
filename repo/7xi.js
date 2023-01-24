@@ -1,4 +1,4 @@
-// ==MiruExpand==
+// ==MiruExtension==
 // @name         7喜影院
 // @version      v0.0.1
 // @author       MiaoMint
@@ -6,9 +6,9 @@
 // @license      MIT
 // @icon         https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png
 // @package      dev.0n0.miru.7xi
-// ==/MiruExpand==
+// ==/MiruExtension==
 
-export default class extends Expand {
+export default class extends Extension {
     constructor() {
         super("https://www.7xi.tv/")
     }

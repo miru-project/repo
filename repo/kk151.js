@@ -1,4 +1,4 @@
-// ==MiruExpand==
+// ==MiruExtension==
 // @name         动漫之家(kk151)
 // @version      v0.0.4
 // @author       MiaoMint
@@ -6,9 +6,9 @@
 // @license      MIT
 // @package      dev.0n0.miru.kk151
 // @icon         https://www.kk151.com/templets/dm/images/favicon.ico
-// ==/MiruExpand==
+// ==/MiruExtension==
 
-export default class KK151 extends Expand {
+export default class KK151 extends Extension {
     constructor() {
         super("https://www.kk151.com")
     }

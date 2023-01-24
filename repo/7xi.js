@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         7喜影院
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT

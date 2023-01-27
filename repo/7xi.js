@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         7喜影院
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -28,10 +28,12 @@ export default class extends Extension {
             const title = e.match(/title="(.+?)"/)[1]
             const url = e.match(/href="(.+?)"/)[1]
             const cover = this.getCover(e.match(/data-original="(.+?)"/)[1])
+            const update = e.match(/<span class="hl-lc-1 remarks">(.+?)<\/span>/)[1]
             bangumi.push({
                 title,
                 url,
-                cover
+                cover,
+                update,
             })
         })
         return bangumi
@@ -45,10 +47,18 @@ export default class extends Extension {
             const title = e.match(/title="(.+?)"/)[1]
             const url = e.match(/href="(.+?)"/)[1]
             const cover = this.getCover(e.match(/data-original="(.+?)"/)[1])
+            let update = ""
+            try {
+                update = e.match(/<span class="hl-text-conch score">(.+?)<\/span>(.+?)<\/div>/)[2]
+            } catch (error) {
+                update = ""
+                console.log(error);
+            }
             bangumi.push({
                 title,
                 url,
-                cover
+                cover,
+                update
             })
         })
         return bangumi
@@ -61,7 +71,6 @@ export default class extends Extension {
         const title = res.match(/hl-dc-title hl-data-menu">(.+?)</)[1]
         const watchUrlTitleStr = res.match(/hl-plays-from hl-tabs swiper-wrapper clearfix">([\s\S]+?)<\/div>/g)[0]
         const watchUrlTitle = watchUrlTitleStr.match(/alt="(.+?)"/g)
-        console.log(watchUrlTitle);
         const watchUrlGroupsStr = res.match(/id="hl-plays-list">([\s\S]+?)<\/ul/g)
         const watchurl = new Map()
         let i = 0
@@ -94,6 +103,11 @@ export default class extends Extension {
             type: "player",
             src: `${url[1].replace(/\\\/|\/\\/g, "/")}.m3u8`
         }
+    }
+
+    async checkUpdate(url) {
+        const res = await this.request(url)
+        return res.match(/<span class="hl-text-conch">(.+?)<\/span>/)[1]
     }
 
 }

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         7喜影院
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -90,10 +90,9 @@ export default class extends Extension {
     async watch(url) {
         const res = await this.request(url)
         url = res.match(/"url":"(.+?).m3u8"/)
-        console.log(url);
         return {
             type: "player",
-            src: `${url[1]}.m3u8`
+            src: `${url[1].replace(/\\\/|\/\\/g, "/")}.m3u8`
         }
     }
 

@@ -12,9 +12,14 @@ export default class Sakura1 extends Extension {
     constructor() {
         super("https://www.yhdmp.cc")
     }
+    options = {
+        headers: {
+            "miru-ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36 Edg/109.0.1518.70",
+        }
+    }
     async search(kw, page) {
         const bangumi = []
-        const res = await this.request(`/s_all?kw=${kw}&pagesize=24&pageindex=${page - 1}`);
+        const res = await this.request(`/s_all?kw=${kw}&pagesize=24&pageindex=${page - 1}`,this.options);
         let pattern = /<div class="lpic">([\s\S]+?)<div class="pages">/g;
         const bangumisStr = pattern.exec(res)[0]
         pattern = /<li>([\s\S]+?)<\/li>/g
@@ -32,7 +37,7 @@ export default class Sakura1 extends Extension {
     };
 
     async info(url) {
-        const res = await this.request(url);
+        const res = await this.request(url,this.options);
         const desc = res.match(/ <div class="info">([\s\S]+?)<\/div>/)[1]
         const cover = res.match(/referrerpolicy="no-referrer" src="(.+?)"/)[1]
         const title = res.match(/<h1>(.+?)<\/h1>/)[1]
@@ -65,7 +70,7 @@ export default class Sakura1 extends Extension {
 
     async latest() {
         const bangumi = []
-        const res = await this.request('/list/?order=%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4')
+        const res = await this.request('/list/?order=%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4',this.options)
         let pattern = /<div class="lpic">([\s\S]+?)<div class="pages">/g;
         const bangumisStr = pattern.exec(res)[0]
         pattern = /<li>([\s\S]+?)<\/li>/g

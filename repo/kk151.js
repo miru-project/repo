@@ -29,7 +29,14 @@ export default class KK151 extends Extension {
             const cover = /background: url\((.+?)\);/
             const title = /title="(.+?)"/
             const url = /href="(.+?)"/
+            let update = ""
+            try {
+                update = e.match(/<span>(.+?)<\/span><span class="pull-right"/)[1]
+            } catch (error) {
+                console.log(error);
+            }
             bangumi.push({
+                update,
                 title: e.match(title)[1],
                 cover: this.getCover(e.match(cover)[1]),
                 url: e.match(url)[1],
@@ -45,10 +52,18 @@ export default class KK151 extends Extension {
         pattern = /<div class="col-md-4 col-sm-6 col-xs-12 p0">([\s\S]+?)<div class="subtitle">/g
         const m = bangumisStr.match(pattern)
         m.forEach(e => {
+            console.log(e);
             const cover = /background: url\((.+?)\);/
             const title = /title="(.+?)"/
             const url = /href="(.+?)"/
+            let update = ""
+            try {
+                update = e.match(/<span>(.+?)<\/span><span class="pull-right"/)[1]
+            } catch (error) {
+                console.log(error);
+            }
             bangumi.push({
+                update,
                 title: e.match(title)[1],
                 cover: this.getCover(e.match(cover)[1]),
                 url: e.match(url)[1],
@@ -95,5 +110,10 @@ export default class KK151 extends Extension {
             type: "player",
             src: res.match(/now="(.+?)"/)[1]
         }
+    }
+        
+    async checkUpdate(url) {
+        const res = await this.request(url)
+        return res.match(/<span class="text-muted">备注：<\/span>(.+?)<span/)[1]
     }
 }

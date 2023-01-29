@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         动漫之家(kk151)
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT

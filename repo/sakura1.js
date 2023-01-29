@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Sakura(樱花动漫)1
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT

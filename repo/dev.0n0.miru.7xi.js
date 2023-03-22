@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         7喜影院
+// @name         7喜影院Miru2.0-Alpha
 // @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn

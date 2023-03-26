@@ -33,6 +33,18 @@
  },
  {
   "author": "MiaoMint",
+  "icon": "https://www.qimiaomanhua.com/template/pc/default/images/pic_nav_logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "奇妙漫画",
+  "package": "ren.0u0.miru.qimiaomanhua",
+  "type": "manga",
+  "url": "ren.0u0.miru.qimiaomanhua",
+  "version": "v0.0.1",
+  "webSite": "https://www.qimiaomanhua.com/"
+ },
+ {
+  "author": "MiaoMint",
   "icon": "https://www.xmfans.me/yxsf/yh_css/yh_logo.png",
   "lang": "zh-cn",
   "license": "MIT",

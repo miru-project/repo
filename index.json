@@ -33,6 +33,18 @@
  },
  {
   "author": "MiaoMint",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "免费小说网",
+  "nsfw": "true",
+  "package": "ren.0u0.miru.mfxs",
+  "type": "fikushon",
+  "url": "ren.0u0.miru.mfxs.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.493d.com/"
+ },
+ {
+  "author": "MiaoMint",
   "icon": "https://www.qimiaomanhua.com/template/pc/default/images/pic_nav_logo.png",
   "lang": "zh-cn",
   "license": "MIT",

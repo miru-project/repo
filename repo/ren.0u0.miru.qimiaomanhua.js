@@ -86,7 +86,7 @@ export default class Qiximh3 extends Extension {
             desc,
             episodes: [{
                 title: "目录",
-                urls: episodes.reverse()
+                urls: episodes
             }]
         }
 

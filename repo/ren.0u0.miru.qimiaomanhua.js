@@ -1,16 +1,16 @@
 // ==MiruExtension==
-// @name         奇妙漫画
-// @version      v0.0.1
+// @name         36漫画
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
 // @package      ren.0u0.miru.qimiaomanhua
 // @type         manga
-// @icon         https://www.qimiaomanhua.com/template/pc/default/images/pic_nav_logo.png
-// @webSite      https://www.qimiaomanhua.com/
+// @icon         https://www.36manhua.com/template/pc/default/images/pic_nav_logo.png
+// @webSite      https://www.36manhua.com/
 // ==/MiruExtension==
 
-export default class Qiximh3 extends Extension {
+export default class Qiximh extends Extension {
     async latest() {
         const res = await this.request("/category/order/addtime")
         const divlist = res.match(/<div class="common-comic-item">([\s\S]+?)<p class="comic-count">/g)

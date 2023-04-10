@@ -45,15 +45,15 @@
  },
  {
   "author": "MiaoMint",
-  "icon": "https://www.qimiaomanhua.com/template/pc/default/images/pic_nav_logo.png",
+  "icon": "https://www.36manhua.com/template/pc/default/images/pic_nav_logo.png",
   "lang": "zh-cn",
   "license": "MIT",
-  "name": "奇妙漫画",
+  "name": "36漫画",
   "package": "ren.0u0.miru.qimiaomanhua",
   "type": "manga",
   "url": "ren.0u0.miru.qimiaomanhua.js",
-  "version": "v0.0.1",
-  "webSite": "https://www.qimiaomanhua.com/"
+  "version": "v0.0.2",
+  "webSite": "https://www.36manhua.com/"
  },
  {
   "author": "MiaoMint",

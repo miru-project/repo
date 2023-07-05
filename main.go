@@ -32,7 +32,7 @@ func main() {
 	readme := `
 # Miru-Repo
 
-这里是Miru的官方仓库
+Miru 扩展仓库 | [Miru App Download](https://github.com/miru-project/miru-app) |
 
 ## 仓库列表
 |  名称   | 包名 | 版本 | 查看 |

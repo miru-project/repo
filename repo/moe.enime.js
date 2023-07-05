@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         Enime
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         all
 // @license      MIT
 // @icon         https://avatars.githubusercontent.com/u/74993083?s=200&v=4
 // @package      moe.enime
 // @type         bangumi
-// @webSite      https://api.enime.moe/
+// @webSite      https://api.enime.moe
 // @description  Enime API is an open source API service for developers to access anime info (as well as their video sources) https://github.com/Enime-Project/api.enime.moe
 // ==/MiruExtension==
 
@@ -36,7 +36,7 @@ export default class extends Extension {
       url: item.animeId,
       cover: item.anime.coverImage,
       desc: item.description,
-      update: item.number,
+      update: item.number.toString(),
     }));
   }
 
@@ -65,7 +65,7 @@ export default class extends Extension {
       url: item.id,
       cover: item.coverImage,
       desc: item.description,
-      update: item.currentEpisode,
+      update: item.currentEpisode.toString(),
     }));
   }
 

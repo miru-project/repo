@@ -4,68 +4,12 @@
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",
   "license": "MIT",
-  "name": "7喜影院",
-  "package": "dev.0n0.miru.7xi",
-  "url": "7xi.js",
-  "version": "v0.0.4"
- },
- {
-  "author": "ChinaDolphin",
-  "icon": "https://cn.kukuc.co/apple-icon-180x180.png",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "包子漫画",
-  "package": "comic.baozi",
-  "type": "manga",
-  "url": "comic.baozi.js",
-  "version": "v0.0.5",
-  "webSite": "http://43.248.185.98:9004"
- },
- {
-  "author": "ChinaDolphin",
-  "icon": "http://qiximh3.com/style/images/logo.png",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "七夕漫画",
-  "package": "comic.qixi",
-  "type": "manga",
-  "url": "comic.qixi.js",
-  "version": "v0.0.9",
-  "webSite": "http://43.248.185.98:9003"
- },
- {
-  "author": "ChinaDolphin",
-  "icon": "https://dns.ximimanhua.com/assets/logo/ximimanhua_icon.png",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "西米漫画",
-  "package": "comic.ximi",
-  "type": "manga",
-  "url": "comic.ximi.js",
-  "version": "v0.3.8",
-  "webSite": "http://43.248.185.98:9002"
- },
- {
-  "author": "MiaoMint",
-  "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
-  "lang": "zh-cn",
-  "license": "MIT",
   "name": "7喜影院Miru2.0-Alpha",
   "package": "dev.0n0.miru.7xi",
   "type": "bangumi",
   "url": "dev.0n0.miru.7xi.js",
   "version": "v0.0.4",
   "webSite": "https://www.7xi.tv/"
- },
- {
-  "author": "MiaoMint",
-  "icon": "https://www.kk151.com/templets/dm/images/favicon.ico",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "动漫之家(kk151)",
-  "package": "dev.0n0.miru.kk151",
-  "url": "kk151.js",
-  "version": "v0.0.6"
  },
  {
   "author": "MiaoMint",
@@ -77,8 +21,8 @@
   "package": "moe.enime",
   "type": "bangumi",
   "url": "moe.enime.js",
-  "version": "v0.0.1",
-  "webSite": "https://api.enime.moe/"
+  "version": "v0.0.2",
+  "webSite": "https://api.enime.moe"
  },
  {
   "author": "MiaoMint",
@@ -103,25 +47,5 @@
   "url": "ren.0u0.miru.qimiaomanhua.js",
   "version": "v0.0.2",
   "webSite": "https://www.36manhua.com/"
- },
- {
-  "author": "MiaoMint",
-  "icon": "https://www.xmfans.me/yxsf/yh_css/yh_logo.png",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "Sakura(樱花动漫)1",
-  "package": "dev.0n0.miru.sakura1",
-  "url": "sakura1.js",
-  "version": "v0.0.7"
- },
- {
-  "author": "MiaoMint",
-  "icon": "http://www.yinghuacd.com/js/20180601/0601.png",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "Sakura(樱花动漫)2",
-  "package": "dev.0n0.miru.sakura2",
-  "url": "sakura2.js",
-  "version": "v0.0.6"
  }
 ]

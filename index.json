@@ -1,6 +1,19 @@
 [
  {
   "author": "MiaoMint",
+  "description": "欧乐影院－面向海外华人的在线视频媒体平台,海量高清视频在线观看,电影电视剧一网打尽",
+  "icon": "https://static.olelive.com/upload/site/20201117-1/902e3851b6695ac661422b45483d694a.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "欧乐影院",
+  "package": "com.olevod.www",
+  "type": "bangumi",
+  "url": "com.olevod.www.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.olevod.com"
+ },
+ {
+  "author": "MiaoMint",
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",
   "license": "MIT",

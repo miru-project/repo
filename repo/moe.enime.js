@@ -25,7 +25,7 @@ export default class extends Extension {
       title: "Enime API",
       key: "enimeApi",
       type: "input",
-      defaultValue: "https://api.enime.moe/",
+      defaultValue: "https://api.enime.moe",
     });
   }
 

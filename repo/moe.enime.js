@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Enime
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         all
 // @license      MIT
@@ -26,7 +26,7 @@ export default class extends Extension {
       key: "enimeApi",
       type: "input",
       description: "Enime Api Url",
-      defaultValue: "https://api.enime.moe/",
+      defaultValue: "https://api.enime.moe",
     });
   }
 

@@ -1,6 +1,18 @@
 [
  {
   "author": "MiaoMint",
+  "icon": "https://www.dmzj.com/_nuxt/logo_dmzj.1c94014a.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "动漫之家",
+  "package": "com.dmzj.www",
+  "type": "manga",
+  "url": "com.dmzj.www.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.dmzj.com"
+ },
+ {
+  "author": "MiaoMint",
   "description": "欧乐影院－面向海外华人的在线视频媒体平台,海量高清视频在线观看,电影电视剧一网打尽",
   "icon": "https://static.olelive.com/upload/site/20201117-1/902e3851b6695ac661422b45483d694a.png",
   "lang": "zh-cn",
@@ -17,11 +29,11 @@
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",
   "license": "MIT",
-  "name": "7喜影院Miru2.0-Alpha",
+  "name": "7喜影院",
   "package": "dev.0n0.miru.7xi",
   "type": "bangumi",
   "url": "dev.0n0.miru.7xi.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://www.7xi.tv/"
  },
  {
@@ -48,17 +60,5 @@
   "url": "ren.0u0.miru.mfxs.js",
   "version": "v0.0.1",
   "webSite": "https://www.493d.com/"
- },
- {
-  "author": "MiaoMint",
-  "icon": "https://www.36manhua.com/template/pc/default/images/pic_nav_logo.png",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "36漫画",
-  "package": "ren.0u0.miru.qimiaomanhua",
-  "type": "manga",
-  "url": "ren.0u0.miru.qimiaomanhua.js",
-  "version": "v0.0.2",
-  "webSite": "https://www.36manhua.com/"
  }
 ]

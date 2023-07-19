@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         动漫之家
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -88,13 +88,11 @@ export default class extends Extension {
       `/api/v1/comic1/chapter/detail?channel=pc&app_name=dmzj&version=1.0.0&comic_id=${comicId}&chapter_id=${chapterId}`,
     );
 
-    const page_url_hd = res.data.chapterInfo.page_url_hd;
     const page_url = res.data.chapterInfo.page_url;
+    const page_url_hd = res.data.chapterInfo.page_url_hd ?? page_url;
 
     let urls =
       (await this.getSetting("quality")) === "true" ? page_url_hd : page_url;
-
-    urls = urls ?? page_url;
 
     return {
       urls,

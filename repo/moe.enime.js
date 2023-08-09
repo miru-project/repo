@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Enime
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       MiaoMint
 // @lang         all
 // @license      MIT
@@ -27,6 +27,13 @@ export default class extends Extension {
       type: "input",
       description: "Enime Api Url",
       defaultValue: "https://api.enime.moe",
+    });
+    this.registerSetting({
+      title: "Use nade.me Proxy",
+      key: "nadeProxy",
+      type: "toggle",
+      description: "Use nade.me Proxy",
+      defaultValue: "true",
     });
   }
 
@@ -75,10 +82,17 @@ export default class extends Extension {
 
     const getM3u8 = async (sourcesId) => {
       const res = await this.req(`/source/${sourcesId}`);
-      const m3u8url = await fetch(
-        `https://cdn.nade.me/generate?url=${res.url}`,
-      );
-      return m3u8url.text();
+      if ((await this.getSetting("nadeProxy")) == "true") {
+        const url = await (
+          await fetch("https://enime.moe/api/generate-cdn", {
+            method: "POST",
+            body: sourcesId,
+          })
+        ).text();
+        console.log(url);
+        return url;
+      }
+      return res.url;
     };
 
     return {

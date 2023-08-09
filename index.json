@@ -1,6 +1,18 @@
 [
  {
   "author": "MiaoMint",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "咕咕影视",
+  "nsfw": "false",
+  "package": "cc.cooing",
+  "type": "bangumi",
+  "url": "cc.cooing.js",
+  "version": "v0.0.1",
+  "webSite": "https://cooing.cc"
+ },
+ {
+  "author": "MiaoMint",
   "icon": "https://www.dmzj.com/_nuxt/logo_dmzj.1c94014a.png",
   "lang": "zh-cn",
   "license": "MIT",

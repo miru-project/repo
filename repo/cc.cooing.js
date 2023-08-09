@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         咕咕影视
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -68,7 +68,7 @@ export default class extends Extension {
   async detail(url) {
     const res = await this.request(`/${url}`);
     const title = res.match(
-      /<h1 class="text-2xl hidden xl:inline-block">(.+?)<\/h1>/,
+      /<title>《(.+?)》/,
     )[1];
     const cover = this.getImageUrl(
       res.match(/style="background-image: url\('(.+?)'\)"/)[1],

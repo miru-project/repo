@@ -123,11 +123,10 @@ export default class extends Extension {
 
   async watch(url) {
     const res = await this.request(url);
-    const link = res.match(/"url":"(.+?).m3u8"/);
-    const m3u8 = `${eval(`'${link[1].replace(/\\\/|\/\\/g, "/")}'`)}.m3u8`;
+    const config =  res.match(/<script type="text\/javascript">var player_aaaa=(.+?)<\/script>/)
     return {
       type: "hls",
-      url: m3u8,
+      url: JSON.parse(config[1]).url,
     };
   }
 }

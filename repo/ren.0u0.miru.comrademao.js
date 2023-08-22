@@ -47,19 +47,29 @@ export default class Comradmao extends Extension {
   const liList = res.match(/<div class="limit">([\s\S]+?)<\/div>/g);
   const novels = [];
 
+  const titleRegex = /<div class="tt">\s*(.+?)\s*<\/div>/;
+  const coverRegex = /<img src="([^"]+)"\s*width="300"\s*height="300">/;
+  const urlRegex = /<a href="([^"]+)"\s*title=".+?">/;
+
   liList.forEach((element) => {
-   const url = element.match(/href="(.+?)"/)[1];
-   const title = element.match(/class="tt">(.+?)<\/div>/)[1];
-   const cover = element.match(/src="(.+?)"/)[1];
-   novels.push({
-    title,
-    url,
-    cover,
-   });
+    const urlMatch = element.match(urlRegex);
+    const url = urlMatch ? urlMatch[1] : null;
+
+    const titleMatch = element.match(titleRegex);
+    const title = titleMatch ? titleMatch[1] : null;
+
+    const coverMatch = element.match(coverRegex);
+    const cover = coverMatch ? coverMatch[1] : null;
+
+    novels.push({
+      title,
+      url,
+      cover,
+    });
   });
 
   return novels;
- }
+}
 
  async detail(url) {
   const res = await this.request(url, {

@@ -62,6 +62,18 @@
   "webSite": "https://api.enime.moe"
  },
  {
+  "author": "OshekharO",
+  "lang": "en",
+  "license": "MIT",
+  "name": "comrademao",
+  "nsfw": "false",
+  "package": "ren.0u0.miru.comrademao",
+  "type": "fikushon",
+  "url": "ren.0u0.miru.comrademao.js",
+  "version": "v0.0.1",
+  "webSite": "https://comrademao.com"
+ },
+ {
   "author": "MiaoMint",
   "lang": "zh-cn",
   "license": "MIT",

@@ -92,22 +92,16 @@ export default class Comradmao extends Extension {
   }
 
   async watch(url) {
-    const res = await this.request(url, {
-      headers: {
-        "miru-referer": "https://comrademao.com/",
-      },
-    });
-
+    const res = await this.request(`/${url}`);
     const title = res.match(
       /<h3 class="doc_header__name js-search-mark">(.+?)<\/h3>/
     )[1];
-    const chapterContentDiv = res.match(
-      /<div id="chaptercontent" class="chaptercontent"(.+?)<\/div>/
-    )[0];
-
-    const contents = chapterContentDiv.match(/&emsp;&emsp;(.+?)<br \/>/g);
-    const content = contents.map((e) => e.match(/&emsp;&emsp;(.+?)<br \/>/)[1]);
-
+    console.log(res);
+    let chapterContentDiv = res.match(
+      /<div readability="\d+">([\s\S]+?)<\/div>/
+    )[1];
+    chapterContentDiv = chapterContentDiv.replace(/\<p\>/g, "");
+    const content = chapterContentDiv.split("</p>");
     return {
       title,
       content,

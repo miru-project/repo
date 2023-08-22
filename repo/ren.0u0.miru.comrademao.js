@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         comrademao
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -11,96 +11,100 @@
 // ==/MiruExtension==
 
 export default class Comradmao extends Extension {
- async latest() {
-  const res = await this.request("/");
-  const bsxList = res.match(/<div class="bsx">([\s\S]+?)<\/div>/g);
-  const novels = [];
+  async latest() {
+    const res = await this.request("/");
+    const bsxList = res.match(/<div class="bsx">([\s\S]+?)a>[\s\S]+?<\/div>/g);
+    const novels = [];
+    bsxList.forEach((element) => {
+      const url = element.match(/href="(.+?)"/)[1];
+      const title = element
+        .match(/<div class="tt">([\s\S]+?)<\/div>/)[1]
+        .trim();
+      const cover = element.match(/src="(.+?)"/)[1];
+      novels.push({
+        title,
+        url,
+        cover,
+      });
+    });
+    return novels;
+  }
 
-  bsxList.forEach((element) => {
-   const url = element.match(/href="(.+?)"/)[1];
-   const title = element.match(/<div class="tt">(.+?)<\/div>/)[1];
-   const cover = element.match(/src="(.+?)"/)[1];
-   novels.push({
-    title,
-    url,
-    cover,
-   });
-  });
+  async search(kw, page) {
+    const res = await this.request(`/page/${page}/?s=${kw}&post_type=novel`);
+    const bsxList = res.match(/<div class="bsx">([\s\S]+?)a>[\s\S]+?<\/div>/g);
+    const novels = [];
 
-  return novels;
- }
+    bsxList.forEach((element) => {
+      console.log(element);
+      const url = element.match(/href="(.+?)"/)[1];
+      const title = element
+        .match(/<div class="tt">([\s\S]+?)<\/div>/)[1]
+        .trim();
+      const cover = element.match(/src="(.+?)"/)[1];
+      novels.push({
+        title,
+        url,
+        cover,
+      });
+    });
+    return novels;
+  }
 
- async search(kw, page) {
-  const res = await this.request(`/page/${page}/?s=${kw}&post_type=novel`);
-  const liList = res.match(/<div class="limit">([\s\S]+?)<\/div>/g);
-  const novels = [];
+  async detail(url) {
+    const res = await this.request(`/${url}`, {
+      headers: {
+        "miru-referer": "https://comrademao.com/",
+      },
+    });
+    const title = res.match(/<h1 class="entry-title">(.+?)<\/h1>/)[1];
+    const cover = res.match(/<div class="thumb">[\s\S]+?<img src="(.+?)"/)[1];
+    const desc = res
+      .match(
+        /<div class="wd-full">[\s\S]+?<b>Description: <\/b>[\s\S]+?<span>[\s\S]?<p>([\s\S]+?)<\/p>/
+      )[1]
+      .replace(/<br \/>/g, "\n");
 
-  liList.forEach((element) => {
-   const url = element.match(/href="(.+?)"/)[1];
-   const title = element.match(/class="tt">(.+?)<\/div>/)[1];
-   const cover = element.match(/src="(.+?)"/)[1];
-   novels.push({
-    title,
-    url,
-    cover,
-   });
-  });
+    const liList = res.match(/<li data-num=".+?">([\s\S]+?)<\/li>/g);
+    const episodes = [];
 
-  return novels;
- }
+    liList.forEach((element) => {
+      const name = element.match(/<span class="chapternum">(.+?)<\/span>/)[1];
 
- async detail(url) {
-  const res = await this.request(url, {
-   headers: {
-    "miru-referer": "https://comrademao.com/",
-   },
-  });
+      const url = element.match(/href="([^"]+)"/)[1];
+      episodes.push({
+        name,
+        url,
+      });
+    });
 
-  const title = res.match(/<h1 class="entry-title">(.+?)<\/h1>/)[1];
-  const cover = res.match(/<img src="(.+?)" class="attachment- size- wp-post-image"/)[1];
-  const desc = res.match(/<b>Description: <\/b>\s*<span>(.+?)<\/span>/)[1];
+    return {
+      title,
+      cover,
+      desc,
+      episodes: [
+        {
+          title: "Directory",
+          urls: episodes,
+        },
+      ],
+    };
+  }
 
-  const liList = res.match(/<li data-num=".+?">([\s\S]+?)<\/li>/g);
-  const episodes = [];
-
-  liList.forEach((element) => {
-   const chapterNum = element.match(/<span class="chapternum">(.+?)<\/span>/)[1];
-   const chapterUrl = element.match(/<a href="(.+?)">/)[1];
-   episodes.push({
-    chapterNum,
-    chapterUrl,
-   });
-  });
-
-  return {
-   title,
-   cover,
-   desc,
-   episodes: [
-    {
-     title: "Directory",
-     urls: episodes,
-    },
-   ],
-  };
- }
-
- async watch(url) {
-  const res = await this.request(url, {
-   headers: {
-    "miru-referer": "https://comrademao.com/",
-   },
-  });
-
-  const title = res.match(/<h3 class="doc_header__name js-search-mark">(.+?)<\/h3>/)[1];
-  const chapterContentDiv = res.match(/<div id="chaptercontent" class="chaptercontent"(.+?)<\/div>/)[0];
-
-  const contents = chapterContentDiv.match(/&emsp;&emsp;(.+?)<br \/>/g);
-  const content = contents.map((e) => e.match(/&emsp;&emsp;(.+?)<br \/>/)[1]);
-
-  return {
-   title,
-   content,
-  };
- }
+  async watch(url) {
+    const res = await this.request(`/${url}`);
+    const title = res.match(
+      /<h3 class="doc_header__name js-search-mark">(.+?)<\/h3>/
+    )[1];
+    console.log(res);
+    let chapterContentDiv = res.match(
+      /<div readability="\d+">([\s\S]+?)<\/div>/
+    )[1];
+    chapterContentDiv = chapterContentDiv.replace(/\<p\>/g, "");
+    const content = chapterContentDiv.split("</p>");
+    return {
+      title,
+      content,
+    };
+  }
 }

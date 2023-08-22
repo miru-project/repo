@@ -11,23 +11,21 @@
 // ==/MiruExtension==
 
 export default class Comradmao extends Extension {
- async latest() {
-  const res = await this.request("/");
-  const bsxList = res.match(/<div class="bsx">([\s\S]+?)<\/div>/g);
-  const novels = [];
-
-  bsxList.forEach((element) => {
-   const url = element.match(/href="(.+?)"/)[1];
-   const title = element.match(/<div class="tt">(.+?)<\/div>/)[1];
-   const cover = element.match(/src="(.+?)"/)[1];
-   novels.push({
-    title,
-    url,
-    cover,
-   });
-  });
-
-  return novels;
+    async latest() {
+        const res = await this.request("/");
+        const bsxList = res.match(/<div class="bsx">([\s\S]+?)a>[\s\S]+?<\/div>/g);
+        const novels = [];
+        bsxList.forEach((element) => {
+          const url = element.match(/href="(.+?)"/)[1];
+          const title = element.match(/<div class="tt">([\s\S]+?)<\/div>/)[1].trim();
+          const cover = element.match(/src="(.+?)"/)[1];
+          novels.push({
+            title,
+            url,
+            cover,
+          });
+        });
+    return novels;
  }
 
  async search(kw, page) {

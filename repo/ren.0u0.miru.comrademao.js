@@ -5,7 +5,7 @@
 // @lang         en
 // @license      MIT
 // @package      ren.0u0.miru.comrademao
-// @type         novel
+// @type         fikushon
 // @webSite      https://comrademao.com
 // @nsfw         false
 // ==/MiruExtension==

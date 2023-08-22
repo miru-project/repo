@@ -34,7 +34,7 @@ export default class Comradmao extends Extension {
     novels.push({
      title,
      url,
-     cover,
+     cover
     });
    }
   });
@@ -64,7 +64,7 @@ export default class Comradmao extends Extension {
     novels.push({
       title,
       url,
-      cover,
+      cover
     });
   });
 
@@ -107,7 +107,7 @@ export default class Comradmao extends Extension {
       if (chapterNum && chapterUrl) {
         episodes.push({
           chapterNum,
-          chapterUrl,
+          chapterUrl
         });
       }
     });
@@ -120,7 +120,7 @@ export default class Comradmao extends Extension {
     episodes: [
       {
         title: "Directory",
-        urls: episodes,
+        urls: episodes
       },
     ],
   };

@@ -16,15 +16,27 @@ export default class Comradmao extends Extension {
   const bsxList = res.match(/<div class="bsx">([\s\S]+?)<\/div>/g);
   const novels = [];
 
+  const urlRegex = /<a\s+href="([^"]+)"\s+title="[^"]+">/;
+  const titleRegex = /<div\s+class="tt">\s*([^<]+)\s*<\/div>/;
+  const coverRegex = /<img\s+src="([^"]+)"\s+width="300"\s+height="300">/;
+
   bsxList.forEach((element) => {
-   const url = element.match(/href="(.+?)"/)[1];
-   const title = element.match(/<div class="tt">(.+?)<\/div>/)[1];
-   const cover = element.match(/src="(.+?)"/)[1];
-   novels.push({
-    title,
-    url,
-    cover,
-   });
+   const urlMatch = element.match(urlRegex);
+   const url = urlMatch ? urlMatch[1] : null;
+
+   const titleMatch = element.match(titleRegex);
+   const title = titleMatch ? titleMatch[1] : null;
+
+   const coverMatch = element.match(coverRegex);
+   const cover = coverMatch ? coverMatch[1] : null;
+
+   if (url && title && cover) {
+    novels.push({
+     title,
+     url,
+     cover,
+    });
+   }
   });
 
   return novels;

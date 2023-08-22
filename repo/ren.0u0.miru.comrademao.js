@@ -10,7 +10,7 @@
 // @nsfw         false
 // ==/MiruExtension==
 
-export default class Biquge extends Extension {
+export default class Comradmao extends Extension {
  async latest() {
   const res = await this.request("/");
   const bsxList = res.match(/<div class="bsx">([\s\S]+?)<\/div>/g);
@@ -78,7 +78,7 @@ export default class Biquge extends Extension {
    desc,
    episodes: [
     {
-     title: "目录",
+     title: "Directory",
      urls: episodes,
     },
    ],

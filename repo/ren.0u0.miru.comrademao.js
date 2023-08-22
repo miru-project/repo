@@ -68,34 +68,53 @@ export default class Comradmao extends Extension {
    },
   });
 
-  const title = res.match(/<h1 class="entry-title">(.+?)<\/h1>/)[1];
-  const cover = res.match(/<img src="(.+?)" class="attachment- size- wp-post-image"/)[1];
-  const desc = res.match(/<b>Description: <\/b>\s*<span>(.+?)<\/span>/)[1];
+  const titleRegex = /<h1 class="entry-title">(.+?)<\/h1>/;
+  const titleMatch = res.match(titleRegex);
+  const title = titleMatch ? titleMatch[1] : null;
 
-  const liList = res.match(/<li data-num=".+?">([\s\S]+?)<\/li>/g);
+  const coverRegex = /<img src="([^"]+)" class="attachment-\s*size-\s*wp-post-image"/;
+  const coverMatch = res.match(coverRegex);
+  const cover = coverMatch ? coverMatch[1] : null;
+
+  const descriptionRegex = /<b>Description: <\/b>\s*<span>(.+?)<\/span>/;
+  const descriptionMatch = res.match(descriptionRegex);
+  const desc = descriptionMatch ? descriptionMatch[1] : null;
+
+  const liListRegex = /<li data-num=".+?">([\s\S]+?)<\/li>/g;
+  const liListMatch = res.match(liListRegex);
   const episodes = [];
 
-  liList.forEach((element) => {
-   const chapterNum = element.match(/<span class="chapternum">(.+?)<\/span>/)[1];
-   const chapterUrl = element.match(/<a href="(.+?)">/)[1];
-   episodes.push({
-    chapterNum,
-    chapterUrl,
-   });
-  });
+  if (liListMatch) {
+    liListMatch.forEach((element) => {
+      const chapterNumRegex = /<span class="chapternum">(.+?)<\/span>/;
+      const chapterNumMatch = element.match(chapterNumRegex);
+      const chapterNum = chapterNumMatch ? chapterNumMatch[1] : null;
+
+      const chapterUrlRegex = /<a href="(.+?)">/;
+      const chapterUrlMatch = element.match(chapterUrlRegex);
+      const chapterUrl = chapterUrlMatch ? chapterUrlMatch[1] : null;
+
+      if (chapterNum && chapterUrl) {
+        episodes.push({
+          chapterNum,
+          chapterUrl,
+        });
+      }
+    });
+  }
 
   return {
-   title,
-   cover,
-   desc,
-   episodes: [
-    {
-     title: "Directory",
-     urls: episodes,
-    },
-   ],
+    title,
+    cover,
+    desc,
+    episodes: [
+      {
+        title: "Directory",
+        urls: episodes,
+      },
+    ],
   };
- }
+}
 
  async watch(url) {
   const res = await this.request(url, {

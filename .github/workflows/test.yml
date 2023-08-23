@@ -1,7 +1,7 @@
 name: Go
 
 on:
-  push:
+  pull_request:
     branches: [ "main" ]
 
 jobs:
@@ -18,9 +18,3 @@ jobs:
 
     - name: Generage
       run: go run ./...
-      
-    - name: Push new index.json
-      uses: mikeal/publish-to-github-action@master
-      env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH_NAME: 'main'

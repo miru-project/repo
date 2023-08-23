@@ -36,7 +36,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 
 ## List
 |  Name   | Package | Version | Author | Language | NSFW | Source |
-|  ----   | ---- | --- | ---  | ---  | ---  |
+|  ----   | ---- | --- | ---  | ---  | ---  | ---  |
 `
 
 	for _, v := range extensions {

@@ -11,8 +11,8 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
- async search(kw, page) {
-  const res = await this.request(`/api/DramaList/Search?q=${kw}?page=${page}`);
+ async search(kw) {
+  const res = await this.request(`/api/DramaList/Search?q=${kw}&type=0`);
   return res.map((item) => ({
    title: item.title,
    url: item.id.toString(),

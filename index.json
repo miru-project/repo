@@ -84,5 +84,44 @@
   "url": "ren.0u0.miru.mfxs.js",
   "version": "v0.0.1",
   "webSite": "https://www.493d.com/"
+ },
+ {
+  "author": "zj",
+  "icon": "https://www.lkp2.top/template/muban8/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "好看的1号",
+  "nsfw": "true",
+  "package": "top.lkp2.www",
+  "type": "bangumi",
+  "url": "top.lkp2.www.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.lkp2.top/"
+ },
+ {
+  "author": "zj",
+  "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "好看的7号",
+  "nsfw": "true",
+  "package": "xyz.thrj66.www",
+  "type": "bangumi",
+  "url": "xyz.thrj66.www.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.thrj66.xyz/"
+ },
+ {
+  "author": "zj",
+  "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "好看的2号",
+  "nsfw": "true",
+  "package": "xyz.xdtv2",
+  "type": "bangumi",
+  "url": "xyz.xdtv2.js",
+  "version": "v0.0.1",
+  "webSite": "https://xdtv2.xyz/"
  }
 ]

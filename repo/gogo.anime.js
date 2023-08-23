@@ -4,7 +4,7 @@
 // @author       OshekharO
 // @lang         en
 // @license      MIT
-// @icon         https://avatars.githubusercontent.com/u/74993083?s=200&v=4
+// @icon         https://play-lh.googleusercontent.com/MaGEiAEhNHAJXcXKzqTNgxqRmhuKB1rCUgb15UrN_mWUNRnLpO5T1qja64oRasO7mn0
 // @package      gogo.anime
 // @type         bangumi
 // @webSite      https://api.consumet.org/anime/gogoanime
@@ -26,13 +26,6 @@ export default class extends Extension {
       type: "input",
       description: "GoGo Api Url",
       defaultValue: "https://api.consumet.org/anime/gogoanime",
-    });
-    this.registerSetting({
-      title: "Use nade.me Proxy",
-      key: "nadeProxy",
-      type: "toggle",
-      description: "Use nade.me Proxy",
-      defaultValue: "true",
     });
   }
 
@@ -74,40 +67,9 @@ export default class extends Extension {
 
   async watch(url) {
     const res = await this.req(`/watch/${url}?server=gogocdn`);
-
-    const getM3u8 = async (sourcesId) => {
-      const res = await this.req(`/source/${sourcesId}`);
-      if ((await this.getSetting("nadeProxy")) == "true") {
-        const url = await (
-          await fetch("https://enime.moe/api/generate-cdn", {
-            method: "POST",
-            body: sourcesId,
-          })
-        ).text();
-        console.log(url);
-        return url;
-      }
-      return res.url;
-    };
-
     return {
       type: "hls",
-      url: await getM3u8(res.sources[0].id),
-      controls: [
-        {
-          name: "source",
-          html: "Source",
-          position: "right",
-          selector: res.sources.map((item) => ({
-            name: item.id,
-            html: item.url,
-          })),
-          onSelect: async function (item) {
-            const m3u8 = await getM3u8(item.name);
-            this.switchUrl(m3u8);
-          },
-        },
-      ],
+      url: res.sources.pop().url,
     };
   }
 }

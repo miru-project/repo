@@ -32,16 +32,17 @@ func main() {
 	readme := `
 # Miru-Repo
 
-Miru 扩展仓库 | [Miru App Download](https://github.com/miru-project/miru-app) |
+Miru extensions repository | [Miru App Download](https://github.com/miru-project/miru-app) |
 
-## 仓库列表
-|  名称   | 包名 | 版本 | 查看 |
-|  ----   | ---- | --- | ---  |
+## List
+|  Name   | Package | Version | Author | Language | NSFW | Source |
+|  ----   | ---- | --- | ---  | ---  | ---  |
 `
 
 	for _, v := range extensions {
-		url := fmt.Sprintf("[查看](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
-		readme += fmt.Sprintf("| %s | %s | %s | %s |\n", v["name"], v["package"], v["version"], url)
+		url := fmt.Sprintf("[Source Code](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
+		nsfw := v["nsfw"] == "true"
+		readme += fmt.Sprintf("| %s | %s | %s | %s | %s | %t | %s |\n", v["name"], v["package"], v["version"], v["author"], v["lang"], nsfw, url)
 	}
 	f2.WriteString(readme)
 }

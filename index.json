@@ -49,6 +49,42 @@
   "webSite": "https://www.7xi.tv/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://play-lh.googleusercontent.com/MaGEiAEhNHAJXcXKzqTNgxqRmhuKB1rCUgb15UrN_mWUNRnLpO5T1qja64oRasO7mn0",
+  "lang": "en",
+  "license": "MIT",
+  "name": "GoGoAnime",
+  "package": "gogo.anime",
+  "type": "bangumi",
+  "url": "gogo.anime.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.consumet.org/anime/gogoanime"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://kisskh.co/assets/icons/icon-192x192.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Kisskh",
+  "package": "kisskh.co",
+  "type": "bangumi",
+  "url": "kisskh.co.js",
+  "version": "v0.0.1",
+  "webSite": "https://kisskh.co"
+ },
+ {
+  "author": "OshekharO",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Manga18fx",
+  "nsfw": "true",
+  "package": "manga18.fx",
+  "type": "manga",
+  "url": "manga18.fx.js",
+  "version": "v0.0.1",
+  "webSite": "https://manga18fx.com"
+ },
+ {
   "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",

@@ -69,7 +69,7 @@ async load() {
     const res = await this.req(`/episode-srcs?id=${url}&server=vidstreaming&category=sub`);
     return {
       type: "hls",
-      url: res.sources.url,
+      url: res.sources[0].url,
     };
   }
 }

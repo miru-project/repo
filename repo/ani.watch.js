@@ -19,7 +19,7 @@ export default class extends Extension {
     });
   }
 
-async load() {
+  async load() {
     this.registerSetting({
       title: "Aniwatch API",
       key: "aniwatch",
@@ -40,16 +40,17 @@ async load() {
 
   async detail(url) {
     const res = await this.req(`/info?id=${url}`);
+    const epRes = await this.req(`/episodes/${url}`);
     return {
-     title: res.anime.info.name,
-     cover: res.anime.info.poster,
-     desc: res.anime.info.description,
+      title: res.anime.info.name,
+      cover: res.anime.info.poster,
+      desc: res.anime.info.description,
       episodes: [
         {
           title: "Ep",
-          urls: res.episodes.map((item) => ({
+          urls: epRes.episodes.map((item) => ({
             name: `Episode ${item.number}`,
-            url: item.id,
+            url: item.episodeId,
           })),
         },
       ],
@@ -66,10 +67,16 @@ async load() {
   }
 
   async watch(url) {
-    const res = await this.req(`/episode-srcs?id=${url}&server=vidstreaming&category=sub`);
+    const res = await this.req(
+      `/episode-srcs?id=${url}&server=vidstreaming&category=sub`
+    );
     return {
       type: "hls",
       url: res.sources[0].url,
+      subtitles: res.subtitles.map((item) => ({
+        title: item.lang,
+        url: item.url,
+      })),
     };
   }
 }

@@ -1,5 +1,17 @@
 [
  {
+  "author": "OshekharO",
+  "icon": "https://aniwatchto.site/Aniwatchtofavicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Aniwatch",
+  "package": "ani.watch",
+  "type": "bangumi",
+  "url": "ani.watch.js",
+  "version": "v0.0.1",
+  "webSite": "https://api-aniwatch.onrender.com/anime"
+ },
+ {
   "author": "MiaoMint",
   "lang": "zh-cn",
   "license": "MIT",

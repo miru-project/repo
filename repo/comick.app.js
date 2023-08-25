@@ -78,14 +78,9 @@ export default class extends Extension {
  }
 
  async watch(url) {
-  const res = await this.req(`/episode-srcs?id=${url}&server=vidstreaming&category=sub`);
+  const res = await this.request(`/chapter/${url}?tachiyomi=true`);
   return {
-   type: "hls",
-   url: res.sources[0].url,
-   subtitles: res.subtitles.map((item) => ({
-    title: item.lang,
-    url: item.url,
-   })),
+   urls: res.chapter.images.map((item) => item.url),
   };
  }
 }

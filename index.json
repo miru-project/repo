@@ -49,6 +49,18 @@
   "webSite": "https://www.olevod.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://comick.app/static/icons/unicorn-256_maskable.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Comick",
+  "package": "comick.app",
+  "type": "manga",
+  "url": "comick.app.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.comick.app"
+ },
+ {
   "author": "MiaoMint",
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",

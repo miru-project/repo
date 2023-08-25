@@ -40,10 +40,31 @@ export default class extends Extension {
 
  async detail(url) {
   const res = await this.req(`/comic/${url}`);
+  const hid = res.comic.hid;
+  const epRes = await this.req(`/comic/${hid}/chapters?limit=99999`);
+
+  const chapMap = new Map();
+  epRes.chapters.forEach((item) => {
+   const lang = item.lang;
+   let list = chapMap.get(lang);
+   if (!list) {
+    list = [];
+    chapMap.set(lang, list);
+   }
+   list.push(item);
+  });
+
   return {
    title: res.comic.title,
    cover: `https://meo.comick.pictures/${res.comic.md_covers[0].b2key}`,
    desc: res.comic.desc,
+   episodes: [...chapMap.entries()].map(([lang, list]) => ({
+    title: lang,
+    urls: list.map((item) => ({
+     name: `Chapter ${item.chap}`,
+     url: item.hid,
+    })),
+   })),
   };
  }
 

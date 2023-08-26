@@ -20,5 +20,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | comrademao | ren.0u0.miru.comrademao | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.comrademao.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
+| Truyen | truyen.net | v0.0.1 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |
 | 好看的2号 | xyz.xdtv2 | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.xdtv2.js) |

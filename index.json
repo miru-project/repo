@@ -171,6 +171,18 @@
   "webSite": "https://www.lkp2.top/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://st.nettruyenmax.com/data/logos/logo-nettruyen.png",
+  "lang": "vi",
+  "license": "MIT",
+  "name": "Truyen",
+  "package": "truyen.net",
+  "type": "manga",
+  "url": "truyen.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://comics-api.vercel.app"
+ },
+ {
   "author": "zj",
   "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
   "lang": "zh-cn",

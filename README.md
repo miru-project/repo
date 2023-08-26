@@ -15,6 +15,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | GoGoAnime | gogo.anime | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | Kisskh | kisskh.co | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
 | Manga18fx | manga18.fx | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga18.fx.js) |
+| 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | comrademao | ren.0u0.miru.comrademao | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.comrademao.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |

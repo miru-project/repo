@@ -109,6 +109,18 @@
   "webSite": "https://manga18fx.com"
  },
  {
+  "author": "Monster",
+  "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "拷贝漫画",
+  "package": "mangacopy.comic",
+  "type": "manga",
+  "url": "mangacopy.comic.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.mangacopy.com"
+ },
+ {
   "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",

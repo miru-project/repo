@@ -135,6 +135,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://mtlnation.com/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Mtlnation",
+  "nsfw": "false",
+  "package": "mtlnation.com",
+  "type": "fikushon",
+  "url": "mtlnation.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.mtlnation.com"
+ },
+ {
+  "author": "OshekharO",
   "lang": "en",
   "license": "MIT",
   "name": "comrademao",

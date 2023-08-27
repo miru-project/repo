@@ -21,6 +21,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | Truyen | truyen.net | v0.0.1 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
+| viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |
 | 好看的2号 | xyz.xdtv2 | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.xdtv2.js) |
-| Tàng thư viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |

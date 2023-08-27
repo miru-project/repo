@@ -183,6 +183,19 @@
   "webSite": "https://comics-api.vercel.app"
  },
  {
+  "author": "Moleys",
+  "icon": "https://truyen.tangthuvien.vn/images/icon-favico.png",
+  "lang": "vi",
+  "license": "MIT",
+  "name": "viện",
+  "nsfw": "false",
+  "package": "vn.tangthuvien",
+  "type": "fikushon",
+  "url": "vn.tangthuvien.js",
+  "version": "v0.0.1",
+  "webSite": "https://truyen.tangthuvien.vn"
+ },
+ {
   "author": "zj",
   "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
   "lang": "zh-cn",

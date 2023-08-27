@@ -31,7 +31,7 @@ export default class extends Extension {
  }
 
  async latest(page) {
-  const res = await this.req(`/api/v2/novels/`);
+  const res = await this.req(`/api/v2/novels/?sort=chapter_new&page=${page}`);
   return res.data.map((item) => ({
    url: item.slug,
    title: item.title,

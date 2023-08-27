@@ -52,7 +52,7 @@ export default class extends Extension {
      title: "Chapters",
      urls: epRes.data.map((item) => ({
       name: `${item.title}`,
-      url: item.slug,
+      url: `${item.slug}|${url}`,
      })),
     },
    ],
@@ -68,7 +68,16 @@ export default class extends Extension {
   }));
  }
 
- async watch() {
-  // todo
+ async watch(url) {
+  const [ep, novel] = url.split("|");
+  const res = await this.req(`/api/v2/chapters/${novel}/${ep}`);
+  let chapterContentDiv = res.data.content;
+  chapterContentDiv = chapterContentDiv.replace(/<\/p><br>|<\/p><br \/>/g, "");
+  const content = chapterContentDiv.split("<p>");
+
+  return {
+   title: res.data.title,
+   content: content,
+  };
  }
 }

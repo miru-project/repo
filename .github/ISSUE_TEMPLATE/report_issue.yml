@@ -1,0 +1,54 @@
+name: 🐞 Issue report
+description: Report a extension issue with a source
+labels: []
+body:
+
+    -   type: input
+        id: source
+        attributes:
+            label: Extension information
+            description: |
+                You can find the source name in extensions drawer.
+            placeholder: |
+                Example: "Comick"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: reproduce-steps
+        attributes:
+            label: Steps to reproduce
+            description: Provide an example of the issue.
+            placeholder: |
+                Example:
+                  1. First step
+                  2. Second step
+                  3. Issue here
+        validations:
+            required: false
+
+    -   type: input
+        id: miru-version
+        attributes:
+            label: Miru version
+            description: |
+                You can find your Miru version in **Settings**.
+            placeholder: |
+                Example: "1.6.7"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: other-details
+        attributes:
+            label: Other details
+            placeholder: |
+                Additional details and attachments.
+
+    -   type: checkboxes
+        id: acknowledgements
+        attributes:
+            label: Acknowledgements
+            options:
+                -   label: I have searched the existing issues and this is a new ticket, **NOT** a duplicate or related to another open issue.
+                    required: true

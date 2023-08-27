@@ -158,6 +158,18 @@
   "webSite": "https://www.493d.com/"
  },
  {
+  "author": "Monster",
+  "icon": "https://cdn.yinghuazy.xyz/webjs/zkk7/statics/img/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "樱花动漫",
+  "package": "sakura",
+  "type": "bangumi",
+  "url": "sakura.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.vdm8.com"
+ },
+ {
   "author": "zj",
   "icon": "https://www.lkp2.top/template/muban8/favicon.ico",
   "lang": "zh-cn",

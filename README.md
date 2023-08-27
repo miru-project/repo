@@ -19,6 +19,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | comrademao | ren.0u0.miru.comrademao | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.comrademao.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
+| 樱花动漫 | sakura | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | Truyen | truyen.net | v0.0.1 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
 | viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |

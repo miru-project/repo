@@ -24,5 +24,8 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | Truyen | truyen.net | v0.0.1 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
 | viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |
+| 影视集合 | vod.api.json.collection | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.json.collection.js) |
+| 八戒影视 | vod.api.xml.bajie | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.xml.bajie.js) |
+| 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |
 | 好看的2号 | xyz.xdtv2 | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.xdtv2.js) |

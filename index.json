@@ -221,6 +221,40 @@
   "webSite": "https://truyen.tangthuvien.vn"
  },
  {
+  "author": "Horis",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "影视集合",
+  "package": "vod.api.json.collection",
+  "type": "bangumi",
+  "url": "vod.api.json.collection.js",
+  "version": "v0.0.1",
+  "webSite": "https://"
+ },
+ {
+  "author": "Horis",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "八戒影视",
+  "package": "vod.api.xml.bajie",
+  "type": "bangumi",
+  "url": "vod.api.xml.bajie.js",
+  "version": "v0.0.1",
+  "webSite": "https://cj.bajiecaiji.com"
+ },
+ {
+  "author": "Monster",
+  "icon": "https://www.dm530w.org/tpsf/fc_pic/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "风车动漫",
+  "package": "windmill",
+  "type": "bangumi",
+  "url": "windmill.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.dm530w.org"
+ },
+ {
   "author": "zj",
   "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
   "lang": "zh-cn",

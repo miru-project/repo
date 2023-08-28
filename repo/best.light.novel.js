@@ -11,7 +11,7 @@
 // @nsfw         false
 // ==/MiruExtension==
 
-export default class MyNovel extends Extension {
+export default class BestLightNovel extends Extension {
   async latest() {
     const res = await this.request("/");
     const bsxList = res.match(/<div class="itemupdate first">[\s\S]+?<\/div>/g);

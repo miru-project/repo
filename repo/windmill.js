@@ -98,7 +98,9 @@ export default class extends Extension {
 
         const res = await this.request(`${url}`);
         const title = await this.queryXPath(res,'//div[@class="rate r"]/h1').text;
-        const cover = await this.queryXPath(res,'//img[@referrerpolicy="no-referrer"]/@src').attr;
+        let cover = await this.queryXPath(res,'//img[@referrerpolicy="no-referrer"]/@src').attr;
+        cover = cover.includes("https:") ? cover : "https:" + cover;
+        // console.log(cover)
         const desc = await this.queryXPath(res,'//div[@class="info"]').text;
         const div = await this.queryXPath(res,'//div[@id="main0"]/div[@class="movurl"]').allHTML;
         const episodes = [];

@@ -103,14 +103,14 @@ export default class MyNovel extends Extension {
       /<div id="vung_doc".*>([\s\S]+?)<\/div>/
     )[1];
     chapterContentDiv = chapterContentDiv
-    .replace(/<[^>]+>/g, '\n\t')
+    .replace(/<[^>]+>/g, '\n')
     .replace(/\<p\>/g, "")
     .replace(/&#39;/g, "'")
     .replace(/&nbsp;/g, ' ')
     .replace(/’/g, "'")
     .replace(/&ldquo;/g, '"')
     .replace(/&rdquo;/g, '"');
-    const content = chapterContentDiv.split("</p>");
+    const content = chapterContentDiv.split(/\n\n\n/g);
     return {
       title,
       content,

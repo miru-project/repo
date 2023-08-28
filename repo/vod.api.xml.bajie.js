@@ -50,13 +50,14 @@ class VodExtension extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (filter.category[0] === 'all') {
+    const category = filter?.category?.[0]
+    if (!kw && (!category || category === 'all')) {
       return this.latest(page)
     }
     let res
-    if (filter.category[0] !== 'all') {
+    if (category && category !== 'all') {
       res = await this.callApi({
-        type: filter.category[0],
+        type: category,
         page,
         action: 'videolist'
       })

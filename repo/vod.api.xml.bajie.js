@@ -34,8 +34,35 @@ class VodExtension extends Extension {
     }))
   }
 
-  async search(kw, page) {
-    const res = await this.callApi({ query: kw, page, action: 'videolist' })
+  async createFilter(filter) {
+    return {
+      category: {
+        title: '分类',
+        max: 1,
+        min: 1,
+        default: 'all',
+        options: {
+          all: '全部',
+          ...(await this.category())
+        }
+      }
+    }
+  }
+
+  async search(kw, page, filter) {
+    if (filter.category[0] === 'all') {
+      return this.latest(page)
+    }
+    let res
+    if (filter.category[0] !== 'all') {
+      res = await this.callApi({
+        type: filter.category[0],
+        page,
+        action: 'videolist'
+      })
+    } else {
+      res = await this.callApi({ query: kw, page, action: 'videolist' })
+    }
     res.list.forEach(item => {
       this.videoInfoCache[item.vod_id] = item
     })
@@ -94,7 +121,26 @@ class VodExtension extends Extension {
     }
   }
 
-  async callApi({ query, page = 0, ids, type, pageSize, action = 'list' }) {
+  async category() {
+    if (this.categoryCache) {
+      return this.categoryCache
+    }
+    const res = await this.callApi()
+    const options = Object.fromEntries(
+      res.class.map(item => [item.type_id, item.type_name])
+    )
+    this.categoryCache = options
+    return options
+  }
+
+  async callApi({
+    query,
+    page = 0,
+    ids,
+    type,
+    pageSize,
+    action = 'list'
+  } = {}) {
     var params = `?ac=${action}`
     if (query) {
       params += `&wd=${encodeURIComponent(query)}`
@@ -129,8 +175,11 @@ class VodExtension extends Extension {
 class Ext extends VodExtension {
   api = 'https://cj.bajiecaiji.com/inc/api.php/provide/vod/'
 
-  async search() {
-    throw '不支持搜索'
+  async search(kw, page, filter) {
+    if (kw) {
+      throw '不支持搜索'
+    }
+    return super.search(kw, page, filter)
   }
 }
 
@@ -143,6 +192,7 @@ function rtrim(str, ch) {
 function convertToJson(xml) {
   var $ = cheerio.load(xml, { xmlMode: true })
   const list = []
+  const clazz = []
   $('video').each((i, el) => {
     const $el = $(el)
     const vod_id = $el.find('id').text()
@@ -169,5 +219,11 @@ function convertToJson(xml) {
       vod_play_url
     })
   })
-  return { list }
+  $('class ty').each((i, el) => {
+    const $el = $(el)
+    const type_id = $el.attr('id')
+    const type_name = $el.text()
+    clazz.push({ type_id, type_name })
+  })
+  return { list, class: clazz }
 }

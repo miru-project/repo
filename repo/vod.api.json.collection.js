@@ -136,19 +136,21 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (kw === '' && filter.category[0] === 'all') {
+    const apiKey = filter?.api?.[0]
+    const category = filter?.category?.[0]
+    if (kw === '' && (!category || category === 'all')) {
       return this.latest(page)
     }
     let res
-    if (kw && filter.api[0] === 'haiwaikan') {
+    if (kw && apiKey === 'haiwaikan') {
       res = await this.callApi({ query: kw, page })
       kw = res.list.map(item => item.vod_id).join()
     }
     if (kw.split(',').every(s => isNumeric(s))) {
       res = await this.callApi({ ids: kw, action: 'videolist' })
-    } else if (filter.category[0] !== 'all') {
+    } else if (category && category !== 'all') {
       res = await this.callApi({
-        type: filter.category[0],
+        type: category,
         page,
         action: 'videolist'
       })

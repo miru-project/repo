@@ -233,10 +233,10 @@ export default class extends Extension {
   }
 
   async category(apiKey) {
+    if (this.apiCategoryCache[apiKey]) {
+      return this.apiCategoryCache[apiKey]
+    }
     try {
-      if (this.apiCategoryCache[apiKey]) {
-        return this.apiCategoryCache[apiKey]
-      }
       const res = await this.callApi()
       const options = Object.fromEntries(
         res.class.map(item => [item.type_id, item.type_name])

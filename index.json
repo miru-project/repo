@@ -12,6 +12,19 @@
   "webSite": "https://api-aniwatch.onrender.com/anime"
  },
  {
+  "author": "(koikiss-dev)",
+  "description": "https://github.com/koikiss-dev/jimov_api",
+  "icon": "https://animeflv.vc/static/img/icon/logo.png",
+  "lang": "es",
+  "license": "MIT",
+  "name": "AnimeFlv",
+  "package": "anime.flv",
+  "type": "bangumi",
+  "url": "anime.flv.js",
+  "version": "v0.0.1",
+  "webSite": "https://jimov-api.vercel.app/"
+ },
+ {
   "author": "anishi7",
   "icon": "https://bestlightnovel.com/themes/home/images/favicon.png",
   "lang": "en",

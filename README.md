@@ -7,6 +7,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 |  Name   | Package | Version | Author | Language | NSFW | Source |
 |  ----   | ---- | --- | ---  | ---  | ---  | ---  |
 | Aniwatch | ani.watch | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
+| AnimeFlv | anime.flv | v0.0.1 | (koikiss-dev) | es | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |

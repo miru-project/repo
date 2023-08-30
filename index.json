@@ -87,6 +87,18 @@
   "webSite": "https://api.comick.app"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://revuestarlight.bushimo.jp/wp-content/themes/revuestarlight/assets/images/common/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Comrademao",
+  "package": "comrademao",
+  "type": "fikushon",
+  "url": "comrademao.js",
+  "version": "v0.0.3",
+  "webSite": "https://comrademao.com"
+ },
+ {
   "author": "MiaoMint",
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",
@@ -184,18 +196,6 @@
   "url": "mx.yts.js",
   "version": "v0.0.5",
   "webSite": "https://yts.mx/"
- },
- {
-  "author": "OshekharO",
-  "lang": "en",
-  "license": "MIT",
-  "name": "comrademao",
-  "nsfw": "false",
-  "package": "ren.0u0.miru.comrademao",
-  "type": "fikushon",
-  "url": "ren.0u0.miru.comrademao.js",
-  "version": "v0.0.2",
-  "webSite": "https://comrademao.com"
  },
  {
   "author": "MiaoMint",

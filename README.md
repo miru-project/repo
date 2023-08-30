@@ -20,13 +20,14 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
+| TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | comrademao | ren.0u0.miru.comrademao | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.comrademao.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | 樱花动漫 | sakura | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | Truyen | truyen.net | v0.0.1 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
 | viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |
-| 影视集合 | vod.api.json.collection | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.json.collection.js) |
+| 影视集合 | vod.api.json.collection | v0.0.2 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.json.collection.js) |
 | 八戒影视 | vod.api.xml.bajie | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.xml.bajie.js) |
 | 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |

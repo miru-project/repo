@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         影视集合
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       Horis
 // @lang         zh-cn
 // @license      MIT
@@ -54,9 +54,25 @@ export default class extends Extension {
   }
   videoInfoCache = {}
   apiCategoryCache = {}
+  defaultApiKey = null
 
   async latest(page) {
-    const res = await this.callApi({ action: 'videolist', page })
+    let res
+    if (!this.defaultApiKey) {
+      for (const key of Object.keys(this.apis)) {
+        this.api = this.apis[key]
+        this.defaultApiKey = key
+        try {
+          res = await this.callApi({ page, action: 'videolist' })
+          break
+        } catch (error) {
+          console.log(`源 ${key} 加载失败，自动切换到下一个源`)
+        }
+      }
+    } else {
+      res = await this.callApi({ page, action: 'videolist' })
+    }
+
     res.list.forEach(item => {
       this.videoInfoCache[item.vod_id] = item
     })
@@ -74,7 +90,7 @@ export default class extends Extension {
       title: '源',
       min: 1,
       max: 1,
-      default: 'baidu',
+      default: this.defaultApiKey || 'baidu',
       options: {
         baidu: '百度影视',
         baofen: '暴风影视',
@@ -112,7 +128,7 @@ export default class extends Extension {
       }
     }
 
-    let apiKey = 'baidu'
+    let apiKey = this.defaultApiKey || 'baidu'
 
     // 选择后切换 api
     if (filter && filter.api) {
@@ -220,12 +236,16 @@ export default class extends Extension {
     if (this.apiCategoryCache[apiKey]) {
       return this.apiCategoryCache[apiKey]
     }
-    const res = await this.callApi()
-    const options = Object.fromEntries(
-      res.class.map(item => [item.type_id, item.type_name])
-    )
-    this.apiCategoryCache[apiKey] = options
-    return options
+    try {
+      const res = await this.callApi()
+      const options = Object.fromEntries(
+        res.class.map(item => [item.type_id, item.type_name])
+      )
+      this.apiCategoryCache[apiKey] = options
+      return options
+    } catch (error) {
+      return {}
+    }
   }
 
   async callApi({

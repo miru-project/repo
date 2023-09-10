@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         Ani GoGo
+// @name         AniGoGo
 // @version      v0.0.1
 // @author       OshekharO
 // @lang         en

@@ -4,7 +4,7 @@
 // @author       OshekharO
 // @lang         en
 // @license      MIT
-// @icon         https://aniwatchto.site/Aniwatchtofavicon.ico
+// @icon         https://aniwatch.to/images/android-chrome-512x512.png
 // @package      ani.watch
 // @type         bangumi
 // @webSite      https://api-aniwatch.onrender.com/anime

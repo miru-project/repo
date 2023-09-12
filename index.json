@@ -260,6 +260,18 @@
   "webSite": "https://comics-api.vercel.app"
  },
  {
+  "author": "CakesTwix",
+  "icon": "https://www.google.com/s2/favicons?domain=unimay.media\u0026sz=256",
+  "lang": "uk",
+  "license": "GPL3",
+  "name": "Unimay",
+  "package": "unimay.media",
+  "type": "bangumi",
+  "url": "unimay.media.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.unimay.media"
+ },
+ {
   "author": "Moleys",
   "icon": "https://truyen.tangthuvien.vn/images/icon-favico.png",
   "lang": "vi",

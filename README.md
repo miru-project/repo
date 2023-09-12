@@ -20,6 +20,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | HentaiDexy | hentaidexy.net | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hentaidexy.net.js) |
 | Kisskh | kisskh.co | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
+| マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |

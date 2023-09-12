@@ -172,6 +172,18 @@
   "webSite": "https://www.mangacopy.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://mangacross.jp/favicon.ico",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "マンガクロス",
+  "package": "mangacross.jp",
+  "type": "manga",
+  "url": "mangacross.jp.js",
+  "version": "v0.0.1",
+  "webSite": "https://mangacross.jp"
+ },
+ {
   "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",

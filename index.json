@@ -1,7 +1,19 @@
 [
  {
   "author": "OshekharO",
-  "icon": "https://aniwatchto.site/Aniwatchtofavicon.ico",
+  "icon": "https://anilist.co/img/icons/apple-touch-icon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "AniGoGo",
+  "package": "ani.gogo",
+  "type": "bangumi",
+  "url": "ani.gogo.js",
+  "version": "v0.0.1",
+  "webSite": "https://api-amvstrm.nyt92.eu.org/api/v2"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://aniwatch.to/images/android-chrome-512x512.png",
   "lang": "en",
   "license": "MIT",
   "name": "Aniwatch",
@@ -124,6 +136,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://s1.cdnimg.me:9000/hentaidexy/opengraph-image.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "HentaiDexy",
+  "nsfw": "true",
+  "package": "hentaidexy.net",
+  "type": "manga",
+  "url": "hentaidexy.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://backend.hentaidexy.net"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://kisskh.co/assets/icons/icon-192x192.png",
   "lang": "all",
   "license": "MIT",
@@ -133,18 +158,6 @@
   "url": "kisskh.co.js",
   "version": "v0.0.1",
   "webSite": "https://kisskh.co"
- },
- {
-  "author": "OshekharO",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Manga18fx",
-  "nsfw": "true",
-  "package": "manga18.fx",
-  "type": "manga",
-  "url": "manga18.fx.js",
-  "version": "v0.0.1",
-  "webSite": "https://manga18fx.com"
  },
  {
   "author": "Monster",
@@ -173,7 +186,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://mtlnation.com/favicon.png",
+  "icon": "https://tlimg.b-cdn.net/wp-content/uploads/2023/07/MTLNATION-icon.png",
   "lang": "en",
   "license": "MIT",
   "name": "Mtlnation",

@@ -6,6 +6,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | NSFW | Source |
 |  ----   | ---- | --- | ---  | ---  | ---  | ---  |
+| AniGoGo | ani.gogo | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | Aniwatch | ani.watch | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
 | AnimeFlv | anime.flv | v0.0.1 | (koikiss-dev) | es | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
@@ -16,8 +17,8 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Comrademao | comrademao | v0.0.3 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comrademao.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.5 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | GoGoAnime | gogo.anime | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
+| HentaiDexy | hentaidexy.net | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hentaidexy.net.js) |
 | Kisskh | kisskh.co | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
-| Manga18fx | manga18.fx | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga18.fx.js) |
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |

@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         MangaCross
+// @name         マンガクロス
 // @version      v0.0.1
 // @author       OshekharO
 // @lang         jp

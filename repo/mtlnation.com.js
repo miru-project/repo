@@ -4,7 +4,7 @@
 // @author       OshekharO
 // @lang         en
 // @license      MIT
-// @icon         https://mtlnation.com/favicon.png
+// @icon         https://tlimg.b-cdn.net/wp-content/uploads/2023/07/MTLNATION-icon.png
 // @package      mtlnation.com
 // @type         fikushon
 // @webSite      https://api.mtlnation.com

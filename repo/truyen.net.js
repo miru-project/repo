@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         Truyen
+// @name         NetTruyen
 // @version      v0.0.1
 // @author       OshekharO
 // @lang         vi
@@ -39,7 +39,12 @@ export default class extends Extension {
   }
 
   async detail(url) {
-    const res = await this.req(`/comics/${url}`);
+    const [id, chapter] = url.split("|");
+    const res = await this.req(`/comics/${id}`);
+
+    // Reverse the order of chapters to load in ascending order
+    const reversedChapters = [...res.chapters].reverse();
+
     return {
       title: res.title,
       cover: res.thumbnail,
@@ -47,9 +52,9 @@ export default class extends Extension {
       episodes: [
         {
           title: "Chapters",
-          urls: res.chapters.map((item) => ({
+          urls: reversedChapters.map((item) => ({
             name: `Episode ${item.name}`,
-            url: `${url}|${item.id}`,
+            url: `${id}|${item.id}`,
           })),
         },
       ],

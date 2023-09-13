@@ -152,11 +152,11 @@
   "icon": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_192,h_192/https://m.isekaiscan.to/wp-content/uploads/2023/03/0_20230304_101820_0000-300x300.png",
   "lang": "en",
   "license": "MIT",
-  "name": "Scan",
+  "name": "IsekaiScan",
   "package": "isekaiscan.to",
   "type": "manga",
   "url": "isekaiscan.to.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://m.isekaiscan.to"
  },
  {

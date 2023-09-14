@@ -276,11 +276,11 @@
   "icon": "https://st.nettruyenmax.com/data/logos/logo-nettruyen.png",
   "lang": "vi",
   "license": "MIT",
-  "name": "Truyen",
+  "name": "NetTruyen",
   "package": "truyen.net",
   "type": "manga",
   "url": "truyen.net.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://comics-api.vercel.app"
  },
  {

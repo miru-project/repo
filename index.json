@@ -148,6 +148,18 @@
   "webSite": "https://backend.hentaidexy.net"
  },
  {
+  "author": "bethro",
+  "icon": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_192,h_192/https://m.isekaiscan.to/wp-content/uploads/2023/03/0_20230304_101820_0000-300x300.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "IsekaiScan",
+  "package": "isekaiscan.to",
+  "type": "manga",
+  "url": "isekaiscan.to.js",
+  "version": "v0.0.2",
+  "webSite": "https://m.isekaiscan.to"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://kisskh.co/assets/icons/icon-192x192.png",
   "lang": "all",
@@ -264,11 +276,11 @@
   "icon": "https://st.nettruyenmax.com/data/logos/logo-nettruyen.png",
   "lang": "vi",
   "license": "MIT",
-  "name": "Truyen",
+  "name": "NetTruyen",
   "package": "truyen.net",
   "type": "manga",
   "url": "truyen.net.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://comics-api.vercel.app"
  },
  {

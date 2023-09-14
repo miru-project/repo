@@ -1,6 +1,6 @@
 // ==MiruExtension==
-// @name         Isekai Scan
-// @version      v0.0.1
+// @name         IsekaiScan
+// @version      v0.0.2
 // @author       bethro
 // @lang         en
 // @license      MIT
@@ -29,46 +29,54 @@ export default class extends Extension {
     });
 
     this.registerSetting({
-      title: "Reverse Chapters Order",
+      title: "Reverse Order of Chapters",
       key: "reverseChaptersOrder",
       type: "toggle",
-      description: "Reverse the order of chapters in descending order",
+      description: "Reverse the order of chapters in ascending order",
       defaultValue: "false",
+    });
+
+    // for latest & search page
+    this.registerSetting({
+      title: "resize cover images",
+      key: "imageResize",
+      type: "input",
+      description: "Image dimensions in pixels. Example: '372,496' (width,height)",
+      defaultValue: "386,556",
     });
   }
 
   async latest(page) {
     const res = await this.req(`/page/${page}/`);
+    const resizeValue = await this.getSetting("imageResize");
     const latest = res.match(/<div class="page-item-detail manga">(.*?)<\/div>/gs);
 
-    const mangas = [];
-    latest.forEach((element) => {
+    const mangas = latest.map((element) => {
       const urlMatch = element.match(/href="https:\/\/m.isekaiscan.to(.+?)"/);
       const titleMatch = element.match(/<a href=".+?" title="(.+?)">/);
-      let coverMatch = element.match(/data-src="(.+?)"/); 
+      let coverMatch = element.match(/data-src="(.+?)"/);
 
       if (urlMatch && titleMatch && coverMatch) {
         const url = urlMatch[1];
         const title = titleMatch[1];
+        coverMatch = coverMatch[1].replace(/\?resize=\d+,\d+/, `?resize=${resizeValue}`);
 
-        // Replace image size in the URL
-        coverMatch = coverMatch[1].replace(/\?resize=\d+,\d+/, "?resize=250,496");
-
-        mangas.push({
+        return {
           title,
           url,
           cover: coverMatch,
-        });
+        };
       }
-    });
+    }).filter(Boolean);
 
     return mangas;
   }
 
 
+
   async search(kw, page) {
     const res = await this.request(`/page/${page}/?s=${kw}&post_type=wp-manga`);
-
+    const resizeValue = await this.getSetting("imageResize");
     const regex = /<div class="row c-tabs-item__content">(.*?)<\/div>/gs;
     const Slist = Array.from(res.matchAll(regex));
 
@@ -80,7 +88,7 @@ export default class extends Extension {
       if (urlMatch && titleMatch && coverMatch) {
         const url = urlMatch[1];
         const title = titleMatch[1];
-        const cover = coverMatch[1];
+        const cover = coverMatch[1].replace(/\?resize=\d+,\d+/, `?resize=${resizeValue}`);
 
         return {
           title,
@@ -120,7 +128,7 @@ export default class extends Extension {
     const chapters = [];
 
     if (chaptersMatch) {
-      chaptersMatch.forEach((element) => {
+      for (const element of chaptersMatch) {
         const chapterUrl = extractContent(/href="https:\/\/m.isekaiscan.to(.+?)"/, element);
         const chapterNum = extractContent(/Chapter (\d+)/, element);
 
@@ -130,18 +138,17 @@ export default class extends Extension {
             url: chapterUrl,
           });
         }
-      });
+      }
     }
 
-
-    if ((await this.getSetting("reverseChaptersOrder")) == "true") {
+    if (await this.getSetting("reverseChaptersOrder") === "true") {
       chapters.reverse();
     }
 
     return {
       title: title || "Unknown Title",
       cover,
-      desc: desc || "no Description",
+      desc: desc || "N/A",
       episodes: [
         {
           title: "Directory",
@@ -151,30 +158,12 @@ export default class extends Extension {
     };
   }
 
-
-
-
-
   async watch(url) {
-    let images = [];
-    const res = await this.request(url, false);
-
-
-    const readingContentRegex = /<div\s+class\s*=\s*["']\s*page-break\s+no-gaps\s*["']\s*>(.*?)<\/div>/gs;
-    const readingContentMatch = await Array.from(res.matchAll(readingContentRegex));
-
-
-
-    if (readingContentMatch) {
-      await readingContentMatch.forEach((element) => {
-        const imgMatch = element[1].match(/data-src="(.+?)"/);
-        const img = imgMatch ? imgMatch[1].trim() : null;
-
-        if (img) {
-          images.push(img);
-        }
-      })
-    }
+    const res = await this.request(url);
+    const images = res.match(/<div\s+class\s*=\s*["']\s*page-break\s+no-gaps\s*["']\s*>(.*?)<\/div>/gs)
+      .map(element => element.match(/data-src="(.+?)"/))
+      .filter(imgMatch => imgMatch)
+      .map(imgMatch => imgMatch[1].trim());
 
     return {
       urls: images || [],

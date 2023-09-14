@@ -31,7 +31,7 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const res = await this.req(`/books?pageNumber=${page}&pageSize=10`);
+    const res = await this.req(`/books?pageNumber=${page}&pageSize=30`);
     return res.data.list.map((item) => ({
       url: item.id.toString(),
       title: item.title,
@@ -39,10 +39,27 @@ export default class extends Extension {
     }));
   }
 
-  async detail(url, page) {
+  async detail(url) {
     const res = await this.req(`/books/${url}`);
     const id = res.data.id;
-    const epRes = await this.req(`/chapters/page?sortDirection=ASC&bookId=${id}&pageNumber=${page}&pageSize=1000`);
+    let page = 1;
+    let allEpisodes = [];
+
+    while (true) {
+      const epres = await this.req(`/chapters/page?sortDirection=ASC&bookId=${id}&pageNumber=${page}&pageSize=1000`);
+      const episodesOnPage = epres.data.list.map((item) => ({
+        name: item.title,
+        url: item.id.toString(),
+      }));
+
+      if (episodesOnPage.length === 0) {
+        break;
+      }
+
+      allEpisodes = allEpisodes.concat(episodesOnPage);
+      page++;
+    }
+
     return {
       title: res.data.title,
       cover: res.data.coverImgUrl,
@@ -50,17 +67,14 @@ export default class extends Extension {
       episodes: [
         {
           title: "Chapters",
-          urls: epRes.data.list.map((item) => ({
-            name: item.title,
-            url: item.id,
-          })),
+          urls: allEpisodes,
         },
       ],
     };
   }
 
   async search(kw, page) {
-    const res = await this.req(`/books/search?keyWord=${kw}&pageNumber=${page}&pageSize=12`);
+    const res = await this.req(`/books/search?keyWord=${kw}&pageNumber=${page}&pageSize=50`);
     return res.data.list.map((item) => ({
       title: item.title,
       url: item.id.toString(),
@@ -69,11 +83,11 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const [ep, novel] = url.split("|");
-    const res = await this.req(`/chapters/${novel}/${ep}`);
+    const res = await this.req(`/chapters/${url}`);
     let chapterContentDiv = res.data.content;
-    chapterContentDiv = chapterContentDiv.replace(/<\/p><br>|<\/p><br \/>/g, "");
-    const content = chapterContentDiv.split("<p>");
+    chapterContentDiv = chapterContentDiv.replace(/<\/?p>|<br\s*\/?>/gi, "\n");
+    chapterContentDiv = chapterContentDiv.replace(/\n{2,}/g, "\n");
+    const content = chapterContentDiv.split("\n");
 
     return {
       title: res.data.title,

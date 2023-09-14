@@ -75,11 +75,16 @@ export default class extends Extension {
 
   async search(kw, page) {
     const res = await this.req(`/books/search?keyWord=${kw}&pageNumber=${page}&pageSize=50`);
-    return res.data.list.map((item) => ({
-      title: item.title,
-      url: item.id.toString(),
-      cover: item.coverImgUrl,
-    }));
+
+    if (res.data && Array.isArray(res.data.list)) {
+      return res.data.list.map((item) => ({
+        title: item.title || "",
+        url: item.id ? item.id.toString() : "",
+        cover: item.coverImgUrl || "",
+      }));
+    } else {
+      return [];
+    }
   }
 
   async watch(url) {

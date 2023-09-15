@@ -35,7 +35,6 @@ export default class extends Extension {
 
   async detail(url) {
     const res = await this.request(`/manga/${url}`);
-    const Epres = await this.request(`/manga/${url}/pages`);
 
     return {
       title: res.meta.title,
@@ -44,24 +43,29 @@ export default class extends Extension {
       episodes: [
         {
           title: "Directory",
-          urls: Epres.data.pages.map((item) => ({
-            name: `Page ${item.page_num}`,
-            url: item.sizes.thumb,
-          })),
+          urls: [
+            {
+              name: `${res.meta.title}`,
+              url: `${res.util.host}|${url}`,
+            },
+          ],
         },
       ],
     };
   }
 
   async watch(url) {
-    const res = await this.request("", {
-      headers: {
-        "miru-url": url,
-      },
-    });
+    const [img, id] = url.split("|");
+    const res = await this.request(`/manga/${id}/pages`);
 
-    return {
-      url: url,
-    };
+    if (res.data.pages && Array.isArray(res.data.pages)) {
+      return {
+        urls: res.data.pages.map((item) => item.sizes.full),
+      };
+    } else {
+      return {
+        error: "Invalid data format for pages",
+      };
+    }
   }
 }

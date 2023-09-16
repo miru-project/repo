@@ -393,5 +393,17 @@
   "url": "xyz.xdtv2.js",
   "version": "v0.0.1",
   "webSite": "https://xdtv2.xyz/"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://zeroscans.com/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "ZeroScans",
+  "package": "zeroscans.com",
+  "type": "manga",
+  "url": "zeroscans.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://zeroscans.com"
  }
 ]

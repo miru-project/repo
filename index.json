@@ -209,6 +209,18 @@
   "webSite": "https://api.enime.moe"
  },
  {
+  "author": "NPGamma",
+  "icon": "https://www.wenku8.net/favicon.ico",
+  "lang": "zh-cn",
+  "license": "AGPL-3.0",
+  "name": "轻小说文库",
+  "package": "moe.wol.wenku8",
+  "type": "fikushon",
+  "url": "moe.wol.wenku8.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.wenku8.net"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://tlimg.b-cdn.net/wp-content/uploads/2023/07/MTLNATION-icon.png",
   "lang": "en",

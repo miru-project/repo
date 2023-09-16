@@ -13,7 +13,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
-| Comick | comick.app | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
+| Comick | comick.app | v0.0.2 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
 | Comrademao | comrademao | v0.0.3 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comrademao.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.5 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | GoGoAnime | gogo.anime | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
@@ -27,6 +27,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | 樱花动漫 | sakura | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |
+| SimplyHentai | simplyhentai.com | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/simplyhentai.com.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | NetTruyen | truyen.net | v0.0.2 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
 | Unimay | unimay.media | v0.0.1 | CakesTwix | uk | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/unimay.media.js) |
@@ -34,5 +35,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 影视集合 | vod.api.json.collection | v0.0.2 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.json.collection.js) |
 | 八戒影视 | vod.api.xml.bajie | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.xml.bajie.js) |
 | 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
+| Wnmtl | wnmtl.org | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wnmtl.org.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |
 | 好看的2号 | xyz.xdtv2 | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.xdtv2.js) |

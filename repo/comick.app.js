@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Comick
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -11,76 +11,79 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
- async req(url) {
-  return this.request(url, {
-   headers: {
-    "Miru-Url": await this.getSetting("comick"),
-   },
-  });
- }
+    async req(url) {
+      return this.request(url, {
+        headers: {
+          "Miru-Url": await this.getSetting("comick"),
+        },
+      });
+    }
 
- async load() {
-  this.registerSetting({
-   title: "COMICK API",
-   key: "comick",
-   type: "input",
-   description: "COMICK API URL",
-   defaultValue: "https://api.comick.app",
-  });
- }
+    async load() {
+      this.registerSetting({
+        title: "COMICK API",
+        key: "comick",
+        type: "input",
+        description: "COMICK API URL",
+        defaultValue: "https://api.comick.app",
+      });
+    }
 
- async latest(page) {
-  const res = await this.req(`/top?accept_mature_content=false`);
-  return res.rank.map((item) => ({
-   url: item.slug,
-   title: item.title,
-   cover: `https://meo.comick.pictures/${item.md_covers[0].b2key}`,
-  }));
- }
+    async latest(page) {
+      const res = await this.req(`/top?accept_mature_content=false`);
+      return res.rank.map((item) => ({
+        url: item.slug,
+        title: item.title,
+        cover: `https://meo.comick.pictures/${item.md_covers[0].b2key}`,
+      }));
+    }
 
- async detail(url) {
-  const res = await this.req(`/comic/${url}`);
-  const hid = res.comic.hid;
-  const epRes = await this.req(`/comic/${hid}/chapters?limit=99999`);
+    async detail(url) {
+      const res = await this.req(`/comic/${url}`);
+      const hid = res.comic.hid;
+      const epRes = await this.req(`/comic/${hid}/chapters?limit=99999`);
 
-  const chapMap = new Map();
-  epRes.chapters.forEach((item) => {
-   const lang = item.lang;
-   let list = chapMap.get(lang);
-   if (!list) {
-    list = [];
-    chapMap.set(lang, list);
-   }
-   list.push(item);
-  });
+      // Reverse the order of chapters to make it ascending
+      epRes.chapters.reverse();
 
-  return {
-   title: res.comic.title,
-   cover: `https://meo.comick.pictures/${res.comic.md_covers[0].b2key}`,
-   desc: res.comic.desc,
-   episodes: [...chapMap.entries()].map(([lang, list]) => ({
-    title: lang,
-    urls: list.map((item) => ({
-     name: `Chapter ${item.chap}`,
-     url: item.hid,
-    })),
-   })),
-  };
- }
+      const chapMap = new Map();
+      epRes.chapters.forEach((item) => {
+        const lang = item.lang;
+        let list = chapMap.get(lang);
+        if (!list) {
+          list = [];
+          chapMap.set(lang, list);
+        }
+        list.push(item);
+      });
 
- async search(kw, page) {
-  const res = await this.req(`/v1.0/search/?page=${page}&limit=30&q=${kw}&t=false`);
-  return res.map((item) => ({
-   title: item.title,
-   url: item.slug,
-   cover: `https://meo.comick.pictures/${item.md_covers[0].b2key}`,
-  }));
- }
+      return {
+        title: res.comic.title,
+        cover: `https://meo.comick.pictures/${res.comic.md_covers[0].b2key}`,
+        desc: res.comic.desc,
+        episodes: [...chapMap.entries()].map(([lang, list]) => ({
+          title: lang,
+          urls: list.map((item) => ({
+            name: `Chapter ${item.chap}`,
+            url: item.hid,
+          })),
+        })),
+      };
+    }
 
- async watch(url) {
-  const res = await this.request(`/chapter/${url}?tachiyomi=true`);
-  return {
-   urls: res.chapter.images.map((item) => item.url),
-  };
- }
-}
+    async search(kw, page) {
+      const res = await this.req(`/v1.0/search/?page=${page}&limit=30&q=${kw}&t=false`);
+      return res.map((item) => ({
+        title: item.title,
+        url: item.slug,
+        cover: `https://meo.comick.pictures/${item.md_covers[0].b2key}`,
+      }));
+    }
+
+    async watch(url) {
+      const res = await this.request(`/chapter/${url}?tachiyomi=true`);
+      return {
+        urls: res.chapter.images.map((item) => item.url),
+      };
+    }
+  }

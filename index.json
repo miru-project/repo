@@ -95,7 +95,7 @@
   "package": "comick.app",
   "type": "manga",
   "url": "comick.app.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://api.comick.app"
  },
  {
@@ -259,6 +259,19 @@
   "webSite": "https://www.vdm8.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://www.simply-hentai.com/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "SimplyHentai",
+  "nsfw": "true",
+  "package": "simplyhentai.com",
+  "type": "manga",
+  "url": "simplyhentai.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.simply-hentai.com/v3"
+ },
+ {
   "author": "zj",
   "icon": "https://www.lkp2.top/template/muban8/favicon.ico",
   "lang": "zh-cn",
@@ -341,6 +354,19 @@
   "url": "windmill.js",
   "version": "v0.0.1",
   "webSite": "https://www.dm530w.org"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://wnmtl.com/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Wnmtl",
+  "nsfw": "false",
+  "package": "wnmtl.org",
+  "type": "fikushon",
+  "url": "wnmtl.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.mystorywave.com/story-wave-backend/api/v1/content"
  },
  {
   "author": "zj",

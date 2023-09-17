@@ -196,6 +196,18 @@
   "webSite": "https://mangacross.jp"
  },
  {
+  "author": "bethro",
+  "icon": "https://mangadex.org/img/avatar.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "MangaDex",
+  "package": "mangadex.org",
+  "type": "manga",
+  "url": "mangadex.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.mangadex.org"
+ },
+ {
   "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",

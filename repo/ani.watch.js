@@ -1,56 +1,69 @@
 // ==MiruExtension==
 // @name         Aniwatch
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://aniwatch.to/images/android-chrome-512x512.png
 // @package      ani.watch
 // @type         bangumi
-// @webSite      https://api-aniwatch.onrender.com/anime
+// @webSite      https://api.consumet.org/anime/zoro
 // ==/MiruExtension==
 
 export default class extends Extension {
   async req(url) {
     return this.request(url, {
       headers: {
-        "Miru-Url": await this.getSetting("aniwatch"),
+        "Miru-Url": await this.getSetting("zoro"),
       },
     });
   }
 
   async load() {
     this.registerSetting({
-      title: "Aniwatch API",
-      key: "aniwatch",
+      title: "Zoro API",
+      key: "zoro",
       type: "input",
-      description: "Aniwatch Api Url",
-      defaultValue: "https://api-aniwatch.onrender.com/anime",
+      description: "Zoro Api Url",
+      defaultValue: "https://api.consumet.org/anime/zoro",
     });
   }
 
   async latest() {
-    const res = await this.req(`/home`);
-    return res.spotlightAnimes.map((item) => ({
-      title: item.name,
-      url: item.id,
-      cover: item.poster,
-    }));
+    const res = await this.request("", {
+      headers: {
+        "Miru-Url": "https://aniwatch.to/most-popular",
+      },
+    });
+    const bsxList = await this.querySelectorAll(res, "div.flw-item");
+    const novel = [];
+    for (const element of bsxList) {
+      const html = await element.content;
+      const url = await this.getAttributeText(html, "a", "href");
+      const title = await this.querySelector(html, "h3").text;
+      const cover = await this.querySelector(html, "img").getAttributeText("data-src");
+      //console.log(title+cover+url)
+      novel.push({
+        title,
+        url,
+        cover,
+      });
+    }
+    return novel;
   }
 
   async detail(url) {
     const res = await this.req(`/info?id=${url}`);
-    const epRes = await this.req(`/episodes/${url}`);
     return {
-      title: res.anime.info.name,
-      cover: res.anime.info.poster,
-      desc: res.anime.info.description,
+      title: res.title,
+      cover: res.image,
+      desc: res.description,
       episodes: [
         {
-          title: "Ep",
-          urls: epRes.episodes.map((item) => ({
-            name: `Episode ${item.number}`,
-            url: item.episodeId,
+          title: "Directory",
+          urls: res.episodes.map((item) => ({
+            name: item.title,
+            url: item.id,
           })),
         },
       ],
@@ -58,18 +71,16 @@ export default class extends Extension {
   }
 
   async search(kw, page) {
-    const res = await this.req(`/search?q=${kw}&page=${page}`);
-    return res.animes.map((item) => ({
-      title: item.name,
+    const res = await this.req(`/${kw}?page=${page}`);
+    return res.results.map((item) => ({
+      title: item.title,
       url: item.id,
-      cover: item.poster,
+      cover: item.image,
     }));
   }
 
   async watch(url) {
-    const res = await this.req(
-      `/episode-srcs?id=${url}&server=vidstreaming&category=sub`
-    );
+    const res = await this.req(`/watch?episodeId=${url}&server=vidcloud`);
     return {
       type: "hls",
       url: res.sources[0].url,

@@ -86,7 +86,6 @@ export default class extends Extension {
   async watch(url) {
     const res = await this.request(`${url}`);
     const dwishLink = res.match(/https:\/\/dwish\.[^\s'"]+/);
-  //  console.log(dwishLink);
 
     const dwishLinkRes = await this.request('', {
       headers: {
@@ -94,10 +93,9 @@ export default class extends Extension {
       },
     });
 
- //   console.log(dwishLinkRes);
+    const directUrlMatch = dwishLinkRes.match(/(https:\/\/[^\s'"]*\.m3u8[^\s'"]*)/);
+    const directUrl = directUrlMatch ? directUrlMatch[0] : "";
 
-    const directUrl = dwishLinkRes.match(/https:\/\/[^.]+\.m3u8[^"]*/);
-  
     return {
       type: "hls",
       url: directUrl || "",

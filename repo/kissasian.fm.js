@@ -85,19 +85,19 @@ export default class extends Extension {
 
   async watch(url) {
     const res = await this.request(`${url}`);
-    const doodLink = res.match(/https:\/\/dood\.[^\s'"]+/);
-    console.log(doodLink);
+    const dwishLink = res.match(/https:\/\/dwish\.[^\s'"]+/);
+  //  console.log(dwishLink);
 
-    const doodLinkRes = await this.request("", {
+    const dwishLinkRes = await this.request('', {
       headers: {
-        "Miru-Url": doodLink,
+        "Miru-Url": dwishLink,
       },
     });
 
-    console.log(doodLinkRes);
+ //   console.log(dwishLinkRes);
 
-    const directUrl = await this.querySelector(doodLinkRes, "video").getAttributeText("src");
-    console.log(directUrl);
+    const directUrl = dwishLinkRes.match(/https:\/\/[^.]+\.m3u8[^"]*/);
+  
     return {
       type: "hls",
       url: directUrl || "",

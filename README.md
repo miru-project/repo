@@ -7,7 +7,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 |  Name   | Package | Version | Author | Language | NSFW | Source |
 |  ----   | ---- | --- | ---  | ---  | ---  | ---  |
 | AniGoGo | ani.gogo | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
-| Aniwatch | ani.watch | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
+| Aniwatch | ani.watch | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
 | AnimeFlv | anime.flv | v0.0.1 | (koikiss-dev) | es | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
@@ -19,6 +19,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | GoGoAnime | gogo.anime | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | HentaiDexy | hentaidexy.net | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hentaidexy.net.js) |
 | IsekaiScan | isekaiscan.to | v0.0.2 | bethro | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |
+| Kissasian | kissasian.fm | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kissasian.fm.js) |
 | Kisskh | kisskh.co | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |

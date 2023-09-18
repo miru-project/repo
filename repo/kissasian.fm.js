@@ -61,7 +61,7 @@ export default class extends Extension {
 
     for (const element of epiList) {
       const html = await element.content;
-      const name = await this.querySelector(html, "span").text;
+      const name = await this.querySelector(html, ".movie-bg").text;
       const url = await this.getAttributeText(html, "a", "href");
 
       episodes.push({
@@ -76,8 +76,8 @@ export default class extends Extension {
       desc,
       episodes: [
         {
-          title: "Chapters",
-          urls: episodes,
+          title: "Directory",
+          urls: episodes.reverse(),
         },
       ],
     };

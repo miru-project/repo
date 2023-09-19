@@ -334,6 +334,19 @@
   "webSite": "https://comics-api.vercel.app"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://turkish123.com/wp-content/uploads/favicon.png",
+  "lang": "tr",
+  "license": "MIT",
+  "name": "Turkish123",
+  "nsfw": "false",
+  "package": "turkish123",
+  "type": "bangumi",
+  "url": "turkish123.js",
+  "version": "v0.0.1",
+  "webSite": "https://turkish123.com"
+ },
+ {
   "author": "CakesTwix",
   "icon": "https://www.google.com/s2/favicons?domain=unimay.media\u0026sz=256",
   "lang": "uk",

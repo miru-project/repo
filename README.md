@@ -28,6 +28,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
+| ReadLN | readlightnovels | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | 樱花动漫 | sakura | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |
 | SimplyHentai | simplyhentai.com | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/simplyhentai.com.js) |

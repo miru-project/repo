@@ -272,6 +272,18 @@
   "webSite": "https://yts.mx/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "ReadLN",
+  "package": "readlightnovels",
+  "type": "fikushon",
+  "url": "readlightnovels.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.consumet.org/light-novels/readlightnovels"
+ },
+ {
   "author": "MiaoMint",
   "lang": "zh-cn",
   "license": "MIT",

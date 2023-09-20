@@ -53,7 +53,7 @@ export default class extends Extension {
     return {
       title: res.title,
       cover: imgData.url,
-      desc: res.description,
+      desc: res.description.trim(),
       episodes: [
         {
           title: "Directory",

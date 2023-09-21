@@ -20,8 +20,8 @@
   "package": "ani.watch",
   "type": "bangumi",
   "url": "ani.watch.js",
-  "version": "v0.0.1",
-  "webSite": "https://api-aniwatch.onrender.com/anime"
+  "version": "v0.0.2",
+  "webSite": "https://api.consumet.org/anime/zoro"
  },
  {
   "author": "(koikiss-dev)",
@@ -95,7 +95,7 @@
   "package": "comick.app",
   "type": "manga",
   "url": "comick.app.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://api.comick.app"
  },
  {
@@ -161,6 +161,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://kissasian.fm/img/icon/logo-mobile.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Kissasian",
+  "nsfw": "false",
+  "package": "kissasian.fm",
+  "type": "bangumi",
+  "url": "kissasian.fm.js",
+  "version": "v0.0.1",
+  "webSite": "https://kissasian.fm"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://kisskh.co/assets/icons/icon-192x192.png",
   "lang": "all",
   "license": "MIT",
@@ -196,6 +209,18 @@
   "webSite": "https://mangacross.jp"
  },
  {
+  "author": "bethro",
+  "icon": "https://mangadex.org/img/avatar.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "MangaDex",
+  "package": "mangadex.org",
+  "type": "manga",
+  "url": "mangadex.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.mangadex.org"
+ },
+ {
   "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",
@@ -207,6 +232,18 @@
   "url": "moe.enime.js",
   "version": "v0.0.5",
   "webSite": "https://api.enime.moe"
+ },
+ {
+  "author": "NPGamma",
+  "icon": "https://www.wenku8.net/favicon.ico",
+  "lang": "zh-cn",
+  "license": "AGPL-3.0",
+  "name": "轻小说文库",
+  "package": "moe.wol.wenku8",
+  "type": "fikushon",
+  "url": "moe.wol.wenku8.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.wenku8.net"
  },
  {
   "author": "OshekharO",
@@ -235,6 +272,18 @@
   "webSite": "https://yts.mx/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "ReadLN",
+  "package": "readlightnovels",
+  "type": "fikushon",
+  "url": "readlightnovels.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.consumet.org/light-novels/readlightnovels"
+ },
+ {
   "author": "MiaoMint",
   "lang": "zh-cn",
   "license": "MIT",
@@ -257,6 +306,19 @@
   "url": "sakura.js",
   "version": "v0.0.1",
   "webSite": "https://www.vdm8.com"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://www.simply-hentai.com/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "SimplyHentai",
+  "nsfw": "true",
+  "package": "simplyhentai.com",
+  "type": "manga",
+  "url": "simplyhentai.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.simply-hentai.com/v3"
  },
  {
   "author": "zj",
@@ -282,6 +344,19 @@
   "url": "truyen.net.js",
   "version": "v0.0.2",
   "webSite": "https://comics-api.vercel.app"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://turkish123.com/wp-content/uploads/favicon.png",
+  "lang": "tr",
+  "license": "MIT",
+  "name": "Turkish123",
+  "nsfw": "false",
+  "package": "turkish123",
+  "type": "bangumi",
+  "url": "turkish123.js",
+  "version": "v0.0.1",
+  "webSite": "https://turkish123.com"
  },
  {
   "author": "CakesTwix",
@@ -343,6 +418,19 @@
   "webSite": "https://www.dm530w.org"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://wnmtl.com/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Wnmtl",
+  "nsfw": "false",
+  "package": "wnmtl.org",
+  "type": "fikushon",
+  "url": "wnmtl.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.mystorywave.com/story-wave-backend/api/v1/content"
+ },
+ {
   "author": "zj",
   "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
   "lang": "zh-cn",
@@ -367,5 +455,17 @@
   "url": "xyz.xdtv2.js",
   "version": "v0.0.1",
   "webSite": "https://xdtv2.xyz/"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://zeroscans.com/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "ZeroScans",
+  "package": "zeroscans.com",
+  "type": "manga",
+  "url": "zeroscans.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://zeroscans.com"
  }
 ]

@@ -69,10 +69,17 @@ export default class extends Extension {
     language: item.code,
   }));
 
+  const track = res.audioStreams.map((item) => ({
+    title: item.format,
+    url: item.url,
+    language: item.quality,
+  }));
+
   return {
     type: "hls",
     url: res.videoStreams?.[0]?.url,
     subtitles: subtitles,
+    audioTrack: track,
   };
 }
 }

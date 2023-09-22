@@ -25,6 +25,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | MangaDex | mangadex.org | v0.0.1 | bethro | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |
+| Mikanani | me.mikanani | v0.0.1 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/me.mikanan.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |

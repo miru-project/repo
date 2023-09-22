@@ -234,6 +234,19 @@
  },
  {
   "author": "MiaoMint",
+  "description": "蜜柑计划：新一代的动漫下载站",
+  "icon": "https://mikanani.me/images/mikan-pic.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "Mikanani",
+  "package": "me.mikanani",
+  "type": "bangumi",
+  "url": "me.mikanan.js",
+  "version": "v0.0.1",
+  "webSite": "https://mikanani.me"
+ },
+ {
+  "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",
   "lang": "all",

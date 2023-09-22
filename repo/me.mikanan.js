@@ -96,12 +96,10 @@ export default class extends Extension {
     };
   }
 
-  async latest(page) {
+  async getData(year, season) {
     await this.getDate();
-    const currentYear = new Date().getFullYear();
-    const season = this.date[new Date().getFullYear()][0];
     const res = await this.req(
-      `/Home/BangumiCoverFlowByDayOfWeek?year=${currentYear}&seasonStr=${season}`
+      `/Home/BangumiCoverFlowByDayOfWeek?year=${year}&seasonStr=${season}`
     );
     const bangumi = [];
     const lis = await this.querySelectorAll(res, ".sk-bangumi li");
@@ -120,6 +118,13 @@ export default class extends Extension {
       });
     }
     return bangumi;
+  }
+
+  async latest(page) {
+    await this.getDate();
+    const currentYear = new Date().getFullYear();
+    const season = this.date[new Date().getFullYear()][0];
+    return this.getData(currentYear, season);
   }
 
   async detail(url) {
@@ -179,7 +184,10 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    throw Error("不支持搜索，请使用筛选");
+    if (!filter) {
+      return await this.latest()
+    }
+    return await this.getData(filter.year, filter.season)
   }
 
   async watch(url) {

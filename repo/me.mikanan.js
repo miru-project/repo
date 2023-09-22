@@ -2,7 +2,7 @@
 // @name         Mikanani
 // @version      v0.0.1
 // @author       MiaoMint
-// @lang         all
+// @lang         zh-cn
 // @license      MIT
 // @icon         https://mikanani.me/images/mikan-pic.png
 // @package      me.mikanani

@@ -16,6 +16,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Comick | comick.app | v0.0.2 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
 | Comrademao | comrademao | v0.0.3 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comrademao.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.5 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
+| Flixhq | flixhq.to | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.to.js) |
 | GoGoAnime | gogo.anime | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | HentaiDexy | hentaidexy.net | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hentaidexy.net.js) |
 | IsekaiScan | isekaiscan.to | v0.0.2 | bethro | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |

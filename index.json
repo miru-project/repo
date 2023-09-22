@@ -124,6 +124,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://flixhq.ws/images/logo.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Flixhq",
+  "package": "flixhq.to",
+  "type": "bangumi",
+  "url": "flixhq.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://anipuff-consumet.vercel.app/movies/flixhq"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://play-lh.googleusercontent.com/MaGEiAEhNHAJXcXKzqTNgxqRmhuKB1rCUgb15UrN_mWUNRnLpO5T1qja64oRasO7mn0",
   "lang": "en",
   "license": "MIT",

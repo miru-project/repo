@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Mikanani
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -23,7 +23,7 @@ export default class extends Extension {
       defaultValue: "https://mikanani.me",
       options: {
         "https://mikanani.me": "https://mikanani.me",
-        "https://mikanani.tv": "https://mikanani.tv",
+        "https://mikanime.tv": "https://mikanime.tv",
       },
     });
   }

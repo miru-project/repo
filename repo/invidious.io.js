@@ -57,23 +57,24 @@ export default class extends Extension {
   }
  
   async watch(url) {
-  const res = await this.request(`/streams/${url}`, {
+  const res = await this.request(`/videos/${url}`);
+
+  const sub = await this.request(`/streams/${url}`, {
     headers: {
       "Miru-Url": "https://pipedapi.kavin.rocks",
     },
   });
 
-  const subtitles = res.subtitles.map((item) => ({
+  const subtitles = sub.subtitles.map((item) => ({
     title: item.name,
     url: item.url,
     language: item.code,
   }));
-
+  
   return {
     type: "hls",
-    url: res.videoStreams?.[0]?.url,
+    url: res.formatStreams?.[2]?.url,
     subtitles: subtitles,
-    audioTrack: res.audioStreams?.[0]?.url,
   };
 }
 }

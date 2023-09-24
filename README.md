@@ -16,6 +16,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Comick | comick.app | v0.0.2 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
 | Comrademao | comrademao | v0.0.3 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comrademao.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.5 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
+| Flixhq | flixhq.to | v0.0.1 | OshekharO | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.to.js) |
 | GoGoAnime | gogo.anime | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | HentaiDexy | hentaidexy.net | v0.0.1 | OshekharO | en | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hentaidexy.net.js) |
 | IsekaiScan | isekaiscan.to | v0.0.2 | bethro | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |
@@ -24,6 +25,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | MangaDex | mangadex.org | v0.0.1 | bethro | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |
+| Mikanani | me.mikanani | v0.0.3 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/me.mikanani.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |

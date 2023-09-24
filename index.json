@@ -321,6 +321,18 @@
   "webSite": "https://www.493d.com/"
  },
  {
+  "author": "MiaoMint",
+  "icon": "http://r.photo.store.qq.com/psb?/V12tx9ch2GA3dz/FqLQBHE23P.c*XKPM4RI*6*aL0mdnoww*2zSjghMKn8!/r/dPIAAAAAAAAA",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "ACG.RIP",
+  "package": "rip.acg",
+  "type": "bangumi",
+  "url": "rip.acg.js",
+  "version": "v0.0.1",
+  "webSite": "https://acg.rip"
+ },
+ {
   "author": "Monster",
   "icon": "https://cdn.yinghuazy.xyz/webjs/zkk7/statics/img/favicon.ico",
   "lang": "zh-cn",

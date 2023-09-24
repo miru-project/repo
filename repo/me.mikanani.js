@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Mikanani
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -152,28 +152,28 @@ export default class extends Extension {
       });
     }
 
-    const episodeGrups = [];
-
-    for (const item of subtitleGrups) {
-      const res = await this.req(
-        `/Home/ExpandEpisodeTable?bangumiId=${bangumiId}&subtitleGroupId=${item.subtitleId}&take=999999`
-      );
-      const trs = await this.querySelectorAll(res, "tbody tr");
-      const episodes = [];
-      for (const item of trs) {
-        const html = item.content;
-        const name = await this.querySelector(html, "a").text;
-        const url = html.match(/\/Download\/.*\.torrent/)[0];
-        episodes.push({
-          name,
-          url,
-        });
-      }
-      episodeGrups.push({
-        title: item.name,
-        urls: episodes,
-      });
-    }
+    const episodeGrups = await Promise.all(
+      subtitleGrups.map(async (item) => {
+        const res = await this.req(
+          `/Home/ExpandEpisodeTable?bangumiId=${bangumiId}&subtitleGroupId=${item.subtitleId}&take=999999`
+        );
+        const trs = await this.querySelectorAll(res, "tbody tr");
+        const episodes = [];
+        for (const item of trs) {
+          const html = item.content;
+          const name = await this.querySelector(html, "a").text;
+          const url = html.match(/\/Download\/.*\.torrent/)[0];
+          episodes.push({
+            name,
+            url,
+          });
+        }
+        return {
+          title: item.name,
+          urls: episodes,
+        };
+      })
+    );
 
     return {
       title,
@@ -185,9 +185,9 @@ export default class extends Extension {
 
   async search(kw, page, filter) {
     if (!filter) {
-      return await this.latest()
+      return await this.latest();
     }
-    return await this.getData(filter.year, filter.season)
+    return await this.getData(filter.year, filter.season);
   }
 
   async watch(url) {

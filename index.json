@@ -160,6 +160,18 @@
   "webSite": "https://backend.hentaidexy.net"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://invidious.io/apple-touch-icon.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Invidious",
+  "package": "invidious.io",
+  "type": "bangumi",
+  "url": "invidious.io.js",
+  "version": "v0.0.1",
+  "webSite": "https://invidious.slipfox.xyz/api/v1"
+ },
+ {
   "author": "bethro",
   "icon": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_192,h_192/https://m.isekaiscan.to/wp-content/uploads/2023/03/0_20230304_101820_0000-300x300.png",
   "lang": "en",
@@ -241,8 +253,8 @@
   "name": "Mikanani",
   "package": "me.mikanani",
   "type": "bangumi",
-  "url": "me.mikanan.js",
-  "version": "v0.0.1",
+  "url": "me.mikanani.js",
+  "version": "v0.0.3",
   "webSite": "https://mikanani.me"
  },
  {
@@ -319,6 +331,18 @@
   "url": "ren.0u0.miru.mfxs.js",
   "version": "v0.0.1",
   "webSite": "https://www.493d.com/"
+ },
+ {
+  "author": "MiaoMint",
+  "icon": "http://r.photo.store.qq.com/psb?/V12tx9ch2GA3dz/FqLQBHE23P.c*XKPM4RI*6*aL0mdnoww*2zSjghMKn8!/r/dPIAAAAAAAAA",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "ACG.RIP",
+  "package": "rip.acg",
+  "type": "bangumi",
+  "url": "rip.acg.js",
+  "version": "v0.0.1",
+  "webSite": "https://acg.rip"
  },
  {
   "author": "Monster",

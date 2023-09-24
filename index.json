@@ -241,8 +241,8 @@
   "name": "Mikanani",
   "package": "me.mikanani",
   "type": "bangumi",
-  "url": "me.mikanan.js",
-  "version": "v0.0.1",
+  "url": "me.mikanani.js",
+  "version": "v0.0.2",
   "webSite": "https://mikanani.me"
  },
  {

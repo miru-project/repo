@@ -124,6 +124,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://flixhq.ws/images/logo.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Flixhq",
+  "package": "flixhq.to",
+  "type": "bangumi",
+  "url": "flixhq.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://anipuff-consumet.vercel.app/movies/flixhq"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://play-lh.googleusercontent.com/MaGEiAEhNHAJXcXKzqTNgxqRmhuKB1rCUgb15UrN_mWUNRnLpO5T1qja64oRasO7mn0",
   "lang": "en",
   "license": "MIT",
@@ -219,6 +231,19 @@
   "url": "mangadex.org.js",
   "version": "v0.0.1",
   "webSite": "https://api.mangadex.org"
+ },
+ {
+  "author": "MiaoMint",
+  "description": "蜜柑计划：新一代的动漫下载站",
+  "icon": "https://mikanani.me/images/mikan-pic.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "Mikanani",
+  "package": "me.mikanani",
+  "type": "bangumi",
+  "url": "me.mikanan.js",
+  "version": "v0.0.1",
+  "webSite": "https://mikanani.me"
  },
  {
   "author": "MiaoMint",

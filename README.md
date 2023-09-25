@@ -31,6 +31,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
+| Nhentai | nhentai.to | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nhentai.to.js) |
 | ReadLN | readlightnovels | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |
@@ -38,7 +39,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | SimplyHentai | simplyhentai.com | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/simplyhentai.com.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | NetTruyen | truyen.net | v0.0.2 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
-| Turkish123 | turkish123 | v0.0.1 | OshekharO | tr | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/turkish123.js) |
+| Turkish123 | turkish123 | v0.0.2 | OshekharO | tr | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/turkish123.js) |
 | Unimay | unimay.media | v0.0.1 | CakesTwix | uk | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/unimay.media.js) |
 | viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |
 | 影视集合 | vod.api.json.collection | v0.0.2 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.json.collection.js) |

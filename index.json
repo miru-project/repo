@@ -310,6 +310,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://nhentai.to/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Nhentai",
+  "nsfw": "true",
+  "package": "nhentai.to",
+  "type": "manga",
+  "url": "nhentai.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://nhentai.to"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png",
   "lang": "en",
   "license": "MIT",
@@ -404,8 +417,8 @@
   "package": "turkish123",
   "type": "bangumi",
   "url": "turkish123.js",
-  "version": "v0.0.1",
-  "webSite": "https://turkish123.com"
+  "version": "v0.0.2",
+  "webSite": "https://www2.turkish123.org"
  },
  {
   "author": "CakesTwix",

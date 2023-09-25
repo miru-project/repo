@@ -8,6 +8,7 @@
 // @type         manga
 // @icon         https://nhentai.to/favicon.ico
 // @webSite      https://nhentai.to
+// @nsfw         true
 // ==/MiruExtension==
 
 export default class extends Extension {

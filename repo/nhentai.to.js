@@ -4,7 +4,7 @@
 // @author       OshekharO
 // @lang         all
 // @license      MIT
-// @package      comrademao
+// @package      nhentai.to
 // @type         manga
 // @icon         https://nhentai.to/favicon.ico
 // @webSite      https://nhentai.to

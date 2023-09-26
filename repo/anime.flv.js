@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name  AnimeFlv
-// @version v0.0.1
+// @version v0.0.2
 // @author Yako (koikiss-dev)
 // @lang es
 // @license      MIT
@@ -37,7 +37,7 @@ export default class extends Extension {
     return res.results.map((item) => ({
       url: item.url,
       title: item.name,
-      cover: item.image,
+      cover: item.image.replace("https://img.animeflv.bz", "https://img.animeflv.ws"),
     }));
   }
 
@@ -64,7 +64,7 @@ export default class extends Extension {
     return res.results.map((item) => ({
       title: item.name,
       url: item.url,
-      cover: item.image,
+      cover: item.image.replace("https://img.animeflv.bz", "https://img.animeflv.ws"),
       desc: item.type,
     }));
   }

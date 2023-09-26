@@ -8,8 +8,8 @@
   "package": "ani.gogo",
   "type": "bangumi",
   "url": "ani.gogo.js",
-  "version": "v0.0.1",
-  "webSite": "https://api-amvstrm.nyt92.eu.org/api/v2"
+  "version": "v0.0.2",
+  "webSite": "https://api.amvstr.me/api/v2"
  },
  {
   "author": "OshekharO",

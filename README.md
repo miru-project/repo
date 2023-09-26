@@ -6,7 +6,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | NSFW | Source |
 |  ----   | ---- | --- | ---  | ---  | ---  | ---  |
-| AniGoGo | ani.gogo | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
+| AniGoGo | ani.gogo | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | Aniwatch | ani.watch | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
 | AnimeFlv | anime.flv | v0.0.2 | (koikiss-dev) | es | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |

@@ -32,6 +32,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Nhentai | nhentai.to | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nhentai.to.js) |
+| OneJav | onejav.com | v0.0.1 | OshekharO | jp | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/onejav.com.js) |
 | ReadLN | readlightnovels | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |

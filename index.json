@@ -323,6 +323,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://onejav.com/static/img/onejav.5468a5a7d373.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "OneJav",
+  "nsfw": "true",
+  "package": "onejav.com",
+  "type": "bangumi",
+  "url": "onejav.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://onejav.com"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png",
   "lang": "en",
   "license": "MIT",

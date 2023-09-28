@@ -297,16 +297,16 @@
  },
  {
   "author": "MiaoMint",
-  "description": "https://github.com/Enime-Project/api.enime.moe",
+  "description": "info",
   "icon": "https://yts.mx/assets/images/website/apple-touch-icon-144x144.png",
   "lang": "all",
   "license": "MIT",
-  "name": "TYS.mx",
+  "name": "YTS.mx",
   "package": "mx.yts",
   "type": "bangumi",
   "url": "mx.yts.js",
-  "version": "v0.0.5",
-  "webSite": "https://yts.mx/"
+  "version": "v0.0.6",
+  "webSite": "https://yts.mx"
  },
  {
   "author": "OshekharO",

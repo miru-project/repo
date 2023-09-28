@@ -30,7 +30,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
-| TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
+| YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Nhentai | nhentai.to | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nhentai.to.js) |
 | OneJav | onejav.com | v0.0.1 | OshekharO | jp | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/onejav.com.js) |
 | ReadLN | readlightnovels | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |

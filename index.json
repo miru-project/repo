@@ -148,6 +148,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://hanime.tv/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Hanime",
+  "nsfw": "true",
+  "package": "hanime.tv",
+  "type": "bangumi",
+  "url": "hanime.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://apikatsu.otakatsu.studio/api"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://s1.cdnimg.me:9000/hentaidexy/opengraph-image.png",
   "lang": "en",
   "license": "MIT",

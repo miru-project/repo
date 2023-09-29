@@ -47,6 +47,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 八戒影视 | vod.api.xml.bajie | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.xml.bajie.js) |
 | 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
 | Wnmtl | wnmtl.org | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wnmtl.org.js) |
+| WTR-LAB | wtr-lab.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wtr-lab.com.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |
 | 好看的2号 | xyz.xdtv2 | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.xdtv2.js) |
 | ZeroScans | zeroscans.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/zeroscans.com.js) |

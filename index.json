@@ -506,6 +506,18 @@
   "webSite": "https://api.mystorywave.com/story-wave-backend/api/v1/content"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://wtr-lab.com/images/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "WTR-LAB",
+  "package": "wtr-lab.com",
+  "type": "fikushon",
+  "url": "wtr-lab.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://wtr-lab.com"
+ },
+ {
   "author": "zj",
   "icon": "https://xdtv2.xyz/template/xdtv/static/favicon.ico",
   "lang": "zh-cn",

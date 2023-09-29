@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         Turkish123
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         tr
 // @license      MIT
 // @package      turkish123
 // @type         bangumi
-// @icon         https://turkish123.com/wp-content/uploads/favicon.png
-// @webSite      https://turkish123.com
+// @icon         https://www2.turkish123.org/wp-content/uploads/favicon.png
+// @webSite      https://www2.turkish123.org
 // @nsfw         false
 // ==/MiruExtension==
 

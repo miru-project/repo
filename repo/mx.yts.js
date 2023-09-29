@@ -1,14 +1,14 @@
 // ==MiruExtension==
-// @name         TYS.mx
-// @version      v0.0.5
+// @name         YTS.mx
+// @version      v0.0.6
 // @author       MiaoMint
 // @lang         all
 // @license      MIT
 // @icon         https://yts.mx/assets/images/website/apple-touch-icon-144x144.png
 // @package      mx.yts
 // @type         bangumi
-// @webSite      https://yts.mx/
-// @description  Enime API is an open source API service for developers to access anime info (as well as their video sources) https://github.com/Enime-Project/api.enime.moe
+// @webSite      https://yts.mx
+// @description  YTS.mx API is an open source API service for developers to access torrent info
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -18,7 +18,6 @@ export default class extends Extension {
       title: item.title,
       url: item.id.toString(),
       cover: item.medium_cover_image,
-      desc: item.description_full,
     }));
   }
 
@@ -51,7 +50,6 @@ export default class extends Extension {
       title: item.title,
       url: item.id.toString(),
       cover: item.medium_cover_image,
-      desc: item.description_full,
     }));
   }
 

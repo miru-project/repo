@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         AniGoGo
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://anilist.co/img/icons/apple-touch-icon.png
 // @package      ani.gogo
 // @type         bangumi
-// @webSite      https://api-amvstrm.nyt92.eu.org/api/v2
+// @webSite      https://api.amvstr.me/api/v2
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
       key: "amvstrm",
       type: "input",
       description: "Amvstrm Api Url",
-      defaultValue: "https://api-amvstrm.nyt92.eu.org/api/v2",
+      defaultValue: "https://api.amvstr.me/api/v2",
     });
   }
 
@@ -40,7 +40,8 @@ export default class extends Extension {
 
   async detail(url) {
     const res = await this.req(`/info/${url}`);
-    const epRes = await this.req(`/episode/${url}?dub=false`);
+    const epRes = await this.request(`/episode/${url}`);
+
     return {
       title: res.title.english,
       cover: res.coverImage.large,
@@ -49,8 +50,8 @@ export default class extends Extension {
         {
           title: "Episodes",
           urls: epRes.episodes.map((item) => ({
-            name: item.title,
-            url: item.id,
+            name: item.title != null ? item.title : `Episode ${item.number}`,
+            url: item.id != null ? item.id : "",
           })),
         },
       ],
@@ -58,24 +59,24 @@ export default class extends Extension {
   }
 
   async search(kw, page) {
-  const res = await this.req(`/search?q=${kw}&p=${page}&limit=10`);
-  return res.results.map((item) => {
-    const title = item.title && item.title.english ? item.title.english : "N/A";
-    const cover = item.coverImage && item.coverImage.large ? item.coverImage.large : "N/A";
-    
-    return {
-      title,
-      url: item.id.toString(),
-      cover,
-    };
-  });
-}
+    const res = await this.req(`/search?q=${kw}&p=${page}&limit=10`);
+    return res.results.map((item) => {
+      const title = item.title && item.title.english ? item.title.english : "N/A";
+      const cover = item.coverImage && item.coverImage.large ? item.coverImage.large : "N/A";
+
+      return {
+        title,
+        url: item.id.toString(),
+        cover,
+      };
+    });
+  }
 
   async watch(url) {
-    const res = await this.req( `/stream/${url}`);
-   return {
+    const res = await this.req(`/stream/${url}`);
+    return {
       type: "hls",
       url: res.stream.multi.main.url,
     };
   }
-}
+  }

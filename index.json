@@ -8,8 +8,8 @@
   "package": "ani.gogo",
   "type": "bangumi",
   "url": "ani.gogo.js",
-  "version": "v0.0.1",
-  "webSite": "https://api-amvstrm.nyt92.eu.org/api/v2"
+  "version": "v0.0.2",
+  "webSite": "https://api.amvstr.me/api/v2"
  },
  {
   "author": "OshekharO",
@@ -33,7 +33,7 @@
   "package": "anime.flv",
   "type": "bangumi",
   "url": "anime.flv.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://jimov-api.vercel.app/"
  },
  {
@@ -297,16 +297,42 @@
  },
  {
   "author": "MiaoMint",
-  "description": "https://github.com/Enime-Project/api.enime.moe",
+  "description": "info",
   "icon": "https://yts.mx/assets/images/website/apple-touch-icon-144x144.png",
   "lang": "all",
   "license": "MIT",
-  "name": "TYS.mx",
+  "name": "YTS.mx",
   "package": "mx.yts",
   "type": "bangumi",
   "url": "mx.yts.js",
-  "version": "v0.0.5",
-  "webSite": "https://yts.mx/"
+  "version": "v0.0.6",
+  "webSite": "https://yts.mx"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://nhentai.to/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Nhentai",
+  "nsfw": "true",
+  "package": "nhentai.to",
+  "type": "manga",
+  "url": "nhentai.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://nhentai.to"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://onejav.com/static/img/onejav.5468a5a7d373.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "OneJav",
+  "nsfw": "true",
+  "package": "onejav.com",
+  "type": "bangumi",
+  "url": "onejav.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://onejav.com"
  },
  {
   "author": "OshekharO",
@@ -396,7 +422,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://turkish123.com/wp-content/uploads/favicon.png",
+  "icon": "https://www2.turkish123.org/wp-content/uploads/favicon.png",
   "lang": "tr",
   "license": "MIT",
   "name": "Turkish123",
@@ -404,8 +430,8 @@
   "package": "turkish123",
   "type": "bangumi",
   "url": "turkish123.js",
-  "version": "v0.0.1",
-  "webSite": "https://turkish123.com"
+  "version": "v0.0.2",
+  "webSite": "https://www2.turkish123.org"
  },
  {
   "author": "CakesTwix",
@@ -478,6 +504,18 @@
   "url": "wnmtl.org.js",
   "version": "v0.0.1",
   "webSite": "https://api.mystorywave.com/story-wave-backend/api/v1/content"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://wtr-lab.com/images/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "WTR-LAB",
+  "package": "wtr-lab.com",
+  "type": "fikushon",
+  "url": "wtr-lab.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://wtr-lab.com"
  },
  {
   "author": "zj",

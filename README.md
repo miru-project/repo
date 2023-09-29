@@ -6,9 +6,9 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | NSFW | Source |
 |  ----   | ---- | --- | ---  | ---  | ---  | ---  |
-| AniGoGo | ani.gogo | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
+| AniGoGo | ani.gogo | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | Aniwatch | ani.watch | v0.0.2 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
-| AnimeFlv | anime.flv | v0.0.1 | (koikiss-dev) | es | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
+| AnimeFlv | anime.flv | v0.0.2 | (koikiss-dev) | es | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
@@ -30,7 +30,9 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | Mtlnation | mtlnation.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
-| TYS.mx | mx.yts | v0.0.5 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
+| YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
+| Nhentai | nhentai.to | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nhentai.to.js) |
+| OneJav | onejav.com | v0.0.1 | OshekharO | jp | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/onejav.com.js) |
 | ReadLN | readlightnovels | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
 | 免费小说网 | ren.0u0.miru.mfxs | v0.0.1 | MiaoMint | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ren.0u0.miru.mfxs.js) |
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |
@@ -38,13 +40,14 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | SimplyHentai | simplyhentai.com | v0.0.1 | OshekharO | all | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/simplyhentai.com.js) |
 | 好看的1号 | top.lkp2.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/top.lkp2.www.js) |
 | NetTruyen | truyen.net | v0.0.2 | OshekharO | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
-| Turkish123 | turkish123 | v0.0.1 | OshekharO | tr | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/turkish123.js) |
+| Turkish123 | turkish123 | v0.0.2 | OshekharO | tr | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/turkish123.js) |
 | Unimay | unimay.media | v0.0.1 | CakesTwix | uk | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/unimay.media.js) |
 | viện | vn.tangthuvien | v0.0.1 | Moleys | vi | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vn.tangthuvien.js) |
 | 影视集合 | vod.api.json.collection | v0.0.2 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.json.collection.js) |
 | 八戒影视 | vod.api.xml.bajie | v0.0.1 | Horis | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/vod.api.xml.bajie.js) |
 | 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
 | Wnmtl | wnmtl.org | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wnmtl.org.js) |
+| WTR-LAB | wtr-lab.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wtr-lab.com.js) |
 | 好看的7号 | xyz.thrj66.www | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.thrj66.www.js) |
 | 好看的2号 | xyz.xdtv2 | v0.0.1 | zj | zh-cn | true | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xyz.xdtv2.js) |
 | ZeroScans | zeroscans.com | v0.0.1 | OshekharO | en | false | [Source Code](https://github.com/miru-project/repo/blob/main/repo/zeroscans.com.js) |

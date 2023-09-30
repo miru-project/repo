@@ -30,19 +30,15 @@ export default class extends Extension {
   }
 
   async search(kw) {
-    const requestBody = {
-      keyword: kw,
-    };
-
     const res = await this.request("", {
       headers: {
         "Miru-Url": "https://kimcartoon.li/Search/Cartoon",
-        "Cookie": "_ga=GA1.1.62524391.1696056214; _im_vid=01HBJHEEHYE8YRW650Z1WWV0KQ; _ga_6915SR2PDG=GS1.1.1696060614.2.1.1696061638.0.0.0; prefetchAd_5021906=true",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-        "User-Agent": "Mozilla/5.0 (Linux; Android 12; RMX2170) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Mobile Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded",
       },
-      data: requestBody,
-      method: "post",
+      data: {
+        keyword: kw,
+      },
+      method: "Post",
     });
 
     const bsxList = await this.querySelectorAll(res, "div.section.group.list");

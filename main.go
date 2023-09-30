@@ -35,14 +35,17 @@ func main() {
 Miru extensions repository | [Miru App Download](https://github.com/miru-project/miru-app) |
 
 ## List
-|  Name   | Package | Version | Author | Language | NSFW | Source |
-|  ----   | ---- | --- | ---  | ---  | ---  | ---  |
+|  Name   | Package | Version | Author | Language | Type | Source |
+|  ----   | ---- | --- | ---  | ---  | --- | --- |
 `
 
 	for _, v := range extensions {
 		url := fmt.Sprintf("[Source Code](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
 		nsfw := v["nsfw"] == "true"
-		readme += fmt.Sprintf("| %s | %s | %s | %s | %s | %t | %s |\n", v["name"], v["package"], v["version"], v["author"], v["lang"], nsfw, url)
+		if nsfw {
+			continue
+		}
+		readme += fmt.Sprintf("| %s | %s | %s | %s | %s | %s | %s |\n", v["name"], v["package"], v["version"], v["author"], v["lang"], v["type"], url)
 	}
 	f2.WriteString(readme)
 }

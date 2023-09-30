@@ -24,8 +24,15 @@ export default class extends Extension {
       title: "GoGo API",
       key: "gogoApi",
       type: "input",
-      description: "GoGo Api Url",
+      description: "API URL",
       defaultValue: "https://api.consumet.org/anime/gogoanime",
+    });
+    this.registerSetting({
+      title: "Preferred quality",
+      key: "prefQuality",
+      type: "input",
+      description: "Choose between 360p/480p/720p/1080p",
+      defaultValue: "480p",
     });
   }
 
@@ -66,10 +73,20 @@ export default class extends Extension {
   }
 
   async watch(url) {
+    const quality = await this.getSetting("prefQuality");
     const res = await this.req(`/watch/${url}?server=gogocdn`);
-    return {
-      type: "hls",
-      url: res.sources.pop().url,
-    };
+    const prefQuality = res.sources.find(source => source.quality === quality);
+
+    if (prefQuality) {
+      return {
+        type: "hls",
+        url: prefQuality.url,
+      };
+    } else {
+      return {
+        type: "hls",
+        url: res.sources.pop().url,
+      };
+    }
   }
 }

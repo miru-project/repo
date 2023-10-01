@@ -124,6 +124,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://dramacool.pa/images/mobi/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "DramaCool",
+  "package": "dramacool.pa",
+  "type": "bangumi",
+  "url": "dramacool.pa.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.consumet.org/movies/dramacool"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://flixhq.ws/images/logo.png",
   "lang": "all",
   "license": "MIT",

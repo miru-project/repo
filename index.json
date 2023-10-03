@@ -582,6 +582,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://yurineko.net/img/logo-footer.png",
+  "lang": "vi",
+  "license": "MIT",
+  "name": "YuriNeko",
+  "nsfw": "false",
+  "package": "yurineko.net",
+  "type": "manga",
+  "url": "yurineko.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.yurineko.net"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://zeroscans.com/favicon.ico",
   "lang": "en",
   "license": "MIT",

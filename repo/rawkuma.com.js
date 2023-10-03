@@ -2,7 +2,7 @@
 // @name         rawkuma
 // @version      v0.0.1
 // @author       appdevelpo
-// @lang         en
+// @lang         jp
 // @license      MIT
 // @type         manga
 // @icon         https://rawkuma.com/wp-content/uploads/2020/01/cropped-Yuna.Kuma_.Kuma_.Kuma_.Bear_.full_.2385251-32x32.png
@@ -85,12 +85,12 @@ export default class Mangafx extends Extension {
      }
      return {
       title: title || "Unknown Title",
-      cover: cover || "default-cover.jpg",
+      cover: cover || "",
       desc: desc || "No description available.",
       episodes: [
        {
         title: "Directory",
-        urls: episodes,
+        urls: episodes.reverse(),
        },
       ],
      };

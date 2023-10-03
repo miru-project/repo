@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         IsekaiScan
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       bethro
 // @lang         en
 // @license      MIT
@@ -33,7 +33,7 @@ export default class extends Extension {
       key: "reverseChaptersOrder",
       type: "toggle",
       description: "Reverse the order of chapters in ascending order",
-      defaultValue: "false",
+      defaultValue: "true",
     });
 
     // for latest & search page

@@ -48,7 +48,7 @@ export default class extends Extension {
     return novel;
   }
 
-  async detail(url) {
+async detail(url) {
     const res = await this.request(`${url}`, {
       headers: {
         "miru-referer": "https://www.juxiaoshuo.net/",
@@ -56,22 +56,31 @@ export default class extends Extension {
     });
 
     const title = await this.querySelector(res, "span.title").text;
-    const cover = await this.querySelector(res, "img").getAttributeText("data-src");
-    const desc = await this.querySelector(res, "div.intro > dl > dd").text;
+    const cover = await this.querySelector(
+      res,
+      "img"
+    ).getAttributeText("data-src");
+    const desc = await this.querySelector(
+      res,
+      "div.intro > dl > dd"
+    ).text;
 
     const episodes = [];
-    const epiList = await this.querySelectorAll(res, "div.listmain > dl > dd");
+    const listMainMatch = res.match(/<div class="listmain">([\s\S]+?)<\/div>/);
 
-    for (const element of epiList) {
-      const html = await element.content;
-      const name = await this.querySelector(html, "a").text;
-      const url = await this.querySelector(html, "a").getAttributeText("href");
+if (listMainMatch) {
+  const epiList = listMainMatch[1].matchAll(/<a[^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g);
 
-      episodes.push({
-        name,
-        url,
-      });
-    }
+  for (const match of epiList) {
+    const url = match[1];
+    const name = match[2];
+
+    episodes.push({
+      name,
+      url,
+    });
+  }
+}
 
     return {
       title,

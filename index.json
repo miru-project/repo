@@ -385,6 +385,19 @@
   "webSite": "https://onejav.com"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://rawkuma.com/wp-content/uploads/2020/01/cropped-Yuna.Kuma_.Kuma_.Kuma_.Bear_.full_.2385251-32x32.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "rawkuma",
+  "nsfw": "false",
+  "package": "rawkuma.com",
+  "type": "manga",
+  "url": "rawkuma.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://rawkuma.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png",
   "lang": "en",

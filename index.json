@@ -205,8 +205,21 @@
   "package": "isekaiscan.to",
   "type": "manga",
   "url": "isekaiscan.to.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://m.isekaiscan.to"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://javhd.today/android-icon-192x192.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "JavHD",
+  "nsfw": "true",
+  "package": "javhd.today",
+  "type": "bangumi",
+  "url": "javhd.today.js",
+  "version": "v0.0.1",
+  "webSite": "https://javhd.today"
  },
  {
   "author": "OshekharO",
@@ -242,7 +255,7 @@
   "package": "kisskh.co",
   "type": "bangumi",
   "url": "kisskh.co.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://kisskh.co"
  },
  {
@@ -454,7 +467,7 @@
   "package": "truyen.net",
   "type": "manga",
   "url": "truyen.net.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://comics-api.vercel.app"
  },
  {
@@ -579,6 +592,19 @@
   "url": "xyz.xdtv2.js",
   "version": "v0.0.1",
   "webSite": "https://xdtv2.xyz/"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://yurineko.net/img/logo-footer.png",
+  "lang": "vi",
+  "license": "MIT",
+  "name": "YuriNeko",
+  "nsfw": "false",
+  "package": "yurineko.net",
+  "type": "manga",
+  "url": "yurineko.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.yurineko.net"
  },
  {
   "author": "OshekharO",

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Kisskh
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -40,7 +40,7 @@ export default class extends Extension {
         episodes: [
           {
             title: "Directory",
-            urls: res.episodes.map((item) => ({
+            urls: res.episodes.reverse().map((item) => ({
               name: `Episode ${item.number}`,
               url: item.id.toString(),
             })),

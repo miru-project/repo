@@ -2,7 +2,7 @@
 // @name         漫画柜
 // @version      v0.0.1
 // @author       appdevelpo
-// @lang         zh
+// @lang         zh-cn
 // @license      MIT
 // @type         manga
 // @icon         https://www.manhuagui.com/favicon.ico
@@ -63,7 +63,7 @@ export default class Mangafx extends Extension {
       episodes: [
         {
           title: "Directory",
-          urls: dat.chapter_groups[0].chapters.map((item) => ({
+          urls: dat.chapter_groups[0].chapters.reverse().map((item) => ({
             name: item.title,
             url: `${dat.mid}/${item.cid}`,
           })),
@@ -74,8 +74,6 @@ export default class Mangafx extends Extension {
  
   async watch(url) {
     const res = await this.request(`/manga/${url}`);
-    // console.log(res);
-    // console.log(res.data.pages);
     return {
       urls: res.data.pages,
       headers:{

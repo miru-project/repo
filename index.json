@@ -223,6 +223,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://www.juxiaoshuo.net/images/nocover.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "聚小说",
+  "package": "juxiaoshuo",
+  "type": "fikushon",
+  "url": "juxiaoshuo.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.juxiaoshuo.net"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://kimcartoon.li/Content/images/favicon.ico",
   "lang": "en",
   "license": "MIT",

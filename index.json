@@ -307,6 +307,19 @@
   "webSite": "https://api.mangadex.org"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://www.manhuagui.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "漫画柜",
+  "nsfw": "false",
+  "package": "manhuagui.com",
+  "type": "manga",
+  "url": "manhuagui.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://api-manhuagui.aoihosizora.top/v1"
+ },
+ {
   "author": "MiaoMint",
   "description": "蜜柑计划：新一代的动漫下载站",
   "icon": "https://mikanani.me/images/mikan-pic.png",

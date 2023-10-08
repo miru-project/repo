@@ -37,6 +37,19 @@
   "webSite": "https://jimov-api.vercel.app/"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://animepahe.ru/pikacon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Animepahe",
+  "nsfw": "false",
+  "package": "animepahe.ru",
+  "type": "bangumi",
+  "url": "animepahe.ru.js",
+  "version": "v0.0.1",
+  "webSite": "https://animepahe.ru"
+ },
+ {
   "author": "anishi7",
   "icon": "https://bestlightnovel.com/themes/home/images/favicon.png",
   "lang": "en",

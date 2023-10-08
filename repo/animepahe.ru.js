@@ -12,7 +12,7 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-    async search(kw, page) {
+    async search(kw) {
         const res = await this.request(`/api?m=search&q=${kw}`);
         // console.log(res);
         return res.data.map((item) => ({
@@ -82,11 +82,11 @@ export default class extends Extension {
             }
         })
         // console.log((/data-src="https:\/\/kwik.cx.+?"/g).exec(res)[parseInt(url_split[1])]);
-        console.log(res.match(/data-src="https:\/\/kwik.cx.+?"/g))
+        // console.log(res.match(/data-src="https:\/\/kwik.cx.+?"/g))
         const src_match = res.match(/data-src="https:\/\/kwik.cx.+?"/g)[parseInt(url_split[1])]; //480,720,1080 === [0],[1],[2]
-        console.log(src_match);
+        // console.log(src_match);
         const src = src_match.match(/data-src="(.+?)"/)[1];
-        console.log(src);
+        // console.log(src);
         const hid_res = await this.request("",{
             headers:{
                 "Miru-Url": src,
@@ -96,7 +96,7 @@ export default class extends Extension {
         })
         const hid_script = hid_res.match(/eval\(f.+?\}\)\)/g)[1];
         const decode_script = eval(hid_script.match(/eval(.+)/)[1]);
-        //the obfuscated script look like eval(function(p,a,c,k,e,d){e=function(c){return(c<a?......
+        // the obfuscated script look like eval(function(p,a,c,k,e,d){e=function(c){return(c<a?......
         const decode_url = decode_script.match(/source='(.+?)'/)[1];
       return {
         type: "hls",

@@ -31,28 +31,17 @@ export default class extends Extension {
 
   async latest() {
     const res = await this.req(`/A`);
-    const novelPromises = res.results.map(async (item) => {
-      const imgResponse = await fetch("https://api.waifu.pics/sfw/waifu");
-      const imgData = await imgResponse.json();
-
-      return {
-        title: item.title,
-        url: item.id,
-        cover: imgData.url,
-      };
-    });
-
-    return Promise.all(novelPromises);
+    return res.results.map((item) => ({
+      title: item.title,
+      url: item.id,
+   }));
   }
-
+  
   async detail(url) {
     const res = await this.req(`/info?id=${url}`);
-    const imgResponse = await fetch("https://api.waifu.pics/sfw/waifu");
-    const imgData = await imgResponse.json();
-
+    
     return {
       title: res.title,
-      cover: imgData.url,
       desc: res.description.trim(),
       episodes: [
         {
@@ -68,20 +57,12 @@ export default class extends Extension {
 
   async search(kw) {
     const res = await this.req(`/${kw}`);
-    const novelPromises = res.results.map(async (item) => {
-      const imgResponse = await fetch("https://api.waifu.pics/sfw/waifu");
-      const imgData = await imgResponse.json();
-
-      return {
-        title: item.title,
-        url: item.id,
-        cover: imgData.url,
-      };
-    });
-
-    return Promise.all(novelPromises);
+    return res.results.map((item) => ({
+      title: item.title,
+      url: item.id,
+   }));
   }
-
+  
   async watch(url) {
     const [ep, md] = url.split("|");
     const res = await this.req(`/watch?episodeId=${ep}&mediaId=${md}&server=vidcloud`);

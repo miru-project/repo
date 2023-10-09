@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Flixhq
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT

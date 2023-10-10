@@ -50,6 +50,18 @@
   "webSite": "https://animepahe.ru"
  },
  {
+  "author": "bethro",
+  "icon": "https://asuratoon.com/wp-content/uploads/2021/03/Group_1.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "AsuraScan",
+  "package": "asuratoon.com",
+  "type": "manga",
+  "url": "asuratoon.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://asuratoon.com"
+ },
+ {
   "author": "anishi7",
   "icon": "https://bestlightnovel.com/themes/home/images/favicon.png",
   "lang": "en",

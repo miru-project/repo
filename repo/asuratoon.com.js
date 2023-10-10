@@ -44,8 +44,8 @@ export default class extends Extension {
         let comic = []
         for (const element of latest) {
             const html = await element.content;
-            const url = (await this.getAttributeText(html, "a", "href")); //clean url
-            const title = await this.querySelector(html, "div.uta > div.imgtu > h4").text;
+            const url = await this.getAttributeText(html, "a", "href");
+            const title = await this.querySelector(html, "h4").text;
             const cover = await this.querySelector(html, "img").getAttributeText("src");
 
             comic.push({
@@ -68,7 +68,7 @@ export default class extends Extension {
             return {
                 title: title.trim(),
                 url,
-                cover: cover
+                cover,
             };
         }));
         return result;

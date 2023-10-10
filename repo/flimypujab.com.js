@@ -1,8 +1,8 @@
 // ==MiruExtension==
-// @name         flimypujab
+// @name         FlimyPujab
 // @version      v0.0.1
 // @author       appdevelpo
-// @lang         en
+// @lang         hi
 // @license      MIT
 // @icon         https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png
 // @package      flimypujab.com
@@ -114,7 +114,7 @@ export default class extends Extension {
     async watch(url) {
         const res = await this.request(url)
         const video_url = res.match(/<source src="(.+?.mp4)"/)[1];
-        console.log(video_url);
+        // console.log(video_url);
 
         
       return {

@@ -148,6 +148,19 @@
   "webSite": "https://api.consumet.org/movies/dramacool"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png",
+  "lang": "hi",
+  "license": "MIT",
+  "name": "FlimyPujab",
+  "nsfw": "false",
+  "package": "flimypujab.com",
+  "type": "bangumi",
+  "url": "flimypujab.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://111.90.151.26"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://flixhq.ws/images/logo.png",
   "lang": "all",

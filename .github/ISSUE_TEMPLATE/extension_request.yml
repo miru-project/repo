@@ -43,6 +43,13 @@ body:
         validations:
             required: false
 
+    -   type: textarea
+        id: other-details
+        attributes:
+            label: Other details
+            placeholder: |
+                Additional details and attachments.
+
     -   type: checkboxes
         id: acknowledgements
         attributes:

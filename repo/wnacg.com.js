@@ -8,7 +8,7 @@
 // @icon         https://www.wnacg.com/favicon.ico
 // @package      wnacg.com
 // @webSite      https://www.wnacg.com
-// @nsfw         yes
+// @nsfw         true
 // ==/MiruExtension==
 
 export default class Mangafx extends Extension {

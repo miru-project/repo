@@ -1,6 +1,6 @@
 name: 🐞 Issue report
 description: Report a extension issue with a source
-labels: []
+labels: [ bug ]
 body:
 
     -   type: input
@@ -34,7 +34,7 @@ body:
             description: |
                 You can find your Miru version in **Settings**.
             placeholder: |
-                Example: "1.6.7"
+                Example: "1.7.1"
         validations:
             required: true
 

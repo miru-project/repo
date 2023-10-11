@@ -1,6 +1,6 @@
 name: ⭐ Extension request
 description: Suggest a extension that you would like see added
-labels: []
+labels: [ source request ]
 body:
 
     -   type: input

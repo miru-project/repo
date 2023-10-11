@@ -631,6 +631,19 @@
   "webSite": "https://www.dm530w.org"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://www.wnacg.com/favicon.ico",
+  "lang": "zh-tw",
+  "license": "MIT",
+  "name": "紳士漫畫",
+  "nsfw": "true",
+  "package": "wnacg.com",
+  "type": "manga",
+  "url": "wnacg.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.wnacg.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://wnmtl.com/logo.png",
   "lang": "en",

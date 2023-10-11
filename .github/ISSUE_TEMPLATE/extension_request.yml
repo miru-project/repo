@@ -1,0 +1,52 @@
+name: ⭐ Extension request
+description: Suggest a extension that you would like see added
+labels: []
+body:
+
+    -   type: input
+        id: source-name
+        attributes:
+            label: Source name
+            description: |
+                Provide the Source name.
+            placeholder: |
+                Example: "Gogoganime"
+        validations:
+            required: true
+
+    -   type: input
+        id: source-url
+        attributes:
+            label: Source URL
+            description: |
+                Provide the Source URL.
+            placeholder: |
+                Example: "https://gogoanimehd.io"
+        validations:
+            required: true
+
+    -   type: input
+        id: package-type
+        attributes:
+            label: Package type
+            placeholder: |
+                Example: "anime"
+        validations:
+            required: false
+
+    -   type: input
+        id: language
+        attributes:
+            label: Source language
+            placeholder: |
+                Example: "en"
+        validations:
+            required: false
+
+    -   type: checkboxes
+        id: acknowledgements
+        attributes:
+            label: Acknowledgements
+            options:
+                -   label: I have searched the existing issues and this is a new ticket, **NOT** a duplicate or related to another open issue.
+                    required: true

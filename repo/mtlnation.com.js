@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Mtlnation
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -31,7 +31,7 @@ export default class extends Extension {
  }
 
  async latest(page) {
-  const res = await this.req(`/api/v2/novels/?sort=chapter_new&page=${page}`);
+  const res = await this.req(`/api/v2/novels/?sort=novel_new&page=${page}`);
   return res.data.map((item) => ({
    url: item.slug,
    title: item.title,

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         RoyalRoad
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       appdevelpo
 // @lang         en
 // @license      MIT
@@ -70,20 +70,23 @@ export default class Biquge extends Extension {
     }
 
     async watch(url) {
+    const res = await this.request(url);
+    const content = res.match(/<p>[^&]+?<\/p>/g);
+    const new_content = [];
 
-        const res = await this.request(url);
-        const content = res.match(/<p>[^&]+?<\/p>/g);
-        const new_content = [];
+    if (content) {
         content.forEach((e) => {
-            e = e.replace(/<.+?>/g,"");
+            e = e.replace(/<.+?>/g, "");
             console.log(e);
-            new_content.push(e)
-        })
-        const title = res.match(/>(.+?)<\/h1>/)[0]
-        return {
-            content:new_content,
-            title,
-        }
+            new_content.push(e);
+        });
     }
+
+    const title = res.match(/>(.+?)<\/h1>/)[0];
+    return {
+        content: new_content,
+        title,
+    };
+}
 
 }

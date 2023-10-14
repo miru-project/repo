@@ -497,6 +497,19 @@
   "webSite": "https://acg.rip"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://www.royalroad.com/icons/favicon.ico?v=20200125",
+  "lang": "en",
+  "license": "MIT",
+  "name": "RoyalRoad",
+  "nsfw": "false",
+  "package": "royalroad.com",
+  "type": "fikushon",
+  "url": "royalroad.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.royalroad.com"
+ },
+ {
   "author": "Monster",
   "icon": "https://cdn.yinghuazy.xyz/webjs/zkk7/statics/img/favicon.ico",
   "lang": "zh-cn",

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         MangaDex
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bethro
 // @lang         all
 // @license      MIT
@@ -29,6 +29,14 @@ export default class extends Extension {
       description: "MangaDex API URL",
       defaultValue: "https://api.mangadex.org",
     });
+
+    this.registerSetting({
+      title: "Language",
+      key: "lang",
+      type: "input",
+      description: "Language",
+      defaultValue: "en",
+    })
 
     this.registerSetting({
       title: "Reverse Order of Chapters",
@@ -103,61 +111,66 @@ export default class extends Extension {
     return mangaList;
   }
 
-  async detail(mangaId) {
-    const mangaRes = await this.req(`/manga/${mangaId}?includes[]=cover_art`);
-    const manga = mangaRes.data;
+async detail(mangaId) {
+  const mangaRes = await this.req(`/manga/${mangaId}?includes[]=cover_art`);
+  const manga = mangaRes.data;
 
-    const coverArtObject = manga.relationships.find(
-      (relationship) => relationship.type === "cover_art"
-    );
-    const coverFilename = coverArtObject.attributes.fileName;
-    const coverImageURL = `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}`;
+  const coverArtObject = manga.relationships.find(
+    (relationship) => relationship.type === "cover_art"
+  );
+  const coverFilename = coverArtObject.attributes.fileName;
+  const coverImageURL = `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}`;
 
-    const metadata = manga.attributes.tags
-      .filter((tag) => tag.group === "genre")
-      .reduce((metadata, tag) => {
-        metadata[tag.name] = tag.description;
-        return metadata;
-      }, {});
+  const metadata = manga.attributes.tags
+    .filter((tag) => tag.group === "genre")
+    .reduce((metadata, tag) => {
+      metadata[tag.name] = tag.description;
+      return metadata;
+    }, {});
 
-    const chapRes = await this.req(`/manga/${mangaId}/feed?&order[volume]=asc&order[chapter]=asc&limit=500`);
-    const chapters = chapRes.data;
+  const chapRes = await this.req(`/manga/${mangaId}/feed?&order[volume]=asc&order[chapter]=asc&limit=500`);
+  const chapters = chapRes.data;
 
-    if (await this.getSetting("reverseChaptersOrder") === "true") {
-      chapters.reverse();
-    }
-
-    const chapMap = new Map();
-
-    for (const item of chapters) {
-      const lang = item.attributes.translatedLanguage;
-      const chapter = {
-        name: `Chapter ${item.attributes.chapter}`,
-        url: item.id,
-      };
-
-      if (!chapMap.has(lang)) {
-        const langChapters = [];
-        langChapters.push(chapter);
-        chapMap.set(lang, langChapters);
-      } else {
-        chapMap.get(lang).push(chapter);
-      }
-    }
-
-    const episodes = Array.from(chapMap.entries()).map(([lang, list]) => ({
-      title: lang,
-      urls: list,
-    }));
-
-    return {
-      title: manga.attributes.title.en,
-      cover: coverImageURL,
-      desc: manga.attributes.description.en,
-      metadata,
-      episodes,
-    };
+  if (await this.getSetting("reverseChaptersOrder") === "true") {
+    chapters.reverse();
   }
+
+  const chapMap = new Map();
+  const defaultLang = await this.getSetting("lang"); 
+
+  for (const item of chapters) {
+    const lang = item.attributes.translatedLanguage;
+    const chapter = {
+      name: `Chapter ${item.attributes.chapter}`,
+      url: item.id,
+    };
+
+    if (!chapMap.has(lang)) {
+      chapMap.set(lang, [chapter]);
+    } else {
+      chapMap.get(lang).push(chapter);
+    }
+  }
+
+  const sortedChapMap = new Map([...chapMap.entries()].sort((a, b) => {
+    if (a[0] === defaultLang) return -1;
+    if (b[0] === defaultLang) return 1;
+    return a[0].localeCompare(b[0]); // order alphabetically
+  }));
+
+  const episodes = Array.from(sortedChapMap.entries()).map(([lang, list]) => ({
+    title: lang,
+    urls: list,
+  }));
+
+  return {
+    title: manga.attributes.title.en,
+    cover: coverImageURL,
+    desc: manga.attributes.description.en,
+    metadata,
+    episodes,
+  };
+}
 
   async watch(chapterId) {
     const response = await this.req(`/at-home/server/${chapterId}`);

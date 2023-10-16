@@ -33,7 +33,7 @@ export default class Biquge extends Extension {
         const res = await this.request(`/fictions/search?page=${page}&title=${kw}`)
         const liList = res.match(/<div class="row fiction-list-item">[\S\s]+?<\/div>/g)
         const manga = []
-        console.log(res);
+       // console.log(res);
         liList.forEach(element => {
             const url = element.match(/href="(.+?)"/)[1]
             const title = element.match(/alt="(.+?)"/)[1]

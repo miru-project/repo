@@ -8,7 +8,7 @@
 // @package      hanime1.me
 // @type         bangumi
 // @webSite      https://hanime1.me
-// @nsfw         false
+// @nsfw         true
 // ==/MiruExtension==
 
 export default class extends Extension {

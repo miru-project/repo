@@ -354,7 +354,7 @@
   "package": "mangadex.org",
   "type": "manga",
   "url": "mangadex.org.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://api.mangadex.org"
  },
  {

@@ -185,6 +185,19 @@
   "webSite": "https://anipuff-consumet.vercel.app/movies/flixhq"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://gimy.su/favicon.ico",
+  "lang": "zh-tw",
+  "license": "MIT",
+  "name": "gimy",
+  "nsfw": "false",
+  "package": "gimy.su",
+  "type": "bangumi",
+  "url": "gimy.su.js",
+  "version": "v0.0.1",
+  "webSite": "https://gimy.su"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://play-lh.googleusercontent.com/MaGEiAEhNHAJXcXKzqTNgxqRmhuKB1rCUgb15UrN_mWUNRnLpO5T1qja64oRasO7mn0",
   "lang": "en",

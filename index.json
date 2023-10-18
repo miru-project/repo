@@ -210,6 +210,19 @@
   "webSite": "https://apikatsu.otakatsu.studio/api"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://img4.qy0.ru/data/2205/36/tab_logo.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "Hanime",
+  "nsfw": "true",
+  "package": "hanime1.me",
+  "type": "bangumi",
+  "url": "hanime1.me.js",
+  "version": "v0.0.1",
+  "webSite": "https://hanime1.me"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://s1.cdnimg.me:9000/hentaidexy/opengraph-image.png",
   "lang": "en",
@@ -495,6 +508,19 @@
   "url": "rip.acg.js",
   "version": "v0.0.1",
   "webSite": "https://acg.rip"
+ },
+ {
+  "author": "appdevelpo",
+  "icon": "https://www.royalroad.com/icons/favicon.ico?v=20200125",
+  "lang": "en",
+  "license": "MIT",
+  "name": "RoyalRoad",
+  "nsfw": "false",
+  "package": "royalroad.com",
+  "type": "fikushon",
+  "url": "royalroad.com.js",
+  "version": "v0.0.2",
+  "webSite": "https://www.royalroad.com"
  },
  {
   "author": "Monster",

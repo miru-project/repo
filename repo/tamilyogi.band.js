@@ -1,8 +1,8 @@
 // ==MiruExtension==
-// @name         tamilyogi
+// @name         TamilYogi
 // @version      v0.0.1
 // @author       appdevelpo
-// @lang         hi
+// @lang         hi-ta
 // @license      MIT
 // @icon         https://tamilyogi.band/wp-content/uploads/2021/06/ty.png
 // @package      tamilyogi.band

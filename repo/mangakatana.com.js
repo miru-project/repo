@@ -106,7 +106,7 @@ export default class extends Extension {
 			title: title || "Unknown Title",
 			cover,
 			desc: desc || "N/A",
-			chapters: [{
+			episodes: [{
 				title: "Chapters",
 				urls: chapters,
 			}, ],

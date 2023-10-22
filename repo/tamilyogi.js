@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         TamilYogi
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       appdevelpo
 // @lang         hi-ta
 // @license      MIT
-// @icon         https://tamilyogi.band/wp-content/uploads/2021/06/ty.png
-// @package      tamilyogi.band
+// @icon         https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png
+// @package      tamilyogi
 // @type         bangumi
-// @webSite      https://tamilyogi.band
+// @webSite      https://tamilyogi.plus
 // @nsfw         false
 // ==/MiruExtension==
 
@@ -17,7 +17,7 @@ export default class extends Extension {
         const bsxList = res.match(/"cover[\s\S]+?postmetadata/g);
         const bangumi = [];
         bsxList.forEach((element) => {
-            const url = element.match(/href="https:\/\/tamilyogi.band(.+?)"/)[1];
+            const url = element.match(/href="https:\/\/tamilyogi.plus(.+?)"/)[1];
             // console.log(url);
             const title = element.match(/alt="(.+?)"/)[1];
             // console.log(title);
@@ -37,7 +37,7 @@ export default class extends Extension {
         const bsxList = res.match(/"cover[\s\S]+?postmetadata/g);
         const bangumi = [];
         bsxList.forEach((element) => {
-            const url = element.match(/href="https:\/\/tamilyogi.band(.+?)"/)[1];
+            const url = element.match(/href="https:\/\/tamilyogi.plus(.+?)"/)[1];
             const title = element.match(/alt="(.+?)"/)[1];
             const cover_match = element.match(/src="(.+?)"/)[1];
             bangumi.push({

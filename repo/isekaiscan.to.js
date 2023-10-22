@@ -151,7 +151,7 @@ export default class extends Extension {
       desc: desc || "N/A",
       episodes: [
         {
-          title: "Directory",
+          title: "Chapters",
           urls: chapters,
         },
       ],

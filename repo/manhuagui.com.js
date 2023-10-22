@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         漫画柜
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       appdevelpo
 // @lang         zh-cn
 // @license      MIT
@@ -38,9 +38,10 @@ export default class extends Extension {
   }
 
   async search(kw, page) {
+    const encoded_kw = encodeURIComponent(kw)
     const res = await this.request("", {
       headers: {
-        "Miru-Url": `https://www.manhuagui.com/s/${kw}.html`,
+        "Miru-Url": `https://www.manhuagui.com/s/${encoded_kw}_p${page}.html`,
       },
     });
     const bsxList = res.match(/<li class="cf">[\s\S]+?<\/li>/g);

@@ -562,16 +562,16 @@
  },
  {
   "author": "appdevelpo",
-  "icon": "https://tamilyogi.band/wp-content/uploads/2021/06/ty.png",
+  "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",
   "license": "MIT",
   "name": "TamilYogi",
   "nsfw": "false",
-  "package": "tamilyogi.band",
+  "package": "tamilyogi",
   "type": "bangumi",
-  "url": "tamilyogi.band.js",
-  "version": "v0.0.1",
-  "webSite": "https://tamilyogi.band"
+  "url": "tamilyogi.js",
+  "version": "v0.0.2",
+  "webSite": "https://tamilyogi.plus"
  },
  {
   "author": "OshekharO",

@@ -40,6 +40,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | rawkuma | rawkuma.com | v0.0.1 | appdevelpo | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rawkuma.com.js) |
 | ReadLN | readlightnovels | v0.0.1 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
+| Mangakatana | mangakatana.com | v0.0.3 | shashankx86 | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/repo: added Mangakatna) |
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |
 | RoyalRoad | royalroad.com | v0.0.2 | appdevelpo | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/royalroad.com.js) |
 | 樱花动漫 | sakura | v0.0.1 | Monster | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |

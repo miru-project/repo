@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Mangakatana
-// @version      v0.0.3
+// @version      v0.0.1
 // @author       shashankx86
 // @lang         en
 // @license      MIT

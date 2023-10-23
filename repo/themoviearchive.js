@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         MoviesArc
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -44,22 +44,21 @@ export default class extends Extension {
 
   async detail(url) {
     const res = await this.req(`/movie/details/${url}`);
-    return {
-      title: res.details.title,
-      cover: "https://image.tmdb.org/t/p/w300/" + res.details.poster_path,
-      desc: res.details.overview,
-      episodes: [
-        {
-          title: "Watch",
-          urls: [
-            {
-              name: res.details.title,
-              url: res.details.id.toString(),
-            },
-          ],
-        },
-      ],
-    };
+    const mov_id = res.details.id.toString()
+    const vid_res = await this.req(`/movie/sources/${mov_id}`);
+    const re = {
+        title: res.details.title,
+        cover: "https://image.tmdb.org/t/p/w300/" + res.details.poster_path,
+        desc: res.details.overview,
+        episodes: vid_res.sources.map((item) => ({
+            title: `Server ${item.label}`,
+            urls: item.sources.map((item_1) => ({
+                name: item_1.quality,
+                url: `${item_1.url};/movie/sources/${mov_id}`
+            })),
+        }))
+    }
+    return re 
   }
 
   async search(kw) {
@@ -77,10 +76,21 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const res = await this.req(`/movie/sources/${url}`);
+    const url_split = url.split(';');
+    const res = await this.req(`${url_split[1]}`);
+    if (url_split[0].includes("mp4")){
+        return {
+            type: "mp4",
+            url: url_split[0],
+            subtitles: res.subtitles.map((item) => ({
+              title: item.language,
+              url: item.url,
+            })),
+          };
+    }
     return {
       type: "hls",
-      url: res.sources[0].sources[0].url,
+      url: url_split[0],
       subtitles: res.subtitles.map((item) => ({
         title: item.language,
         url: item.url,

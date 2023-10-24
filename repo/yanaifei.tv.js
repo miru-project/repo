@@ -55,8 +55,8 @@ export default class extends Extension {
             title: "Cookie",
             key: "cookie",
             type: "input",
-            description: "如果嘗試webwiew無法正常使用,請在此輸入cookie",
-            defaultValue: "",
+            description: "如果無法正常使用,請在此輸入cookie",
+            defaultValue: "cf_clearance=z2sTId7rxXeFsJ3M3kSmcN.UtRDVRJw8X1uLGxSrbyU-1698115519-0-1-370cc8c4.54f80e62.600d9724-160.0.0"",
         })
         // await this.registerSetting({
         //     title: "更換域名",

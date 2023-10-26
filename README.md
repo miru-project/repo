@@ -6,6 +6,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | Type | Source |
 |  ----   | ---- | --- | ---  | ---  | --- | --- |
+| Movieku | movieku.com | v0.0.1 | appdevelpo | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/Movieku.com.js) |
 | AniGoGo | ani.gogo | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | Aniwatch | ani.watch | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
 | AnimeFlv | anime.flv | v0.0.2 | (koikiss-dev) | es | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |

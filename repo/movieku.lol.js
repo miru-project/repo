@@ -119,7 +119,7 @@ var CryptoJSAesJson = {
         "Referer": "https://107.152.37.223/"
       },
     });
-    const JscRIPT = res.match(/JScript = ('.+?')/)[1]+";";
+    const JscRIPT = res.match(/JScripts = ('.+?')/)[1]+";";
     
     // 
     const JSCRIPT  = eval(JscRIPT);

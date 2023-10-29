@@ -1,11 +1,11 @@
 // ==MiruExtension==
 // @name         Movieku
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       appdevelpo
 // @lang         id
 // @license      MIT
 // @icon         https://i2.wp.com/107.152.37.223/wp-content/uploads/2020/12/cropped-Movieku-2-32x32.jpg
-// @package      movieku.com
+// @package      movieku.lol
 // @type         bangumi
 // @webSite      https://movieku.lol
 // @nsfw         false
@@ -53,7 +53,6 @@ export default class extends Extension {
   //#AESJSON start
  * AES JSON formatter for CryptoJS
  * @link https://github.com/brainfoolong/cryptojs-aes-php
- * @version 2.2.0
  */
 
 var CryptoJSAesJson = {
@@ -120,7 +119,7 @@ var CryptoJSAesJson = {
         "Referer": "https://107.152.37.223/"
       },
     });
-    const JscRIPT = res.match(/JScript = ('.+?')/)[1]+";";
+    const JscRIPT = res.match(/JScripts = ('.+?')/)[1]+";";
     
     // 
     const JSCRIPT  = eval(JscRIPT);
@@ -164,9 +163,9 @@ var CryptoJSAesJson = {
     
     
     if (kw==""){
-      var res = await this.request(filter.filter1[0]);
+      var res = await this.request(`/${filter.filter1[0]}/page/${page}/`);
     }else{
-      const res = await this.request(`/page/${page}/?s=${kw}`);
+      var res = await this.request(`/page/${page}/?s=${kw}`);
     }
     const bsxList = res.match(/<article[\s\S]+?<\/article>/g)
     const videos = [];
@@ -188,11 +187,10 @@ var CryptoJSAesJson = {
       title: "",
       max: 1,
       min: 1,
-      default: "ongoing",
+      default: "latest-movies",
       options:{
-        "/latest-movies":"latest movie",
-        "/series":"latest series",
-        "/ongoing":"ongoing"
+        "latest-movies":"latest movie",
+        "series":"latest series",
       }
     };
     

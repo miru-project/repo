@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         JavHD
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         jp
 // @license      MIT
@@ -62,7 +62,7 @@ export default class extends Extension {
     const desc = await this.querySelector(res, "p.description").text;
 
     const urlPatterns = [
-        /https:\/\/minoplres\.[^\s'"]+/,
+        /https:\/\/embedgram\.[^\s'"]+/,
         /https:\/\/vidcloud\.[^\s'"]+/,
         /https:\/\/emturbovid\.[^\s'"]+/,
     ];
@@ -112,18 +112,19 @@ export default class extends Extension {
 
     let directUrl = "";
 
-    if (url.startsWith("https://minoplres")) {
-        const dwishLink = res.match(/https:\/\/tukipasti\.[^\s'"]+/);
+    if (url.startsWith("https://embedgram")) {
 
-        const dwishLinkRes = await this.request("", {
+       const embedgramRes = await this.request("", {
             headers: {
-                "Miru-Url": dwishLink,
+                "Miru-Url": url,
+                "referer": "https://embedrise.com/",
+                "origin": "https://embedrise.com",
             },
-        });
+      method: "Get",
+    });
 
-        const directUrlMatch = dwishLinkRes.match(/(https:\/\/[^\s'"]*\.m3u8[^\s'"]*)/);
+        const directUrlMatch = embedgramRes.match(/https:\/\/[^\/]+\/video\/[^\s"]+/);
         directUrl = directUrlMatch ? directUrlMatch[0] : "";
-  
     } else if (url.startsWith("https://vidcloud")) {
       
         const directUrlMatch = res.match(/(https:\/\/[^\s'"]*\.m3u8[^\s'"]*)/);
@@ -146,6 +147,10 @@ export default class extends Extension {
     return {
         type: "hls",
         url: directUrl || "",
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.142.86 Safari/537.36",
+          referer: directUrl,
+        },
     };
 }
 }

@@ -6,7 +6,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | Type | Source |
 |  ----   | ---- | --- | ---  | ---  | --- | --- |
-| Movieku | movieku.com | v0.0.1 | appdevelpo | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/Movieku.com.js) |
 | AniGoGo | ani.gogo | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | Aniwatch | ani.watch | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
 | AnimeFlv | anime.flv | v0.0.2 | (koikiss-dev) | es | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
@@ -38,6 +37,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Mikanani | me.mikanani | v0.0.3 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/me.mikanani.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
+| Movieku | movieku.lol | v0.0.2 | appdevelpo | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/movieku.lol.js) |
 | Mtlnation | mtlnation.com | v0.0.2 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | rawkuma | rawkuma.com | v0.0.2 | appdevelpo | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rawkuma.com.js) |

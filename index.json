@@ -1,18 +1,5 @@
 [
  {
-  "author": "appdevelpo",
-  "icon": "https://i2.wp.com/107.152.37.223/wp-content/uploads/2020/12/cropped-Movieku-2-32x32.jpg",
-  "lang": "id",
-  "license": "MIT",
-  "name": "Movieku",
-  "nsfw": "false",
-  "package": "movieku.com",
-  "type": "bangumi",
-  "url": "Movieku.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://movieku.lol"
- },
- {
   "author": "OshekharO",
   "icon": "https://anilist.co/img/icons/apple-touch-icon.png",
   "lang": "en",
@@ -445,6 +432,19 @@
   "url": "moe.wol.wenku8.js",
   "version": "v0.0.1",
   "webSite": "https://www.wenku8.net"
+ },
+ {
+  "author": "appdevelpo",
+  "icon": "https://i2.wp.com/107.152.37.223/wp-content/uploads/2020/12/cropped-Movieku-2-32x32.jpg",
+  "lang": "id",
+  "license": "MIT",
+  "name": "Movieku",
+  "nsfw": "false",
+  "package": "movieku.lol",
+  "type": "bangumi",
+  "url": "movieku.lol.js",
+  "version": "v0.0.2",
+  "webSite": "https://movieku.lol"
  },
  {
   "author": "OshekharO",

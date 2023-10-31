@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Movieku
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       appdevelpo
 // @lang         id
 // @license      MIT
@@ -119,15 +119,17 @@ var CryptoJSAesJson = {
         "Referer": "https://107.152.37.223/"
       },
     });
-    const JscRIPT = res.match(/JScripts = ('.+?')/)[1]+";";
+    // console.log(res)
     
     // 
-    const JSCRIPT  = eval(JscRIPT);
-    // 
-    const _0xc82e=["","split","0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/","slice","indexOf","","",".","pow","reduce","reverse","0"],_0xe10c=function(d,e,f){var g=_0xc82e[2][_0xc82e[1]](_0xc82e[0]);var h=g[_0xc82e[3]](0,e);var i=g[_0xc82e[3]](0,f);var j=d[_0xc82e[1]](_0xc82e[0])[_0xc82e[10]]()[_0xc82e[9]](function(a,b,c){if(h[_0xc82e[4]](b)!==-1)return a+=h[_0xc82e[4]](b)*(Math[_0xc82e[8]](e,c))},0);var k=_0xc82e[0];while(j>0){k=i[j%f]+k;j=(j-(j%f))/f}return k||_0xc82e[11];},_0xc60f=function(p,l,a,y,e,r){r="";for(var i=0,len=p.length;i<len;i++){var s="";while(p[i]!==a[e]){s+=p[i];i++}for(var j=0;j<a.length;j++)s=s.replace(new RegExp(a[j],"g"),j);r+=String.fromCharCode(_0xe10c(s,e,10)-y);if( r.match(/'.+?'/)){return r.match(/'(.+?)'/)[1];}}return decodeURIComponent(encodeURI(r));};
+    const _0xc82e=["","split","0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ+/","slice","indexOf","","",".","pow","reduce","reverse","0"],_0xe10c=function(d,e,f){var g=_0xc82e[2][_0xc82e[1]](_0xc82e[0]);var h=g[_0xc82e[3]](0,e);var i=g[_0xc82e[3]](0,f);var j=d[_0xc82e[1]](_0xc82e[0])[_0xc82e[10]]()[_0xc82e[9]](function(a,b,c){if(h[_0xc82e[4]](b)!==-1)return a+=h[_0xc82e[4]](b)*(Math[_0xc82e[8]](e,c))},0);var k=_0xc82e[0];while(j>0){k=i[j%f]+k;j=(j-(j%f))/f}return k||_0xc82e[11];},_0xc60f=function(p,l,a,y,e,r){r="";for(var i=0,len=p.length;i<len;i++){var s="";while(p[i]!==a[e]){s+=p[i];i++}for(var j=0;j<a.length;j++)s=s.replace(new RegExp(a[j],"g"),j);r+=String.fromCharCode(_0xe10c(s,e,10)-y);if( r.match(/'.+?'/)){const script_title=r.match(/decrypt\((.+?),/)[1];return [script_title,r.match(/'(.+?)'/)[1]];}}return decodeURIComponent(encodeURI(r));};
     const eval_area = res.match(/eval\((.+?\))/)[1];
     const eval_script = (eval_area.replace(/\w+x\w+/,'_0xc60f'));
-    const key = eval(eval_script);
+    const output = eval(eval_script)
+    const key = output[1];
+    const JscRIPT = res.match(RegExp(`${output[0]} = ('.+?')`))[1]+";";
+    // 
+    const JSCRIPT  = eval(JscRIPT);
     const str = JSCRIPT
     // 
     const decrypt_data = this.CryptoJSAesJson.decrypt(str,key);

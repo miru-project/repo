@@ -119,7 +119,7 @@ var CryptoJSAesJson = {
         "Referer": "https://107.152.37.223/"
       },
     });
-    const JscRIPT = res.match(/JScript = ('.+?')/)[1]+";";
+    const JscRIPT = res.match(/JScripts = ('.+?')/)[1]+";";
     
     // 
     const JSCRIPT  = eval(JscRIPT);
@@ -165,7 +165,7 @@ var CryptoJSAesJson = {
     if (kw==""){
       var res = await this.request(`/${filter.filter1[0]}/page/${page}/`);
     }else{
-      const res = await this.request(`/page/${page}/?s=${kw}`);
+      var res = await this.request(`/page/${page}/?s=${kw}`);
     }
     const bsxList = res.match(/<article[\s\S]+?<\/article>/g)
     const videos = [];

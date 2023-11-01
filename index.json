@@ -1,5 +1,18 @@
 [
  {
+  "author": "appdevelpo",
+  "icon": "https://m.agedm.org/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "AGE动漫",
+  "nsfw": "false",
+  "package": "agedm.org",
+  "type": "bangumi",
+  "url": "agedm.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.agedm.org"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://anilist.co/img/icons/apple-touch-icon.png",
   "lang": "en",
@@ -443,7 +456,7 @@
   "package": "movieku.lol",
   "type": "bangumi",
   "url": "movieku.lol.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://movieku.lol"
  },
  {

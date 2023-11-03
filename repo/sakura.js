@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         樱花动漫
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       Monster
 // @lang         zh-cn
 // @license      MIT
@@ -124,7 +124,7 @@ export default class extends Extension {
 
         //bot_token,是iv偏移,m3u8_token_key是key,采用AES,CBC模式
         const res = await this.request(`${url}`);
-        const m3mu8_url = "https://danmu.yhdmjx.com/m3u8.php?url="+res.match(/"link_pre":"","url":"(.*?)"/)[1];
+        const m3mu8_url = "https://danmu.yhdmjx.com/m3u8.php?url="+res.match(/"link_pre":".*","url":"(.*?)"/)[1];
 
         // console.log("m3u8连接:"+m3mu8_url);
         const m3u8_res = await (await fetch(m3mu8_url)).text();

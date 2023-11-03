@@ -586,6 +586,19 @@
   "webSite": "https://www.vdm8.com"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://img.sflix.to/xxrz/100x100/100/a2/33/a233d4c4a1426ca77ec1d34deec62f71/a233d4c4a1426ca77ec1d34deec62f71.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "sFlix",
+  "nsfw": "false",
+  "package": "sflix.to",
+  "type": "bangumi",
+  "url": "sflix.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://sflix.to"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://www.simply-hentai.com/favicon.ico",
   "lang": "all",

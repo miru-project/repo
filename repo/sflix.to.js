@@ -46,7 +46,6 @@ async load() {
 }
 
 async search(kw, page) {
-  // Replace spaces with hyphens in the search query
   const formattedQuery = kw.replace(/\s+/g, '-');
   
   const res = await this.request(`/search/${formattedQuery}?page=${page}`);

@@ -638,6 +638,19 @@
   "webSite": "https://api.simply-hentai.com/v3"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://www.sunporno.com/favicon-32x32.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "SunPorno",
+  "nsfw": "true",
+  "package": "sunporno.com",
+  "type": "bangumi",
+  "url": "sunporno.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.sunporno.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",

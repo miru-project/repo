@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         sFlix
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       appdevelpo
 // @lang         en
 // @license      MIT
@@ -44,22 +44,27 @@ async load() {
       d[k>>>24]^e[n>>>16&255]^j[g>>>8&255]^l[h&255]^c[p++],n=d[n>>>24]^e[g>>>16&255]^j[h>>>8&255]^l[k&255]^c[p++],g=q,h=s,k=t;q=(f[g>>>24]<<24|f[h>>>16&255]<<16|f[k>>>8&255]<<8|f[n&255])^c[p++];s=(f[h>>>24]<<24|f[k>>>16&255]<<16|f[n>>>8&255]<<8|f[g&255])^c[p++];t=(f[k>>>24]<<24|f[n>>>16&255]<<16|f[g>>>8&255]<<8|f[h&255])^c[p++];n=(f[n>>>24]<<24|f[g>>>16&255]<<16|f[h>>>8&255]<<8|f[k&255])^c[p++];a[b]=q;a[b+1]=s;a[b+2]=t;a[b+3]=n},keySize:8});u.AES=p._createHelper(d)})();
       this.CryptoJS = CryptoJS;
 }
-  async search(kw, page) {
-    const res = await this.request(`/search/${kw}?page=${page}`);
-    const bsxList = res.match(/flw-item[\s\S]+?<\/div>/g)
-    const videos = [];
-    bsxList.forEach((element) => {
-      const url = element.match(/href="(.+?)"/)[1];
-      const title = element.match(/title="(.+?)"/)[1];
-      const cover = element.match(/src="(.+?)"/)[1];
-      videos.push({
-        title,
-        url,
-        cover,
-      });
+
+async search(kw, page) {
+  // Replace spaces with hyphens in the search query
+  const formattedQuery = kw.replace(/\s+/g, '-');
+  
+  const res = await this.request(`/search/${formattedQuery}?page=${page}`);
+  const bsxList = res.match(/flw-item[\s\S]+?<\/div>/g)
+  const videos = [];
+  bsxList.forEach((element) => {
+    const url = element.match(/href="(.+?)"/)[1];
+    const title = element.match(/title="(.+?)"/)[1];
+    const cover = element.match(/src="(.+?)"/)[1];
+    videos.push({
+      title,
+      url,
+      cover,
     });
-    return videos;
-  }
+  });
+  return videos;
+}
+    
   async req(url) {
       const res = await this.request("",{
           "Miru-Url":url

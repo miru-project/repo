@@ -1,6 +1,19 @@
 [
  {
   "author": "appdevelpo",
+  "icon": "https://9animetv.to/images/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "9Anime",
+  "nsfw": "false",
+  "package": "9animetv.to",
+  "type": "bangumi",
+  "url": "9animetv.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://9animetv.to"
+ },
+ {
+  "author": "appdevelpo",
   "icon": "https://m.agedm.org/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",

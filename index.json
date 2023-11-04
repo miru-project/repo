@@ -348,6 +348,19 @@
   "webSite": "https://kisskh.co"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://s8.lk21static.xyz/wp-content/themes/dunia21/images/favicon-set/apple-icon-144x144.png",
+  "lang": "id",
+  "license": "MIT",
+  "name": "LayarKaca",
+  "nsfw": "false",
+  "package": "lk21official",
+  "type": "bangumi",
+  "url": "lk21official.js",
+  "version": "v0.0.1",
+  "webSite": "https://tv3.lk21official.wiki"
+ },
+ {
   "author": "Monster",
   "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
   "lang": "zh-cn",

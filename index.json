@@ -551,6 +551,19 @@
   "webSite": "https://onejav.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://javgg.net/wp-content/uploads/2020/07/140_Gg_logo_logos-512.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "在线影院",
+  "nsfw": "true",
+  "package": "p7av.com",
+  "type": "bangumi",
+  "url": "p7av.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.haha888.xyz"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://rawkuma.com/wp-content/uploads/2020/01/cropped-Yuna.Kuma_.Kuma_.Kuma_.Bear_.full_.2385251-32x32.png",
   "lang": "jp",

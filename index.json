@@ -186,6 +186,19 @@
   "webSite": "https://api.consumet.org/movies/dramacool"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://eroticmv.com/wp-content/uploads/2020/05/cropped-favicon-32x32-1-192x192.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "EroticMV",
+  "nsfw": "true",
+  "package": "eroticmv.com",
+  "type": "bangumi",
+  "url": "eroticmv.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://eroticmv.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png",
   "lang": "hi",

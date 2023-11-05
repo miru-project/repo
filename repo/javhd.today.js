@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         JavHD
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         jp
 // @license      MIT
@@ -62,9 +62,9 @@ export default class extends Extension {
     const desc = await this.querySelector(res, "p.description").text;
 
     const urlPatterns = [
-        /https:\/\/embedgram\.[^\s'"]+/,
-        /https:\/\/vidcloud\.[^\s'"]+/,
         /https:\/\/emturbovid\.[^\s'"]+/,
+        /https:\/\/vidcloud\.[^\s'"]+/,
+        /https:\/\/embedgram\.[^\s'"]+/,
     ];
 
     let episodeUrl = "";

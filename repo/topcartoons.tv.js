@@ -91,7 +91,7 @@ export default class extends Extension {
 
   async watch(url) {
     return {
-      type: "hls" | "mp4",
+      type: "hls",
       url: url || "",
     };
   }

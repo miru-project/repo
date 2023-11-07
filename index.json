@@ -715,6 +715,19 @@
   "webSite": "https://www.lkp2.top/"
  },
  {
+  "author": "bachig26",
+  "icon": "https://www.topcartoons.tv/wp-content/uploads/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "TopCartoons",
+  "nsfw": "false",
+  "package": "topcartoons.tv",
+  "type": "bangumi",
+  "url": "topcartoons.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.topcartoons.tv"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://st.nettruyenmax.com/data/logos/logo-nettruyen.png",
   "lang": "vi",

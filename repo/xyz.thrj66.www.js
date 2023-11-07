@@ -4,7 +4,7 @@
 // @author       zj
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://xdtv2.xyz/template/xdtv/static/favicon.ico
+// @icon         https://www.thrj66.xyz/upload/site/20230414-1/e7866d047e3aead1859a230900c85296.png
 // @package      xyz.thrj66.www
 // @type         bangumi
 // @webSite      https://www.thrj66.xyz/

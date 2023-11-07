@@ -486,6 +486,19 @@
   "webSite": "https://www.wenku8.net"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://monoschinos2.com/public/img/logo6.png",
+  "lang": "es",
+  "license": "MIT",
+  "name": "MonosChinos",
+  "nsfw": "false",
+  "package": "monoschinos",
+  "type": "bangumi",
+  "url": "monoschinos.js",
+  "version": "v0.0.1",
+  "webSite": "https://monoschinos2.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://i2.wp.com/107.152.37.223/wp-content/uploads/2020/12/cropped-Movieku-2-32x32.jpg",
   "lang": "id",

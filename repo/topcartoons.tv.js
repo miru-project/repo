@@ -8,7 +8,7 @@
 // @type         bangumi
 // @icon         https://www.topcartoons.tv/wp-content/uploads/logo.png
 // @webSite      https://www.topcartoons.tv
-// @nsfw         true
+// @nsfw         false
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -80,7 +80,7 @@ export default class extends Extension {
           title: "Directory",
           urls: [
             {
-              name: title,
+              name: `Watch ${title}`,
               url: episodeUrl,
             },
           ],

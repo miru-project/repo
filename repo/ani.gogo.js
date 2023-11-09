@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniGoGo
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -32,9 +32,9 @@ export default class extends Extension {
   async latest(page) {
     const res = await this.req(`/trending?limit=15&p=${page}`);
     return res.results.map((item) => ({
-      title: item.title.english,
+      title: item.title.english != null ? item.title.english : "",
       url: item.id.toString(),
-      cover: item.coverImage.extraLarge,
+      cover: item.coverImage.extraLarge != null ? item.coverImage.extraLarge : "",
     }));
   }
 
@@ -43,9 +43,9 @@ export default class extends Extension {
     const epRes = await this.request(`/episode/${url}`);
 
     return {
-      title: res.title.english,
-      cover: res.coverImage.large,
-      desc: res.description,
+      title: res.title.english != null ? res.title.english : "",
+      cover: res.coverImage.large != null ? res.coverImage.large : "",
+      desc: res.description != null ? res.description : "",
       episodes: [
         {
           title: "Episodes",

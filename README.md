@@ -6,7 +6,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | Type | Source |
 |  ----   | ---- | --- | ---  | ---  | --- | --- |
-| 9Anime | 9animetv.to | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/9animetv.to.js) |
+| 9Anime | 9animetv.to | v0.0.2 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/9animetv.to.js) |
 | AGE动漫 | agedm.org | v0.0.1 | appdevelpo | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/agedm.org.js) |
 | AniGoGo | ani.gogo | v0.0.3 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | Aniwatch | ani.watch | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
@@ -49,7 +49,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |
 | RoyalRoad | royalroad.com | v0.0.2 | appdevelpo | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/royalroad.com.js) |
 | 樱花动漫 | sakura | v0.0.2 | Monster | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |
-| sFlix | sflix.to | v0.0.2 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sflix.to.js) |
+| sFlix | sflix.to | v0.0.3 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sflix.to.js) |
 | TamilYogi | tamilyogi | v0.0.2 | appdevelpo | hi-ta | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/tamilyogi.js) |
 | MoviesArc | themoviearchive | v0.0.2 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/themoviearchive.js) |
 | TopCartoons | topcartoons.tv | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/topcartoons.tv.js) |

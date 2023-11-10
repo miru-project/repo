@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         sFlix
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       appdevelpo
 // @lang         en
 // @license      MIT
@@ -208,28 +208,11 @@ async search(kw, page) {
         title:element.label,
         url:element.file}
     })
-    const key_res = await this.request("",{
-        headers:{
-            "Miru-Url": "https://raw.githubusercontent.com/enimax-anime/key/e4/key.txt",
-        }
-    });
-    const key = eval(key_res);
-    // let source = encrypted_res_data.sources
-    // 
-    const encrypted_res_data_source = encrypted_res_data.sources
-    const sourcesArray = Array.from(encrypted_res_data_source);
-    // 
-    let extractedKey = '';
-    for (const [index, value] of key) {
-        for (let i = index; i < value; i++) {
-          extractedKey += encrypted_res_data.sources[i];
-          sourcesArray[i] = '';
-      }
-    }
-      // 
-    const cipher = sourcesArray.join('');
-    const decryptedVal = CryptoJS.AES.decrypt(cipher, extractedKey).toString(CryptoJS.enc.Utf8);
-    
+    console.log(encrypted_res_data.sources)
+    const key =await this.start(encrypted_res_data.sources);
+    console.log(key)
+    // const cipher = sourcesArray.join('');
+    const decryptedVal = CryptoJS.AES.decrypt(key[1], key[0]).toString(CryptoJS.enc.Utf8);
     const m3u8_link = decryptedVal.match(/https:\/\/.+m3u8/)[0]
     const m3u8_source = await this.request("",{
         headers:{
@@ -271,6 +254,7 @@ async search(kw, page) {
     for (const [key,element] of video_server.entries()) {
       try{
         const source = await this.sflix_source(server[key],element);
+        console.log(source)
         
         if (source){
             return {
@@ -281,8 +265,92 @@ async search(kw, page) {
         }
         
       }catch(error){
-        console.log("switch to another source")
+        console.log("error")
       }
     }
   }
+  async get_key(cipher){
+  console.log("cipher")
+  const res = await this.request("",{
+      headers:{
+          "Miru-Url": "https://rabbitstream.net/js/player/prod/e4-player.min.js?v=1699594793",
+      }
+  })
+  const filt = res.match(/case 0x\d{1,2}:\w{1,2}=\w{1,2},\w{1,2}=\w{1,2}/g).map(element => {
+      return element.match(/=(\w{1,2})/g).map(element => {
+          return element.substring(1)
+      })
+  })
+  // console.log(res.data.match(/case 0x\d{1,2}:\w{1,2}=\w{1,2},\w{1,2}=\w{1,2}/g))
+  const filt_area = res.match(/\w{1,2}=0x\w{1,2},\w{1,2}=0x\w{1,2},\w{1,2}=0x\w{1,2},\w{1,2}=0x\w{1,2},.+?;/)[0]
+  const objectFromVars = filt_area.split(",").reduce((acc, pair) => {
+      const [key, value] = pair.split("=");
+      acc[key] = parseInt(value);
+      return acc;
+    }, {});
+  //   console.log(objectFromVars)
+  //   console.log(filt)
+    const P = filt.length
+    let C = cipher
+    let I = ''
+, C9 = C
+, CC = 0x0;
+
+for (let CW = 0x0; CW < P; CW++) {
+  let CR, CJ;
+  switch (CW) {
+  case 0x0:
+      CR = objectFromVars[filt[0][0]],
+      CJ = objectFromVars[filt[0][1]];
+      break;
+  case 0x1:
+      CR = objectFromVars[filt[1][0]],
+      CJ = objectFromVars[filt[1][1]];
+      break;
+  case 0x2:
+      CR = objectFromVars[filt[2][0]],
+      CJ = objectFromVars[filt[2][1]];
+      break;
+  case 0x3:
+      CR = objectFromVars[filt[3][0]],
+      CJ = objectFromVars[filt[3][1]];
+      break;
+  case 0x4:
+      CR = objectFromVars[filt[4][0]],
+      CJ = objectFromVars[filt[4][1]];
+      break;
+  case 0x5:
+      CR = objectFromVars[filt[5][0]],
+      CJ = objectFromVars[filt[5][1]];
+      break;
+  case 0x6:
+      CR = objectFromVars[filt[6][0]],
+      CJ = objectFromVars[filt[6][1]];
+      break;
+  case 0x7:
+      CR = objectFromVars[filt[7][0]],
+      CJ = objectFromVars[filt[7][1]];
+      break;
+  case 0x8:
+      CR = objectFromVars[filt[8][0]],
+      CJ = objectFromVars[filt[8][1]];
+  }
+  var CI = CR + CC
+    , CN = CI + CJ;
+  I += C.slice(CI, CN),
+  C9 = C9.replace(C.substring(CI, CN), ''),
+  CC += CJ;
+  }
+  return [I, C9] 
 }
+async  start(cipher){
+  // const cipher = `Ur92EcO2FsdGVkDL8afDXNvdxeN18qi71Zz5KMG5QrJqe3IWqQNxJDTyoxZTBULuRJmQpu49SmGMvN3pcMjGUvkuFXwM7xI5DuSjjZglcJKdWwV6zfFGY4qhGN98EygU9yEwYjyMzEkbgRludYOS1KhQs2ITqE0o1UJn6OjTCoHVl7/1QWTJtMw/hR260qxh/DQPAoHs7JURRSgGZuVBLlIefA/FjtoT6VPwyD2MPBWraXxq9iVWkI6FTA2qZpi7gfxXpgGAoVzGK+Ve4z8cyva5uVElCMBnDYiIHHVEMR1vu5o1oj8YqgNBmZnmUO6LJMFjQD23G2CC2Lb+m/Vg5bLrmINc+NoJ5+CeSW+82hAKpToUVVd555ARlSZViEqA8dk2+BuLokthWX0uomFzqaLg0Ft+7QuprUOLrW68oBrZk2eE3q9z2iO8e99CjqsDAEMZI0S3636kFfOp3JqngVwoZR3MWX/58y9FC7oraicjTtJ+PPPt9lTSpKMw4DlqsgQ==`
+  const numberinarr = Array.from(Array(9), () => new Array(2).fill(undefined)); 
+  // console.log(cipher)
+  const key = await this.get_key(cipher)
+  // console.log(key)
+  return key
+}
+}
+
+

@@ -703,18 +703,6 @@
   "webSite": "https://tamilyogi.plus"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://themoviearchive.site/favicons/apple-touch-icon.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "MoviesArc",
-  "package": "themoviearchive",
-  "type": "bangumi",
-  "url": "themoviearchive.js",
-  "version": "v0.0.2",
-  "webSite": "https://prod.omega.themoviearchive.site/v3"
- },
- {
   "author": "zj",
   "icon": "https://www.lkp2.top/template/muban8/favicon.ico",
   "lang": "zh-cn",

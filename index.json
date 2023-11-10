@@ -551,6 +551,19 @@
   "webSite": "https://nhentai.to"
  },
  {
+  "author": "appdevelpo",
+  "description": "more.",
+  "icon": "https://nyaa.si/static/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Nyaa",
+  "package": "nyaa.si",
+  "type": "bangumi",
+  "url": "nyaa.si.js",
+  "version": "v0.0.1",
+  "webSite": "https://nyaa.si"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://onejav.com/static/img/onejav.5468a5a7d373.png",
   "lang": "jp",

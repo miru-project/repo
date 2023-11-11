@@ -220,8 +220,8 @@
   "package": "flixhq.to",
   "type": "bangumi",
   "url": "flixhq.to.js",
-  "version": "v0.0.2",
-  "webSite": "https://anipuff-consumet.vercel.app/movies/flixhq"
+  "version": "v0.0.3",
+  "webSite": "https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq"
  },
  {
   "author": "appdevelpo",

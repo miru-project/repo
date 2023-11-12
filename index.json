@@ -64,6 +64,19 @@
  },
  {
   "author": "appdevelpo",
+  "icon": "https://anime.girigirilove.com/upload/site/20230603-1/9e57505c4e140f30c70aac0cc93fa9ad.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "girigiri爱动漫",
+  "nsfw": "false",
+  "package": "anime.girigirilove.com",
+  "type": "bangumi",
+  "url": "anime.girigirilove.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://anime.girigirilove.com"
+ },
+ {
+  "author": "appdevelpo",
   "icon": "https://animepahe.ru/pikacon.ico",
   "lang": "en",
   "license": "MIT",

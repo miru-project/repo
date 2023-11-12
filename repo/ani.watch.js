@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         Aniwatch / Zoro
+// @name         AniWatch
 // @version      v0.0.3
 // @author       OshekharO
 // @lang         en

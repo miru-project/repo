@@ -42,12 +42,12 @@
   "icon": "https://aniwatch.to/images/android-chrome-512x512.png",
   "lang": "en",
   "license": "MIT",
-  "name": "Aniwatch",
+  "name": "AniWatch",
   "package": "ani.watch",
   "type": "bangumi",
   "url": "ani.watch.js",
-  "version": "v0.0.2",
-  "webSite": "https://api.consumet.org/anime/zoro"
+  "version": "v0.0.3",
+  "webSite": "https://aniwatch.to"
  },
  {
   "author": "(koikiss-dev)",

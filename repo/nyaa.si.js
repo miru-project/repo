@@ -75,7 +75,7 @@ export default class extends Extension {
             episodes: [{
                     title: "torrent",
                     urls: [{
-                        name: "episode",
+                        name: `Watch ${title}`,
                         url: "https://nyaa.si"+torrent_link
                     }],
             }],

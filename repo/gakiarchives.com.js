@@ -51,14 +51,14 @@ export default class extends Extension {
   }
 
   async detail(url) {
-    const res = await this.request("", {
+    const res = await this.request('', {
       headers: {
         "Miru-Url": url,
       },
     });
 
     const title = await this.querySelector(res, "div.card-header > h3").text;
-    //const cover = await this.querySelector(res, "").getAttributeText("");
+    const cover = res.match(/pic:\s*'([^']+?)'/);
 	//const desc = await this.querySelector(res, "i.far.fa-folder > a").text;
     const urlPatterns = [/https?:\/\/[^\s'"]+\.(?:m3u8)/];
 
@@ -74,7 +74,7 @@ export default class extends Extension {
 
     return {
       title: title.trim(),
-      //cover: "https://gakiarchives.com" + cover,
+      cover: "https://gakiarchives.com" + cover,
 	  //desc,
       episodes: [
         {

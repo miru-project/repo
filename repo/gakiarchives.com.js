@@ -78,7 +78,7 @@ export default class extends Extension {
 	  //desc,
       episodes: [
         {
-          title: "Episode",
+          title: "Directory",
           urls: [
             {
               name: title,

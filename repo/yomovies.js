@@ -6,8 +6,8 @@
 // @license      MIT
 // @package      yomovies
 // @type         bangumi
-// @icon         https://yomovies.watch/wp-content/uploads/2023/11/120-3.jpg
-// @webSite      https://yomovies.watch
+// @icon         https://yomovies.men/wp-content/uploads/2023/11/120-3.jpg
+// @webSite      https://yomovies.men
 // @nsfw         false
 // ==/MiruExtension==
 

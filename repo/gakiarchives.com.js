@@ -59,7 +59,7 @@ export default class extends Extension {
 
     const title = await this.querySelector(res, "div.card-header > h3").text;
     const cover = res.match(/pic:\s*'([^']+?)'/)[1];
-	//const desc = await this.querySelector(res, "i.far.fa-folder > a").text;
+    const desc = await this.querySelector(res, "i.far.fa-folder + a").text;
     const urlPatterns = [/https?:\/\/[^\s'"]+\.(?:m3u8)/];
 
     let episodeUrl = "";
@@ -75,7 +75,7 @@ export default class extends Extension {
     return {
       title: title.trim(),
       cover: "https://gakiarchives.com" + cover,
-	  //desc,
+      desc: desc.trim(),
       episodes: [
         {
           title: "Directory",
@@ -88,8 +88,8 @@ export default class extends Extension {
         },
       ],
     };
-  }
-
+    }
+	
   async watch(url) {
     return {
       type: "hls",

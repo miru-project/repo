@@ -413,6 +413,19 @@
   "webSite": "https://tv3.lk21official.wiki"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://www.manga4life.com/media/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaLife",
+  "nsfw": "false",
+  "package": "manga4life.com",
+  "type": "manga",
+  "url": "manga4life.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.manga4life.com"
+ },
+ {
   "author": "Monster",
   "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
   "lang": "zh-cn",

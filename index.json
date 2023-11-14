@@ -237,6 +237,19 @@
   "webSite": "https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq"
  },
  {
+  "author": "bachig26",
+  "icon": "https://gakiarchives.com/images/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "GakiArchives",
+  "nsfw": "false",
+  "package": "gakiarchives.com",
+  "type": "bangumi",
+  "url": "gakiarchives.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://gakiarchives.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://gimy.su/favicon.ico",
   "lang": "zh-tw",
@@ -904,7 +917,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://yomovies.watch/wp-content/uploads/2023/11/120-3.jpg",
+  "icon": "https://yomovies.men/wp-content/uploads/2023/11/120-3.jpg",
   "lang": "hi",
   "license": "MIT",
   "name": "YoMovies",
@@ -913,7 +926,7 @@
   "type": "bangumi",
   "url": "yomovies.js",
   "version": "v0.0.1",
-  "webSite": "https://yomovies.watch"
+  "webSite": "https://yomovies.men"
  },
  {
   "author": "OshekharO",

@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         Flixhq
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         all
 // @license      MIT
 // @icon         https://flixhq.ws/images/logo.png
 // @package      flixhq.to
 // @type         bangumi
-// @webSite      https://anipuff-consumet.vercel.app/movies/flixhq
+// @webSite      https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -24,16 +24,16 @@ export default class extends Extension {
       title: "FLIXHQ API",
       key: "flixhq",
       type: "input",
-      description: "Flixhq Api Url",
-      defaultValue: "https://anipuff-consumet.vercel.app/movies/flixhq",
+      defaultValue: "https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq",
     });
   }
 
   async latest() {
     const res = await this.req(`/A`);
     return res.results.map((item) => ({
-      title: item.title,
+      title: item.title != null ? item.title : "",
       url: item.id,
+      cover: item.image != null ? item.image : "",
    }));
   }
   
@@ -41,13 +41,14 @@ export default class extends Extension {
     const res = await this.req(`/info?id=${url}`);
     
     return {
-      title: res.title,
-      desc: res.description.trim(),
+      title: res.title != null ? res.title : "",
+      desc: res.description.trim() != null ? res.description.trim() : "",
+      cover: res.image != null ? res.image : "",
       episodes: [
         {
           title: "Directory",
           urls: res.episodes.map((item) => ({
-            name: `${item.title}`,
+            name: `Watch ${item.title}`,
             url: `${item.id}|${url}`,
           })),
         },
@@ -60,6 +61,7 @@ export default class extends Extension {
     return res.results.map((item) => ({
       title: item.title,
       url: item.id,
+      cover: item.image,
    }));
   }
   

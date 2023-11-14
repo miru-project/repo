@@ -9,7 +9,7 @@
   "package": "9animetv.to",
   "type": "bangumi",
   "url": "9animetv.to.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://9animetv.to"
  },
  {
@@ -34,7 +34,7 @@
   "package": "ani.gogo",
   "type": "bangumi",
   "url": "ani.gogo.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://api.amvstr.me/api/v2"
  },
  {
@@ -42,12 +42,12 @@
   "icon": "https://aniwatch.to/images/android-chrome-512x512.png",
   "lang": "en",
   "license": "MIT",
-  "name": "Aniwatch",
+  "name": "AniWatch",
   "package": "ani.watch",
   "type": "bangumi",
   "url": "ani.watch.js",
-  "version": "v0.0.2",
-  "webSite": "https://api.consumet.org/anime/zoro"
+  "version": "v0.0.3",
+  "webSite": "https://aniwatch.to"
  },
  {
   "author": "(koikiss-dev)",
@@ -61,6 +61,19 @@
   "url": "anime.flv.js",
   "version": "v0.0.2",
   "webSite": "https://jimov-api.vercel.app/"
+ },
+ {
+  "author": "appdevelpo",
+  "icon": "https://anime.girigirilove.com/upload/site/20230603-1/9e57505c4e140f30c70aac0cc93fa9ad.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "girigiri爱动漫",
+  "nsfw": "false",
+  "package": "anime.girigirilove.com",
+  "type": "bangumi",
+  "url": "anime.girigirilove.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://anime.girigirilove.com"
  },
  {
   "author": "appdevelpo",
@@ -220,8 +233,8 @@
   "package": "flixhq.to",
   "type": "bangumi",
   "url": "flixhq.to.js",
-  "version": "v0.0.2",
-  "webSite": "https://anipuff-consumet.vercel.app/movies/flixhq"
+  "version": "v0.0.3",
+  "webSite": "https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq"
  },
  {
   "author": "appdevelpo",
@@ -551,6 +564,19 @@
   "webSite": "https://nhentai.to"
  },
  {
+  "author": "appdevelpo",
+  "description": "more.",
+  "icon": "https://nyaa.si/static/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Nyaa",
+  "package": "nyaa.si",
+  "type": "bangumi",
+  "url": "nyaa.si.js",
+  "version": "v0.0.1",
+  "webSite": "https://nyaa.si"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://onejav.com/static/img/onejav.5468a5a7d373.png",
   "lang": "jp",
@@ -660,7 +686,7 @@
   "package": "sflix.to",
   "type": "bangumi",
   "url": "sflix.to.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://sflix.to"
  },
  {
@@ -701,18 +727,6 @@
   "url": "tamilyogi.js",
   "version": "v0.0.2",
   "webSite": "https://tamilyogi.plus"
- },
- {
-  "author": "OshekharO",
-  "icon": "https://themoviearchive.site/favicons/apple-touch-icon.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "MoviesArc",
-  "package": "themoviearchive",
-  "type": "bangumi",
-  "url": "themoviearchive.js",
-  "version": "v0.0.2",
-  "webSite": "https://prod.omega.themoviearchive.site/v3"
  },
  {
   "author": "zj",
@@ -887,6 +901,19 @@
   "url": "xyz.xdtv2.js",
   "version": "v0.0.1",
   "webSite": "https://xdtv2.xyz/"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://yomovies.watch/wp-content/uploads/2023/11/120-3.jpg",
+  "lang": "hi",
+  "license": "MIT",
+  "name": "YoMovies",
+  "nsfw": "false",
+  "package": "yomovies",
+  "type": "bangumi",
+  "url": "yomovies.js",
+  "version": "v0.0.1",
+  "webSite": "https://yomovies.watch"
  },
  {
   "author": "OshekharO",

@@ -58,7 +58,7 @@ export default class extends Extension {
     });
 
     const title = await this.querySelector(res, "div.card-header > h3").text;
-    const cover = res.match(/pic:\s*'([^']+?)'/);
+    const cover = res.match(/pic:\s*'([^']+?)'/)[1];
 	//const desc = await this.querySelector(res, "i.far.fa-folder > a").text;
     const urlPatterns = [/https?:\/\/[^\s'"]+\.(?:m3u8)/];
 

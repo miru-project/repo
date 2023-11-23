@@ -650,8 +650,8 @@
   "package": "readlightnovels",
   "type": "fikushon",
   "url": "readlightnovels.js",
-  "version": "v0.0.1",
-  "webSite": "https://api.consumet.org/light-novels/readlightnovels"
+  "version": "v0.0.2",
+  "webSite": "https://api-consumet-h3n5a059y-kingarthurs-projects.vercel.app/light-novels/readlightnovels"
  },
  {
   "author": "MiaoMint",

@@ -271,8 +271,8 @@
   "package": "gogo.anime",
   "type": "bangumi",
   "url": "gogo.anime.js",
-  "version": "v0.0.2",
-  "webSite": "https://api.consumet.org/anime/gogoanime"
+  "version": "v0.0.3",
+  "webSite": "https://api-consumet-72l9ga4av-an-lee.vercel.app/anime/gogoanime"
  },
  {
   "author": "OshekharO",

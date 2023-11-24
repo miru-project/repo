@@ -116,11 +116,11 @@ export default class extends Extension {
       playListTitle.forEach((element, index)=>{
           const stream_title = element.match(/>&nbsp;(.+?)</)[1]
           const ep_list = playListArea[index].match(/<li[\s\S]+?<\/li>/g).map((ep_element) => {
-              return{
-                name:ep_element.match(/>(\w+)</)[1],
-                url:ep_element.match(/href="(.+?)"/)[1]
-              }
-          })
+            return {
+              name: ep_element.match(/>(\w+)</)?.[1],
+              url: ep_element.match(/href="(.+?)"/)?.[1]
+            }
+          }).filter(episodes => episodes.name && episodes.url);
           episodes.push({
               title:stream_title,
               urls:ep_list

@@ -338,6 +338,19 @@
   "webSite": "https://m.isekaiscan.to"
  },
  {
+  "author": "bachig26",
+  "icon": "https://javhd.icu/wp-content/uploads/2020/04/javhdicuu-logO.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "JAVHD.icu",
+  "nsfw": "true",
+  "package": "javhd.icu",
+  "type": "bangumi",
+  "url": "javhd.icu.js",
+  "version": "v0.0.1",
+  "webSite": "https://javhd.icu"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://javhd.today/android-icon-192x192.png",
   "lang": "jp",

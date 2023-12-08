@@ -955,7 +955,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://yomovies.show/wp-content/uploads/2023/11/120-3.jpg",
+  "icon": "https://yomovies.media/wp-content/uploads/2023/12/120.jpg",
   "lang": "hi",
   "license": "MIT",
   "name": "YoMovies",
@@ -963,8 +963,8 @@
   "package": "yomovies",
   "type": "bangumi",
   "url": "yomovies.js",
-  "version": "v0.0.2",
-  "webSite": "https://yomovies.show"
+  "version": "v0.0.3",
+  "webSite": "https://yomovies.media"
  },
  {
   "author": "OshekharO",

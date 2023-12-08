@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         YoMovies
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         hi
 // @license      MIT
 // @package      yomovies
 // @type         bangumi
-// @icon         https://yomovies.show/wp-content/uploads/2023/11/120-3.jpg
-// @webSite      https://yomovies.show
+// @icon         https://yomovies.media/wp-content/uploads/2023/12/120.jpg
+// @webSite      https://yomovies.media
 // @nsfw         false
 // ==/MiruExtension==
 

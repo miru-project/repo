@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniWatch
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -12,6 +12,7 @@
 
 export default class extends Extension {
   Generes = {}
+  subs =[]
   async createFilter(filter) {
     if(filter){
       console.log(filter)
@@ -137,10 +138,13 @@ export default class extends Extension {
 
   async watch(url) {
     const m3u8_link = await this.Aniwatch(url);
+    console.log(m3u8_link);
+    console.log(this.subs)
     return {
       type:"hls",
       url:m3u8_link,//auto
-      subtitles:JSON.parse(JSON.stringify(this.subs))
+      subtitles: JSON.parse(JSON.stringify(this.subs))
+
   }
   }
 async Aniwatch(url){
@@ -176,12 +180,14 @@ async rabbit_stream(embed_id,referer){
   });
   const encrypted_res_data = JSON.parse(JSON.stringify(encrypted_res));
   
-  this.subs=encrypted_res_data.tracks.map((element) => {
-    return{
-      title:element.label,
-      url:element.file
+  encrypted_res_data.tracks.forEach(element => {
+    if(element.label){
+      this.subs.push({
+        title:element.label,
+        url:element.file
+      })
     }
-  })
+  });
   if (encrypted_res_data.encrypted){
     const key =await this.start(encrypted_res_data.sources);
     console.log(key)
@@ -190,7 +196,6 @@ async rabbit_stream(embed_id,referer){
     decryptedVal = JSON.stringify(encrypted_res_data.sources[0])
   }
   const m3u8_link = decryptedVal.match(/https:\/\/.+m3u8/)[0]
-  console.log(m3u8_link)
   return m3u8_link
 }
 async get_server(url){

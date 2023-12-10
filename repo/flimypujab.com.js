@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         FlimyPujab
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       appdevelpo
 // @lang         hi
 // @license      MIT
@@ -33,18 +33,18 @@ export default class extends Extension {
        return bangumi;
       }
   
-    async latest(page) {
-      const res = await this.request(`/page/${page}/`);
+    async latest() {
+      const res = await this.request(`/hindi-movies/`);
       const bsxList = res.match(/<article([\s\S]+?<\/article>)/g);
        const bangumi = [];
        bsxList.forEach((element) => {
         const url = element.match(/href="https:\/\/111.90.151.26(\/.+?)"/)[1];
-        const title = element.match(/title="Permalink to:(.+?)"/)[1];
+        const title = element.match(/title="(.+?)"/)[1];
         // console.log(title);
         const cover = element.match(/src="(.+?)"/)[1];
         // console.log(cover);
         bangumi.push({
-         title,
+         title: title.replace("Permalink to: ", ""),
          url:`${url};${cover}`,
          cover,
         });

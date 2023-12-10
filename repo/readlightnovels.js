@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         ReadLN
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png
 // @package      readlightnovels
 // @type         fikushon
-// @webSite      https://api.consumet.org/light-novels/readlightnovels
+// @webSite      https://api-consumet-h3n5a059y-kingarthurs-projects.vercel.app/light-novels/readlightnovels
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
       key: "readlightnovels",
       type: "input",
       description: "ReadLN Api Url",
-      defaultValue: "https://api.consumet.org/light-novels/readlightnovels",
+      defaultValue: "https://api-consumet-h3n5a059y-kingarthurs-projects.vercel.app/light-novels/readlightnovels",
     });
   }
 

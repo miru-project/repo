@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         DramaCool
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://dramacool.pa/images/mobi/logo.png
 // @package      dramacool.pa
 // @type         bangumi
-// @webSite      https://api.consumet.org/movies/dramacool
+// @webSite      https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
       key: "dramacool",
       type: "input",
       description: "Dramacool Api Url",
-      defaultValue: "https://api.consumet.org/movies/dramacool",
+      defaultValue: "https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool",
     });
   }
 

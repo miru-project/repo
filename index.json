@@ -46,7 +46,7 @@
   "package": "ani.watch",
   "type": "bangumi",
   "url": "ani.watch.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://aniwatch.to"
  },
  {
@@ -195,8 +195,8 @@
   "package": "dramacool.pa",
   "type": "bangumi",
   "url": "dramacool.pa.js",
-  "version": "v0.0.1",
-  "webSite": "https://api.consumet.org/movies/dramacool"
+  "version": "v0.0.2",
+  "webSite": "https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool"
  },
  {
   "author": "OshekharO",
@@ -221,7 +221,7 @@
   "package": "flimypujab.com",
   "type": "bangumi",
   "url": "flimypujab.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://111.90.151.26"
  },
  {
@@ -271,8 +271,8 @@
   "package": "gogo.anime",
   "type": "bangumi",
   "url": "gogo.anime.js",
-  "version": "v0.0.2",
-  "webSite": "https://api.consumet.org/anime/gogoanime"
+  "version": "v0.0.3",
+  "webSite": "https://api-consumet-72l9ga4av-an-lee.vercel.app/anime/gogoanime"
  },
  {
   "author": "OshekharO",
@@ -336,6 +336,19 @@
   "url": "isekaiscan.to.js",
   "version": "v0.0.3",
   "webSite": "https://m.isekaiscan.to"
+ },
+ {
+  "author": "bachig26",
+  "icon": "https://javhd.icu/wp-content/uploads/2020/04/javhdicuu-logO.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "JAVHD.icu",
+  "nsfw": "true",
+  "package": "javhd.icu",
+  "type": "bangumi",
+  "url": "javhd.icu.js",
+  "version": "v0.0.1",
+  "webSite": "https://javhd.icu"
  },
  {
   "author": "OshekharO",
@@ -650,8 +663,8 @@
   "package": "readlightnovels",
   "type": "fikushon",
   "url": "readlightnovels.js",
-  "version": "v0.0.1",
-  "webSite": "https://api.consumet.org/light-novels/readlightnovels"
+  "version": "v0.0.2",
+  "webSite": "https://api-consumet-h3n5a059y-kingarthurs-projects.vercel.app/light-novels/readlightnovels"
  },
  {
   "author": "MiaoMint",
@@ -753,6 +766,18 @@
   "url": "tamilyogi.js",
   "version": "v0.0.2",
   "webSite": "https://tamilyogi.plus"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://themoviearchive.site/favicons/apple-touch-icon.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "MoviesArc",
+  "package": "themoviearchive",
+  "type": "bangumi",
+  "url": "themoviearchive.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.themoviedb.org/3"
  },
  {
   "author": "zj",
@@ -930,7 +955,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://yomovies.men/wp-content/uploads/2023/11/120-3.jpg",
+  "icon": "https://yomovies.media/wp-content/uploads/2023/12/120.jpg",
   "lang": "hi",
   "license": "MIT",
   "name": "YoMovies",
@@ -938,8 +963,8 @@
   "package": "yomovies",
   "type": "bangumi",
   "url": "yomovies.js",
-  "version": "v0.0.1",
-  "webSite": "https://yomovies.men"
+  "version": "v0.0.3",
+  "webSite": "https://yomovies.media"
  },
  {
   "author": "OshekharO",

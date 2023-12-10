@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniWatch
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -47,7 +47,7 @@ export default class extends Extension {
       key: "zoro",
       type: "input",
       description: "Zoro Api Url",
-      defaultValue: "https://api.consumet.org/anime/zoro",
+      defaultValue: "https://oneseries.vercel.app/anime/zoro",
     });
   }
   async get_filter(res){
@@ -83,7 +83,7 @@ export default class extends Extension {
     const episodes = [];
     const res = await this.request("",{
         headers: {
-            "Miru-Url": `https://api.consumet.org/anime/zoro/info?id=${url}`,
+            "Miru-Url": `https://oneseries.vercel.app/anime/zoro/info?id=${url}`,
         }
     });
     const server = await this.get_server(res.episodes[0].url);

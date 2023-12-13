@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         KimCartoon
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -79,7 +79,7 @@ export default class extends Extension {
 
       episodes.push({
         name,
-        url: "https://kimcartoon.li" + url + "&s=sw",
+        url: "https://kimcartoon.li" + url + "&s=vm",
       });
     }
 
@@ -103,7 +103,7 @@ export default class extends Extension {
       },
     });
 
-    const dwishLink = res.match(/https:\/\/kswplayer\.info\/e\/[^\s'"]+/);
+    const dwishLink = res.match(/https:\/\/vidmoly\.to\/[^\s'"]+/);
 
     const dwishLinkRes = await this.request("", {
       headers: {

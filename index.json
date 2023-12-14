@@ -755,8 +755,21 @@
   "webSite": "https://www.sunporno.com"
  },
  {
+  "author": "bachig26",
+  "icon": "https://www.supercartoons.net/wp-content/uploads/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "SuperCartoons",
+  "nsfw": "false",
+  "package": "supercartoons.net",
+  "type": "bangumi",
+  "url": "supercartoons.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.supercartoons.net"
+ },
+ {
   "author": "appdevelpo",
-  "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
+  "icon": "https://tamilyogi.party/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",
   "license": "MIT",
   "name": "TamilYogi",
@@ -764,8 +777,8 @@
   "package": "tamilyogi",
   "type": "bangumi",
   "url": "tamilyogi.js",
-  "version": "v0.0.2",
-  "webSite": "https://tamilyogi.plus"
+  "version": "v0.0.3",
+  "webSite": "https://tamilyogi.party"
  },
  {
   "author": "OshekharO",

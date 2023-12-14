@@ -867,6 +867,18 @@
   "webSite": "https://"
  },
  {
+  "author": "Bad",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "18影视集合",
+  "nsfw": "true",
+  "package": "vod.api.json.collection18",
+  "type": "bangumi",
+  "url": "vod.api.json.collection18.js",
+  "version": "v0.0.1",
+  "webSite": "https://"
+ },
+ {
   "author": "Horis",
   "lang": "zh-cn",
   "license": "MIT",

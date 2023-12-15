@@ -616,6 +616,19 @@
   "webSite": "https://nyaa.si"
  },
  {
+  "author": "bethro",
+  "icon": "https://omegascans.org/icon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Omegascans",
+  "nsfw": "true",
+  "package": "omegascans.org",
+  "type": "manga",
+  "url": "omegascans.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.omegascans.org"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://onejav.com/static/img/onejav.5468a5a7d373.png",
   "lang": "jp",

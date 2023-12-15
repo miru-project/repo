@@ -642,6 +642,19 @@
   "webSite": "https://www.haha888.xyz"
  },
  {
+  "author": "bachig26",
+  "icon": "https://www.pornxp.com/logo2.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "PornXP",
+  "nsfw": "true",
+  "package": "pornxp.com",
+  "type": "bangumi",
+  "url": "pornxp.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.pornxp.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://rawkuma.com/wp-content/uploads/2020/01/cropped-Yuna.Kuma_.Kuma_.Kuma_.Bear_.full_.2385251-32x32.png",
   "lang": "jp",
@@ -769,7 +782,7 @@
  },
  {
   "author": "appdevelpo",
-  "icon": "https://tamilyogi.party/wp-content/uploads/2021/06/ty.png",
+  "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",
   "license": "MIT",
   "name": "TamilYogi",
@@ -777,8 +790,8 @@
   "package": "tamilyogi",
   "type": "bangumi",
   "url": "tamilyogi.js",
-  "version": "v0.0.3",
-  "webSite": "https://tamilyogi.party"
+  "version": "v0.0.4",
+  "webSite": "https://tamilyogi.plus"
  },
  {
   "author": "OshekharO",

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NetTruyen
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       OshekharO
 // @lang         vi
 // @license      MIT
@@ -53,7 +53,7 @@ export default class extends Extension {
         {
           title: "Chapters",
           urls: reversedChapters.map((item) => ({
-            name: `Episode ${item.name}`,
+            name: `Chapter ${item.name}`,
             url: `${id}|${item.id}`,
           })),
         },

@@ -275,19 +275,6 @@
   "webSite": "https://api-consumet-6adls650k-saurabhgangule.vercel.app/anime/gogoanime"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://hanime.tv/favicon.ico",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Hanime",
-  "nsfw": "true",
-  "package": "hanime.tv",
-  "type": "bangumi",
-  "url": "hanime.tv.js",
-  "version": "v0.0.1",
-  "webSite": "https://apikatsu.otakatsu.studio/api"
- },
- {
   "author": "appdevelpo",
   "icon": "https://img4.qy0.ru/data/2205/36/tab_logo.png",
   "lang": "zh",

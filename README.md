@@ -20,7 +20,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | Comick | comick.app | v0.0.3 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
 | Comrademao | comrademao | v0.0.3 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comrademao.js) |
-| 7喜影院 | dev.0n0.miru.7xi | v0.0.6 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
+| 7喜影院 | dev.0n0.miru.7xi | v0.0.7 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | DramaCool | dramacool.pa | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dramacool.pa.js) |
 | FlimyPujab | flimypujab.com | v0.0.2 | appdevelpo | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flimypujab.com.js) |
 | Flixhq | flixhq.to | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.to.js) |

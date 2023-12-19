@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         7喜影院
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -44,11 +44,15 @@ export default class extends Extension {
         const li = res.match(/public-list-box public-pic-b [^']+?<\/div><\/div><\/div>/g)
         const bangumi = []
         li.forEach(e => {
-            const title = e.match(/title="(.+?)"/)[1]
-            const url = e.match(/href="(.+?)"/)[1]
-            const cover = e.match(/data-src="(.+?)"/)[1]
+            const titleMatch = e.match(/title="(.+?)"/)
+            const title = titleMatch ? titleMatch[1] : null
+            const urlMatch = e.match(/href="(.+?)"/)
+            const url = urlMatch ? urlMatch[1] : null
+            const coverMatch = e.match(/data-src="(.+?)"/)
+            const cover = coverMatch ? coverMatch[1] : null
             const cover_url = cover.includes("https")?cover:`https://www.7xi.tv${cover}`;
-            const update = e.match(/"public-list-prb hide ft2">(.+?)<\/span>/)[1];
+            const updateMatch = e.match(/"public-list-prb hide ft2">(.+?)<\/span>/);
+            const update = updateMatch ? updateMatch[1] : null
             bangumi.push({
                 title,
                 url,

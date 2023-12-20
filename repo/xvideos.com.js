@@ -62,7 +62,6 @@ export default class extends Extension {
 	const desc = await this.querySelector(res, "li.main-uploader > a > span.name").text;
 
 	const urlPatterns = [/https?:\/\/[^\s'"]+\.(?:m3u8)/];
-	//const urlPatterns = [/https:\/\/cdn77-vid.xvideos-cdn.com\/(.+?).m3u8/];
 	
     let episodeUrl = "";
 
@@ -78,7 +77,6 @@ export default class extends Extension {
       title: title.trim(),
       cover,
 	  desc,
-	  //desc: desc.trim(),
       episodes: [
         {
           title: "Directory",

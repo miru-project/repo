@@ -56,16 +56,11 @@ export default class extends Extension {
         "Miru-Url": url,
       },
     });
-
-    const title = await this.querySelector(res, "meta[property='og:title']").getAttributeText("content");
-    const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
-	
-	//const urlPatterns = [/<video class="player-container__no-script-video" preload="auto"[^\"]*src="(.+?\.mp4)"/];
-	//just 1080p mp4 stream
-	//const urlPatterns = [/"h264":{"url":"(.+?)"}/]; //m3u8 stream, some videos doesn't play with this url
-	
-	const urlPatterns = [/<link rel="preload" href="(.+?)"/]; //m3u8 stream
-	
+	  
+	const title = await this.querySelector(res, "meta[property='og:title']").getAttributeText("content");
+	const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
+	const urlPatterns = [/<link rel="preload" href="(.+?)"/];
+	  
     let episodeUrl = "";
 
     for (const pattern of urlPatterns) {

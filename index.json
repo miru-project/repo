@@ -187,6 +187,19 @@
   "webSite": "https://www.7xi.tv"
  },
  {
+  "author": "bachig26",
+  "icon": "https://draftsex.porn/templates/ds/images/draftsex.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Draftsex",
+  "nsfw": "true",
+  "package": "draftsex.porn",
+  "type": "bangumi",
+  "url": "draftsex.porn.js",
+  "version": "v0.0.1",
+  "webSite": "https://draftsex.porn"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://dramacool.pa/images/mobi/logo.png",
   "lang": "en",
@@ -643,6 +656,19 @@
  },
  {
   "author": "bachig26",
+  "icon": "https://pornenix.com/templates/pornenix/images/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "PornEnix",
+  "nsfw": "true",
+  "package": "pornenix.com",
+  "type": "bangumi",
+  "url": "pornenix.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://pornenix.com"
+ },
+ {
+  "author": "bachig26",
   "icon": "https://www.pornxp.com/logo2.png",
   "lang": "en",
   "license": "MIT",
@@ -964,6 +990,45 @@
   "url": "wtr-lab.com.js",
   "version": "v0.0.1",
   "webSite": "https://wtr-lab.com"
+ },
+ {
+  "author": "bachig26",
+  "icon": "https://static-lvlt.xhcdn.com/xh-desktop/images/favicon/favicon-512x512.png?v=1",
+  "lang": "en",
+  "license": "MIT",
+  "name": "xHamster",
+  "nsfw": "true",
+  "package": "xhamster.com",
+  "type": "bangumi",
+  "url": "xhamster.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://xhamster.com"
+ },
+ {
+  "author": "bachig26",
+  "icon": "https://static-ss.xnxx-cdn.com/v3/img/skins/xnxx/logo-xnxx.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "XNXX",
+  "nsfw": "true",
+  "package": "xnxx.com",
+  "type": "bangumi",
+  "url": "xnxx.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.xnxx.com"
+ },
+ {
+  "author": "bachig26",
+  "icon": "https://static-ss.xvideos-cdn.com/v3/img/skins/default/logo/xv.white.180.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "XVIDEOS",
+  "nsfw": "true",
+  "package": "xvideos.com",
+  "type": "bangumi",
+  "url": "xvideos.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.xvideos.com"
  },
  {
   "author": "zj",

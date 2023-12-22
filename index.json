@@ -590,6 +590,19 @@
   "webSite": "https://yts.mx"
  },
  {
+  "author": "bachig26",
+  "icon": "https://netfapx.com/wp-content/uploads/2017/11/netfapx-lg-1_319381e1f227e13ae1201bfa30857622.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "NETFAPX",
+  "nsfw": "true",
+  "package": "netfapx.com",
+  "type": "bangumi",
+  "url": "netfapx.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://netfapx.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://nhentai.to/favicon.ico",
   "lang": "all",
@@ -666,6 +679,19 @@
   "url": "pornenix.com.js",
   "version": "v0.0.1",
   "webSite": "https://pornenix.com"
+ },
+ {
+  "author": "bachig26",
+  "icon": "https://ptx.cdntrex.com/images/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "PornTrex",
+  "nsfw": "true",
+  "package": "porntrex.com",
+  "type": "bangumi",
+  "url": "porntrex.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.porntrex.com"
  },
  {
   "author": "bachig26",

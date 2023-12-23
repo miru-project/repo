@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         PornEnix
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bachig26
 // @lang         en
 // @license      MIT
@@ -19,10 +19,10 @@ export default class extends Extension {
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "span.item__title-label").text;
+      const title = await this.querySelector(html, "span.item__title > span.item__title-label").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
       novel.push({
-        title,
+        title: title.trim(),
         url,
         cover,
       });
@@ -39,10 +39,10 @@ export default class extends Extension {
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "span.item__title-label").text;
+      const title = await this.querySelector(html, "span.item__title > span.item__title-label").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
       novel.push({
-        title,
+        title: title.trim(),
         url,
         cover,
       });
@@ -61,7 +61,7 @@ export default class extends Extension {
 	const cover = res.match(/posterImage: "(.+?)"/)[1];
 	const desc = await this.querySelector(res, "ul.tag-list > span.tag-list__label").text;
 	
-	const urlPatterns = [/<source title="Best Quality" src="(.+?\.mp4)"/];
+	const urlPatterns = [/src="(.+?\.mp4)"/];
 	
     let episodeUrl = "";
 
@@ -76,7 +76,7 @@ export default class extends Extension {
     return {
       title: title.trim(),
       cover,
-	  desc,
+	  desc: desc.trim(),
       episodes: [
         {
           title: "Directory",

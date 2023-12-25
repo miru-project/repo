@@ -21,7 +21,6 @@ export default class extends Extension {
     shenmajuhe: 'https://img.smdyw.top/api.php/provide/vod/',
     yingmi: 'https://www.inmi.app/api.php/provide/vod/',
     yingtu: 'https://cj.vodimg.top/api.php/provide/vod/',
-    damo: 'https://damozy.com/api.php/provide/vod/from/M3U8/',
     feifan: 'https://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/',
     feisu: 'https://www.feisuzyapi.com/api.php/provide/vod/from/fsm3u8/',
     guangsu: 'https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/',
@@ -34,7 +33,6 @@ export default class extends Extension {
     liangzi: 'https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/',
     qihu: 'https://caiji.qhzyapi.com/api.php/provide/vod/from/qhm3u8/',
     shandian: 'https://sdzyapi.com/api.php/provide/vod/from/sdm3u8/',
-    shoujihanju: 'https://77hanju.com/api.php/provide/vod/from/mkm3u8/',
     subo: 'https://subocaiji.com/api.php/provide/vod/from/subm3u8/',
     taopian: 'https://taopianapi.com/cjapi/mc/vod/json/m3u8.html',
     tiankong: 'https://api.tiankongapi.com/api.php/provide/vod/from/tkm3u8/',
@@ -44,7 +42,19 @@ export default class extends Extension {
     xinlang:
       'https://api.xinlangapi.com/xinlangapi.php/provide/vod/from/xlm3u8/',
     yinghua: 'https://m3u8.apiyhzy.com/api.php/provide/vod/',
-    youzhi: 'https://api.1080zyku.com/inc/apijson.php/provide/vod/'
+    youzhi: 'https://api.1080zyku.com/inc/apijson.php/provide/vod/',
+    suoni: 'https://suoniapi.com/api.php/provide/vod/from/snm3u8/',
+    zhongzi: 'https://zzdj.cc/api.php/provide/vod/from/zzdj/',
+    leshi: 'https://leshizyapi.com/api.php/provide/vod/from/leshi/',
+    modu: 'https://caiji.moduapi.cc/api.php/provide/vod/from/modum3u8/',
+    yaoxie: 'http://zyz.yxys.top/api.php/provide/vod/from/yxys/',
+    haohua: 'https://hhzyapi.com/api.php/provide/vod/from/hhm3u8/',
+    jiafeimao: 'https://xzcjz.com/api.php/provide/vod/',
+    sijiu: 'https://49zyw.com/api.php/provide/vod/from/49zyw/',
+    jiguang: 'https://jiguang.la/api.php/provide/vod/from/jiguang/',
+    kuaiyun: 'https://kuaiyun-api.com/api.php/provide/vod/from/kuaiyun/',
+    kuaikan: 'https://kuaikan-api.com/api.php/provide/vod/from/kuaikan/',
+    qihu: 'https://caiji.qhzyapi.com/api.php/provide/vod/from/qhm3u8/'
   }
 
   api = 'https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/'
@@ -102,7 +112,6 @@ export default class extends Extension {
         shenmajuhe: '神马聚合影视',
         yingmi: '映迷影视',
         yingtu: '影图影视',
-        damo: '大漠影视',
         feifan: '非凡影视',
         feisu: '飞速影视',
         guangsu: '光速影视',
@@ -115,7 +124,6 @@ export default class extends Extension {
         liangzi: '量子影视',
         qihu: '奇虎影视',
         shandian: '闪电影视',
-        shoujihanju: '手机韩剧影视',
         subo: '速播影视',
         taopian: '淘片影视',
         tiankong: '天空影视',
@@ -124,7 +132,19 @@ export default class extends Extension {
         wujin: '无尽影视',
         xinlang: '新浪影视',
         yinghua: '樱花影视',
-        youzhi: '优质影视'
+        youzhi: '优质影视',
+        suoni: '索尼影视',
+        zhongzi: '种子短剧',
+        leshi: '乐视影视',
+        modu: '魔都动漫',
+        yaoxie: '耀协影视',
+        haohua: '豪华影视',
+        jiafeimao: '加菲猫影视',
+        sijiu: '49影视',
+        jiguang: '极光影视',
+        kuaiyun: '快云影视',
+        kuaikan: '快看影视',
+        qihu: '奇虎影视'
       }
     }
 
@@ -199,9 +219,9 @@ export default class extends Extension {
       const urls = []
       for (const info of rtrim(playlist, '#').split('#')) {
         const [episodeName, playUrl] = info.split('$')
-        if (!playUrl.endsWith('.m3u8')) {
-          continue loop
-        }
+        // if (!playUrl.endsWith('.m3u8')) {
+        //   continue loop
+        // }
         urls.push({
           name: episodeName,
           url: playUrl

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         影视集合
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       Horis
 // @lang         zh-cn
 // @license      MIT

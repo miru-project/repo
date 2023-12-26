@@ -265,14 +265,14 @@
  {
   "author": "appdevelpo",
   "icon": "https://gimy.su/favicon.ico",
-  "lang": "zh-tw",
+  "lang": "zh",
   "license": "MIT",
   "name": "gimy",
   "nsfw": "false",
   "package": "gimy.su",
   "type": "bangumi",
   "url": "gimy.su.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://gimy.su"
  },
  {

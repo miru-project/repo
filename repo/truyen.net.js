@@ -1,10 +1,10 @@
 // ==MiruExtension==
 // @name         NetTruyen
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       OshekharO
 // @lang         vi
 // @license      MIT
-// @icon         https://st.nettruyenmax.com/data/logos/logo-nettruyen.png
+// @icon         https://st.nettruyenus.com/data/logos/logo-nettruyen.png
 // @package      truyen.net
 // @type         manga
 // @webSite      https://comics-api.vercel.app
@@ -53,7 +53,7 @@ export default class extends Extension {
         {
           title: "Chapters",
           urls: reversedChapters.map((item) => ({
-            name: `Episode ${item.name}`,
+            name: `Chapter ${item.name}`,
             url: `${id}|${item.id}`,
           })),
         },

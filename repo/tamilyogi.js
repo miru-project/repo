@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         TamilYogi
-// @version      v0.0.2
+// @version      v0.0.4
 // @author       appdevelpo
 // @lang         hi-ta
 // @license      MIT
@@ -105,4 +105,3 @@ export default class extends Extension {
         };
     }
 }
-

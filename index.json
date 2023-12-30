@@ -139,6 +139,19 @@
   "webSite": "https://cooing.cc"
  },
  {
+  "author": "vvsolo",
+  "icon": "https://live.fanmingming.com/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "Client",
+  "nsfw": "false",
+  "package": "client.iptv",
+  "type": "bangumi",
+  "url": "client.iptv.js",
+  "version": "v0.0.1",
+  "webSite": "https://live.fanmingming.com/"
+ },
+ {
   "author": "MiaoMint",
   "icon": "https://www.dmzj.com/_nuxt/logo_dmzj.1c94014a.png",
   "lang": "zh-cn",

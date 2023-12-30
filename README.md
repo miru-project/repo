@@ -17,6 +17,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 包子漫画 | baozimh.com | v0.0.1 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
+| Client | client.iptv | v0.0.1 | vvsolo | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/client.iptv.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | Comick | comick.app | v0.0.3 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |

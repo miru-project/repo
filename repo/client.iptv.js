@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         MyIPTV
 // @description  A simple IPTV client
-// @version      v0.0.3
+// @version      v0.0.2
 // @author       vvsolo
 // @lang         zh-cn
 // @license      MIT

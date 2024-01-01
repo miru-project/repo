@@ -10,6 +10,7 @@
 // @icon         https://avatars.githubusercontent.com/u/55937028?s=48&v=4
 // @webSite      https://
 // @nsfw         false
+// @tmdb         false
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -32,7 +33,6 @@ export default class extends Extension {
 		//'蜂蜜18+': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/txt/adult.txt',
 		//'MV系列': 'https://qu.ax/oiNH.txt',
 		'武哥': 'https://qu.ax/LEPk.txt',
-		'iptv-org-country-in': 'https://iptv-org.github.io/iptv/countries/in.m3u',
 		'iptv-org-country-cn': 'https://iptv-org.github.io/iptv/countries/cn.m3u',
 		'iptv-org-country-hk': 'https://iptv-org.github.io/iptv/countries/hk.m3u',
 		'iptv-org-country-tw': 'https://iptv-org.github.io/iptv/countries/tw.m3u',
@@ -40,13 +40,17 @@ export default class extends Extension {
 		'iptv-org-country-jp': 'https://iptv-org.github.io/iptv/countries/jp.m3u',
 		'iptv-org-country-kr': 'https://iptv-org.github.io/iptv/countries/kr.m3u',
 		'iptv-org-country-ru': 'https://iptv-org.github.io/iptv/countries/ru.m3u',
-		'iptv-org-language-hin': 'https://iptv-org.github.io/iptv/languages/hin.m3u',
 		'iptv-org-language-zho': 'https://iptv-org.github.io/iptv/languages/zho.m3u',
 		'iptv-org-language-eng': 'https://iptv-org.github.io/iptv/languages/eng.m3u',
 		'iptv-org-language-jpn': 'https://iptv-org.github.io/iptv/languages/jpn.m3u',
 		'iptv-org-language-kor': 'https://iptv-org.github.io/iptv/languages/kor.m3u',
 		'iptv-org-category-movies': 'https://iptv-org.github.io/iptv/categories/movies.m3u',
 		'iptv-org-category-music': 'https://iptv-org.github.io/iptv/categories/music.m3u',
+		'Japanese-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/luongz/iptv-jp/main/jp.m3u',
+		'Thai-TV1': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV.m3u',
+		'Thai-TV2': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV2.m3u',
+		'Turkish-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/keyiflerolsun/IPTV_YenirMi/master/Kanallar/KekikAkademi.m3u',
+		'German-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/josxha/german-tv-m3u/main/german-tv.m3u',
 		'test-type-txt': 'https://myernestlu.github.io/zby.txt',
 	};
 
@@ -114,31 +118,33 @@ export default class extends Extension {
 
 		const bangumi = [];
 		if (ext === '.m3u' || ~content.search(/#EXTM3U/i)) {
+			let title, cover, tid, group, tmp;
 			content
 				.concat('\n')
-				.replace(/\,([^,]+)\n(https?:\/\/.+)\n/g, ',$1,$2\n')
-				.replace(/\n+$/, '')
-				// fix
-				.replace(/^#EXTINF:-1,tvg/gm, '#EXTINF:-1 tvg')
 				.split('\n')
 				.forEach((item) => {
-					if (~item.search(/^#EXTINF:/)) {
-						const [tmp, title, url] = item.split(',', 3);
-						let cover = tmp.match(/tvg\-logo\="([^"]+)"/)?.[1] || '';
-						let tid;
-						if (!cover && (tid = tmp.match(/tvg\-name\="([^"]+)"/))) {
+					if (item.startsWith('#EXTINF:')) {
+						title = item.slice(item.lastIndexOf(',') + 1).trim();
+						cover = item.match(/tvg\-logo\="([^"]+)"/)?.[1] || '';
+						if (!cover && (tid = item.match(/tvg\-name\="([^"]+)"/))) {
 							cover = `https://epg.112114.xyz/logo/${tid[1]}.png`;
 						}
+						group = item.match(/group\-title\="([^"]+)"/)?.[1] || '';
+					} else if (
+						item.startsWith('http') &&
+						~item.search(/\.(?:m3u8?|mp4|mp3|mkv|mov|avi|flv)/i) &&
+						title
+					) {
 						bangumi.push({
 							title,
-							url,
+							url: item.trim(),
 							cover,
-							group: tmp.match(/group\-title\="([^"]+)"/)?.[1] || ''
+							group
 						});
 					}
 				});
 		} else if (ext === '.txt' || ~content.search(/#genre#/i)) {
-			let group = '', tmp;
+			let group, tmp;
 			content.split('\n').forEach((item) => {
 				tmp = item.split(',');
 				if (tmp.length !== 2) {

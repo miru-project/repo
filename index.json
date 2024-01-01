@@ -140,16 +140,17 @@
  },
  {
   "author": "vvsolo",
-  "icon": "https://live.fanmingming.com/logo.png",
+  "description": "client",
+  "icon": "https://avatars.githubusercontent.com/u/55937028?s=48\u0026v=4",
   "lang": "zh-cn",
   "license": "MIT",
-  "name": "Client",
+  "name": "MyIPTV",
   "nsfw": "false",
   "package": "client.iptv",
   "type": "bangumi",
   "url": "client.iptv.js",
-  "version": "v0.0.1",
-  "webSite": "https://live.fanmingming.com/"
+  "version": "v0.0.2",
+  "webSite": "https://"
  },
  {
   "author": "MiaoMint",

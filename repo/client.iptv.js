@@ -23,6 +23,8 @@ export default class extends Extension {
 		'MyIPTV-IPV6': 'https://qu.ax/nazV.m3u',
 		'MyIPTV-IPV4': 'https://qu.ax/atTi.m3u',
 		'YanG-1989-Gather': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u',
+		//'Adult-IPTV': 'http://adultiptv.net/chs.m3u',
+		//'Adult-IPTV-Vod': 'http://adultiptv.net/videos.m3u8',
 		//'YanG-1989-Adult[NSFW]': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u',
 		'YueChan-IPV6': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u',
 		'YueChan-Radio': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YueChan/Live/main/Radio.m3u',

@@ -10,7 +10,6 @@
 // @icon         https://avatars.githubusercontent.com/u/55937028?s=48&v=4
 // @webSite      https://
 // @nsfw         false
-// @tmdb         false
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -36,16 +35,13 @@ export default class extends Extension {
 		'iptv-org-country-cn': 'https://iptv-org.github.io/iptv/countries/cn.m3u',
 		'iptv-org-country-hk': 'https://iptv-org.github.io/iptv/countries/hk.m3u',
 		'iptv-org-country-tw': 'https://iptv-org.github.io/iptv/countries/tw.m3u',
-		'iptv-org-country-us': 'https://iptv-org.github.io/iptv/countries/us.m3u',
 		'iptv-org-country-jp': 'https://iptv-org.github.io/iptv/countries/jp.m3u',
 		'iptv-org-country-kr': 'https://iptv-org.github.io/iptv/countries/kr.m3u',
 		'iptv-org-country-ru': 'https://iptv-org.github.io/iptv/countries/ru.m3u',
-		'iptv-org-language-zho': 'https://iptv-org.github.io/iptv/languages/zho.m3u',
-		'iptv-org-language-eng': 'https://iptv-org.github.io/iptv/languages/eng.m3u',
-		'iptv-org-language-jpn': 'https://iptv-org.github.io/iptv/languages/jpn.m3u',
-		'iptv-org-language-kor': 'https://iptv-org.github.io/iptv/languages/kor.m3u',
-		'iptv-org-category-movies': 'https://iptv-org.github.io/iptv/categories/movies.m3u',
-		'iptv-org-category-music': 'https://iptv-org.github.io/iptv/categories/music.m3u',
+		'iptv-org-lang-zho': 'https://iptv-org.github.io/iptv/languages/zho.m3u',
+		'iptv-org-lang-jpn': 'https://iptv-org.github.io/iptv/languages/jpn.m3u',
+		'iptv-org-lang-kor': 'https://iptv-org.github.io/iptv/languages/kor.m3u',
+		'iptv-org-movies': 'https://iptv-org.github.io/iptv/categories/movies.m3u',
 		'Japanese-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/luongz/iptv-jp/main/jp.m3u',
 		'Thai-TV1': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV.m3u',
 		'Thai-TV2': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV2.m3u',

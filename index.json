@@ -439,6 +439,18 @@
   "webSite": "https://kisskh.co"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://letv.im/template/letv/asset/img/favicon.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "Letv影院",
+  "package": "letv.im",
+  "type": "bangumi",
+  "url": "letv.im.js",
+  "version": "v0.0.1",
+  "webSite": "https://letv.im"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://s8.lk21static.xyz/wp-content/themes/dunia21/images/favicon-set/apple-icon-144x144.png",
   "lang": "id",

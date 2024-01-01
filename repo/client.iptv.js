@@ -10,7 +10,6 @@
 // @icon         https://avatars.githubusercontent.com/u/55937028?s=48&v=4
 // @webSite      https://
 // @nsfw         false
-// @tmdb         false
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -33,6 +32,7 @@ export default class extends Extension {
 		//'蜂蜜18+': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/txt/adult.txt',
 		//'MV系列': 'https://qu.ax/oiNH.txt',
 		'武哥': 'https://qu.ax/LEPk.txt',
+		'iptv-org-country-in': 'https://iptv-org.github.io/iptv/countries/in.m3u',
 		'iptv-org-country-cn': 'https://iptv-org.github.io/iptv/countries/cn.m3u',
 		'iptv-org-country-hk': 'https://iptv-org.github.io/iptv/countries/hk.m3u',
 		'iptv-org-country-tw': 'https://iptv-org.github.io/iptv/countries/tw.m3u',
@@ -40,6 +40,7 @@ export default class extends Extension {
 		'iptv-org-country-jp': 'https://iptv-org.github.io/iptv/countries/jp.m3u',
 		'iptv-org-country-kr': 'https://iptv-org.github.io/iptv/countries/kr.m3u',
 		'iptv-org-country-ru': 'https://iptv-org.github.io/iptv/countries/ru.m3u',
+		'iptv-org-language-hin': 'https://iptv-org.github.io/iptv/languages/hin.m3u',
 		'iptv-org-language-zho': 'https://iptv-org.github.io/iptv/languages/zho.m3u',
 		'iptv-org-language-eng': 'https://iptv-org.github.io/iptv/languages/eng.m3u',
 		'iptv-org-language-jpn': 'https://iptv-org.github.io/iptv/languages/jpn.m3u',

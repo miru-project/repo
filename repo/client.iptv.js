@@ -50,6 +50,8 @@ export default class extends Extension {
 			'Thai-TV2': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV2.m3u',
 			'Turkish-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/keyiflerolsun/IPTV_YenirMi/master/Kanallar/KekikAkademi.m3u',
 			'German-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/josxha/german-tv-m3u/main/german-tv.m3u',
+			'freecatv': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/manikiptv/freecatv.github.io/main/freecatv.m3u8',
+			'freecatv-Live': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/manikiptv/freecatv.github.io/main/FreecatvLive.m3u8',
 			'test-type-txt': 'https://myernestlu.github.io/zby.txt',
 		}
 	}

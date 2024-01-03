@@ -142,14 +142,14 @@
   "author": "vvsolo",
   "description": "client",
   "icon": "https://avatars.githubusercontent.com/u/55937028?s=48\u0026v=4",
-  "lang": "zh-cn",
+  "lang": "all",
   "license": "MIT",
   "name": "MyIPTV",
   "nsfw": "false",
   "package": "client.iptv",
   "type": "bangumi",
   "url": "client.iptv.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://"
  },
  {
@@ -163,6 +163,19 @@
   "url": "com.dmzj.www.js",
   "version": "v0.0.2",
   "webSite": "https://www.dmzj.com"
+ },
+ {
+  "author": "vvsolo",
+  "icon": "http://mxsmh01.top/static/images/favicon.ico",
+  "lang": "zh-tw",
+  "license": "MIT",
+  "name": "愛看漫畫",
+  "nsfw": "true",
+  "package": "com.freexcomic",
+  "type": "manga",
+  "url": "com.freexcomic.js",
+  "version": "v0.0.1",
+  "webSite": "http://"
  },
  {
   "author": "MiaoMint",

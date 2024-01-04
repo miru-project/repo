@@ -925,6 +925,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://res.taotu.org/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "[Photo]",
+  "nsfw": "true",
+  "package": "taotu",
+  "type": "manga",
+  "url": "taotu.js",
+  "version": "v0.0.1",
+  "webSite": "https://en.taotu.org"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://themoviearchive.site/favicons/apple-touch-icon.png",
   "lang": "all",
   "license": "MIT",

@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         MyIPTV
 // @description  A simple IPTV client
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       vvsolo
 // @lang         all
 // @license      MIT
@@ -13,46 +13,25 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
+	#mySource = 'https://github.moeyy.xyz/https://raw.githubusercontent.com/vvsolo/miru-extension-MyIPTV-sources/main/sources.json';
 	#opts = {
 		url: 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
 		options: {
 			'none': '',
-			'Kids-English': 'https://cdn.jsdelivr.net/gh/abskmj/iptv-youtube-live@gh-pages/kids-english.m3u8',
 			'fanmingming-IPV6': 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
 			'fanmingming-IPV4': 'https://live.fanmingming.com/tv/m3u/v6.m3u',
 			'MyIPTV-IPV6': 'https://qu.ax/nazV.m3u',
 			'MyIPTV-IPV4': 'https://qu.ax/atTi.m3u',
-			'YanG-1989-Gather': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u',
-			//'Adult-IPTV': 'http://adultiptv.net/chs.m3u',
-			//'Adult-IPTV-Vod': 'http://adultiptv.net/videos.m3u8',
-			//'YanG-1989-Adult[NSFW]': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u',
 			'YueChan-IPV6': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u',
 			'YueChan-Radio': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YueChan/Live/main/Radio.m3u',
+			'YanG-1989-Gather': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u',
 			'BESTV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/bestv.m3u',
-			'半路捡来的': 'https://agit.ai/Yoursmile7/TVBox/raw/branch/master/live.txt',
-			'四千加': 'https://qu.ax/kBip.m3u',
-			'AK47': 'https://qu.ax/HtMB.txt',
-			//'蜂蜜18+': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/txt/adult.txt',
-			//'MV系列': 'https://qu.ax/oiNH.txt',
-			'武哥': 'https://qu.ax/LEPk.txt',
-			'iptv-org-country-cn': 'https://iptv-org.github.io/iptv/countries/cn.m3u',
-			'iptv-org-country-hk': 'https://iptv-org.github.io/iptv/countries/hk.m3u',
-			'iptv-org-country-tw': 'https://iptv-org.github.io/iptv/countries/tw.m3u',
-			'iptv-org-country-jp': 'https://iptv-org.github.io/iptv/countries/jp.m3u',
-			'iptv-org-country-kr': 'https://iptv-org.github.io/iptv/countries/kr.m3u',
-			'iptv-org-country-ru': 'https://iptv-org.github.io/iptv/countries/ru.m3u',
-			'iptv-org-lang-zho': 'https://iptv-org.github.io/iptv/languages/zho.m3u',
-			'iptv-org-lang-jpn': 'https://iptv-org.github.io/iptv/languages/jpn.m3u',
-			'iptv-org-lang-kor': 'https://iptv-org.github.io/iptv/languages/kor.m3u',
-			'iptv-org-movies': 'https://iptv-org.github.io/iptv/categories/movies.m3u',
-			'Japanese-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/luongz/iptv-jp/main/jp.m3u',
-			'Thai-TV1': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV.m3u',
-			'Thai-TV2': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/akkradet/IPTV-THAI/master/FREETV2.m3u',
-			'Turkish-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/keyiflerolsun/IPTV_YenirMi/master/Kanallar/KekikAkademi.m3u',
-			'German-TV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/josxha/german-tv-m3u/main/german-tv.m3u',
-			'freecatv': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/manikiptv/freecatv.github.io/main/freecatv.m3u8',
-			'freecatv-Live': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/manikiptv/freecatv.github.io/main/FreecatvLive.m3u8',
 			'test-type-txt': 'https://myernestlu.github.io/zby.txt',
+			//'[NSFW]Adult-IPTV': 'http://adultiptv.net/chs.m3u',
+			//'[NSFW]Adult-IPTV-Vod': 'http://adultiptv.net/videos.m3u8',
+			//'[NSFW]YanG-1989-Adult': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u',
+			//'[NSFW]蜂蜜18+': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/txt/adult.txt',
+			//'MV系列': 'https://qu.ax/oiNH.txt',
 		}
 	}
 	#cache = {
@@ -65,6 +44,14 @@ export default class extends Extension {
 		this.#cache.groups = {"All": "All"};
 	}
 	async load() {
+		const opts = this.#opts.options;
+		const res = await this.req(this.#mySource);
+		if (res) {
+			try {
+				Object.assign(opts, JSON.parse(res));
+			} catch(e) {}
+		}
+		
 		this.#cache.uptime = 0;
 		await this.registerSetting({
 			title: 'Built-in Source',
@@ -72,7 +59,7 @@ export default class extends Extension {
 			type: 'radio',
 			description: 'Choose the custom source below when you choose "None"',
 			defaultValue: '',
-			options: this.#opts.options
+			options: opts
 		});
 		await this.registerSetting({
 			title: 'Custom Source',
@@ -89,10 +76,14 @@ export default class extends Extension {
 			defaultValue: '0',
 			options: {
 				'none': '0',
-				'1 minute': '1',
-				'3 minute': '3',
 				'5 minute': '5',
-				'10 minute': '10',
+				'15 minute': '15',
+				'30 minute': '30',
+				'1 hour': '60',
+				'3 hour': '180',
+				'6 hour': '360',
+				'12 hour': '720',
+				'24 hour': '1440',
 			}
 		});
 	}
@@ -144,26 +135,35 @@ export default class extends Extension {
 			.replace(/\n+/g, '\n')
 			.trim();
 
-		const setCover = (v) => v && `https://epg.112114.xyz/logo/${v}.png` || '';
+		const setCover = (v) => v && `https://epg.112114.xyz/logo/${v}.png` || null;
 		const content = res.split('\n');
 		const bangumi = [];
-		if (ext === '.m3u' || ~res.search(/#EXTM3U/i)) {
+		if (ext === '.m3u' || ~res.search(/#EXT(?:M3U|INF)/i)) {
 			let title, cover, group;
+			let headers = {};
+			const vlcopt = {
+				'User-Agent': '#EXTVLCOPT:http-user-agent=',
+				'Referer': '#EXTVLCOPT:http-referrer=',
+			}
 			content.forEach((item) => {
 				if (item.startsWith('#EXTINF:')) {
 					title = item.slice(item.lastIndexOf(',') + 1).trim();
 					group = item.match(/group\-title\="([^"]+)"/)?.[1] || '';
-					cover = item.match(/tvg\-logo\="([^"]+)"/)?.[1] ||
-						setCover(item.match(/tvg\-name\="([^"]+)"/)?.[1]) ||
-						setCover(title.replace(/ *[\[\(（].+$/m, '')) || '';
-				} else if (title && ~item.search(/^(?:https?|rs[tcm]p|rsp|mms)/)) {
+					cover = item.match(/tvg\-logo\="([^"]+)"/)?.[1] || null;
+				} else if (item.startsWith('#EXTVLCOPT:')) {
+					for (let v in vlcopt) if (item.startsWith(vlcopt[v])) {
+						headers[v] = item.slice(vlcopt[v].length);
+					}
+				} else if (title && ~item.search(/^(?:https?|rs[tcm]p|rsp|mms)/) && !~item.search(/\.mpd/)) {
 					bangumi.push({
 						title,
 						url: item.trim(),
 						cover,
-						group
+						group,
+						headers,
 					});
 					title = '';
+					headers = {};
 				}
 			});
 		} else if (ext === '.txt' || ~res.search(/#genre#/i)) {
@@ -246,9 +246,14 @@ export default class extends Extension {
 	}
 
 	async watch(url) {
-		return {
+		const bangumi = this.#cache.items.find((v) => v.url === url || ~v.url.indexOf(url));
+		const item = {
 			type: 'hls',
 			url
 		}
+		if (('headers' in bangumi) && ~Object.keys(bangumi.headers).length) {
+			item['headers'] = bangumi.headers
+		}
+		return item;
 	}
 }

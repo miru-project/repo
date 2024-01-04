@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         EVERIA.CLUB [Photo]
+// @name         EVERIA.CLUB[Photo]
 // @version      v0.0.1
 // @author       vvsolo
 // @lang         all

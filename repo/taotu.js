@@ -1,5 +1,5 @@
 // ==MiruExtension==
-// @name         Taotu [Photo]
+// @name         Taotu[Photo]
 // @version      v0.0.1
 // @author       OshekharO
 // @lang         all

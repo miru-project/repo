@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         9Anime
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       appdevelpo
 // @lang         en
 // @license      MIT
@@ -238,13 +238,18 @@ export default class extends Extension {
           title:element.label,
           url:element.file}
       })
-      console.log(encrypted_res_data.sources)
-      const key =await this.start(encrypted_res_data.sources);
-      console.log(key)
-      // const cipher = sourcesArray.join('');
-      const decryptedVal = CryptoJS.AES.decrypt(key[1], key[0]).toString(CryptoJS.enc.Utf8);
+      let m3u8_link = "";
+      const isEncrypt = encrypted_res_data["encrypted"];
+      if(isEncrypt){
+        const key =await this.start(encrypted_res_data.sources);
       
-      const m3u8_link = decryptedVal.match(/https:\/\/.+m3u8/)[0]
+        const decryptedVal = CryptoJS.AES.decrypt(key[1], key[0]).toString(CryptoJS.enc.Utf8);
+        
+        m3u8_link = decryptedVal.match(/https:\/\/.+m3u8/)[0]
+      }else{
+        m3u8_link = encrypted_res_data.sources
+      }
+      
       
       return m3u8_link
     }
@@ -287,12 +292,11 @@ export default class extends Extension {
   
       });
       const embed_res_data = JSON.parse(JSON.stringify(embed_res))
-      
+      console.log(embed_res_data);
       const source_id = embed_res_data.link.match(/\/(\w+)\?/)[1]
       return this.rabbit_stream(source_id)
   }
   async get_key(cipher){
-    console.log("cipher")
     const res = await this.request("",{
         headers:{
             "Miru-Url": "https://rapid-cloud.co/js/player/prod/e6-player-v2.min.js?v=1699528692",
@@ -303,7 +307,6 @@ export default class extends Extension {
             return element.substring(1)
         })
     })
-    // console.log(res.data.match(/case 0x\d{1,2}:\w{1,2}=\w{1,2},\w{1,2}=\w{1,2}/g))
     const filt_area = res.match(/\w{1,2}=0x\w{1,2},\w{1,2}=0x\w{1,2},\w{1,2}=0x\w{1,2},\w{1,2}=0x\w{1,2},.+?;/)[0]
     const objectFromVars = filt_area.split(",").reduce((acc, pair) => {
         const [key, value] = pair.split("=");
@@ -361,17 +364,12 @@ export default class extends Extension {
     C9 = C9.replace(C.substring(CI, CN), ''),
     CC += CJ;
     }
-    console.log(I)
-    console.log(C9)
     return [I, C9] 
     
   }
   async  start(cipher){
-    // const cipher = `Ur92EcO2FsdGVkDL8afDXNvdxeN18qi71Zz5KMG5QrJqe3IWqQNxJDTyoxZTBULuRJmQpu49SmGMvN3pcMjGUvkuFXwM7xI5DuSjjZglcJKdWwV6zfFGY4qhGN98EygU9yEwYjyMzEkbgRludYOS1KhQs2ITqE0o1UJn6OjTCoHVl7/1QWTJtMw/hR260qxh/DQPAoHs7JURRSgGZuVBLlIefA/FjtoT6VPwyD2MPBWraXxq9iVWkI6FTA2qZpi7gfxXpgGAoVzGK+Ve4z8cyva5uVElCMBnDYiIHHVEMR1vu5o1oj8YqgNBmZnmUO6LJMFjQD23G2CC2Lb+m/Vg5bLrmINc+NoJ5+CeSW+82hAKpToUVVd555ARlSZViEqA8dk2+BuLokthWX0uomFzqaLg0Ft+7QuprUOLrW68oBrZk2eE3q9z2iO8e99CjqsDAEMZI0S3636kFfOp3JqngVwoZR3MWX/58y9FC7oraicjTtJ+PPPt9lTSpKMw4DlqsgQ==`
     const numberinarr = Array.from(Array(9), () => new Array(2).fill(undefined)); 
-    // console.log(cipher)
     const key = await this.get_key(cipher)
-    // console.log(key)
     return key
   }
   }

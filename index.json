@@ -746,6 +746,18 @@
   "webSite": "https://www.haha888.xyz"
  },
  {
+  "author": "bethro",
+  "icon": "https://piped.video/img/icons/android-chrome-192x192.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Piped",
+  "package": "piped.video",
+  "type": "bangumi",
+  "url": "piped.video.js",
+  "version": "v0.0.1",
+  "webSite": "https://piped.video"
+ },
+ {
   "author": "bachig26",
   "icon": "https://pornenix.com/templates/pornenix/images/logo.png",
   "lang": "en",

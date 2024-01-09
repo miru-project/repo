@@ -6,7 +6,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 ## List
 |  Name   | Package | Version | Author | Language | Type | Source |
 |  ----   | ---- | --- | ---  | ---  | --- | --- |
-| 9Anime | 9animetv.to | v0.0.2 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/9animetv.to.js) |
+| 9Anime | 9animetv.to | v0.0.3 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/9animetv.to.js) |
 | AGE动漫 | agedm.org | v0.0.1 | appdevelpo | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/agedm.org.js) |
 | AniGoGo | ani.gogo | v0.0.3 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | AniWatch | ani.watch | v0.0.6 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.watch.js) |
@@ -14,8 +14,10 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | girigiri爱动漫 | anime.girigirilove.com | v0.0.1 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.girigirilove.com.js) |
 | Animepahe | animepahe.ru | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animepahe.ru.js) |
 | AsuraScan | asuratoon.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
+| 包子漫画 | baozimh.com | v0.0.1 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
+| MyIPTV | client.iptv | v0.0.4 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/client.iptv.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | Comick | comick.app | v0.0.3 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
@@ -23,7 +25,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.7 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | DramaCool | dramacool.pa | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dramacool.pa.js) |
 | FlimyPujab | flimypujab.com | v0.0.2 | appdevelpo | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flimypujab.com.js) |
-| Flixhq | flixhq.to | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.to.js) |
+| Flixhq | flixhq.to | v0.0.4 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.to.js) |
 | GakiArchives | gakiarchives.com | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gakiarchives.com.js) |
 | gimy | gimy.su | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gimy.su.js) |
 | GoGoAnime | gogo.anime | v0.0.4 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
@@ -33,6 +35,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |
 | Kissasian | kissasian.fm | v0.0.1 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kissasian.fm.js) |
 | Kisskh | kisskh.co | v0.0.2 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
+| Letv影院 | letv.im | v0.0.1 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/letv.im.js) |
 | LayarKaca | lk21official | v0.0.1 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
 | MangaLife | manga4life.com | v0.0.1 | appdevelpo | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga4life.com.js) |
 | 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
@@ -48,6 +51,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Mtlnation | mtlnation.com | v0.0.2 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Nyaa | nyaa.si | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyaa.si.js) |
+| Piped | piped.video | v0.0.1 | bethro | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/piped.video.js) |
 | rawkuma | rawkuma.com | v0.0.2 | appdevelpo | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rawkuma.com.js) |
 | ReadLN | readlightnovels | v0.0.2 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |

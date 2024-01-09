@@ -491,6 +491,18 @@
   "webSite": "https://letv.im"
  },
  {
+  "author": "appdevelpo",
+  "icon": "https://xiaoxiaojia.oss-cn-shanghai.aliyuncs.com/statics/img/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "libvio",
+  "package": "libvio.pro",
+  "type": "bangumi",
+  "url": "libvio.pro.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.libvio.pro"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://s8.lk21static.xyz/wp-content/themes/dunia21/images/favicon-set/apple-icon-144x144.png",
   "lang": "id",

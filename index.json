@@ -89,6 +89,19 @@
   "webSite": "https://animepahe.ru"
  },
  {
+  "author": "vvsolo",
+  "icon": "https://www.yinyuetai.com/images/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "音悦台MTV",
+  "nsfw": "false",
+  "package": "api.yinyuetai",
+  "type": "bangumi",
+  "url": "api.yinyuetai.js",
+  "version": "v0.0.1",
+  "webSite": "https://video-api.yinyuetai.com"
+ },
+ {
   "author": "bethro",
   "icon": "https://asuratoon.com/wp-content/uploads/2021/03/Group_1.png",
   "lang": "en",
@@ -141,7 +154,7 @@
  {
   "author": "vvsolo",
   "description": "client",
-  "icon": "https://avatars.githubusercontent.com/u/55937028?s=48\u0026v=4",
+  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
   "lang": "all",
   "license": "MIT",
   "name": "MyIPTV",
@@ -149,7 +162,7 @@
   "package": "client.iptv",
   "type": "bangumi",
   "url": "client.iptv.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://"
  },
  {
@@ -162,7 +175,7 @@
   "package": "club.everia",
   "type": "manga",
   "url": "club.everia.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://everia.club"
  },
  {
@@ -175,7 +188,7 @@
   "package": "club.manga18",
   "type": "manga",
   "url": "club.manga18.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://manga18.club"
  },
  {
@@ -390,6 +403,20 @@
   "url": "invidious.io.js",
   "version": "v0.0.1",
   "webSite": "https://invidious.slipfox.xyz/api/v1"
+ },
+ {
+  "author": "vvsolo",
+  "description": "iptv-org",
+  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
+  "lang": "all",
+  "license": "MIT",
+  "name": "IPTV-ORG",
+  "nsfw": "false",
+  "package": "iptv-org",
+  "type": "bangumi",
+  "url": "iptv-org.js",
+  "version": "v0.0.1",
+  "webSite": "https://iptv-org.github.io/iptv"
  },
  {
   "author": "bethro",

@@ -13,11 +13,12 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | AnimeFlv | anime.flv | v0.0.2 | (koikiss-dev) | es | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
 | girigiri爱动漫 | anime.girigirilove.com | v0.0.1 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.girigirilove.com.js) |
 | Animepahe | animepahe.ru | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animepahe.ru.js) |
+| 音悦台MTV | api.yinyuetai | v0.0.1 | vvsolo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/api.yinyuetai.js) |
 | AsuraScan | asuratoon.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
 | 包子漫画 | baozimh.com | v0.0.1 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
-| MyIPTV | client.iptv | v0.0.4 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/client.iptv.js) |
+| MyIPTV | client.iptv | v0.0.5 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/client.iptv.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | Comick | comick.app | v0.0.3 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
@@ -30,6 +31,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | gimy | gimy.su | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gimy.su.js) |
 | GoGoAnime | gogo.anime | v0.0.4 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | Invidious | invidious.io | v0.0.1 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/invidious.io.js) |
+| IPTV-ORG | iptv-org | v0.0.1 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/iptv-org.js) |
 | IsekaiScan | isekaiscan.to | v0.0.3 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |
 | 聚小说 | juxiaoshuo | v0.0.1 | OshekharO | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/juxiaoshuo.js) |
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |

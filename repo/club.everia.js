@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         EVERIA.CLUB[Photo]
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       vvsolo
 // @lang         all
 // @license      MIT
@@ -11,51 +11,61 @@
 // @nsfw         true
 // ==/MiruExtension==
 
-export default class Mangafx extends Extension {
+export default class extends Extension {
 	#genres = {};
 	#baseUrl = 'https://everia.club';
+	#cacheCover = {};
 
-	async latest(page) {
-		const res = await this.request(`/page/${page}/`);
-		const elList = await this.querySelectorAll(res, '#blog-entries .thumbnail');
-		const mangas = [];
-		for (const element of elList) {
-			const html = await element.content;
-			const title = await this.getAttributeText(html, 'img', 'alt');
-			const url = await this.getAttributeText(html, 'a', 'href');
-			const cover = await this.getAttributeText(html, 'img', 'src');
-			mangas.push({
-				title: title.trim().replace('Read more about the article ', ''),
-				url,
-				cover
-			});
-		}
-		return mangas;
+	async queryAll(res, selector, func) {
+		const finds = await Promise.all(
+			(await this.querySelectorAll(res, selector)).map(async (v, i) => {
+				const html = await v.content;
+				return await func(html, i);
+			})
+		);
+		return finds || [];
 	}
-
+	
 	async createFilter(filter) {
 		const res = await this.request(`/`);
-		const cateList = await this.querySelectorAll(res, '#menu-mainmenu > li.menu-item');
 		const cates = {"All": "All"};
-		for (const element of cateList) {
-			const html = await element.content;
+		await this.queryAll(res, '#menu-mainmenu > li.menu-item', async (html) => {
 			let title = await this.querySelector(html, 'a').text;
-			let url = await this.getAttributeText(html, 'a', 'href');
 			title = title.trim();
 			cates[title] = title;
-			this.#genres[title] = url;
-		}
+			this.#genres[title] = await this.getAttributeText(html, 'a', 'href');
+		})
 		return {
 			"data": {
 				title: "Category",
 				max: 1,
-				min: 0,
+				min: 1,
 				default: "All",
 				options: cates,
 			}
 		}
 	}
 	
+	async getMangas(path) {
+		const res = await this.request(path);
+		return await this.queryAll(res, '#content .thumbnail', async (html) => {
+			let title = await this.getAttributeText(html, 'img', 'alt');
+			const url = await this.getAttributeText(html, 'a', 'href');
+			const cover = await this.getAttributeText(html, 'img', 'src');
+			title = title.trim().replace('Read more about the article ', '');
+			this.#cacheCover[url] = cover;
+			return {
+				title,
+				url,
+				cover
+			}
+		})
+	}
+
+	async latest(page) {
+		return await this.getMangas(`/page/${page}/`);
+	}
+
 	async search(kw, page, filter) {
 		const filt = filter?.data && filter.data[0] || 'All';
 		let seaKW = `/page/${page}/`;
@@ -64,42 +74,19 @@ export default class Mangafx extends Extension {
 		} else if (filt != 'All' && filt in this.#genres) {
 			seaKW = this.#genres[filt] + seaKW;
 		}
-		const mangas = [];
-		const res = await this.request(seaKW.replace(this.#baseUrl, ''));
-		const elList = await this.querySelectorAll(res, '#content .thumbnail');
-		for (const element of elList) {
-			const html = await element.content;
-			const title = await this.getAttributeText(html, 'img', 'alt');
-			const url = await this.getAttributeText(html, 'a', 'href');
-			const cover = await this.getAttributeText(html, 'img', 'src');
-			mangas.push({
-				title: title.trim().replace('Read more about the article ', ''),
-				url,
-				cover
-			});
-		}
-		return mangas;
+		return await this.getMangas(seaKW.replace(this.#baseUrl, ''));
 	}
 
 	async detail(url) {
 		const res = await this.request(url.replace(this.#baseUrl, ''));
 		const title = await this.querySelector(res, 'header > h1').text;
-		const urls = await this.querySelectorAll(res, '.wp-block-image');
-		let cover = '';
-		let i = 0;
-		const imgs = [];
-		for (const element of urls) {
-			const html = await element.content;
-			const iurl = await this.getAttributeText(html, 'img', 'src');
-			
-			imgs.push({
-				name: `P-${i++}`,
-				url: iurl
-			})
-			if (i === 1) {
-				cover = iurl;
+		const imgs = await this.queryAll(res, '.wp-block-image', async (html, i) => {
+			return {
+				name: `[P${(i + 1 + '').padStart(3, '0')}]`,
+				url: await this.getAttributeText(html, 'img', 'src')
 			}
-		}
+		})
+		const cover = this.#cacheCover[url] || imgs[0].url || '';
 		return {
 			title: title.trim(),
 			cover,

@@ -2,7 +2,7 @@
 // @name         Nimegami
 // @version      v0.0.1
 // @author       JerukPurut404
-// @lang         en
+// @lang         id
 // @license      MIT
 // @package      nimegami.id
 // @type         bangumi

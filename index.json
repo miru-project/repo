@@ -733,6 +733,18 @@
   "webSite": "https://nhentai.to"
  },
  {
+  "author": "JerukPurut404",
+  "icon": "https://nimegami.id/wp-content/uploads/2018/07/Nimegami-anime.png",
+  "lang": "id",
+  "license": "MIT",
+  "name": "Nimegami",
+  "package": "nimegami.id",
+  "type": "bangumi",
+  "url": "nimegami.id.js",
+  "version": "v0.0.1",
+  "webSite": "https://nimegami.id"
+ },
+ {
   "author": "appdevelpo",
   "description": "more.",
   "icon": "https://nyaa.si/static/favicon.png",

@@ -1,63 +1,85 @@
 // ==MiruExtension==
 // @name         MyIPTV
 // @description  A simple IPTV client
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       vvsolo
 // @lang         all
 // @license      MIT
 // @package      client.iptv
 // @type         bangumi
-// @icon         https://avatars.githubusercontent.com/u/55937028?s=48&v=4
+// @icon         https://avatars.githubusercontent.com/u/55937028?s=200&v=4
 // @webSite      https://
 // @nsfw         false
 // ==/MiruExtension==
 
 export default class extends Extension {
-	#mySource = 'https://github.moeyy.xyz/https://raw.githubusercontent.com/vvsolo/miru-extension-MyIPTV-sources/main/sources.json';
+	//https://raw.githubusercontent.com
+	//https://fastly.jsdelivr.net/gh
+	//https://gcore.jsdelivr.net/gh
+	//https://jsdelivr.b-cdn.net/gh
+	//https://github.moeyy.xyz/https://raw.githubusercontent.com
+	#rawurl = 'https://github.moeyy.xyz/https://raw.githubusercontent.com';
 	#opts = {
 		url: 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
-		options: {
+		exturl: this.#rawurl + `/vvsolo/miru-extension-MyIPTV-sources@main/sources.json`,
+		lists: {
 			'none': '',
-			'fanmingming-IPV6': 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
-			'fanmingming-IPV4': 'https://live.fanmingming.com/tv/m3u/v6.m3u',
-			'MyIPTV-IPV6': 'https://qu.ax/nazV.m3u',
-			'MyIPTV-IPV4': 'https://qu.ax/atTi.m3u',
-			'YueChan-IPV6': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YueChan/Live/main/IPTV.m3u',
-			'YueChan-Radio': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YueChan/Live/main/Radio.m3u',
-			'YanG-1989-Gather': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Gather.m3u',
-			'BESTV': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/Ftindy/IPTV-URL/main/bestv.m3u',
-			'test-type-txt': 'https://myernestlu.github.io/zby.txt',
-			//'[NSFW]Adult-IPTV': 'http://adultiptv.net/chs.m3u',
-			//'[NSFW]Adult-IPTV-Vod': 'http://adultiptv.net/videos.m3u8',
-			//'[NSFW]YanG-1989-Adult': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/YanG-1989/m3u/main/Adult.m3u',
-			//'[NSFW]蜂蜜18+': 'https://github.moeyy.xyz/https://raw.githubusercontent.com/FongMi/CatVodSpider/main/txt/adult.txt',
-			//'MV系列': 'https://qu.ax/oiNH.txt',
+			'🇨🇳 fanmingming-IPV6': 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
+			'🇨🇳 fanmingming-IPV4': 'https://live.fanmingming.com/tv/m3u/v6.m3u',
+			'🇨🇳 MyIPTV-IPV6': this.#rawurl + `/vvsolo/miru-extension-MyIPTV-sources@main/ipv6.m3u`,
+			'🇨🇳 MyIPTV-IPV4': this.#rawurl + `/vvsolo/miru-extension-MyIPTV-sources@main/ipv4.m3u`,
+			'🇨🇳 YueChan-IPV6': this.#rawurl + `/YueChan/Live@main/IPTV.m3u`,
+			'🇨🇳 YueChan-Radio': this.#rawurl + `/YueChan/Live@main/Radio.m3u`,
+			'🇨🇳 YanG-1989-Gather': this.#rawurl + `/YanG-1989/m3u@main/Gather.m3u`,
+			'🇨🇳 BESTV': this.#rawurl + `/Ftindy/IPTV-URL@main/bestv.m3u`,
+			"🇨🇳 蓝鲸": this.#rawurl + `/Cyril0563/lanjing_live@main/TVbox_Free/LIVE/Free/HD_LIVE.txt`,
+			"🇨🇳 乐青多源": this.#rawurl + `/lqtv/lqtv.github.io/main/m3u/tv.m3u`,
+		}
+	}
+	#group = {
+		val: "All",
+		lists: {
+			"All": "All"
 		}
 	}
 	#cache = {
+		res: {},
 		items: [],
-		groups: {"All": "All"},
-		uptime: 0
+		groups: this.#group.lists,
+		uptime: 0,
+		exturl: null
 	}
 
-	cacheDefaultGroups() {
-		this.#cache.groups = {"All": "All"};
+	fixUrl(path) {
+		return ~path.search(/raw\.githubusercontent\.com/) ? path.replace(/@(main|master)\//, '\/$1\/') : path;
 	}
-	async load() {
-		const opts = this.#opts.options;
-		const res = await this.req(this.#mySource);
-		if (res) {
-			try {
-				Object.assign(opts, JSON.parse(res));
-			} catch(e) {}
+
+	async cacheJSON() {
+		if (this.#cache.exturl && await this.checkExpire()) {
+			return this.#cache.exturl;
 		}
-		
-		this.#cache.uptime = 0;
+		const res = await this.request('', {
+			headers: {
+				'Content-Type': 'application/json',
+				'Miru-Url': this.fixUrl(this.#opts.exturl)
+			}
+		});
+		return (this.#cache.exturl = res);
+	}
+
+	async load() {
+		const opts = this.#opts.lists;
+		for(let item in opts) {
+			opts[item] = this.fixUrl(opts[item]);
+		}
+		const res = await this.cacheJSON();
+		Object.assign(opts, res || {});
+
 		await this.registerSetting({
 			title: 'Built-in Source',
 			key: 'builtin',
 			type: 'radio',
-			description: 'Choose the custom source below when you choose "None"',
+			description: 'Choose the `Custom Source` below when you choose "None"',
 			defaultValue: '',
 			options: opts
 		});
@@ -73,72 +95,105 @@ export default class extends Extension {
 			key: 'expire',
 			type: 'radio',
 			description: 'Set `none` is no cache\nTips: After changing the source address, the delay will be refreshed',
-			defaultValue: '0',
+			defaultValue: '60',
 			options: {
 				'none': '0',
-				'5 minute': '5',
 				'15 minute': '15',
 				'30 minute': '30',
 				'1 hour': '60',
-				'3 hour': '180',
 				'6 hour': '360',
 				'12 hour': '720',
-				'24 hour': '1440',
+				'1 day': '1440',
 			}
 		});
 	}
+
 	async createFilter(filter) {
+		const filt = filter?.data && filter.data[0] || '';
+		// multiple groups
+		this.#cache.groups = this.#cache.items
+			.map(v => v.group && v.group.split(';'))
+			.flat()
+			.reduce((g, v) => {
+				return v ? {...g, [v]: v} : g;
+			}, this.#group.lists);
+
 		return {
 			"data": {
 				title: "",
 				max: 1,
 				min: 1,
-				default: "All",
+				default: filt || this.#group.val,
 				options: this.#cache.groups,
 			}
 		}
 	}
+
 	async req(path) {
-		const res = await fetch(path, {
-			method: 'GET',
+		return await this.request('', {
 			headers: {
 				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
 				'Miru-Url': path
 			}
 		});
-		if (res.ok) {
-			return await res.text();
-		}
+	}
+	async checkExpire() {
+		const expire = +(await this.getSetting('expire'));
+		return expire > 0 && (Date.now() - this.#cache.uptime) < expire*60*1000;
 	}
 
 	async latest(page) {
 		if (page > 1) {
 			return [];
 		}
-		const expire = +(await this.getSetting('expire'));
-		if (
-			expire > 0 &&
-			~this.#cache.items.length &&
-			(Date.now() - this.#cache.uptime) < expire*60*1000
-		) {
-			return this.#cache.items;
-		}
-		const builtin = await this.getSetting('builtin');
-		const baseUrl = builtin ? builtin : await this.getSetting('source');
+		const baseUrl = (await this.getSetting('builtin')) || (await this.getSetting('source')) || '';
 		if (!baseUrl) {
 			throw 'No valid address set!';
 		}
-		const ext = baseUrl.slice(baseUrl.lastIndexOf('.')).toLowerCase();
-		let res = await this.req(baseUrl);
-		res = res
+		// cache source content
+		const md5path = md5(baseUrl);
+		if (
+			md5path in this.#cache.res &&
+			await this.checkExpire()
+		) {
+			return (this.#cache.items = this.#cache.res[md5path]);
+		}
+		const res = (await this.req(baseUrl))
 			.replace(/\r?\n/g, '\n')
 			.replace(/\n+/g, '\n')
 			.trim();
 
-		const setCover = (v) => v && `https://epg.112114.xyz/logo/${v}.png` || null;
+		const ext = baseUrl.slice(baseUrl.lastIndexOf('.')).toLowerCase();
 		const content = res.split('\n');
-		const bangumi = [];
-		if (ext === '.m3u' || ~res.search(/#EXT(?:M3U|INF)/i)) {
+		let bangumi = [];
+		if (~res.search(/#genre#/i) || ext === '.txt') {
+			let group, tmp;
+			const repeats = {};
+			content.forEach((item) => {
+				tmp = item.split(',');
+				if (tmp.length !== 2) {
+					return;
+				}
+				const [title, url] = tmp;
+				if (url === '#genre#') {
+					group = title;
+					return;
+				}
+				// 组合相同名称的台
+				if (title in repeats) {
+					repeats[title].url += '#' + url;
+					return;
+				}
+				repeats[title] = {
+					title,
+					url,
+					cover: null,
+					group
+				}
+			});
+			// 组合相同名称的台
+			bangumi = Object.values(repeats);
+		} else if (~res.search(/#EXT(?:M3U|INF)/i) || ext === '.m3u') {
 			let title, cover, group;
 			let headers = {};
 			const vlcopt = {
@@ -166,37 +221,9 @@ export default class extends Extension {
 					headers = {};
 				}
 			});
-		} else if (ext === '.txt' || ~res.search(/#genre#/i)) {
-			let group, tmp;
-			content.forEach((item) => {
-				tmp = item.split(',');
-				if (tmp.length !== 2) {
-					return;
-				}
-				const [title, url] = tmp;
-				if (url === '#genre#') {
-					group = title;
-					return;
-				}
-				let cover = setCover(title.trim().replace(/ *[\[\(（].+$/m, ''));
-				bangumi.push({
-					title,
-					url,
-					cover,
-					group
-				});
-			});
 		}
-		// multiple groups
-		this.cacheDefaultGroups();
-		~bangumi.length && bangumi.forEach(v => {
-			v.group && v.group.split(';').map(x => {
-				this.#cache.groups[x] = x;
-			})
-		})
 		this.#cache.uptime = Date.now();
-
-		return (this.#cache.items = bangumi);
+		return (this.#cache.items = this.#cache.res[md5path] = bangumi);
 	}
 
 	async search(kw, page, filter) {
@@ -204,9 +231,9 @@ export default class extends Extension {
 			return [];
 		}
 		!~this.#cache.items.length && await this.latest();
-		const filt = filter?.data && filter.data[0] || 'All';
+		const filt = filter?.data && filter.data[0] || this.#group.val;
 		const bangumi = this.#cache.items;
-		if (filt === 'All') {
+		if (filt === this.#group.val) {
 			return !kw ? bangumi : bangumi.filter(v => ~v.title.indexOf(kw));
 		}
 		return bangumi.filter(v => (v.group && ~`;${v.group};`.indexOf(`;${filt};`)) && (kw ? ~v.title.indexOf(kw) : true));
@@ -214,16 +241,12 @@ export default class extends Extension {
 
 	async detail(url) {
 		const bangumi = this.#cache.items.find((v) => v.url === url);
-		const parseUrls = (item) => {
-			const urls = item.url.split('#');
-			const l = urls.length;
-			return urls.map((v, i) => {
-				return {
-					name: l > 1 ? `${item.title} [${i + 1}]` : `${item.title}`,
-					url: v
-				};
-			})
-		};
+		const parseUrls = (item) => [...new Set(item.url.split('#'))].map((v, i, t) => {
+			return {
+				name: t.length > 1 ? `${item.title} [${i + 1}]` : `${item.title}`,
+				url: v
+			};
+		})
 		bangumi.episodes = [
 			{
 				title: bangumi.title,

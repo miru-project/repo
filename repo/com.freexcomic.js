@@ -11,7 +11,7 @@
 // @nsfw         true
 // ==/MiruExtension==
 
-export default class Mangafx extends Extension {
+export default class extends Extension {
 	#sources = {
 		'mxsmh01.top': 'http://www.mxsmh01.top',
 		'mxsmh1.com': 'http://www.mxsmh1.com',
@@ -21,6 +21,17 @@ export default class Mangafx extends Extension {
 		'mxs04.top': 'http://www.mxs04.top',
 		'92hm.life': 'http://www.92hm.life'
 	};
+	#cacheCover = {};
+
+	async queryAll(res, selector, func) {
+		const finds = await Promise.all(
+			(await this.querySelectorAll(res, selector)).map(async (v, i) => {
+				const html = await v.content;
+				return await func(html, i);
+			})
+		);
+		return finds || [];
+	}
 
 	async load() {
 		await this.registerSetting({
@@ -31,6 +42,7 @@ export default class Mangafx extends Extension {
 			options: this.#sources
 		});
 	}
+
 	async req(path) {
 		const baseUrl = await this.getSetting('source');
 		return await this.request('', {
@@ -42,66 +54,83 @@ export default class Mangafx extends Extension {
 		});
 	}
 
-	async latest(page) {
-		const res = await this.req(`/booklist?page=${page}`);
-		const bsxList = await this.querySelectorAll(res, 'div.mh-item > a');
-		const mangas = [];
-		for (const element of bsxList) {
-			const html = await element.content;
+	async getMangas(path) {
+		const res = await this.req(path);
+		return await this.queryAll(res, 'div.mh-item > a', async (html) => {
 			const title = await this.getAttributeText(html, 'a', 'title');
 			const url = await this.getAttributeText(html, 'a', 'href');
 			const cover = html.match(/background\-image: *url\((.+)\)/)[1] || '';
-			mangas.push({
+			this.#cacheCover[url] = cover;
+			return {
 				title: title.trim(),
 				url,
 				cover
-			});
-		}
-		return mangas;
+			}
+		})
+	}
+	
+	async latest(page) {
+		return await this.getMangas(`/booklist?page=${page}`);
 	}
 
-	async search(kw, page) {
-		const res = await this.req(`/search?keyword=${encodeURIComponent(kw)}`);
-		const bsxList = await this.querySelectorAll(res, 'div.mh-item > a');
-		const mangas = [];
-		for (const element of bsxList) {
-			const html = await element.content;
-			const title = await this.getAttributeText(html, 'a', 'title');
-			const url = await this.getAttributeText(html, 'a', 'href');
-			const cover = html.match(/background\-image: *url\((.+)\)/)[1] || '';
-			mangas.push({
-				title: title.trim(),
-				url,
-				cover
-			});
+	async createFilter(filter) {
+		return {
+			"data": {
+				title: "状态",
+				max: 1,
+				min: 0,
+				default: "全部",
+				options: {
+					"全部": "全部",
+					"连载": "连载",
+					"完结": "完结"
+				},
+			}
 		}
-		return mangas;
+	}
+	async search(kw, page, filter) {
+		if (kw && page > 1) {
+			return [];
+		}
+		const gens = {
+			"全部": "All",
+			"连载": "-1",
+			"完结": "1"
+		}
+		const filt = filter?.data && filter.data[0] || '全部';
+		let seaKW = `/booklist?page=${page}`;
+		if (kw) {
+			seaKW = `/search?keyword=${encodeURIComponent(kw)}`;
+		} else if (filt != '全部') {
+			seaKW += `&end=` + gens[filt];
+		}
+		return await this.getMangas(seaKW);
 	}
 
 	async detail(url) {
 		const res = await this.req(url);
 		const title = await this.querySelector(res, '.info > h1').text;
-		const cover = await this.querySelector(res, '.cover > img').getAttributeText('src');
 		const desc = await this.querySelector(res, 'p.content').text;
-		const urls = await this.querySelectorAll(res, '#detail-list-select > li');
-		const episodeUrl = [];
-		for (const element of urls) {
-			const html = await element.content;
-			const etitle = await this.querySelector(html, 'a').text;
-			const eurl = await this.querySelector(html, 'a').getAttributeText('href');
-			episodeUrl.push({
-				name: etitle.trim(),
-				url: eurl
-			});
-		}
+		const imgs = await this.queryAll(res, '#detail-list-select > li', async (html, i) => {
+			return {
+				name: (await this.querySelector(html, 'a').text || '').trim(),
+				url: await this.getAttributeText(html, 'a', 'href')
+			}
+		})
+		const cover = this.#cacheCover[url] || (await this.getAttributeText(res, '.cover > img', 'src')) || '';
+		const subtitle = [];
+		(await this.querySelector(res, '.info').content || '').replace(/<p class="subtitle">(.+?)<\/p>/g, (m, m1) => {
+			subtitle.push(m1.replace(/&amp;/g, '&'));
+		})
+		subtitle.push(desc.trim());
 		return {
 			title: title.trim(),
 			cover,
-			desc: desc.trim(),
+			desc: subtitle.join('\n'),
 			episodes: [
 				{
 					title: 'Directory',
-					urls: episodeUrl.reverse()
+					urls: imgs.reverse()
 				}
 			]
 		};

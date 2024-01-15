@@ -61,19 +61,17 @@ export default class extends Extension {
     const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
     const desc = await this.querySelector(res, "div.content-more-js > p").text;
 	
-	const episodes = [];
-    const epiList = await this.querySelectorAll(res, "div.episode-grid > article");
-	
-    for (const element of epiList) {
-      const html = await element.content;
-      const name = await this.querySelector(html, "h2.episode-title").text;
-	  console.log(name);
-      const url = await this.getAttributeText(html, "a", "href");
+    const episodes = [];
+    const epiList = res.match(/<article class="episode-card">([\s\S]+?)<\/article>/g);
+    
+    epiList.forEach((element) => {
+      const name = element.match(/<h2.*><h2.*>(.+?)<\/h2>/)[1];
+      const url = element.match(/href="([^"]+)"/)[1];
       episodes.push({
-        name: name.trim(),
-		url,
+        name,
+        url,
       });
-    }
+    });
 
     return {
       title: title.trim(),

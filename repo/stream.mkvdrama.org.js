@@ -21,7 +21,6 @@ export default class extends Extension {
       const url = await this.getAttributeText(html, "a", "href");
       const title = await this.querySelector(html, "b").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
-      //console.log(title+cover+url)
       novel.push({
         title: title.trim(),
         url: "https://stream.mkvdrama.org" + url,
@@ -59,8 +58,8 @@ export default class extends Extension {
 
     const title = await this.querySelector(res, "span.date").text;
     const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
-    const desc = res.match(/<div class="content-more-js" .*>([\s\S]+?)<\/div>/)[1];
-	
+    const desc = res.match(/<div class="content-more-js" .*>([\s\S]+?)<\/div>/)[1].replace(/<\/?p[^>]*>/g,"").replace(/<\/?span[^>]*>/g,"");
+
     const episodes = [];
     const epiList = res.match(/<article class="episode-card">([\s\S]+?)<\/article>/g);
     

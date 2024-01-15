@@ -59,7 +59,7 @@ export default class extends Extension {
 
     const title = await this.querySelector(res, "span.date").text;
     const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
-    const desc = await this.querySelector(res, "div.content-more-js > p").text;
+    const desc = res.match(/<div class="content-more-js" .*>([\s\S]+?)<\/div>/)[1];
 	
     const episodes = [];
     const epiList = res.match(/<article class="episode-card">([\s\S]+?)<\/article>/g);

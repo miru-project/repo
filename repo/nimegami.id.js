@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Nimegami
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       JerukPurut404
 // @lang         id
 // @license      MIT

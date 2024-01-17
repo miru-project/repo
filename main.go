@@ -8,10 +8,44 @@ import (
 	"path"
 	"regexp"
 	"strings"
+    "strconv"
 )
 
 func main() {
 	extensions := readRepoExtensions()
+	
+
+	f2, err2 := os.Create("README.md")
+	if err2 != nil {
+		log.Fatal(err2)
+	}
+	defer f2.Close()
+
+	readme := `
+# Miru-Repo
+
+Miru extensions repository | [Miru App Download](https://github.com/miru-project/miru-app) |
+
+## List
+|  Name   | Package | Version | Author | Language | Type | Status | Source |
+|  ----   | ---- | --- | ---  | ---  | --- | --- | --- |
+`
+
+	for _, v := range extensions {
+		v["status"] = strconv.Itoa(checkWebsiteStatus(v["webSite"]))
+		url := fmt.Sprintf("[Source Code](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
+		nsfw := v["nsfw"] == "true"
+		if nsfw {
+			continue
+		}
+		status := "Down"
+        if v["status"] == "1" {
+            status = "Ok"
+        }
+        readme += fmt.Sprintf("| %s | %s | %s | %s | %s | %s | %s | %s |\n", v["name"], v["package"], v["version"], v["author"], v["lang"], v["type"], status, url)
+	}
+	f2.WriteString(readme)
+
 	f, err := os.Create("index.json")
 	if err != nil {
 		log.Fatal(err)
@@ -22,32 +56,6 @@ func main() {
 		log.Fatal(err)
 	}
 	f.Write(b)
-
-	f2, err2 := os.Create("README.md")
-	if err2 != nil {
-		log.Fatal(err)
-	}
-	defer f2.Close()
-
-	readme := `
-# Miru-Repo
-
-Miru extensions repository | [Miru App Download](https://github.com/miru-project/miru-app) |
-
-## List
-|  Name   | Package | Version | Author | Language | Type | Source |
-|  ----   | ---- | --- | ---  | ---  | --- | --- |
-`
-
-	for _, v := range extensions {
-		url := fmt.Sprintf("[Source Code](%s)", "https://github.com/miru-project/repo/blob/main/repo/"+v["url"])
-		nsfw := v["nsfw"] == "true"
-		if nsfw {
-			continue
-		}
-		readme += fmt.Sprintf("| %s | %s | %s | %s | %s | %s | %s |\n", v["name"], v["package"], v["version"], v["author"], v["lang"], v["type"], url)
-	}
-	f2.WriteString(readme)
 }
 
 func readRepoExtensions() []map[string]string {

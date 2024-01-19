@@ -89,6 +89,19 @@
   "webSite": "https://animepahe.ru"
  },
  {
+  "author": "vvsolo",
+  "icon": "https://www.yinyuetai.com/images/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "音悦台MTV",
+  "nsfw": "false",
+  "package": "api.yinyuetai",
+  "type": "bangumi",
+  "url": "api.yinyuetai.js",
+  "version": "v0.0.1",
+  "webSite": "https://video-api.yinyuetai.com"
+ },
+ {
   "author": "bethro",
   "icon": "https://asuratoon.com/wp-content/uploads/2021/03/Group_1.png",
   "lang": "en",
@@ -141,7 +154,7 @@
  {
   "author": "vvsolo",
   "description": "client",
-  "icon": "https://avatars.githubusercontent.com/u/55937028?s=48\u0026v=4",
+  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
   "lang": "all",
   "license": "MIT",
   "name": "MyIPTV",
@@ -149,7 +162,7 @@
   "package": "client.iptv",
   "type": "bangumi",
   "url": "client.iptv.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://"
  },
  {
@@ -162,7 +175,7 @@
   "package": "club.everia",
   "type": "manga",
   "url": "club.everia.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://everia.club"
  },
  {
@@ -175,7 +188,7 @@
   "package": "club.manga18",
   "type": "manga",
   "url": "club.manga18.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://manga18.club"
  },
  {
@@ -225,8 +238,8 @@
   "package": "comick.app",
   "type": "manga",
   "url": "comick.app.js",
-  "version": "v0.0.3",
-  "webSite": "https://api.comick.cc"
+  "version": "v0.0.4",
+  "webSite": "https://cors.notesnook.com/https://api.comick.cc"
  },
  {
   "author": "OshekharO",
@@ -392,6 +405,20 @@
   "webSite": "https://invidious.slipfox.xyz/api/v1"
  },
  {
+  "author": "vvsolo",
+  "description": "iptv-org",
+  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
+  "lang": "all",
+  "license": "MIT",
+  "name": "IPTV-ORG",
+  "nsfw": "false",
+  "package": "iptv-org",
+  "type": "bangumi",
+  "url": "iptv-org.js",
+  "version": "v0.0.1",
+  "webSite": "https://iptv-org.github.io/iptv"
+ },
+ {
   "author": "bethro",
   "icon": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_192,h_192/https://m.isekaiscan.to/wp-content/uploads/2023/03/0_20230304_101820_0000-300x300.png",
   "lang": "en",
@@ -489,6 +516,18 @@
   "url": "letv.im.js",
   "version": "v0.0.1",
   "webSite": "https://letv.im"
+ },
+ {
+  "author": "appdevelpo",
+  "icon": "https://xiaoxiaojia.oss-cn-shanghai.aliyuncs.com/statics/img/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "libvio",
+  "package": "libvio.pro",
+  "type": "bangumi",
+  "url": "libvio.pro.js",
+  "version": "v0.0.2",
+  "webSite": "https://www.libvio.pro"
  },
  {
   "author": "OshekharO",
@@ -694,6 +733,18 @@
   "webSite": "https://nhentai.to"
  },
  {
+  "author": "JerukPurut404",
+  "icon": "https://nimegami.id/wp-content/uploads/2018/07/Nimegami-anime.png",
+  "lang": "id",
+  "license": "MIT",
+  "name": "Nimegami",
+  "package": "nimegami.id",
+  "type": "bangumi",
+  "url": "nimegami.id.js",
+  "version": "v0.0.2",
+  "webSite": "https://nimegami.id"
+ },
+ {
   "author": "appdevelpo",
   "description": "more.",
   "icon": "https://nyaa.si/static/favicon.png",
@@ -895,6 +946,19 @@
   "url": "simplyhentai.com.js",
   "version": "v0.0.1",
   "webSite": "https://api.simply-hentai.com/v3"
+ },
+ {
+  "author": "bachig26",
+  "icon": "https://mkvdrama.org/wp-content/uploads/2023/03/474a064744e1d9fe02e1124b2b071c70.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MkvDrama",
+  "nsfw": "false",
+  "package": "stream.mkvdrama.org",
+  "type": "bangumi",
+  "url": "stream.mkvdrama.org.js",
+  "version": "v0.0.1",
+  "webSite": "https://stream.mkvdrama.org"
  },
  {
   "author": "OshekharO",

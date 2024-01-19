@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         girigiri爱动漫
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       appdevelpo
 // @lang         zh
 // @license      MIT
@@ -73,6 +73,7 @@ export default class extends Extension {
             title,
             url,
             cover,
+            headers:{}
           });
         });
         return videos

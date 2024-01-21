@@ -93,7 +93,6 @@ export default class extends Extension{
     const textString = CryptoJS.enc.Utf8.stringify(words);
     const regex_url = /<IFRAME SRC="([^"]+)"/i;
     const mp4upload_url = textString.match(regex_url)[1];
-    console.log(mp4upload_url);
     const res2 = await this.request('', {
       headers: {
         "Miru-Url": mp4upload_url,
@@ -101,7 +100,6 @@ export default class extends Extension{
     });
     const script_js = await this.querySelector(res2, 'script');
     const video_match = script_js["content"].match(/src:\s*"(.+?)"/)[1];
-    console.log(video_match)
     return {
       type: "hls",
       url: video_match || "",

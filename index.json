@@ -102,6 +102,18 @@
   "webSite": "https://video-api.yinyuetai.com"
  },
  {
+  "author": "JerukPurut404",
+  "icon": "https://arabsama.net/wp-content/uploads/2023/09/svgexport-34.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "Arabsama",
+  "package": "arabsama.net",
+  "type": "bangumi",
+  "url": "arabsama.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://arabsama.net"
+ },
+ {
   "author": "bethro",
   "icon": "https://asuratoon.com/wp-content/uploads/2021/03/Group_1.png",
   "lang": "en",

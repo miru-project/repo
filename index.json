@@ -719,6 +719,19 @@
   "webSite": "https://yts.mx"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://myasiantv.ac/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Myasiantv",
+  "nsfw": "false",
+  "package": "myasiantv",
+  "type": "bangumi",
+  "url": "myasiantv.js",
+  "version": "v0.0.1",
+  "webSite": "https://myasiantv.ac"
+ },
+ {
   "author": "bachig26",
   "icon": "https://netfapx.com/wp-content/uploads/2017/11/netfapx-lg-1_319381e1f227e13ae1201bfa30857622.png",
   "lang": "en",

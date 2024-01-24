@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         SimplyHentai
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT
 // @icon         https://www.simply-hentai.com/favicon.ico
 // @package      simplyhentai.com
 // @type         manga
-// @webSite      https://api.simply-hentai.com/v3
+// @webSite      https://cors.notesnook.com/https://api.simply-hentai.com/v3
 // @nsfw         true
 // ==/MiruExtension==
 

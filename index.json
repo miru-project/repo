@@ -1289,14 +1289,14 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://zeroscans.com/favicon.ico",
+  "icon": "https://zscans.com/favicon.ico",
   "lang": "en",
   "license": "MIT",
   "name": "ZeroScans",
   "package": "zeroscans.com",
   "type": "manga",
   "url": "zeroscans.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://zeroscans.com"
+  "version": "v0.0.2",
+  "webSite": "https://zscans.com"
  }
 ]

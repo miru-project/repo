@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         ZeroScans
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
-// @icon         https://zeroscans.com/favicon.ico
+// @icon         https://zscans.com/favicon.ico
 // @package      zeroscans.com
 // @type         manga
-// @webSite      https://zeroscans.com
+// @webSite      https://zscans.com
 // ==/MiruExtension==
 
 export default class extends Extension {

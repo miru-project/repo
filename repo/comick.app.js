@@ -7,7 +7,7 @@
 // @icon         https://comick.app/static/icons/unicorn-256_maskable.png
 // @package      comick.app
 // @type         manga
-// @webSite      https://cors.notesnook.com/https://api.comick.cc
+// @webSite      https://api.comick.cc
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
         key: "comick",
         type: "input",
         description: "COMICK API URL",
-        defaultValue: "https://cors.notesnook.com/https://api.comick.cc",
+        defaultValue: "https://api.comick.cc",
       });
     }
 
@@ -43,7 +43,6 @@ export default class extends Extension {
       const hid = res.comic.hid;
       const epRes = await this.req(`/comic/${hid}/chapters?limit=99999`);
 
-      // Reverse the order of chapters to make it ascending
       epRes.chapters.reverse();
 
       const chapMap = new Map();

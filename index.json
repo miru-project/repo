@@ -243,6 +243,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://comicextra.me/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "ComicExtra",
+  "package": "comicextra",
+  "type": "manga",
+  "url": "comicextra.js",
+  "version": "v0.0.1",
+  "webSite": "https://comicextra.me"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://comick.app/static/icons/unicorn-256_maskable.png",
   "lang": "all",
   "license": "MIT",

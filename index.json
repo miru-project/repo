@@ -628,6 +628,18 @@
   "webSite": "https://mangakatana.com/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://manganato.com/themes/hm/images/logo.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Manganato",
+  "package": "manganato",
+  "type": "manga",
+  "url": "manganato.js",
+  "version": "v0.0.1",
+  "webSite": "https://manganato.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://www.manhuagui.com/favicon.ico",
   "lang": "zh-cn",

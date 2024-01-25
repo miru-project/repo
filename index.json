@@ -887,6 +887,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://readcomicsonline.ru/images/banner.jpg",
+  "lang": "en",
+  "license": "MIT",
+  "name": "ReadComicsOnline",
+  "package": "readcomicsonline.ru",
+  "type": "manga",
+  "url": "readcomicsonline.ru.js",
+  "version": "v0.0.1",
+  "webSite": "https://readcomicsonline.ru"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://readlightnovels.net/wp-content/uploads/2020/01/rln-logo-ret.png",
   "lang": "en",
   "license": "MIT",

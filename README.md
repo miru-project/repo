@@ -59,6 +59,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Nyaa | nyaa.si | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyaa.si.js) |
 | Piped | piped.video | v0.0.1 | bethro | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/piped.video.js) |
 | rawkuma | rawkuma.com | v0.0.2 | appdevelpo | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rawkuma.com.js) |
+| ReadComicsOnline | readcomicsonline.ru | v0.0.1 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readcomicsonline.ru.js) |
 | ReadLN | readlightnovels | v0.0.2 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/readlightnovels.js) |
 | ACG.RIP | rip.acg | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/rip.acg.js) |
 | RoyalRoad | royalroad.com | v0.0.2 | appdevelpo | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/royalroad.com.js) |

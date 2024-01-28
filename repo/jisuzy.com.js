@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         极速资源
 // @version      v0.0.1
-// @author       appdevelpo
+// @author       名字
 // @lang         zh-cn
 // @license      MIT
 // @icon         https://www.jisuzy.com/template/default/images/site_logo.png

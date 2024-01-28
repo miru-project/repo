@@ -481,6 +481,19 @@
   "webSite": "https://javhd.today"
  },
  {
+  "author": "名字",
+  "icon": "https://www.jisuzy.com/template/default/images/site_logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "极速资源",
+  "nsfw": "false",
+  "package": "jisuzy.com",
+  "type": "bangumi",
+  "url": "jisuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://jszyapi.com/api.php/provide/vod/?ac=videolist"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://www.juxiaoshuo.net/images/nocover.png",
   "lang": "zh-cn",

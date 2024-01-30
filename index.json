@@ -934,6 +934,18 @@
   "webSite": "https://www.pornxp.com"
  },
  {
+  "author": "bethro",
+  "icon": "https://i0.wp.com/ravenscans.com/wp-content/uploads/2022/12/cropped-33-192x192.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Ravenscans",
+  "package": "ravenscans.com",
+  "type": "manga",
+  "url": "ravenscans.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://ravenscans.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://rawkuma.com/wp-content/uploads/2020/01/cropped-Yuna.Kuma_.Kuma_.Kuma_.Bear_.full_.2385251-32x32.png",
   "lang": "jp",

@@ -340,6 +340,18 @@
   "webSite": "https://eroticmv.com"
  },
  {
+  "author": "bethro",
+  "icon": "https://flamecomics.com/wp-content/uploads/2021/03/cropped-fds-1-192x192.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "FlameComics",
+  "package": "flamecomics.com",
+  "type": "manga",
+  "url": "flamecomics.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://flamecomics.com/"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png",
   "lang": "hi",

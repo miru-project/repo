@@ -629,6 +629,18 @@
   "webSite": "https://www.manga4life.com"
  },
  {
+  "author": "bethro",
+  "icon": "https://h.mangabat.com/favicon-96x96.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaBat",
+  "package": "mangabat.com",
+  "type": "manga",
+  "url": "mangabat.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://h.mangabat.com"
+ },
+ {
   "author": "Monster",
   "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
   "lang": "zh-cn",

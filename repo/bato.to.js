@@ -87,8 +87,18 @@ export default class extends Extension {
     }
 
     async watch(url) {
-    let watchResponse = await this.req(url);
-    const urlPattern = /https:\/\/xfs[^\s'"]+/g;
-    let urls = watchResponse.match(urlPattern);
-    return {urls}; }
+    let res = await this.req(url);
+    const batoPass = eval(res.match(/const\s+batoPass\s*=\s*(.*?);/)?.[1] ?? '').toString()
+    const batoWord = (res.match(/const\s+batoWord\s*=\s*"(.*)";/)?.[1] ?? '')
+    const imgList = JSON.parse(res.match(/const\s+imgHttps\s*=\s*(.*?);/)?.[1] ?? '')
+    const tknList = JSON.parse(CryptoJS.AES.decrypt(batoWord, batoPass).toString(CryptoJS.enc.Utf8))
+
+    let pages = [];
+    for (let i = 0; i < Math.min(imgList.length, tknList.length); i++) {
+        pages.push(`${imgList[i]}?${tknList[i]}`)
+    }
+    return {
+        urls: imgList,
+    };
+}
 }

@@ -340,6 +340,18 @@
   "webSite": "https://eroticmv.com"
  },
  {
+  "author": "bethro",
+  "icon": "https://flamecomics.com/wp-content/uploads/2021/03/cropped-fds-1-192x192.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "FlameComics",
+  "package": "flamecomics.com",
+  "type": "manga",
+  "url": "flamecomics.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://flamecomics.com/"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png",
   "lang": "hi",
@@ -555,6 +567,18 @@
   "webSite": "https://kisskh.co"
  },
  {
+  "author": "bethro",
+  "icon": "https://komikcast.lol/wp-content/uploads/2021/02/cropped-logo-kc-180x180.png",
+  "lang": "all",
+  "license": "MIT",
+  "name": "Komikcast",
+  "package": "komikcast.lol",
+  "type": "manga",
+  "url": "komikcast.lol.js",
+  "version": "v0.0.1",
+  "webSite": "https://komikcast.lol"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://letv.im/template/letv/asset/img/favicon.png",
   "lang": "zh",
@@ -603,6 +627,18 @@
   "url": "manga4life.com.js",
   "version": "v0.0.1",
   "webSite": "https://www.manga4life.com"
+ },
+ {
+  "author": "bethro",
+  "icon": "https://h.mangabat.com/favicon-96x96.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaBat",
+  "package": "mangabat.com",
+  "type": "manga",
+  "url": "mangabat.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://h.mangabat.com"
  },
  {
   "author": "Monster",
@@ -920,6 +956,18 @@
   "url": "pornxp.com.js",
   "version": "v0.0.1",
   "webSite": "https://www.pornxp.com"
+ },
+ {
+  "author": "bethro",
+  "icon": "https://i0.wp.com/ravenscans.com/wp-content/uploads/2022/12/cropped-33-192x192.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Ravenscans",
+  "package": "ravenscans.com",
+  "type": "manga",
+  "url": "ravenscans.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://ravenscans.com"
  },
  {
   "author": "appdevelpo",

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Bato
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bethro
 // @lang         all
 // @license      MIT

@@ -79,7 +79,7 @@ export default class extends Extension {
         return {
             title,
             cover,
-            desc,
+            desc: desc.trim(),
             episodes: [
                 {
                     title: "Chapters",

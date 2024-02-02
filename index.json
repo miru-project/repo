@@ -98,7 +98,7 @@
   "package": "api.yinyuetai",
   "type": "bangumi",
   "url": "api.yinyuetai.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://video-api.yinyuetai.com"
  },
  {
@@ -178,7 +178,7 @@
  {
   "author": "vvsolo",
   "description": "client",
-  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
+  "icon": "https://s11.ax1x.com/2024/01/11/pFCMKit.png",
   "lang": "all",
   "license": "MIT",
   "name": "MyIPTV",
@@ -186,8 +186,8 @@
   "package": "client.iptv",
   "type": "bangumi",
   "url": "client.iptv.js",
-  "version": "v0.0.5",
-  "webSite": "https://"
+  "version": "v0.0.6",
+  "webSite": "https://live.fanmingming.com"
  },
  {
   "author": "vvsolo",
@@ -199,7 +199,7 @@
   "package": "club.everia",
   "type": "manga",
   "url": "club.everia.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://everia.club"
  },
  {
@@ -212,7 +212,7 @@
   "package": "club.manga18",
   "type": "manga",
   "url": "club.manga18.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://manga18.club"
  },
  {
@@ -237,8 +237,21 @@
   "package": "com.freexcomic",
   "type": "manga",
   "url": "com.freexcomic.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "http://"
+ },
+ {
+  "author": "vvsolo",
+  "icon": "https://manga18fx.com/images/favicon-96x96.jpg",
+  "lang": "en",
+  "license": "MIT",
+  "name": "manga18fx",
+  "nsfw": "true",
+  "package": "com.manga18fx",
+  "type": "manga",
+  "url": "com.manga18fx.js",
+  "version": "v0.0.1",
+  "webSite": "https://manga18fx.com"
  },
  {
   "author": "MiaoMint",

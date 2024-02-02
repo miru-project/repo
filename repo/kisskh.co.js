@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Kisskh
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -22,7 +22,7 @@ export default class extends Extension {
   
     async latest(page) {
       const res = await this.request(
-        `/api/DramaList/List?page=${page}&type=0&sub=0&country=0&status=0&order=1&pageSize=40`
+        `/api/DramaList/List?page=${page}&type=0&sub=0&country=0&status=0&order=2&pageSize=40`
       );
       return res.data.map((item) => ({
         title: item.title,

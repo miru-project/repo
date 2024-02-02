@@ -1,39 +1,29 @@
 // ==MiruExtension==
 // @name         MyIPTV
 // @description  A simple IPTV client
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       vvsolo
 // @lang         all
 // @license      MIT
 // @package      client.iptv
 // @type         bangumi
-// @icon         https://avatars.githubusercontent.com/u/55937028?s=200&v=4
-// @webSite      https://
+// @icon         https://s11.ax1x.com/2024/01/11/pFCMKit.png
+// @webSite      https://live.fanmingming.com
 // @nsfw         false
 // ==/MiruExtension==
 
+
 export default class extends Extension {
-	//https://raw.githubusercontent.com
-	//https://fastly.jsdelivr.net/gh
-	//https://gcore.jsdelivr.net/gh
-	//https://jsdelivr.b-cdn.net/gh
-	//https://github.moeyy.xyz/https://raw.githubusercontent.com
-	#rawurl = 'https://github.moeyy.xyz/https://raw.githubusercontent.com';
 	#opts = {
 		url: 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
-		exturl: this.#rawurl + `/vvsolo/miru-extension-MyIPTV-sources@main/sources.json`,
+		exturl: "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/sources.json",
 		lists: {
-			'none': '',
-			'🇨🇳 fanmingming-IPV6': 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
-			'🇨🇳 fanmingming-IPV4': 'https://live.fanmingming.com/tv/m3u/v6.m3u',
-			'🇨🇳 MyIPTV-IPV6': this.#rawurl + `/vvsolo/miru-extension-MyIPTV-sources@main/ipv6.m3u`,
-			'🇨🇳 MyIPTV-IPV4': this.#rawurl + `/vvsolo/miru-extension-MyIPTV-sources@main/ipv4.m3u`,
-			'🇨🇳 YueChan-IPV6': this.#rawurl + `/YueChan/Live@main/IPTV.m3u`,
-			'🇨🇳 YueChan-Radio': this.#rawurl + `/YueChan/Live@main/Radio.m3u`,
-			'🇨🇳 YanG-1989-Gather': this.#rawurl + `/YanG-1989/m3u@main/Gather.m3u`,
-			'🇨🇳 BESTV': this.#rawurl + `/Ftindy/IPTV-URL@main/bestv.m3u`,
-			"🇨🇳 蓝鲸": this.#rawurl + `/Cyril0563/lanjing_live@main/TVbox_Free/LIVE/Free/HD_LIVE.txt`,
-			"🇨🇳 乐青多源": this.#rawurl + `/lqtv/lqtv.github.io/main/m3u/tv.m3u`,
+			"none": "",
+			"🇨🇳 fanmingming-IPV6": "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
+			"🇨🇳 MyIPTV-IPV6": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/ipv6.m3u",
+			"🇨🇳 MyIPTV-IPV4": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/ipv4.m3u",
+			"🇨🇳 MyIPTV-VOD": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/ipv4.vod.m3u",
+			"🇨🇳 MyIPTV-RADIO": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/radio.m3u",
 		}
 	}
 	#group = {
@@ -50,10 +40,6 @@ export default class extends Extension {
 		exturl: null
 	}
 
-	fixUrl(path) {
-		return ~path.search(/raw\.githubusercontent\.com/) ? path.replace(/@(main|master)\//, '\/$1\/') : path;
-	}
-
 	async cacheJSON() {
 		if (this.#cache.exturl && await this.checkExpire()) {
 			return this.#cache.exturl;
@@ -61,19 +47,15 @@ export default class extends Extension {
 		const res = await this.request('', {
 			headers: {
 				'Content-Type': 'application/json',
-				'Miru-Url': this.fixUrl(this.#opts.exturl)
+				'Miru-Url': this.#opts.exturl
 			}
 		});
 		return (this.#cache.exturl = res);
 	}
 
 	async load() {
-		const opts = this.#opts.lists;
-		for(let item in opts) {
-			opts[item] = this.fixUrl(opts[item]);
-		}
-		const res = await this.cacheJSON();
-		Object.assign(opts, res || {});
+		const lists = this.#opts.lists;
+		Object.assign(lists, (await this.cacheJSON()) || {});
 
 		await this.registerSetting({
 			title: 'Built-in Source',
@@ -81,7 +63,7 @@ export default class extends Extension {
 			type: 'radio',
 			description: 'Choose the `Custom Source` below when you choose "None"',
 			defaultValue: '',
-			options: opts
+			options: lists
 		});
 		await this.registerSetting({
 			title: 'Custom Source',
@@ -161,24 +143,31 @@ export default class extends Extension {
 		const res = (await this.req(baseUrl))
 			.replace(/\r?\n/g, '\n')
 			.replace(/\n+/g, '\n')
+			// fix
+			.replace(/\.m3u8\?\n([\w\=\-&]+)\n/g, '.m3u8?$1\n')
+			.replace(/\.m3u8\n\?([\w\=\-&]+)\n/g, '.m3u8?$1\n')
+			.replace(/^(#EXTINF:\-?[\d\.]+) *\,/gmi, '$1 ')
+			.replace(/^(#EXTINF:\-?[\d\.]+) ([^,]+)$/gmi, '$1,$2')
 			.trim();
 
 		const ext = baseUrl.slice(baseUrl.lastIndexOf('.')).toLowerCase();
 		const content = res.split('\n');
-		let bangumi = [];
+
+		const repeats = {};
 		if (~res.search(/#genre#/i) || ext === '.txt') {
 			let group, tmp;
-			const repeats = {};
 			content.forEach((item) => {
-				tmp = item.split(',');
-				if (tmp.length !== 2) {
+				// 有 genre 标记取 group 名称
+				if (~item.search(/,#genre#$/i)) {
+					group = item.split(',#')[0];
 					return;
 				}
-				const [title, url] = tmp;
-				if (url === '#genre#') {
-					group = title;
+				// 无分隔 标记取 group 名称
+				if (!~item.search(/,/) && !~item.search(/(?:https?|rs[tcm]p|rsp|mms|udp)/)) {
+					group = item;
 					return;
 				}
+				let [title, url] = item.split(',');
 				// 组合相同名称的台
 				if (title in repeats) {
 					repeats[title].url += '#' + url;
@@ -191,9 +180,7 @@ export default class extends Extension {
 					group
 				}
 			});
-			// 组合相同名称的台
-			bangumi = Object.values(repeats);
-		} else if (~res.search(/#EXT(?:M3U|INF)/i) || ext === '.m3u') {
+		} else if (~res.search(/#EXT(?:M3U|INF)/i) || ['.m3u', '.m3u8'].includes(ext)) {
 			let title, cover, group;
 			let headers = {};
 			const vlcopt = {
@@ -209,19 +196,26 @@ export default class extends Extension {
 					for (let v in vlcopt) if (item.startsWith(vlcopt[v])) {
 						headers[v] = item.slice(vlcopt[v].length);
 					}
-				} else if (title && ~item.search(/^(?:https?|rs[tcm]p|rsp|mms)/) && !~item.search(/\.mpd/)) {
-					bangumi.push({
+				} else if (title && ~item.search(/^(?:https?|rs[tcm]p|rsp|mms|udp)/) && !~item.search(/\.mpd/)) {
+					// 组合相同名称的台
+					if (title in repeats && repeats[title].group === group) {
+						repeats[title].url += '#' + item.trim();
+						return;
+					}
+					repeats[title] = {
 						title,
 						url: item.trim(),
 						cover,
 						group,
 						headers,
-					});
+					}
 					title = '';
 					headers = {};
 				}
 			});
 		}
+		// 组合相同名称的台
+		const bangumi = Object.values(repeats) || [];
 		this.#cache.uptime = Date.now();
 		return (this.#cache.items = this.#cache.res[md5path] = bangumi);
 	}
@@ -230,7 +224,7 @@ export default class extends Extension {
 		if (page > 1) {
 			return [];
 		}
-		!~this.#cache.items.length && await this.latest();
+		!~this.#cache.items.length && (await this.latest());
 		const filt = filter?.data && filter.data[0] || this.#group.val;
 		const bangumi = this.#cache.items;
 		if (filt === this.#group.val) {

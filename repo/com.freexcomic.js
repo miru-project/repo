@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         愛看漫畫
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       vvsolo
 // @lang         zh-tw
 // @license      MIT
@@ -12,112 +12,80 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-	#sources = {
-		'mxsmh01.top': 'http://www.mxsmh01.top',
-		'mxsmh1.com': 'http://www.mxsmh1.com',
-		'mxs2.com': 'http://www.mxs2.com',
-		'mxs02.top': 'http://www.mxs02.top',
-		'mxs03.top': 'http://www.mxs03.top',
-		'mxs04.top': 'http://www.mxs04.top',
-		'92hm.life': 'http://www.92hm.life'
-	};
-	#cacheCover = {};
-
-	async queryAll(res, selector, func) {
-		const finds = await Promise.all(
-			(await this.querySelectorAll(res, selector)).map(async (v, i) => {
-				const html = await v.content;
-				return await func(html, i);
-			})
-		);
-		return finds || [];
+	#opts = {
+		base: 'http://www.mxsmh01.top',
+		sources: {
+			'mxsmh01.top': 'http://www.mxsmh01.top',
+			'mxsmh1.com': 'http://www.mxsmh1.com',
+			'mxs2.com': 'http://www.mxs2.com',
+			'mxs02.top': 'http://www.mxs02.top',
+			'mxs03.top': 'http://www.mxs03.top',
+			'mxs04.top': 'http://www.mxs04.top',
+			'92hm.life': 'http://www.92hm.life'
+		},
+		filter: "/booklist",
+		filters: {
+			//"/update": "更新",
+			"/booklist": "全部",
+			"/booklist&end=-1": "连载",
+			"/booklist&end=1": "完结"
+		},
+		uptime: 0,
+		expire: 12 * 60,
 	}
+	#cache = new Map([
+		['@cover', {}]
+	]);
 
 	async load() {
 		await this.registerSetting({
 			title: 'Source',
 			key: 'source',
 			type: 'radio',
-			defaultValue: 'http://www.mxsmh01.top',
-			options: this.#sources
+			defaultValue: this.#opts.base,
+			options: this.#opts.sources
 		});
 	}
 
-	async req(path) {
-		const baseUrl = await this.getSetting('source');
-		return await this.request('', {
-			headers: {
-				'User-Agent':
-					'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-				'Miru-Url': baseUrl + path
-			}
-		});
-	}
-
-	async getMangas(path) {
-		const res = await this.req(path);
-		return await this.queryAll(res, 'div.mh-item > a', async (html) => {
-			const title = await this.getAttributeText(html, 'a', 'title');
-			const url = await this.getAttributeText(html, 'a', 'href');
-			const cover = html.match(/background\-image: *url\((.+)\)/)[1] || '';
-			this.#cacheCover[url] = cover;
-			return {
-				title: title.trim(),
-				url,
-				cover
-			}
-		})
-	}
-	
 	async latest(page) {
 		return await this.getMangas(`/booklist?page=${page}`);
+	}
+
+	async search(kw, page, filter) {
+		if (kw && page > 1) {
+			return [];
+		}
+		const filt = filter?.data && filter.data[0] || this.#opts.filter;
+		let seaKW = filt + `?page=${page}`;
+		if (kw) {
+			seaKW = `/search?keyword=${encodeURIComponent(kw)}`;
+		}
+		return await this.getMangas(seaKW);
 	}
 
 	async createFilter(filter) {
 		return {
 			"data": {
-				title: "状态",
+				title: "",
 				max: 1,
-				min: 0,
-				default: "全部",
-				options: {
-					"全部": "全部",
-					"连载": "连载",
-					"完结": "完结"
-				},
+				min: 1,
+				default: this.#opts.filter,
+				options: this.#opts.filters,
 			}
 		}
-	}
-	async search(kw, page, filter) {
-		if (kw && page > 1) {
-			return [];
-		}
-		const gens = {
-			"全部": "All",
-			"连载": "-1",
-			"完结": "1"
-		}
-		const filt = filter?.data && filter.data[0] || '全部';
-		let seaKW = `/booklist?page=${page}`;
-		if (kw) {
-			seaKW = `/search?keyword=${encodeURIComponent(kw)}`;
-		} else if (filt != '全部') {
-			seaKW += `&end=` + gens[filt];
-		}
-		return await this.getMangas(seaKW);
 	}
 
 	async detail(url) {
 		const res = await this.req(url);
 		const title = await this.querySelector(res, '.info > h1').text;
 		const desc = await this.querySelector(res, 'p.content').text;
-		const imgs = await this.queryAll(res, '#detail-list-select > li', async (html, i) => {
+		const imgs = await this.queryAll(res, '#detail-list-select > li', async (html) => {
 			return {
 				name: (await this.querySelector(html, 'a').text || '').trim(),
 				url: await this.getAttributeText(html, 'a', 'href')
 			}
 		})
-		const cover = this.#cacheCover[url] || (await this.getAttributeText(res, '.cover > img', 'src')) || '';
+		const cover = this.#cache.get('@cover')[url] || (await this.getAttributeText(res, '.cover > img', 'src')) || '';
 		const subtitle = [];
 		(await this.querySelector(res, '.info').content || '').replace(/<p class="subtitle">(.+?)<\/p>/g, (m, m1) => {
 			subtitle.push(m1.replace(/&amp;/g, '&'));
@@ -127,12 +95,10 @@ export default class extends Extension {
 			title: title.trim(),
 			cover,
 			desc: subtitle.join('\n'),
-			episodes: [
-				{
-					title: 'Directory',
-					urls: imgs.reverse()
-				}
-			]
+			episodes: [{
+				title: 'Directory',
+				urls: imgs.reverse()
+			}]
 		};
 	}
 
@@ -142,5 +108,56 @@ export default class extends Extension {
 		return {
 			urls
 		};
+	}
+
+	async getMangas(path) {
+		const baseUrl = await this.getSetting('source');
+		const md5path = md5(baseUrl + path);
+		if (this.checkCache(md5path)) {
+			return this.#cache.get(md5path);
+		}
+		const res = await this.req(path);
+		const mangas = await this.queryAll(res, 'div.mh-item > a', async (html) => {
+			const title = await this.getAttributeText(html, 'a', 'title');
+			const url = await this.getAttributeText(html, 'a', 'href');
+			const cover = html.match(/background\-image: *url\((.+)\)/)[1] || '';
+			this.#cache.get('@cover')[url] = cover;
+			return {
+				title: title.trim(),
+				url,
+				cover
+			}
+		})
+		//this.#cache.clear();
+		this.#cache.set(md5path, mangas);
+		this.#opts.uptime = Date.now();
+		return mangas;
+	}
+
+	async req(path) {
+		const baseUrl = await this.getSetting('source');
+		if (~path.indexOf(baseUrl)) path = path.replace(baseUrl, '');
+		return await this.request('', {
+			headers: {
+				'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+				'Miru-Url': baseUrl + path
+			}
+		});
+	}
+
+	async queryAll(res, selector, func) {
+		return await Promise.all(
+			(await this.querySelectorAll(res, selector)).map(async (v, i) => {
+				const html = await v.content;
+				return await func(html, v, i);
+			})
+		) || [];
+	}
+
+	checkCache(item) {
+		const expire = +(this.#opts.expire);
+		return this.#cache.has(item) &&
+			expire > 0 &&
+			(Date.now() - this.#opts.uptime) < expire * 60 * 1000;
 	}
 }

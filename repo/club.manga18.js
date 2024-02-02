@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         manga18.club
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       vvsolo
 // @lang         all
 // @license      MIT
@@ -12,85 +12,57 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-
-	#sources = {
-		'[en]manga18.club': 'https://manga18.club',
-		'[zh-CN]hanman18.com': 'https://hanman18.com',
-		'[fr]tumanhwas.club': 'https://tumanhwas.club',
-		'[fr]leercapitulo.net': 'https://leercapitulo.net',
-		//'[en]comic1000.com': 'https://comic1000.com',
-		//'[en]18porncomic.com': 'https://18porncomic.com',
-		//'[en]manga18.us': 'https://manga18.us',
-		//'[en]manhuascan.us': 'https://manhuascan.us',
-	};
-
-	#genres = {};
-	#cacheCover = {};
-
-	async queryAll(res, selector, func) {
-		const finds = await Promise.all(
-			(await this.querySelectorAll(res, selector)).map(async (v, i) => {
-				const html = await v.content;
-				return await func(html, i);
-			})
-		);
-		return finds || [];
+	#opts = {
+		base: 'https://manga18.club',
+		sources: {
+			'[en]manga18.club': 'https://manga18.club',
+			'[zh-CN]hanman18.com': 'https://hanman18.com',
+			'[fr]tumanhwas.club': 'https://tumanhwas.club',
+			'[fr]leercapitulo.net': 'https://leercapitulo.net',
+			//'[en]comic1000.com': 'https://comic1000.com',
+			//'[en]18porncomic.com': 'https://18porncomic.com',
+			//'[en]manga18.us': 'https://manga18.us',
+			//'[en]manhuascan.us': 'https://manhuascan.us',
+		},
+		uptime: 0,
+		expire: 5,
 	}
-	
+	#cache = new Map([
+		['@cover', {}]
+	]);
+
 	async load() {
 		await this.registerSetting({
 			title: 'Source',
 			key: 'source',
 			type: 'radio',
-			defaultValue: 'https://manga18.club',
-			options: this.#sources
+			defaultValue: this.#opts.base,
+			options: this.#opts.sources
 		});
 	}
 	
-	async req(path) {
-		const baseUrl = await this.getSetting('source');
-		if (~path.indexOf(baseUrl)) path = path.replace(baseUrl, '');
-		return await this.request('', {
-			headers: {
-				//'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
-				'Miru-Url': baseUrl + path
-			}
-		});
-	}
-
 	async createFilter(filter) {
-		const res = await this.req(`/list-manga`);
-		const cates = {"All": "All"};
-		await this.queryAll(res, '.grid_cate > ul > li', async (html) => {
-			let title = await this.querySelector(html, 'a').text;
-			title = title.trim();
-			cates[title] = title;
-			this.#genres[title] = await this.getAttributeText(html, 'a', 'href');
-		})
+		if (!this.checkCache('@genres')) {
+			const res = await this.req(`/list-manga`);
+			let genres = {
+				"All": "All"
+			};
+			await this.queryAll(res, '.grid_cate > ul > li', async (html) => {
+				const title = (await this.querySelector(html, 'a').text || '').trim();
+				const href = await this.getAttributeText(html, 'a', 'href');
+				genres[href] = title
+			})
+			this.#cache.set('@genres', genres);
+		}
 		return {
 			"data": {
-				title: "GENRES",
+				title: "Genres",
 				max: 1,
 				min: 0,
 				default: "All",
-				options: cates,
+				options: this.#cache.get('@genres'),
 			}
 		}
-	}
-	
-	async getMangas(path) {
-		const res = await this.req(path);
-		return await this.queryAll(res, 'div.story_item > div.story_images', async (html) => {
-			const title = await this.getAttributeText(html, 'a', 'title');
-			const url = await this.getAttributeText(html, 'a', 'href');
-			const cover = await this.getAttributeText(html, 'img', 'src');
-			this.#cacheCover[url] = cover;
-			return {
-				title: title.trim(),
-				url,
-				cover
-			}
-		})
 	}
 
 	async latest(page) {
@@ -99,11 +71,9 @@ export default class extends Extension {
 
 	async search(kw, page, filter) {
 		const filt = filter?.data && filter.data[0] || 'All';
-		let seaKW = `/list-manga/${page}`;
+		let seaKW = filt === 'All' ? `/page/${page}/` : `/${filt}/${page}/`;
 		if (kw) {
-			seaKW += `?search=${encodeURIComponent(kw)}`;
-		} else if (filt != 'All' && filt in this.#genres) {
-			seaKW = this.#genres[filt] + `/${page}`;
+			seaKW += `?s=${encodeURIComponent(kw)}`;
 		}
 		return await this.getMangas(seaKW);
 	}
@@ -112,14 +82,14 @@ export default class extends Extension {
 		const res = await this.req(url);
 		const title = await this.querySelector(res, '.detail_name > h1').text;
 		const desc = await this.querySelector(res, '.detail_reviewContent').text;
-		const imgs = await this.queryAll(res, '.chapter_box .item > a', async (html, i) => {
+		const imgs = await this.queryAll(res, '.chapter_box .item > a', async (html) => {
 			return {
 				name: (await this.querySelector(html, 'a').text || '').trim(),
 				url: await this.getAttributeText(html, 'a', 'href')
 			}
 		})
-		const cover = this.#cacheCover[url] || (await this.getAttributeText(res, '.detail_avatar > img', 'src')) || '';
-		const subtitle = await this.queryAll(res, '.detail_listInfo > .item', async (html, i) => {
+		const cover = this.#cache.get('@cover')[url] || (await this.getAttributeText(res, '.detail_avatar > img', 'src')) || '';
+		const subtitle = await this.queryAll(res, '.detail_listInfo > .item', async (html) => {
 			const _label = (await this.querySelector(html, '.info_label').text || '');
 			const _value = (await this.querySelector(html, '.info_value > a').text ||
 				await this.querySelector(html, '.info_value > span').text || '');
@@ -159,5 +129,55 @@ export default class extends Extension {
 				referer: baseUrl
 			}
 		};
+	}
+	
+	async req(path) {
+		const baseUrl = await this.getSetting('source');
+		if (~path.indexOf(baseUrl)) path = path.replace(baseUrl, '');
+		return await this.request('', {
+			headers: {
+				'Miru-Url': baseUrl + path
+			}
+		});
+	}
+
+	async getMangas(path) {
+		const baseUrl = await this.getSetting('source');
+		const md5path = md5(baseUrl + path);
+		if (this.checkCache(md5path)) {
+			return this.#cache.get(md5path);
+		}
+		const res = await this.req(path);
+		const mangas = await this.queryAll(res, 'div.story_item > div.story_images', async (html) => {
+			const title = await this.getAttributeText(html, 'a', 'title');
+			const url = await this.getAttributeText(html, 'a', 'href');
+			const cover = await this.getAttributeText(html, 'img', 'src');
+			this.#cache.get('@cover')[url] = cover;
+			return {
+				title: title.trim(),
+				url,
+				cover
+			}
+		})
+		//this.#cache.clear();
+		this.#cache.set(md5path, mangas);
+		this.#opts.uptime = Date.now();
+		return mangas;
+	}
+
+	async queryAll(res, selector, func) {
+		return await Promise.all(
+			(await this.querySelectorAll(res, selector)).map(async (v, i) => {
+				const html = await v.content;
+				return await func(html, v, i);
+			})
+		) || [];
+	}
+
+	checkCache(item) {
+		const expire = +(this.#opts.expire);
+		return this.#cache.has(item) &&
+			expire > 0 &&
+			(Date.now() - this.#opts.uptime) < expire * 60 * 1000;
 	}
 }

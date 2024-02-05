@@ -1,11 +1,11 @@
 // ==MiruExtension==
-// @name         FlimyPujab
+// @name         FilmyPunjab
 // @version      v0.0.2
 // @author       appdevelpo
 // @lang         hi
 // @license      MIT
 // @icon         https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png
-// @package      flimypujab.com
+// @package      filmypunjab.com
 // @type         bangumi
 // @webSite      https://111.90.151.26
 // @nsfw         false

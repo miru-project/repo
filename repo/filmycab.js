@@ -106,12 +106,14 @@ export default class extends Extension {
     const dwishLinkRes = await this.request("", {
       headers: {
         "Miru-Url": dwishLink,
+        "Miru-Referer": dwishLink,
       },
     });
     const fast = await this.getAttributeText(dwishLinkRes, "span.flb_download_buttons > a", "href");
     const LinkRes = await this.request("", {
       headers: {
         "Miru-Url": fast,
+        "Miru-Referer": fast,
       },
     });
     const directUrlMatch = LinkRes.match(/(https:\/\/[^\s'"]*\.mkv[^\s'"]*)/);

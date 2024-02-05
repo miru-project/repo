@@ -365,6 +365,19 @@
   "webSite": "https://eroticmv.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://i.postimg.cc/SNhTmxT5/FilmyCab.png",
+  "lang": "hi",
+  "license": "MIT",
+  "name": "FilmyCab",
+  "nsfw": "false",
+  "package": "filmycab",
+  "type": "bangumi",
+  "url": "filmycab.js",
+  "version": "v0.0.1",
+  "webSite": "https://filmycab.skin"
+ },
+ {
   "author": "bethro",
   "icon": "https://flamecomics.com/wp-content/uploads/2021/03/cropped-fds-1-192x192.png",
   "lang": "en",

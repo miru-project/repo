@@ -379,7 +379,7 @@
  },
  {
   "author": "appdevelpo",
-  "icon": "https://111.90.151.26/wp-content/uploads/2020/06/cropped-Logo-2-60x60.png",
+  "icon": "https://111.90.140.97/wp-content/uploads/2022/09/Fliz-Hindi-Movie-Website-02.jpg",
   "lang": "hi",
   "license": "MIT",
   "name": "FilmyPunjab",
@@ -387,8 +387,8 @@
   "package": "filmypunjab.com",
   "type": "bangumi",
   "url": "filmypunjab.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://111.90.151.26"
+  "version": "v0.0.3",
+  "webSite": "https://111.90.140.97"
  },
  {
   "author": "bethro",

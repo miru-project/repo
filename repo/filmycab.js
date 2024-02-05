@@ -100,25 +100,37 @@ export default class extends Extension {
         "Miru-Url": url,
       },
     });
-
-    const dwishLink = res.match(/https:\/\/fastxyz\.[^\s'"]+/);
-
+    //console.log(res)
+    const dwishLink = res.match(/https:\/\/hubcloud\.[^\s'"]+/); //1
+  	//console.log(dwishLink)
     const dwishLinkRes = await this.request("", {
       headers: {
         "Miru-Url": dwishLink,
         "Miru-Referer": dwishLink,
       },
     });
-    const fast = await this.getAttributeText(dwishLinkRes, "span.flb_download_buttons > a", "href");
-    const LinkRes = await this.request("", {
+	  //console.log(dwishLinkRes)
+    const fast = dwishLinkRes.match(/https:\/\/hubcloud\.[^\s'"]+/); //2
+  	//console.log(fast)
+    const FastRes = await this.request("", {
       headers: {
         "Miru-Url": fast,
         "Miru-Referer": fast,
       },
     });
-    const directUrlMatch = LinkRes.match(/(https:\/\/[^\s'"]*\.mkv[^\s'"]*)/);
+	  //console.log(FastRes)
+    const hub = await this.getAttributeText(FastRes, "div.vd.d-none > a", "href"); //3
+  	//console.log(hub)
+    const HubRes = await this.request("", {
+      headers: {
+        "Miru-Url": hub,
+        "Miru-Referer": hub,
+      },
+    });
+	  //console.log(HubRes)
+    const directUrlMatch = HubRes.match(/https:\/\/pixeldra\.in\/api\/[^"?]*(\?[^"?]*)?/);
     const directUrl = directUrlMatch ? directUrlMatch[0] : "";
-
+    //console.log(directUrl)
     return {
       type: "hls",
       url: directUrl || "",

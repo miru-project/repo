@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         紳士漫畫
 // @version      v0.0.2
-// @author       appdevelpo,Yursd
+// @author       appdevelpo
 // @lang         zh-tw
 // @license      MIT
 // @type         manga

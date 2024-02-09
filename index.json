@@ -101,6 +101,18 @@
   "webSite": "https://animepahe.ru"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://cdn.jsdelivr.net/gh/TechShreyash/AnimeDex@main/static/img/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Animxer",
+  "package": "animxer.xyz",
+  "type": "bangumi",
+  "url": "animxer.xyz.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.anime-dex.workers.dev"
+ },
+ {
   "author": "vvsolo",
   "icon": "https://www.yinyuetai.com/images/favicon.ico",
   "lang": "zh",

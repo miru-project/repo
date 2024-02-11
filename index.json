@@ -653,6 +653,18 @@
   "webSite": "https://www.libvio.pro"
  },
  {
+  "author": "bethro",
+  "icon": "https://lilymanga.net/wp-content/uploads/2019/12/cropped-2Prancheta-1-192x192.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "LilyManga",
+  "package": "lilymanga.net",
+  "type": "manga",
+  "url": "lilymanga.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://lilymanga.net"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://s8.lk21static.xyz/wp-content/themes/dunia21/images/favicon-set/apple-icon-144x144.png",
   "lang": "id",

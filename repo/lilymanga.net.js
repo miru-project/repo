@@ -76,15 +76,13 @@ export default class extends Extension {
             method: "POST",
         });
 
-        let chapters = await this.querySelectorAll(chapters_res, "ul.main > li.wp-manga-chapter");
+        let chapters = await this.querySelectorAll(chapters_res, 'ul.main > li.wp-manga-chapter');
 
         let episodes = await Promise.all(chapters.map(async (chapter) => ({
             url: await this.getAttributeText(chapter.content, "a", "href"),
-            title: (await this.querySelector(chapter.content, "a").text).trim()
+            name: (await this.querySelector(chapter.content, "a").text).trim()
         })))
-
         
-
         return {
             title,
             cover,

@@ -27,6 +27,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://wiki-img.airav.wiki/storage/settings/September2019/hj8LddG9oFlmPe0YFkUd.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "AirWiki",
+  "nsfw": "true",
+  "package": "airav",
+  "type": "bangumi",
+  "url": "airav.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.airav.wiki"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://anilist.co/img/icons/apple-touch-icon.png",
   "lang": "en",
   "license": "MIT",

@@ -60,7 +60,7 @@
   "type": "bangumi",
   "url": "ani.watch.js",
   "version": "v0.0.6",
-  "webSite": "https://aniwatch.to"
+  "webSite": "https://proxy.techzbots1.workers.dev/?u=https://aniwatch.to"
  },
  {
   "author": "(koikiss-dev)",

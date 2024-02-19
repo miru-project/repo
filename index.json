@@ -765,6 +765,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://mangakomi.io/wp-content/uploads/2019/12/v-I-BhKu.jpeg",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaKomi",
+  "package": "mangakomi",
+  "type": "manga",
+  "url": "mangakomi.js",
+  "version": "v0.0.1",
+  "webSite": "https://mangakomi.io"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://manganato.com/themes/hm/images/logo.png",
   "lang": "en",
   "license": "MIT",

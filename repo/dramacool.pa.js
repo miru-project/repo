@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         DramaCool
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         en
 // @license      MIT
-// @icon         https://dramacool.pa/images/mobi/logo.png
+// @icon         https://proxy.techzbots1.workers.dev/?u=https://dramacool.pa/images/mobi/logo.png
 // @package      dramacool.pa
 // @type         bangumi
-// @webSite      https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool
+// @webSite      https://proxy.techzbots1.workers.dev/?u=https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,14 +25,14 @@ export default class extends Extension {
       key: "dramacool",
       type: "input",
       description: "Dramacool Api Url",
-      defaultValue: "https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool",
+      defaultValue: "https://proxy.techzbots1.workers.dev/?u=https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool",
     });
   }
 
   async latest() {
     const res = await this.request("", {
       headers: {
-        "Miru-Url": "https://dramacool.pa/most-popular-drama",
+        "Miru-Url": "https://proxy.techzbots1.workers.dev/?u=https://dramacool.pa/most-popular-drama",
       },
     });
     const bsxList = await this.querySelectorAll(res, "ul.switch-block.list-episode-item > li");

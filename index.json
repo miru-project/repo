@@ -1284,6 +1284,19 @@
   "webSite": "https://www2.turkish123.org"
  },
  {
+  "author": "wenmoux",
+  "icon": "https://www.uaa.com/assets/uaalogo.7acb1f90.svg",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "UAA视频",
+  "nsfw": "true",
+  "package": "uaa.com",
+  "type": "bangumi",
+  "url": "uaa.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.uaa.com/api/video/app/video"
+ },
+ {
   "author": "CakesTwix",
   "icon": "https://www.google.com/s2/favicons?domain=unimay.media\u0026sz=256",
   "lang": "uk",

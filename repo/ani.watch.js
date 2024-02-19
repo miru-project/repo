@@ -7,7 +7,7 @@
 // @icon         https://aniwatch.to/images/android-chrome-512x512.png
 // @package      ani.watch
 // @type         bangumi
-// @webSite      https://aniwatch.to
+// @webSite      https://proxy.techzbots1.workers.dev/?u=https://aniwatch.to
 // ==/MiruExtension==
 
 export default class extends Extension {

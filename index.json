@@ -60,7 +60,7 @@
   "type": "bangumi",
   "url": "ani.watch.js",
   "version": "v0.0.6",
-  "webSite": "https://aniwatch.to"
+  "webSite": "https://proxy.techzbots1.workers.dev/?u=https://aniwatch.to"
  },
  {
   "author": "(koikiss-dev)",
@@ -274,7 +274,7 @@
   "package": "com.freexcomic",
   "type": "manga",
   "url": "com.freexcomic.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "http://"
  },
  {
@@ -762,6 +762,18 @@
   "url": "mangakatana.com.js",
   "version": "v0.0.1",
   "webSite": "https://mangakatana.com/"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://mangakomi.io/wp-content/uploads/2019/12/v-I-BhKu.jpeg",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaKomi",
+  "package": "mangakomi",
+  "type": "manga",
+  "url": "mangakomi.js",
+  "version": "v0.0.1",
+  "webSite": "https://mangakomi.io"
  },
  {
   "author": "OshekharO",

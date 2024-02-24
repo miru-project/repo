@@ -65,7 +65,7 @@ export default class Mangafx extends Extension {
     return this.filter_jsons
   }
   async search(kw, page, filter) {
-    kw = kw.replace(/\b\w/g, function(char) { return char.toUpperCase(); });
+    kw = kw.toLowerCase().replace(/\b\w/g, function(char) { return char.toUpperCase(); });
     const search_list = [kw];
     if (filter === null) {
       filter = {};

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         MoviesArc
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -87,7 +87,7 @@ export default class extends Extension {
     const quality = await this.getSetting("prefQuality");
     const res = await this.request(`tmdbId=${url}`, {
       headers: {
-        "Miru-Url": "https://flixquest-api.vercel.app/flixhq/watch-movie?",
+        "Miru-Url": "https://flixquest-api.vercel.app/vidsrcto/watch-movie?",
       },
     });
     // Thanks BeamlakAschalew For The Api
@@ -102,6 +102,11 @@ export default class extends Extension {
       return {
         type: "mp4",
         url: res.sources.pop().url,
+        subtitles: res.subtitles.map((item) => ({
+        title: item.lang,
+        url: item.url,
+        language: item.lang,
+      })),        
       };
     }
   }

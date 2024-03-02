@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         FilmyCab
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         hi
 // @license      MIT
 // @package      filmycab
 // @type         bangumi
 // @icon         https://i.postimg.cc/SNhTmxT5/FilmyCab.png
-// @webSite      https://filmycab.skin
+// @webSite      https://filmycab.mom
 // @nsfw         false
 // ==/MiruExtension==
 
@@ -24,7 +24,7 @@ export default class extends Extension {
       //console.log(title+cover+url)
       novel.push({
         title,
-        url: "https://filmycab.skin" + url,
+        url: "https://filmycab.mom" + url,
         cover,
       });
     }
@@ -43,7 +43,7 @@ export default class extends Extension {
       //console.log(title+cover+url)
       novel.push({
         title,
-        url: "https://filmycab.skin" + url,
+        url: "https://filmycab.mom" + url,
         cover,
       });
     }

@@ -27,6 +27,19 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://wiki-img.airav.wiki/storage/settings/September2019/hj8LddG9oFlmPe0YFkUd.png",
+  "lang": "jp",
+  "license": "MIT",
+  "name": "AirWiki",
+  "nsfw": "true",
+  "package": "airav",
+  "type": "bangumi",
+  "url": "airav.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.airav.wiki"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://anilist.co/img/icons/apple-touch-icon.png",
   "lang": "en",
   "license": "MIT",
@@ -47,7 +60,7 @@
   "type": "bangumi",
   "url": "ani.watch.js",
   "version": "v0.0.6",
-  "webSite": "https://aniwatch.to"
+  "webSite": "https://proxy.techzbots1.workers.dev/?u=https://aniwatch.to"
  },
  {
   "author": "(koikiss-dev)",
@@ -72,7 +85,7 @@
   "package": "anime.girigirilove.com",
   "type": "bangumi",
   "url": "anime.girigirilove.com.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://anime.girigirilove.com"
  },
  {
@@ -261,7 +274,7 @@
   "package": "com.freexcomic",
   "type": "manga",
   "url": "com.freexcomic.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "http://"
  },
  {
@@ -353,15 +366,15 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://dramacool.pa/images/mobi/logo.png",
+  "icon": "https://proxy.techzbots1.workers.dev/?u=https://dramacool.pa/images/mobi/logo.png",
   "lang": "en",
   "license": "MIT",
   "name": "DramaCool",
   "package": "dramacool.pa",
   "type": "bangumi",
   "url": "dramacool.pa.js",
-  "version": "v0.0.2",
-  "webSite": "https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool"
+  "version": "v0.0.3",
+  "webSite": "https://proxy.techzbots1.workers.dev/?u=https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool"
  },
  {
   "author": "OshekharO",
@@ -386,8 +399,8 @@
   "package": "filmycab",
   "type": "bangumi",
   "url": "filmycab.js",
-  "version": "v0.0.1",
-  "webSite": "https://filmycab.skin"
+  "version": "v0.0.2",
+  "webSite": "https://filmycab.mom"
  },
  {
   "author": "appdevelpo",
@@ -749,6 +762,18 @@
   "url": "mangakatana.com.js",
   "version": "v0.0.1",
   "webSite": "https://mangakatana.com/"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://mangakomi.io/wp-content/uploads/2019/12/v-I-BhKu.jpeg",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaKomi",
+  "package": "mangakomi",
+  "type": "manga",
+  "url": "mangakomi.js",
+  "version": "v0.0.1",
+  "webSite": "https://mangakomi.io"
  },
  {
   "author": "OshekharO",
@@ -1229,7 +1254,7 @@
   "package": "themoviearchive",
   "type": "bangumi",
   "url": "themoviearchive.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://api.themoviedb.org/3"
  },
  {
@@ -1267,7 +1292,7 @@
   "package": "truyen.net",
   "type": "manga",
   "url": "truyen.net.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://comics-api.vercel.app"
  },
  {
@@ -1282,6 +1307,19 @@
   "url": "turkish123.js",
   "version": "v0.0.2",
   "webSite": "https://www2.turkish123.org"
+ },
+ {
+  "author": "wenmoux",
+  "icon": "https://www.uaa.com/assets/uaalogo.7acb1f90.svg",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "UAA视频",
+  "nsfw": "true",
+  "package": "uaa.com",
+  "type": "bangumi",
+  "url": "uaa.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.uaa.com/api/video/app/video"
  },
  {
   "author": "CakesTwix",
@@ -1341,6 +1379,19 @@
   "url": "vod.api.xml.bajie.js",
   "version": "v0.0.1",
   "webSite": "https://cj.bajiecaiji.com"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://www.watchasian.sk/favicon.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "WatchAsian",
+  "nsfw": "false",
+  "package": "watchasian",
+  "type": "bangumi",
+  "url": "watchasian.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.watchasian.sk"
  },
  {
   "author": "Monster",
@@ -1446,7 +1497,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://yomovies.media/wp-content/uploads/2023/12/120.jpg",
+  "icon": "https://yomovies.town/wp-content/uploads/2023/12/120.jpg",
   "lang": "hi",
   "license": "MIT",
   "name": "YoMovies",
@@ -1454,8 +1505,21 @@
   "package": "yomovies",
   "type": "bangumi",
   "url": "yomovies.js",
-  "version": "v0.0.4",
-  "webSite": "https://yomovies.fit"
+  "version": "v0.0.5",
+  "webSite": "https://yomovies.town"
+ },
+ {
+  "author": "appdevelpo",
+  "icon": "https://yugenanime.tv/static/img/favicon-32x32.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "yugenanime",
+  "nsfw": "true",
+  "package": "yugenanime.tv",
+  "type": "bangumi",
+  "url": "yugenanime.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://yugenanime.tv"
  },
  {
   "author": "OshekharO",

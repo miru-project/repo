@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NetTruyen
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       OshekharO
 // @lang         vi
 // @license      MIT
@@ -74,7 +74,7 @@ export default class extends Extension {
     const [id, chapter] = url.split("|");
     const res = await this.request(`/comics/${id}/chapters/${chapter}`);
     return {
-      urls: res.images.map((item) => item.backup_src),
+      urls: res.images.map((item) => item.src),
     };
   }
 }

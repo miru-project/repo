@@ -65,7 +65,11 @@ export default class Mangafx extends Extension {
     return this.filter_jsons
   }
   async search(kw, page, filter) {
+    kw = kw.toLowerCase().replace(/\b\w/g, function(char) { return char.toUpperCase(); });
     const search_list = [kw];
+    if (filter === null) {
+      filter = {};
+    }
     for (const [key, value] of Object.entries(filter)){
         // url+=`${filter[key][0]}`
         if(filter[key][0]){
@@ -82,6 +86,9 @@ export default class Mangafx extends Extension {
             filter_result.push(element)
         }
     })
+    if (filter_result.length === 0) {
+      return [];
+    }
     let filter_output = filter_result.join("},{")
     filter_output = filter_output[0]==="["?filter_output:"[{"+filter_output
     filter_output = filter_output[filter_output.length-1]==="]"?filter_output:filter_output+"}]"

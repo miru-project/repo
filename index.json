@@ -716,6 +716,18 @@
   "webSite": "https://h.mangabat.com"
  },
  {
+  "author": "bethro",
+  "icon": "https://mangaclash.com/wp-content/uploads/2020/03/cropped-22.jpg",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MangaClash",
+  "package": "mangaclash.com",
+  "type": "manga",
+  "url": "mangaclash.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://mangaclash.com"
+ },
+ {
   "author": "Monster",
   "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
   "lang": "zh-cn",

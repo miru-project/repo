@@ -51,18 +51,6 @@
   "webSite": "https://api.amvstr.me/api/v2"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://aniwatch.to/images/android-chrome-512x512.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "AniWatch",
-  "package": "ani.watch",
-  "type": "bangumi",
-  "url": "ani.watch.js",
-  "version": "v0.0.6",
-  "webSite": "https://proxy.techzbots1.workers.dev/?u=https://aniwatch.to"
- },
- {
   "author": "(koikiss-dev)",
   "description": "https://github.com/koikiss-dev/jimov_api",
   "icon": "https://animeflv.vc/static/img/icon/logo.png",
@@ -502,6 +490,18 @@
   "url": "hentaidexy.net.js",
   "version": "v0.0.1",
   "webSite": "https://backend.hentaidexy.net"
+ },
+ {
+  "author": "OshekharO",
+  "icon": "https://hianime.to/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "HiAnime",
+  "package": "hianime.to",
+  "type": "bangumi",
+  "url": "hianime.to.js",
+  "version": "v0.0.7",
+  "webSite": "https://hianime.to"
  },
  {
   "author": "OshekharO",

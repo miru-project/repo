@@ -50,6 +50,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | libvio | libvio.pro | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/libvio.pro.js) |
 | LilyManga | lilymanga.net | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lilymanga.net.js) |
 | LayarKaca | lk21official | v0.0.1 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
+| Manga-lek.net | manga-lek.net | v0.0.1 | bethro | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga-lek.net.js) |
 | MangaLife | manga4life.com | v0.0.1 | appdevelpo | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga4life.com.js) |
 | MangaBat | mangabat.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangabat.com.js) |
 | MangaClash | mangaclash.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangaclash.com.js) |
@@ -81,9 +82,11 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | sFlix | sflix.to | v0.0.3 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sflix.to.js) |
 | MkvDrama | stream.mkvdrama.org | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/stream.mkvdrama.org.js) |
 | SuperCartoons | supercartoons.net | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/supercartoons.net.js) |
+| swatmanhua | swatmanhua.com | v0.0.1 | bethro | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/swatmanhua.com.js) |
 | TamilYogi | tamilyogi | v0.0.4 | appdevelpo | hi-ta | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/tamilyogi.js) |
 | TeamxNovel | teamxnovel.com | v0.0.1 | OshekharO | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/teamxnovel.com.js) |
 | MoviesArc | themoviearchive | v0.0.2 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/themoviearchive.js) |
+| thunderscans | thunderscans.com | v0.0.1 | bethro | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/thunderscans.com.js) |
 | TopCartoons | topcartoons.tv | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/topcartoons.tv.js) |
 | NetTruyen | truyen.net | v0.0.5 | OshekharO | vi | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/truyen.net.js) |
 | Turkish123 | turkish123 | v0.0.2 | OshekharO | tr | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/turkish123.js) |

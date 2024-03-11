@@ -692,6 +692,18 @@
  },
  {
   "author": "bethro",
+  "icon": "https://manga-lek.net/wp-content/mangalek.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "Manga-lek.net",
+  "package": "manga-lek.net",
+  "type": "manga",
+  "url": "manga-lek.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://manga-lek.net"
+ },
+ {
+  "author": "bethro",
   "icon": "https://manga1k.com/wp-content/uploads/2023/08/6-2-1.png",
   "lang": "en",
   "license": "MIT",
@@ -1233,6 +1245,18 @@
   "webSite": "https://www.supercartoons.net"
  },
  {
+  "author": "bethro",
+  "icon": "https://swatmanhua.com/images/logo_light.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "swatmanhua",
+  "package": "swatmanhua.com",
+  "type": "manga",
+  "url": "swatmanhua.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://swatmanhua.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",
@@ -1281,6 +1305,18 @@
   "url": "themoviearchive.js",
   "version": "v0.0.2",
   "webSite": "https://api.themoviedb.org/3"
+ },
+ {
+  "author": "bethro",
+  "icon": "https://i.ibb.co/XtNNVVT/AR-TH-WEB.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "thunderscans",
+  "package": "thunderscans.com",
+  "type": "manga",
+  "url": "thunderscans.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://thunderscans.com"
  },
  {
   "author": "zj",

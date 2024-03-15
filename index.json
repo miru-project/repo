@@ -1557,6 +1557,18 @@
   "webSite": "https://caocao15.xyz"
  },
  {
+  "author": "Mg",
+  "icon": "https://oss-cdn.meowa.cn/mxtheme/images/favicon.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "CC",
+  "package": "yinhuadm",
+  "type": "bangumi",
+  "url": "yinhuadm.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.yinhuadm.cc/"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://yomovies.town/wp-content/uploads/2023/12/120.jpg",
   "lang": "hi",

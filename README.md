@@ -98,6 +98,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
 | Wnmtl | wnmtl.org | v0.0.1 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wnmtl.org.js) |
 | WTR-LAB | wtr-lab.com | v0.0.1 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wtr-lab.com.js) |
+| CC | yinhuadm | v0.0.1 | Mg | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yinhuadm.js) |
 | YoMovies | yomovies | v0.0.5 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yomovies.js) |
 | YuriNeko | yurineko.net | v0.0.1 | OshekharO | vi | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yurineko.net.js) |
 | ZeroScans | zeroscans.com | v0.0.2 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/zeroscans.com.js) |

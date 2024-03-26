@@ -825,6 +825,19 @@
   "webSite": "https://manganato.com"
  },
  {
+  "author": "ftbom",
+  "icon": "https://www.manhuadb.com/assets/www/img/favicon.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "漫画DB",
+  "nsfw": "false",
+  "package": "manhuadb.com",
+  "type": "manga",
+  "url": "manhuadb.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.manhuadb.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://www.manhuagui.com/favicon.ico",
   "lang": "zh-cn",

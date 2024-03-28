@@ -7,7 +7,7 @@
 // @icon         https://cdn.jsdelivr.net/gh/TechShreyash/AnimeDex@main/static/img/favicon.ico
 // @package      animxer.xyz
 // @type         bangumi
-// @webSite      https://api.anime-dex.workers.dev
+// @webSite      https://animxer-api1.xeranime707.workers.dev
 // ==/MiruExtension==
 
 export default class extends Extension {

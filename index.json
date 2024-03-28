@@ -189,6 +189,18 @@
   "webSite": "https://bestlightnovel.com"
  },
  {
+  "author": "yxxyun",
+  "icon": "https://m.bi17.cc/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "笔趣阁",
+  "package": "bqg.cc",
+  "type": "fikushon",
+  "url": "bqg.cc.js",
+  "version": "v0.0.1",
+  "webSite": "https://m.bi17.cc"
+ },
+ {
   "author": "MiaoMint",
   "lang": "zh-cn",
   "license": "MIT",

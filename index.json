@@ -51,18 +51,6 @@
   "webSite": "https://api.amvstr.me/api/v2"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://aniwatch.to/images/android-chrome-512x512.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "AniWatch",
-  "package": "ani.watch",
-  "type": "bangumi",
-  "url": "ani.watch.js",
-  "version": "v0.0.6",
-  "webSite": "https://proxy.techzbots1.workers.dev/?u=https://aniwatch.to"
- },
- {
   "author": "(koikiss-dev)",
   "description": "https://github.com/koikiss-dev/jimov_api",
   "icon": "https://animeflv.vc/static/img/icon/logo.png",
@@ -199,6 +187,18 @@
   "url": "best.light.novel.js",
   "version": "v0.0.1",
   "webSite": "https://bestlightnovel.com"
+ },
+ {
+  "author": "yxxyun",
+  "icon": "https://m.bi17.cc/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "笔趣阁",
+  "package": "bqg.cc",
+  "type": "fikushon",
+  "url": "bqg.cc.js",
+  "version": "v0.0.1",
+  "webSite": "https://m.bi17.cc"
  },
  {
   "author": "MiaoMint",
@@ -505,6 +505,18 @@
  },
  {
   "author": "OshekharO",
+  "icon": "https://hianime.to/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "HiAnime",
+  "package": "hianime.to",
+  "type": "bangumi",
+  "url": "hianime.to.js",
+  "version": "v0.0.7",
+  "webSite": "https://hianime.to"
+ },
+ {
+  "author": "OshekharO",
   "icon": "https://invidious.io/apple-touch-icon.png",
   "lang": "all",
   "license": "MIT",
@@ -692,6 +704,18 @@
  },
  {
   "author": "bethro",
+  "icon": "https://manga-lek.net/wp-content/mangalek.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "Manga-lek.net",
+  "package": "manga-lek.net",
+  "type": "manga",
+  "url": "manga-lek.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://manga-lek.net"
+ },
+ {
+  "author": "bethro",
   "icon": "https://manga1k.com/wp-content/uploads/2023/08/6-2-1.png",
   "lang": "en",
   "license": "MIT",
@@ -811,6 +835,19 @@
   "url": "manganato.js",
   "version": "v0.0.1",
   "webSite": "https://manganato.com"
+ },
+ {
+  "author": "ftbom",
+  "icon": "https://www.manhuadb.com/assets/www/img/favicon.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "漫画DB",
+  "nsfw": "false",
+  "package": "manhuadb.com",
+  "type": "manga",
+  "url": "manhuadb.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.manhuadb.com"
  },
  {
   "author": "appdevelpo",
@@ -1233,6 +1270,18 @@
   "webSite": "https://www.supercartoons.net"
  },
  {
+  "author": "bethro",
+  "icon": "https://swatmanhua.com/images/logo_light.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "swatmanhua",
+  "package": "swatmanhua.com",
+  "type": "manga",
+  "url": "swatmanhua.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://swatmanhua.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",
@@ -1281,6 +1330,18 @@
   "url": "themoviearchive.js",
   "version": "v0.0.2",
   "webSite": "https://api.themoviedb.org/3"
+ },
+ {
+  "author": "bethro",
+  "icon": "https://i.ibb.co/XtNNVVT/AR-TH-WEB.png",
+  "lang": "ar",
+  "license": "MIT",
+  "name": "thunderscans",
+  "package": "thunderscans.com",
+  "type": "manga",
+  "url": "thunderscans.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://thunderscans.com"
  },
  {
   "author": "zj",
@@ -1519,6 +1580,18 @@
   "url": "xyz.xdtv2.js",
   "version": "v0.0.2",
   "webSite": "https://caocao15.xyz"
+ },
+ {
+  "author": "Mg",
+  "icon": "https://oss-cdn.meowa.cn/mxtheme/images/favicon.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "CC",
+  "package": "yinhuadm",
+  "type": "bangumi",
+  "url": "yinhuadm.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.yinhuadm.cc/"
  },
  {
   "author": "OshekharO",

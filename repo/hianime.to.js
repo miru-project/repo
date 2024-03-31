@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         HiAnime
-// @version      v0.0.7
+// @version      v0.0.8
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -77,7 +77,6 @@ export default class extends Extension {
     const cover = await this.getAttributeText(res, ".anisc-poster > .film-poster > .film-poster-img", "src");
     const desc = await this.querySelector(res, ".m-hide.film-description > .text").text;
     const title = await this.getAttributeText(res, ".dynamic-name.text-white", "title");
-    console.log(url)
     const seasonid = url.match(/(\d+)\?w=latest/)[1]
     const eplist = await this.request(`/ajax/v2/episode/list/${seasonid}`)
     const bsxList = await this.querySelectorAll(eplist.html, ".ssl-item.ep-item");
@@ -134,7 +133,7 @@ export default class extends Extension {
       //
       bangumi.push({
         title,
-        url,
+        url:`${url}?w=latest`,
         cover,
       });
     }

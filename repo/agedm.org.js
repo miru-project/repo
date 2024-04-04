@@ -75,11 +75,11 @@ export default class extends Extension {
             }
             
             episodes.push({
-                title: key,
+                title: json_res.player_label_arr[key],
                 urls: value.map((item) => {
                     return{
                         name: item[0],
-                        url: item[1]
+                        url: json_res.player_jx.zj + item[1]
                     }
                 })
             })
@@ -96,10 +96,10 @@ export default class extends Extension {
     }
 
     async watch(url) {
-        
+        console.log(url)
         const res = await this.request("",{
             headers:{
-                'Miru-Url':`https://43.240.74.134:8443/m3u8/?url=${url}`,
+                'Miru-Url':url,
                 "Referer":"https://m.agedm.org/",
                 "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/244.178.44.111 Safari/537.36"
             }

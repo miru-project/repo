@@ -75,7 +75,7 @@ export default class extends Extension {
             }
             
             episodes.push({
-                title: key,
+                title: json_res.player_label_arr[key],
                 urls: value.map((item) => {
                     return{
                         name: item[0],

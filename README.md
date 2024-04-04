@@ -17,7 +17,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 音悦台MTV | api.yinyuetai | v0.0.2 | vvsolo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/api.yinyuetai.js) |
 | Arabsama | arabsama.net | v0.0.1 | JerukPurut404 | ar | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/arabsama.net.js) |
 | AsuraScan | asuratoon.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
-| 包子漫画 | baozimh.com | v0.0.1 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
+| 包子漫画 | baozimh.com | v0.0.2 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
 | Bato | bato.to | v0.0.2 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bato.to.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 笔趣阁 | bqg.cc | v0.0.1 | yxxyun | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bqg.cc.js) |
@@ -37,7 +37,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | GakiArchives | gakiarchives.com | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gakiarchives.com.js) |
 | gimy | gimy.su | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gimy.su.js) |
 | GoGoAnime | gogo.anime | v0.0.5 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
-| HiAnime | hianime.to | v0.0.7 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hianime.to.js) |
+| HiAnime | hianime.to | v0.0.8 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hianime.to.js) |
 | Invidious | invidious.io | v0.0.1 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/invidious.io.js) |
 | IPTV-ORG | iptv-org | v0.0.1 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/iptv-org.js) |
 | IsekaiScan | isekaiscan.to | v0.0.3 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |

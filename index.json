@@ -160,7 +160,7 @@
   "package": "baozimh.com",
   "type": "manga",
   "url": "baozimh.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://www.baozimh.com"
  },
  {
@@ -512,7 +512,7 @@
   "package": "hianime.to",
   "type": "bangumi",
   "url": "hianime.to.js",
-  "version": "v0.0.7",
+  "version": "v0.0.8",
   "webSite": "https://hianime.to"
  },
  {

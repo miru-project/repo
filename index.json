@@ -440,6 +440,18 @@
   "webSite": "https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq"
  },
  {
+  "author": "funtoons",
+  "icon": "https://funtoons.online/wp-content/themes/mangareader/assets/images/android-chrome-192x192.png",
+  "lang": "th",
+  "license": "MIT",
+  "name": "Funtoons",
+  "package": "funtoons.online",
+  "type": "manga",
+  "url": "funtoons.online.js",
+  "version": "v0.0.1",
+  "webSite": "https://funtoons.online"
+ },
+ {
   "author": "bachig26",
   "icon": "https://gakiarchives.com/images/logo.png",
   "lang": "en",

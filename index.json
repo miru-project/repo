@@ -1607,7 +1607,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://yomovies.town/wp-content/uploads/2023/12/120.jpg",
+  "icon": "https://yomovies.dog/wp-content/uploads/2023/12/120.jpg",
   "lang": "hi",
   "license": "MIT",
   "name": "YoMovies",
@@ -1615,8 +1615,8 @@
   "package": "yomovies",
   "type": "bangumi",
   "url": "yomovies.js",
-  "version": "v0.0.5",
-  "webSite": "https://yomovies.town"
+  "version": "v0.0.6",
+  "webSite": "https://yomovies.dog"
  },
  {
   "author": "appdevelpo",

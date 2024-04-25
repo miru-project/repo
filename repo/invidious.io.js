@@ -1,18 +1,18 @@
 // ==MiruExtension==
 // @name         Invidious
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         all
 // @license      MIT
 // @icon         https://invidious.io/apple-touch-icon.png
 // @package      invidious.io
 // @type         bangumi
-// @webSite      https://invidious.slipfox.xyz/api/v1
+// @webSite      https://vid.puffyan.us/api/v1
 // ==/MiruExtension==
 
 export default class extends Extension {
   async latest() {
-    const res = await this.request(`/trending`);
+    const res = await this.request(`/trending?region=US`);
  
     if (!Array.isArray(res)) {
       // Handle the case when the response is not an array
@@ -37,7 +37,12 @@ export default class extends Extension {
   }
  
   async detail(url) {
-    const res = await this.request(`/videos/${url}`);
+    const res = await this.request(`/videos/${url}`, {
+    headers: {
+      "Miru-Url": "https://vid.puffyan.us/api/v1",
+    },
+    });    
+  
     return {
       title: res.title,
       cover: res.videoThumbnails?.[0]?.url,
@@ -58,23 +63,10 @@ export default class extends Extension {
  
   async watch(url) {
   const res = await this.request(`/videos/${url}`);
-
-  const sub = await this.request(`/streams/${url}`, {
-    headers: {
-      "Miru-Url": "https://pipedapi.kavin.rocks",
-    },
-  });
-
-  const subtitles = sub.subtitles.map((item) => ({
-    title: item.name,
-    url: item.url,
-    language: item.code,
-  }));
   
   return {
     type: "hls",
-    url: res.formatStreams?.[2]?.url,
-    subtitles: subtitles,
+    url: res.formatStreams?.[1]?.url,
   };
 }
 }

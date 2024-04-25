@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         GoGoAnime
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://play-lh.googleusercontent.com/MaGEiAEhNHAJXcXKzqTNgxqRmhuKB1rCUgb15UrN_mWUNRnLpO5T1qja64oRasO7mn0
 // @package      gogo.anime
 // @type         bangumi
-// @webSite      https://goraku-api.vercel.app/anime/gogoanime
+// @webSite      https://public-miruro-consumet-api.vercel.app/anime/gogoanime
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
       key: "gogoApi",
       type: "input",
       description: "API URL",
-      defaultValue: "https://goraku-api.vercel.app/anime/gogoanime",
+      defaultValue: "https://public-miruro-consumet-api.vercel.app/anime/gogoanime",
     });
     this.registerSetting({
       title: "Preferred quality",

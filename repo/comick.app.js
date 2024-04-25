@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         Comick
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       OshekharO
 // @lang         all
 // @license      MIT
 // @icon         https://comick.app/static/icons/unicorn-256_maskable.png
 // @package      comick.app
 // @type         manga
-// @webSite      https://api.comick.cc
+// @webSite      https://api.comick.io
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
         key: "comick",
         type: "input",
         description: "COMICK API URL",
-        defaultValue: "https://api.comick.cc",
+        defaultValue: "https://api.comick.io",
       });
     }
 

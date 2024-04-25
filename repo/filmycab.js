@@ -7,24 +7,24 @@
 // @package      filmycab
 // @type         bangumi
 // @icon         https://i.postimg.cc/SNhTmxT5/FilmyCab.png
-// @webSite      https://filmycab.mom
+// @webSite      https://afilmyhub.online
 // @nsfw         false
 // ==/MiruExtension==
 
 export default class extends Extension {
   async latest(page) {
     const res = await this.request(`/?to-page=${page}`);
-    const bsxList = await this.querySelectorAll(res, "div.artist-mv > table");
+    const bsxList = await this.querySelectorAll(res, "div.A10 > table");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "a > font").text;
+      const title = await this.querySelector(html, "span > div").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
       //console.log(title+cover+url)
       novel.push({
         title,
-        url: "https://filmycab.mom" + url,
+        url: "https://afilmyhub.online" + url,
         cover,
       });
     }
@@ -43,7 +43,7 @@ export default class extends Extension {
       //console.log(title+cover+url)
       novel.push({
         title,
-        url: "https://filmycab.mom" + url,
+        url: "https://afilmyhub.online" + url,
         cover,
       });
     }

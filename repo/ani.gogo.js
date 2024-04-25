@@ -29,8 +29,8 @@ export default class extends Extension {
     });
   }
 
-  async latest(page) {
-    const res = await this.req(`/trending?limit=15&p=${page}`);
+  async latest() {
+    const res = await this.req(`/trending`);
     return res.results.map((item) => ({
       title: item.title.english != null ? item.title.english : "",
       url: item.id.toString(),

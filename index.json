@@ -428,18 +428,6 @@
   "webSite": "https://flamecomics.com/"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://flixhq.ws/images/logo.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "Flixhq",
-  "package": "flixhq.to",
-  "type": "bangumi",
-  "url": "flixhq.to.js",
-  "version": "v0.0.4",
-  "webSite": "https://api-consumet-dki0eyw6n-shirogohan.vercel.app/movies/flixhq"
- },
- {
   "author": "funtoons",
   "icon": "https://funtoons.online/wp-content/themes/mangareader/assets/images/android-chrome-192x192.png",
   "lang": "th",

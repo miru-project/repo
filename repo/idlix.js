@@ -1286,7 +1286,7 @@ export default class extends Extension {
 			return null;
 		}
 		const parsedUrl = {};
-		parsedUrl.protocol = match[2] || "";
+		parsedUrl.protocol = match[2] || ""; 
 		parsedUrl.host = match[3] || "";
 		parsedUrl.port = match[4] || "";
 		parsedUrl.pathname = match[5] || "";

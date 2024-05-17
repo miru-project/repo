@@ -11,6 +11,7 @@
 // @nsfw         false
 // @tags         anime,english
 // ==/MiruExtension==
+ 
 
 export default class extends Extension {
 	async load() {

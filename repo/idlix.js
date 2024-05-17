@@ -12,11 +12,6 @@
 // @tags         anime,english
 // ==/MiruExtension==
 
-// const fetch_page = await Miru.request("",{
-//     headers:{
-//         'Miru-Url':`https://vip.idlixofficial.net`,
-//     }
-//   })
 export default class extends Extension {
 	async load() {
 		this.registerSetting({

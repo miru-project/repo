@@ -929,19 +929,6 @@
   "webSite": "https://movieku.lol"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://tlimg.b-cdn.net/wp-content/uploads/2023/07/MTLNATION-icon.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Mtlnation",
-  "nsfw": "false",
-  "package": "mtlnation.com",
-  "type": "fikushon",
-  "url": "mtlnation.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://api.mtlnation.com"
- },
- {
   "author": "MiaoMint",
   "description": "info",
   "icon": "https://yts.mx/assets/images/website/apple-touch-icon-144x144.png",

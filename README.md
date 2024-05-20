@@ -68,7 +68,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | MonosChinos | monoschinos | v0.0.1 | OshekharO | es | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/monoschinos.js) |
 | Movieku | movieku.lol | v0.0.3 | appdevelpo | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/movieku.lol.js) |
-| Mtlnation | mtlnation.com | v0.0.2 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mtlnation.com.js) |
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Myasiantv | myasiantv | v0.0.1 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/myasiantv.js) |
 | Nimegami | nimegami.id | v0.0.2 | JerukPurut404 | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nimegami.id.js) |

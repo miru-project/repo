@@ -316,18 +316,6 @@
   "webSite": "https://api.comick.io"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://revuestarlight.bushimo.jp/wp-content/themes/revuestarlight/assets/images/common/favicon.ico",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Comrademao",
-  "package": "comrademao",
-  "type": "fikushon",
-  "url": "comrademao.js",
-  "version": "v0.0.3",
-  "webSite": "https://comrademao.com"
- },
- {
   "author": "MiaoMint",
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",

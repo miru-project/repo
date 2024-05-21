@@ -1184,6 +1184,20 @@
   "webSite": "https://www.vdm8.com"
  },
  {
+  "author": "Nazz",
+  "icon": "https://samehadaku.email/wp-content/uploads/2020/04/cropped-download-1-192x192.jpg",
+  "lang": "id",
+  "license": "MIT",
+  "name": "Samehadaku",
+  "nsfw": "false",
+  "package": "samehadaku",
+  "tags": "anime,indonesia",
+  "type": "bangumi",
+  "url": "samehadaku.js",
+  "version": "v0.0.1",
+  "webSite": "https://samehadaku.email"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://img.sflix.to/xxrz/100x100/100/a2/33/a233d4c4a1426ca77ec1d34deec62f71/a233d4c4a1426ca77ec1d34deec62f71.png",
   "lang": "en",

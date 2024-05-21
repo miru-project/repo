@@ -1020,6 +1020,20 @@
   "webSite": "https://onejav.com"
  },
  {
+  "author": "Nazz",
+  "icon": "https://otakudesu.cloud/wp-content/uploads/2017/06/Logo-1.png",
+  "lang": "id",
+  "license": "MIT",
+  "name": "Otakudesu",
+  "nsfw": "false",
+  "package": "otakudesu",
+  "tags": "anime,indonesia",
+  "type": "bangumi",
+  "url": "otakudesu.js",
+  "version": "v0.0.1",
+  "webSite": "https://otakudesu.cloud"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://javgg.net/wp-content/uploads/2020/07/140_Gg_logo_logos-512.png",
   "lang": "jp",

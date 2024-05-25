@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         IDLIX
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       Nazz
 // @lang         id
 // @license      MIT
@@ -9,7 +9,7 @@
 // @package      idlix
 // @webSite      https://vip.idlixofficial.net
 // @nsfw         false
-// @tags         anime,english
+// @tags         movie,tvseries,anime,english
 // ==/MiruExtension==
  
 
@@ -313,12 +313,22 @@ export default class extends Extension {
 		function extractLinksAndQuality(m3u8Content) {
 			const lines = m3u8Content.split('\n');
 			const results = {};
-		
+			
 			for (let i = 0; i < lines.length; i++) {
 				if (lines[i].startsWith('#EXT-X-STREAM-INF')) {
-					const quality = lines[i].match(/NAME="(\d+p)"/)[1];
+					let quality = lines[i].match(/NAME="(\d+p)"/);
+					if (!quality) { 
+						quality = lines[i].match(/RESOLUTION=\d+x(\d+)/);
+						if (quality) {
+							quality = quality[1] + 'p'; 
+						}
+					} else {
+						quality = quality[1];
+					}
 					const link = lines[i + 1].trim();
-					results[quality] = { url:link };
+					if (quality) {
+						results[quality] = { url: link };
+					}
 				}
 			}
 			return results; 

@@ -499,10 +499,10 @@
   "name": "IDLIX",
   "nsfw": "false",
   "package": "idlix",
-  "tags": "anime,english",
+  "tags": "movie,tvseries,anime,english",
   "type": "bangumi",
   "url": "idlix.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://vip.idlixofficial.net"
  },
  {

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Mikanani
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT

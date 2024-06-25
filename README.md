@@ -13,6 +13,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | girigiri爱动漫 | anime.girigirilove.com | v0.0.3 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.girigirilove.com.js) |
 | Animeazu | animeazu.com | v0.0.1 | JerukPurut404 | pr | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animeazu.com.js) |
 | Animepahe | animepahe.ru | v0.0.2 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animepahe.ru.js) |
+| Animeworld | animeworld | v0.0.1 | Nazz | it | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animeworld.js) |
 | 音悦台MTV | api.yinyuetai | v0.0.2 | vvsolo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/api.yinyuetai.js) |
 | Arabsama | arabsama.net | v0.0.1 | JerukPurut404 | ar | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/arabsama.net.js) |
 | AsuraScan | asuratoon.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |

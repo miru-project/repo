@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Mikanani
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       MiaoMint
 // @lang         zh-cn
 // @license      MIT
@@ -184,10 +184,35 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (!filter) {
+    // Powered By TiaNXianG(https://github.com/TNXG)
+    const res = await this.req(`/Home/Search?searchstr=${kw}&page=${page}`);
+    const bangumi = [];
+    const html = await this.querySelector(res, ".list-inline .an-ul").content;
+    const bangumiList = html.match(/<li>.*?<\/li>/gs);
+    for (const item of bangumiList) {
+      if (!item) {
+        continue;
+      }
+      try {
+        const cover = await this.getAttributeText(item, "span", "data-src");
+        const title = await item.match(/title="(.*?)"/)[1];
+        const decodedTitle = title.replace(/&#x([0-9A-Fa-f]+);/g, function (match, p1) {
+          return String.fromCodePoint(parseInt(p1, 16));
+        });
+        const url = await item.match(/href="(.*?)"/)[1];
+        bangumi.push({
+          cover: await this.getFullUrl(cover),
+          title: decodedTitle,
+          url: url,
+        });
+      } catch (e) {
+        continue;
+      }
+    }
+    if (bangumi.length === 0) {
       return await this.latest();
     }
-    return await this.getData(filter.year, filter.season);
+    return bangumi;
   }
 
   async watch(url) {

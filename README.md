@@ -64,7 +64,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Manganato | manganato | v0.0.1 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manganato.js) |
 | 漫画DB | manhuadb.com | v0.0.1 | ftbom | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manhuadb.com.js) |
 | 漫画柜 | manhuagui.com | v0.0.3 | appdevelpo | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manhuagui.com.js) |
-| Mikanani | me.mikanani | v0.0.3 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/me.mikanani.js) |
+| Mikanani | me.mikanani | v0.0.4 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/me.mikanani.js) |
 | Enime | moe.enime | v0.0.5 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.enime.js) |
 | 轻小说文库 | moe.wol.wenku8 | v0.0.1 | NPGamma | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/moe.wol.wenku8.js) |
 | MonosChinos | monoschinos | v0.0.1 | OshekharO | es | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/monoschinos.js) |

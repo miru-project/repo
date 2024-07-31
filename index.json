@@ -672,6 +672,20 @@
   "webSite": "https://komiku.com"
  },
  {
+  "author": "ZenZEE",
+  "icon": "https://kuromanhua.xyz/wp-content/uploads/Tanpa-Judul.png",
+  "lang": "id",
+  "license": "MIT",
+  "name": "Kuromanhua.xyz",
+  "nsfw": "false",
+  "package": "komiku.com",
+  "tags": "indonesia",
+  "type": "manga",
+  "url": "kuromanhua.xyz.js",
+  "version": "v0.0.1",
+  "webSite": "https://kuromanhua.xyz"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://letv.im/template/letv/asset/img/favicon.png",
   "lang": "zh",

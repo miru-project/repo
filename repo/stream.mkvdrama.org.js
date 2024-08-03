@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         MkvDrama
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bachig26
 // @lang         en
 // @license      MIT
@@ -14,7 +14,7 @@
 export default class extends Extension {
   async latest(page) {
     const res = await this.request(`/?page=${page}`);
-    const bsxList = await this.querySelectorAll(res, "div.drama-item");
+    const bsxList = await this.querySelectorAll(res, "div.list-upd > a");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
@@ -57,7 +57,7 @@ export default class extends Extension {
     });
 
     const title = await this.querySelector(res, "span.date").text;
-    const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
+    const cover = await this.querySelector(res, "img.episode-picture").getAttributeText("src");
     const desc = res.match(/<div class="content-more-js" .*>([\s\S]+?)<\/div>/)[1].replace(/<\/?p[^>]*>/g,"").replace(/<\/?span[^>]*>/g,"");
 
     const episodes = [];
@@ -115,7 +115,7 @@ export default class extends Extension {
     return {
       type: "hls",
       url: directUrl || "",
-	  headers: {
+    headers: {
         "referer": "https://stream.mkvdrama.org/",
         "origin": "https://stream.mkvdrama.org",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.142.86 Safari/537.36",

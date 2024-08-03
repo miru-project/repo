@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         MkvDrama
 // @version      v0.0.2
-// @author       bachig26, mischievous-loner
+// @author       bachig26
 // @lang         en
 // @license      MIT
 // @package      stream.mkvdrama.org

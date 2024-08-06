@@ -57,7 +57,7 @@ export default class extends Extension {
       },
     });
 
-    const title = await this.querySelector(res, "meta[property='og:title']").getAttributeText("content");
+    const title = await this.querySelector(res, "title").text;
     const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
     const desc = await this.querySelector(res, "div.info").text;
     const linkmake = await this.getAttributeText(res, "div.entry-meta > p > a", "href");
@@ -67,6 +67,7 @@ export default class extends Extension {
         "Miru-Url": linkmake,
       },
     });
+
     const episodes = [];
     const epiList = await this.querySelectorAll(ses, "div.dlink.dl");
 

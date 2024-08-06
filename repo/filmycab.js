@@ -7,21 +7,21 @@
 // @package      filmycab
 // @type         bangumi
 // @icon         https://i.postimg.cc/SNhTmxT5/FilmyCab.png
-// @webSite      https://afilmyhub.online
+// @webSite      https://afilmyhub.mom
 // @nsfw         false
 // ==/MiruExtension==
 
 export default class extends Extension {
   async latest(page) {
     const res = await this.request(`/?to-page=${page}`);
-    const bsxList = await this.querySelectorAll(res, "div.A10 > table");
+    const bsxList = await this.querySelectorAll(res, "div.grid > div.card");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
-      const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "span > div").text;
+      const url = await this.getAttributeText(html, "a.post-thumbnail", "href");
+      const title = await this.querySelector(html, "div.info h3 b").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
-      //console.log(title+cover+url)
+
       novel.push({
         title,
         url: "https://afilmyhub.online" + url,
@@ -33,12 +33,12 @@ export default class extends Extension {
 
   async search(kw) {
     const res = await this.request(`/site-search.html?to-search=${kw}`);
-    const bsxList = await this.querySelectorAll(res, ".home-wrapper.thumbnail-wrapper > div.thumb.rsz");
+    const bsxList = await this.querySelectorAll(res, "div.container > article.post");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
-      const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "a > p").text;
+      const url = await this.getAttributeText(html, "a.post-thumbnail", "href");
+      const title = await this.querySelector(html, "h3 a").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
       //console.log(title+cover+url)
       novel.push({
@@ -60,7 +60,7 @@ export default class extends Extension {
     const title = await this.querySelector(res, "meta[property='og:title']").getAttributeText("content");
     const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
     const desc = await this.querySelector(res, "div.info").text;
-    const linkmake = await this.getAttributeText(res, "div.dlbtn > a", "href");
+    const linkmake = await this.getAttributeText(res, "div.entry-meta > p > a", "href");
 
     const ses = await this.request("", {
       headers: {
@@ -102,32 +102,32 @@ export default class extends Extension {
     });
     //console.log(res)
     const dwishLink = res.match(/https:\/\/hubcloud\.[^\s'"]+/); //1
-  	//console.log(dwishLink)
+    //console.log(dwishLink)
     const dwishLinkRes = await this.request("", {
       headers: {
         "Miru-Url": dwishLink,
         "Miru-Referer": dwishLink,
       },
     });
-	  //console.log(dwishLinkRes)
+    //console.log(dwishLinkRes)
     const fast = dwishLinkRes.match(/https:\/\/hubcloud\.[^\s'"]+/); //2
-  	//console.log(fast)
+    //console.log(fast)
     const FastRes = await this.request("", {
       headers: {
         "Miru-Url": fast,
         "Miru-Referer": fast,
       },
     });
-	  //console.log(FastRes)
+    //console.log(FastRes)
     const hub = await this.getAttributeText(FastRes, "div.vd.d-none > a", "href"); //3
-  	//console.log(hub)
+    //console.log(hub)
     const HubRes = await this.request("", {
       headers: {
         "Miru-Url": hub,
         "Miru-Referer": hub,
       },
     });
-	  //console.log(HubRes)
+    //console.log(HubRes)
     const directUrlMatch = HubRes.match(/https:\/\/pixeldra\.in\/api\/[^"?]*(\?[^"?]*)?/);
     const directUrl = directUrlMatch ? directUrlMatch[0] : "";
     //console.log(directUrl)

@@ -44,7 +44,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 极速资源 | jisuzy.com | v0.0.1 | SendHX | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/jisuzy.com.js) |
 | 聚小说 | juxiaoshuo | v0.0.1 | OshekharO | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/juxiaoshuo.js) |
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |
-| Kissasian | kissasian.fm | v0.0.1 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kissasian.fm.js) |
 | Kisskh | kisskh.co | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
 | Komikcast | komikcast.lol | v0.0.1 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komikcast.lol.js) |
 | Komiku.com | komiku.com | v0.0.1 | Nazz | id | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiku.com.js) |

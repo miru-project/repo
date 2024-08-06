@@ -622,19 +622,6 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://kissasian.fm/img/icon/logo-mobile.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Kissasian",
-  "nsfw": "false",
-  "package": "kissasian.fm",
-  "type": "bangumi",
-  "url": "kissasian.fm.js",
-  "version": "v0.0.1",
-  "webSite": "https://kissasian.fm"
- },
- {
-  "author": "OshekharO",
   "icon": "https://kisskh.co/assets/icons/icon-192x192.png",
   "lang": "all",
   "license": "MIT",

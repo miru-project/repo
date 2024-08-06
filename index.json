@@ -1502,19 +1502,6 @@
   "webSite": "https://cj.bajiecaiji.com"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://www.watchasian.sk/favicon.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "WatchAsian",
-  "nsfw": "false",
-  "package": "watchasian",
-  "type": "bangumi",
-  "url": "watchasian.js",
-  "version": "v0.0.1",
-  "webSite": "https://www.watchasian.sk"
- },
- {
   "author": "Monster",
   "icon": "https://www.dm530w.org/tpsf/fc_pic/favicon.ico",
   "lang": "zh-cn",

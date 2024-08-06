@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         GoGoAnime
-// @version      v0.0.7
+// @version      v0.0.8
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://ww9.gogoanimes.fi/img/icon/logo.png
 // @package      gogo.anime
 // @type         bangumi
-// @webSite      https://consumet.j21.dev/anime/gogoanime
+// @webSite      https://consumet-leox-api.vercel.app/anime/gogoanime
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
       key: "gogoApi",
       type: "input",
       description: "API URL",
-      defaultValue: "https://consumet.j21.dev/anime/gogoanime",
+      defaultValue: "https://consumet-leox-api.vercel.app/anime/gogoanime",
     });
     this.registerSetting({
       title: "Preferred quality",

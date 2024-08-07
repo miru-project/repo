@@ -571,19 +571,6 @@
   "webSite": "https://javhd.icu"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://javhd.today/android-icon-192x192.png",
-  "lang": "jp",
-  "license": "MIT",
-  "name": "JavHD",
-  "nsfw": "true",
-  "package": "javhd.today",
-  "type": "bangumi",
-  "url": "javhd.today.js",
-  "version": "v0.0.3",
-  "webSite": "https://javhd.today"
- },
- {
   "author": "SendHX",
   "icon": "https://www.jisuzy.com/template/default/images/site_logo.png",
   "lang": "zh-cn",

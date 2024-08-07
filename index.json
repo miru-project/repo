@@ -723,18 +723,6 @@
  },
  {
   "author": "bethro",
-  "icon": "https://manga-lek.net/wp-content/mangalek.png",
-  "lang": "ar",
-  "license": "MIT",
-  "name": "Manga-lek.net",
-  "package": "manga-lek.net",
-  "type": "manga",
-  "url": "manga-lek.net.js",
-  "version": "v0.0.1",
-  "webSite": "https://manga-lek.net"
- },
- {
-  "author": "bethro",
   "icon": "https://manga1k.com/wp-content/uploads/2023/08/6-2-1.png",
   "lang": "en",
   "license": "MIT",

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Draftsex
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bachig26
 // @lang         en
 // @license      MIT
@@ -92,9 +92,14 @@ export default class extends Extension {
   }
 
   async watch(url) {
+    let hh = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+         Referer: "https://draftsex.porn/",
+      };    
     return {
       type: "hls",
       url: url || "",
+      headers: hh,      
     };
   }
 }

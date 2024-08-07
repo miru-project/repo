@@ -1064,19 +1064,6 @@
  },
  {
   "author": "bachig26",
-  "icon": "https://pornenix.com/templates/pornenix/images/logo.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "PornEnix",
-  "nsfw": "true",
-  "package": "pornenix.com",
-  "type": "bangumi",
-  "url": "pornenix.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://pornenix.com"
- },
- {
-  "author": "bachig26",
   "icon": "https://ptx.cdntrex.com/images/logo.png",
   "lang": "en",
   "license": "MIT",

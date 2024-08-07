@@ -696,19 +696,6 @@
   "webSite": "https://tv3.lk21official.wiki"
  },
  {
-  "author": "bethro",
-  "icon": "https://manga1k.com/wp-content/uploads/2023/08/6-2-1.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Manga1k",
-  "nsfw": "true",
-  "package": "manga1k.com",
-  "type": "manga",
-  "url": "manga1k.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://manga1k.com"
- },
- {
   "author": "appdevelpo",
   "icon": "https://www.manga4life.com/media/favicon.png",
   "lang": "en",

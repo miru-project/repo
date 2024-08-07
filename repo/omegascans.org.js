@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Omegascans
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bethro
 // @lang         en
 // @license      MIT
@@ -31,57 +31,48 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const res = await this.request(
-      `/query?query_string=&series_status=All&order=desc&orderBy=total_views&series_type=Comic&page=${page}&perPage=22`
-    );
-    const latestList = res.data.map((item) => ({
-      title: item.title,
+    const res = await this.req(`/query?query_string=&series_status=All&order=desc&orderBy=total_views&series_type=Comic&page=${page}&perPage=20`);
+    return res.data.map((item) => ({
       url: item.series_slug,
+      title: item.title,
       cover: item.thumbnail,
     }));
-
-    return latestList;
   }
 
-async search(kw, page) {
-  const res = await this.request(
-    `/query?query_string=${encodeURIComponent(kw)}&page=${page}`
-  );
+  async detail(url) {
+    const res = await this.req(`/series/${url}`);
+    const id = res.id;
+    const epRes = await this.req(`/chapter/query?page=1&perPage=10000&series_id=${id}`);
 
-  const searchList = res.data.map((item) => ({
-    title: item.title,
-    url: item.series_slug,
-    cover: item.thumbnail,
-  }));
+    return {
+      title: res.title,
+      cover: res.thumbnail,
+      desc: res.description,
+      episodes: [
+        {
+          title: "Chapters",
+          urls: epRes.data.map((item) => ({
+            name: item.chapter_name != null ? item.chapter_name : `Chapter ${item.title}`,
+            url: `${item.series.series_slug}/${item.chapter_slug}`,
+          })),
+        },
+      ],
+    };
+  }
 
-  return searchList;
-}
-
-async detail(url) {
-  const res = await this.request(`/series/${url}`);
-
-  const { title, thumbnail: cover, description: desc, seasons } = res;
-
-  const episodes = seasons.map(({ season_name: title, chapters }) => ({
-    title,
-    urls: chapters.map(({ chapter_name: name, chapter_slug: slug }) => ({
-      name,
-      url: `${url}/${slug}`,
-    })),
-  }));
-
-  return {
-    title,
-    cover,
-    desc,
-    episodes,
-  };
-}
+  async search(kw, page) {
+    const res = await this.req(`/query?query_string=${encodeURIComponent(kw)}&series_status=All&order=desc&orderBy=total_views&series_type=Comic&page=${page}&perPage=20`);
+    return res.data.map((item) => ({
+      url: item.series_slug,
+      title: item.title,
+      cover: item.thumbnail,
+    }));
+  }
 
   async watch(url) {
-    const res = await this.request("/chapter/" + url);
+    const res = await this.request(`/chapter/${url}`);
     return {
-      urls: res.data,
+      urls: res.chapter.chapter_data.images,
     };
   }
 }

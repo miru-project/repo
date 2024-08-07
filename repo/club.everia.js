@@ -5,7 +5,7 @@
 // @lang         all
 // @license      MIT
 // @type         manga
-// @icon         https://everiaeveria.b-cdn.net/wp-content/uploads/2023/08/Everiaicon.jpg
+// @icon         https://everia.club/wp-content/uploads/2023/08/Everiaicon.jpg
 // @package      club.everia
 // @webSite      https://everia.club
 // @nsfw         true

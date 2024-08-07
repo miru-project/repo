@@ -123,7 +123,7 @@ export default class extends Extension {
   async watch(url) {
     const res = await this.request('', {
       headers: {
-        "Miru-Url": "https://asuracomic.net/" + url,
+        "Miru-Url": "https://asuracomic.net/series/" + url,
         "referer": "https://asuracomic.net/",
         "origin": "https://asuracomic.net",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",

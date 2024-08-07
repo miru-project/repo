@@ -1176,19 +1176,6 @@
   "webSite": "https://stream.mkvdrama.org"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://www.sunporno.com/favicon-32x32.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "SunPorno",
-  "nsfw": "true",
-  "package": "sunporno.com",
-  "type": "bangumi",
-  "url": "sunporno.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://www.sunporno.com"
- },
- {
   "author": "bachig26",
   "icon": "https://www.supercartoons.net/wp-content/uploads/logo.png",
   "lang": "en",

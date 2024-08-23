@@ -317,6 +317,19 @@
   "webSite": "https://api.comick.io"
  },
  {
+  "author": "hualiang",
+  "icon": "https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "次元城动漫",
+  "nsfw": "false",
+  "package": "cycanime.com",
+  "type": "bangumi",
+  "url": "cycanime.com.js",
+  "version": "v1.0.0",
+  "webSite": "https://www.cycanime.com"
+ },
+ {
   "author": "MiaoMint",
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",

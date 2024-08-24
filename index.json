@@ -326,7 +326,7 @@
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "webSite": "https://www.cycanime.com"
  },
  {
@@ -1447,6 +1447,19 @@
   "url": "wtr-lab.com.js",
   "version": "v0.0.1",
   "webSite": "https://wtr-lab.com"
+ },
+ {
+  "author": "hualiang",
+  "icon": "https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "稀饭动漫",
+  "nsfw": "false",
+  "package": "xfani.com",
+  "type": "bangumi",
+  "url": "xfani.com.js",
+  "version": "v1.0.0",
+  "webSite": "https://dick.xfani.com"
  },
  {
   "author": "bachig26",

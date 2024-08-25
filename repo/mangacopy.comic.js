@@ -105,35 +105,39 @@ export default class extends Extension {
       // const cryptojs =await (await fetch("https://raw.githubusercontent.com/Fantuan-cell/XsRead/main/util/cryptojs.js")).text();
       // console.log(cryptojs);
       // eval(cryptojs);
-  
+
       const res = await this.request(`/comicdetail/${url}/chapters`);
-  
+    
       let results = res.results;
       // console.log("密文"+results);
       let iv = results.substring(0, 16);
       results = results.replace(iv, "");
       let key = "xxxmanga.woo.key";
-  
+    
       let value = this.CryptoJS.enc.Hex.parse(results);
       let minyMin = this.CryptoJS.enc.Base64.stringify(value);
-  
+    
       let result = this.decodeUnicode(this.Decrypt(minyMin, key, iv));
       // console.log(result);
       result = JSON.parse(result);
-  
-      let chapters = result["groups"]["default"]["chapters"];
-  
+    
+      let chapters = [];
       let urls_ = [];
-  
-      for (let i = 0; i < chapters.length; i++) {
-        urls_.push({
-          name: chapters[i]["name"],
-          url: url + "#" + chapters[i]["id"],
-        });
+    
+      // 检查 result.groups.default 是否存在以及是否包含 chapters 属性
+      if (result.groups && result.groups.default && result.groups.default.chapters) {
+        chapters = result.groups.default.chapters;
+    
+        for (let i = 0; i < chapters.length; i++) {
+          urls_.push({
+            name: chapters[i].name,
+            url: url + "#" + chapters[i].id,
+          });
+        }
       }
-      // console.log(urls_);
+    // console.log(urls_);
       const detail_info = await this.request(`/api/v3/comic2/${url}?platform=1`);
-  
+    
       // console.log(detail_info);
       return {
         title: detail_info.results.comic.name,

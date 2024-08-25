@@ -20,6 +20,11 @@ export default class extends Extension {
             }});
         const json_res = JSON.parse(JSON.stringify(res))
         
+        // 检查json_res.data是否存在以及是否包含videos属性
+        if (!json_res.data || !json_res.data.videos) {
+            return []; // 如果没有找到相关结果，返回空数组
+        }
+        
         const bangumi = json_res.data.videos.map((element) => {
             return {
                 title: element.name,

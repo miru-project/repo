@@ -86,7 +86,7 @@ export default class extends Extension {
   
     async search(kw, page) {
       let offset = (page - 1) * 20;
-      let keyword = `/api/kb/web/searchs/comics?offset=${offset}&platform=2&limit=30&q=${kw}&q_type=`;
+      let keyword = `/api/kb/web/searchba/comics?offset=${offset}&platform=2&limit=12&q=${kw}&q_type=`;
   
       const res = await this.request(keyword);
   

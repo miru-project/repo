@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v1.0.0
+// @version      v1.0.3
 // @author       hualiang
 // @lang         zh
 // @license      MIT
@@ -64,71 +64,69 @@ export default class extends Extension {
 
   async search(kw, page) {
     const res = await this.request(`/search/wd/${encodeURI(kw)}/page/${page}.html`);
-    const bsxList = await this.querySelectorAll(res, "div.search-box");
-    if (bsxList === null) {
+    const list = await this.querySelectorAll(res, "div.search-box");
+    if (list === null) {
       return [];
     }
-    const videos = [];
-    for (const e of bsxList) {
+    const videos = list.map(async (e) => {
       const label = await this.querySelector(e.content, ".public-list-exp");
       const title = this.text(await this.querySelector(e.content, ".right .thumb-txt"));
       const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
       const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
       const url = `${await label.getAttributeText("href")}|${title}|${cover}`;
-      videos.push({ title, url, cover, update });
-    }
-    return videos;
+      return { title, url, cover, update };
+    });
+    return await Promise.all(videos);
   }
 
   async latest(page) {
     if (page > 1) {
       return [];
     }
-    const res = await this.request("/");
-    const bsxList = await this.querySelectorAll(res, `#week-module-${new Date().getDay()} .public-list-box`);
-    if (bsxList === null) {
+    const res = await this.request("");
+    const list = await this.querySelectorAll(res, `#week-module-${new Date().getDay()} .public-list-box`);
+    if (list === null) {
       return [];
     }
-    const videos = [];
-    for (const e of bsxList) {
+    const videos = list.map(async (e) => {
       const label = await this.querySelector(e.content, ".public-list-exp");
       const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
       const update = this.text(await this.querySelector(e.content, "div.public-list-subtitle"));
       const title = await label.getAttributeText("title");
       const url = `${await label.getAttributeText("href")}|${title}|${cover}`;
-      videos.push({ title, url, cover, update });
-    }
-    return videos;
+      return { title, url, cover, update };
+    });
+    return await Promise.all(videos);
   }
 
   async detail(str) {
     const data = str.split("|");
     const res = await this.request(data[0]);
-    const info = await this.querySelectorAll(res, ".slide-info");
-    if (info.length == 0 || info === null) {
+    if (res.length < 25000) {
       throw Error("您没有权限访问此数据，请升级会员 -【稀饭动漫】");
     }
-    const metadata = new Map();
-    info.shift();
-    for (const e of info) {
-      const key = this.text(await this.querySelector(e.content, "strong")).slice(0, -1);
-      const value = (await this.querySelectorAll(e.content, "a")).map(this.text).join(" ");
-      metadata.set(key, value);
-    }
-    const desc = this.text(await this.querySelector(res, "#height_limit")).replace("&nbsp;", "");
-    const sources = (await this.querySelectorAll(res, ".anthology-tab a")).map((e) =>
-      e.content.match(/i>(.*?)</)[1].replace("&nbsp;", "")
-    );
-    const videos = await this.querySelectorAll(res, ".anthology-list-play");
-    const episodes = [];
-    for (let i = 0; i < videos.length; i++) {
-      const urls = await this.querySelectorAll(videos[i].content, "a");
+    const descTask = this.querySelector(res, "#height_limit");
+    const labelTask = this.querySelectorAll(res, ".anthology-tab a");
+    // const info = await this.querySelectorAll(res, ".slide-info");
+    // const metadata = new Map();
+    // info.shift();
+    // for (const e of info) {
+    //   const key = this.text(await this.querySelector(e.content, "strong")).slice(0, -1);
+    //   const value = (await this.querySelectorAll(e.content, "a")).map(this.text).join(" ");
+    //   metadata.set(key, value);
+    // }
+    // Object.fromEntries(metadata)
+    const sources = await this.querySelectorAll(res, ".anthology-list-play");
+    const labels = (await labelTask).map((e) => e.content.match(/i>(.*?)</)[1].replace("&nbsp;", ""));
+    const episodes = await Promise.all(sources.map(async (source, i) => {
+      const urls = await this.querySelectorAll(source.content, "a");
       for (let j = 0; j < urls.length; j++) {
-        urls[j] = { name: this.text(urls[j]), url: await urls[j].getAttributeText("href"), };
+        urls[j] = { name: this.text(urls[j]), url: await urls[j].getAttributeText("href") };
       }
-      episodes.push({ title: sources[i], urls });
-    }
-    return { title: data[1], cover: data[2], metadata: Object.fromEntries(metadata), desc, episodes };
+      return { title: labels[i], urls };
+    }));
+    const desc = this.text(await descTask).replace("&nbsp;", "");
+    return { title: data[1], cover: data[2], desc, episodes };
   }
 
   async watch(url) {
@@ -140,7 +138,7 @@ export default class extends Extension {
     console.log(link);
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }
-  
+
   async checkUpdate(str) {
     const url = str.split("|")[0];
     const res = await this.request(url);

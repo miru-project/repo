@@ -540,8 +540,8 @@
   "package": "invidious.io",
   "type": "bangumi",
   "url": "invidious.io.js",
-  "version": "v0.0.2",
-  "webSite": "https://vid.puffyan.us/api/v1"
+  "version": "v0.0.3",
+  "webSite": "https://iv.ggtyler.dev/api/v1"
  },
  {
   "author": "vvsolo",

@@ -67,8 +67,8 @@ export default class extends Extension {
     const desc = await this.querySelector(res, "div.content > blockquote").text;
 
     const urlPatterns = [
-      /https:\/\/playeriframe\.shop\/\?url=https%3A%2F%2Femturbovid\.[^'"\s]+/,
-      /https:\/\/playeriframe.shop\/\?url=https%3A%2F%2Flayarkacaxxi\.[^'"\s]+/,
+      /https:\/\/playeriframe\.shop\/iframe\.php\?url=https%3A%2F%2Femturbovid\.[^'"\s]+/,
+      /https:\/\/playeriframe.shop\/iframe\.php\?url=https%3A%2F%2Flayarkacaxxi\.[^'"\s]+/,
       /https:\/\/emturbovid\.[^\s'"]+/,
     ];
 
@@ -109,7 +109,7 @@ export default class extends Extension {
 
     let directUrl = "";
 
-    if (url.startsWith("https://playeriframe.shop/?url=https%3A%2F%2Flayarkacaxxi.icu")) {
+    if (url.startsWith("https://playeriframe.shop/iframe.php?url=https%3A%2F%2Flayarkacaxxi.icu")) {
 
       const mbedLink = res.match(/https:\/\/layarkacaxxi\.[^\s'"]+/);
 
@@ -128,7 +128,7 @@ export default class extends Extension {
       
       const directUrlMatch = res.match(/(https:\/\/[^\s'"]*\.m3u8[^\s'"]*)/);
       directUrl = directUrlMatch ? directUrlMatch[0] : "";
-    } else if (url.startsWith("https://playeriframe.shop/?url=https%3A%2F%2Femturbovid.com")) {
+    } else if (url.startsWith("https://playeriframe.shop/iframe.php?url=https%3A%2F%2Femturbovid.com")) {
 
       const embedLink = res.match(/https:\/\/emturbovid\.[^\s'"]+/);
 

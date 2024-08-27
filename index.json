@@ -418,6 +418,18 @@
   "webSite": "https://flamecomics.com/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://flixhq.vip/wp-content/uploads/2024/04/flixhq-logo-2.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "FlixHQ",
+  "package": "flixhq",
+  "type": "bangumi",
+  "url": "flixhq.js",
+  "version": "v0.0.1",
+  "webSite": "https://consumet8.vercel.app/movies/flixhq"
+ },
+ {
   "author": "funtoons",
   "icon": "https://funtoons.online/wp-content/themes/mangareader/assets/images/android-chrome-192x192.png",
   "lang": "th",

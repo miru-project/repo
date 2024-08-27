@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         LayarKaca
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         id
 // @license      MIT

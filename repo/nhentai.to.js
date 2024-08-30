@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Nhentai
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -57,8 +57,8 @@ export default class extends Extension {
     });
 
     const title = await this.querySelector(res, "h1").text;
-    const cover = res.match(/https:\/\/cdn\.dogehls\.xyz\/[^"]+/)[0];
-    const desc = await this.querySelector(res, "h2").text;
+    const cover = res.match(/https:\/\/zorocdn\.xyz\/[^"]+/)[0];
+    const desc = await this.querySelector(res, "h3").text;
 
     const episodes = [];
     const epiList = await this.querySelectorAll(res, "#info-block");

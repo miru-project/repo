@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         Invidious
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         all
 // @license      MIT
 // @icon         https://invidious.io/apple-touch-icon.png
 // @package      invidious.io
 // @type         bangumi
-// @webSite      https://vid.puffyan.us/api/v1
+// @webSite      https://iv.ggtyler.dev/api/v1
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -15,7 +15,6 @@ export default class extends Extension {
     const res = await this.request(`/trending?region=US`);
  
     if (!Array.isArray(res)) {
-      // Handle the case when the response is not an array
       return [];
     }
  
@@ -66,7 +65,7 @@ export default class extends Extension {
   
   return {
     type: "hls",
-    url: res.formatStreams?.[1]?.url,
+    url: res.formatStreams?.[0]?.url,
   };
 }
 }

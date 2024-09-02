@@ -33,13 +33,14 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | FilmyCab | filmycab | v0.0.2 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/filmycab.js) |
 | FilmyPunjab | filmypunjab.com | v0.0.3 | appdevelpo | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/filmypunjab.com.js) |
 | FlameComics | flamecomics.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flamecomics.com.js) |
+| FlixHQ | flixhq | v0.0.1 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.js) |
 | Funtoons | funtoons.online | v0.0.1 | funtoons | th | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/funtoons.online.js) |
 | GakiArchives | gakiarchives.com | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gakiarchives.com.js) |
 | gimy | gimy.su | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gimy.su.js) |
 | GoGoAnime | gogo.anime | v0.0.8 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | HiAnime | hianime.to | v0.0.8 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hianime.to.js) |
 | IDLIX | idlix | v0.0.2 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/idlix.js) |
-| Invidious | invidious.io | v0.0.2 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/invidious.io.js) |
+| Invidious | invidious.io | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/invidious.io.js) |
 | IPTV-ORG | iptv-org | v0.0.1 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/iptv-org.js) |
 | IsekaiScan | isekaiscan.to | v0.0.3 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |
 | 极速资源 | jisuzy.com | v0.0.1 | SendHX | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/jisuzy.com.js) |
@@ -52,7 +53,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Letv影院 | letv.im | v0.0.1 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/letv.im.js) |
 | libvio | libvio.pro | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/libvio.pro.js) |
 | LilyManga | lilymanga.net | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lilymanga.net.js) |
-| LayarKaca | lk21official | v0.0.1 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
+| LayarKaca | lk21official | v0.0.2 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
 | MangaLife | manga4life.com | v0.0.1 | appdevelpo | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga4life.com.js) |
 | MangaBat | mangabat.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangabat.com.js) |
 | MangaClash | mangaclash.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangaclash.com.js) |

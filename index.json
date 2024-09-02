@@ -418,6 +418,18 @@
   "webSite": "https://flamecomics.com/"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://flixhq.vip/wp-content/uploads/2024/04/flixhq-logo-2.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "FlixHQ",
+  "package": "flixhq",
+  "type": "bangumi",
+  "url": "flixhq.js",
+  "version": "v0.0.1",
+  "webSite": "https://consumet8.vercel.app/movies/flixhq"
+ },
+ {
   "author": "funtoons",
   "icon": "https://funtoons.online/wp-content/themes/mangareader/assets/images/android-chrome-192x192.png",
   "lang": "th",
@@ -528,8 +540,8 @@
   "package": "invidious.io",
   "type": "bangumi",
   "url": "invidious.io.js",
-  "version": "v0.0.2",
-  "webSite": "https://vid.puffyan.us/api/v1"
+  "version": "v0.0.3",
+  "webSite": "https://iv.ggtyler.dev/api/v1"
  },
  {
   "author": "vvsolo",
@@ -705,7 +717,7 @@
   "package": "lk21official",
   "type": "bangumi",
   "url": "lk21official.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://tv3.lk21official.wiki"
  },
  {
@@ -943,7 +955,7 @@
   "package": "nhentai.to",
   "type": "manga",
   "url": "nhentai.to.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://nhentai.to"
  },
  {

@@ -1577,6 +1577,18 @@
   "webSite": "https://api.yurineko.net"
  },
  {
+  "author": "hualiang",
+  "icon": "https://www.yymanhua.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "YY漫画",
+  "package": "yymanhua.com",
+  "type": "manga",
+  "url": "yymanhua.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.yymanhua.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://zscans.com/favicon.ico",
   "lang": "en",

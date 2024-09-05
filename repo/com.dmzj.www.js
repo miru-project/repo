@@ -42,37 +42,50 @@ export default class extends Extension {
       `/api/v1/comic1/search?keyword=${kw}&page=${page}`,
     );
     const manga = [];
-    res.data.comic_list.forEach((element) => {
-      manga.push({
-        title: element.name,
-        cover: element.cover,
-        update: element.last_update_chapter_name,
-        url: element.comic_py,
+  
+    // 检查 comic_list 是否存在且为数组
+    if (Array.isArray(res.data.comic_list)) {
+      res.data.comic_list.forEach((element) => {
+        manga.push({
+          title: element.name,
+          cover: element.cover,
+          update: element.last_update_chapter_name,
+          url: element.comic_py,
+        });
       });
-    });
+    }
+  
     return manga;
   }
+  
 
   async detail(url) {
     const res = await this.request(
       `/api/v1/comic1/comic/detail?channel=pc&app_name=dmzj&version=1.0.0&comic_py=${url}`,
     );
-    const comicInfo = res.data.comicInfo;
+    const comicInfo = res.data.comicInfo || {}; // 确保comicInfo是对象
     const episodes = [];
-    comicInfo.chapterList.forEach((element) => {
-      const urls = [];
-      element.data.forEach((e) => {
-        urls.push({
-          name: e.chapter_title,
-          url: `${comicInfo.id}|${e.chapter_id.toString()}`,
+  
+    // 检查 chapterList 是否存在且为数组
+    if (Array.isArray(comicInfo.chapterList)) {
+      comicInfo.chapterList.forEach((element) => {
+        const urls = [];
+        // 同样检查 element.data 是否存在且为数组
+        if (Array.isArray(element.data)) {
+          element.data.forEach((e) => {
+            urls.push({
+              name: e.chapter_title,
+              url: `${comicInfo.id}|${e.chapter_id.toString()}`,
+            });
+          });
+        }
+        episodes.push({
+          title: element.title,
+          urls: urls.reverse(),
         });
       });
-      episodes.push({
-        title: element.title,
-        urls: urls.reverse(),
-      });
-    });
-
+    }
+  
     return {
       title: comicInfo.title,
       cover: comicInfo.cover,

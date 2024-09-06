@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.0.1
+// @version      v0.0.6
 // @author       hualiang
 // @lang         zh
 // @license      MIT
@@ -12,45 +12,13 @@
 // ==/MiruExtension==
 export default class extends Extension {
   async load() {
+    this.decrypt = () => {
+      const time = Math.ceil(new Date().getTime() / 1000);
+      return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
+    };
     this.base64decode = (str) => {
-      var base64DecodeChars = [
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-        -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59,
-        60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-        21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42,
-        43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1,
-      ];
-      var c1, c2, c3, c4;
-      var i, len, out;
-      len = str.length;
-      i = 0;
-      out = "";
-      while (i < len) {
-        do {
-          c1 = base64DecodeChars[str.charCodeAt(i++) & 0xff];
-        } while (i < len && c1 == -1);
-        if (c1 == -1) break;
-        do {
-          c2 = base64DecodeChars[str.charCodeAt(i++) & 0xff];
-        } while (i < len && c2 == -1);
-        if (c2 == -1) break;
-        out += String.fromCharCode((c1 << 2) | ((c2 & 0x30) >> 4));
-        do {
-          c3 = str.charCodeAt(i++) & 0xff;
-          if (c3 == 61) return out;
-          c3 = base64DecodeChars[c3];
-        } while (i < len && c3 == -1);
-        if (c3 == -1) break;
-        out += String.fromCharCode(((c2 & 0xf) << 4) | ((c3 & 0x3c) >> 2));
-        do {
-          c4 = str.charCodeAt(i++) & 0xff;
-          if (c4 == 61) return out;
-          c4 = base64DecodeChars[c4];
-        } while (i < len && c4 == -1);
-        if (c4 == -1) break;
-        out += String.fromCharCode(((c3 & 0x03) << 6) | c4);
-      }
-      return out;
+      var words = CryptoJS.enc.Base64.parse(str);
+      return CryptoJS.enc.Utf8.stringify(words);
     };
     this.querySelector = async (content, selector) => {
       const res = await this.querySelectorAll(content, selector);
@@ -62,7 +30,76 @@ export default class extends Extension {
     };
   }
 
-  async search(kw, page) {
+  async createFilter() {
+    const channels = {
+      title: "频道",
+      max: 1,
+      min: 1,
+      default: "1",
+      options: {
+        1: "连载新番",
+        2: "完结旧番",
+        3: "剧场版",
+        21: "美漫",
+      },
+    };
+    const genres = {
+      title: "类型",
+      max: 1,
+      min: 0,
+      default: "",
+      options: {
+        搞笑: "搞笑",
+        原创: "原创",
+        轻小说改: "轻小说改",
+        恋爱: "恋爱",
+        百合: "百合",
+        漫改: "漫改",
+        校园: "校园",
+        战斗: "战斗",
+        治愈: "治愈",
+        奇幻: "奇幻",
+        日常: "日常",
+        青春: "青春",
+        乙女向: "乙女向",
+        悬疑: "悬疑",
+        后宫: "后宫",
+        科幻: "科幻",
+        冒险: "冒险",
+        热血: "热血",
+        异世界: "异世界",
+        游戏改: "游戏改",
+        音乐: "音乐",
+        偶像: "偶像",
+        美食: "美食",
+        耽美: "耽美",
+      },
+    };
+    return { channels, genres };
+  }
+
+  async latest(page) {
+    if (page > 1) {
+      return [];
+    }
+    const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+    const { time, key } = this.decrypt();
+    let res = await this.request("/index.php/api/weekday", {
+      method: "post",
+      data: { weekday: weekdays[new Date().getDay()], num: 20, time, key },
+    });
+    return res.list.map((e) => ({
+      title: e.vod_name,
+      url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
+      cover: e.vod_pic,
+      update: e.vod_remarks,
+    }));
+  }
+
+  async search(kw, page, filter) {
+    if (!kw) {
+      return this.select(page, filter);
+    }
     const res = await this.request(`/search/wd/${encodeURI(kw)}/page/${page}.html`);
     const list = await this.querySelectorAll(res, "div.search-box");
     if (list === null) {
@@ -79,24 +116,18 @@ export default class extends Extension {
     return await Promise.all(videos);
   }
 
-  async latest(page) {
-    if (page > 1) {
-      return [];
-    }
-    const res = await this.request("");
-    const list = await this.querySelectorAll(res, `#week-module-${new Date().getDay()} .public-list-box`);
-    if (list === null) {
-      return [];
-    }
-    const videos = list.map(async (e) => {
-      const label = await this.querySelector(e.content, ".public-list-exp");
-      const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
-      const update = this.text(await this.querySelector(e.content, "div.public-list-subtitle"));
-      const title = await label.getAttributeText("title");
-      const url = `${await label.getAttributeText("href")}|${title}|${cover}`;
-      return { title, url, cover, update };
+  async select(page, filter) {
+    const { time, key } = this.decrypt();
+    const res = await this.request("/index.php/api/vod", {
+      method: "post",
+      data: { type: filter.channels[0], class: filter.genres[0], page, time, key },
     });
-    return await Promise.all(videos);
+    return res.list.map((e) => ({
+      title: e.vod_name,
+      url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
+      cover: e.vod_pic,
+      update: e.vod_remarks,
+    }));
   }
 
   async detail(str) {
@@ -107,24 +138,17 @@ export default class extends Extension {
     }
     const descTask = this.querySelector(res, "#height_limit");
     const labelTask = this.querySelectorAll(res, ".anthology-tab a");
-    // const info = await this.querySelectorAll(res, ".slide-info");
-    // const metadata = new Map();
-    // info.shift();
-    // for (const e of info) {
-    //   const key = this.text(await this.querySelector(e.content, "strong")).slice(0, -1);
-    //   const value = (await this.querySelectorAll(e.content, "a")).map(this.text).join(" ");
-    //   metadata.set(key, value);
-    // }
-    // Object.fromEntries(metadata)
     const sources = await this.querySelectorAll(res, ".anthology-list-play");
     const labels = (await labelTask).map((e) => e.content.match(/i>(.*?)</)[1].replace("&nbsp;", ""));
-    const episodes = await Promise.all(sources.map(async (source, i) => {
-      const urls = await this.querySelectorAll(source.content, "a");
-      for (let j = 0; j < urls.length; j++) {
-        urls[j] = { name: this.text(urls[j]), url: await urls[j].getAttributeText("href") };
-      }
-      return { title: labels[i], urls };
-    }));
+    const episodes = await Promise.all(
+      sources.map(async (source, i) => {
+        const urls = await this.querySelectorAll(source.content, "a");
+        for (let j = 0; j < urls.length; j++) {
+          urls[j] = { name: this.text(urls[j]), url: await urls[j].getAttributeText("href") };
+        }
+        return { title: labels[i], urls };
+      })
+    );
     const desc = this.text(await descTask).replace("&nbsp;", "");
     return { title: data[1], cover: data[2], desc, episodes };
   }

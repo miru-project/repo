@@ -178,7 +178,7 @@
   "webSite": "https://bestlightnovel.com"
  },
  {
-  "author": "hualiang",
+  "author": "hualiong",
   "icon": "https://www.bilinovel.com/favicon.ico",
   "lang": "zh",
   "license": "MIT",
@@ -186,7 +186,7 @@
   "package": "bilinovel.com",
   "type": "fikushon",
   "url": "bilinovel.com.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://www.bilinovel.com"
  },
  {
@@ -329,7 +329,7 @@
   "webSite": "https://api.comick.io"
  },
  {
-  "author": "hualiang",
+  "author": "hualiong",
   "icon": "https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
   "lang": "zh",
   "license": "MIT",
@@ -1473,7 +1473,7 @@
   "webSite": "https://wtr-lab.com"
  },
  {
-  "author": "hualiang",
+  "author": "hualiong",
   "icon": "https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png",
   "lang": "zh",
   "license": "MIT",
@@ -1589,7 +1589,7 @@
   "webSite": "https://api.yurineko.net"
  },
  {
-  "author": "hualiang",
+  "author": "hualiong",
   "icon": "https://www.yymanhua.com/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",

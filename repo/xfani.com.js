@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         稀饭动漫
 // @version      v0.0.6
-// @author       hualiang
+// @author       hualiong
 // @lang         zh
 // @license      MIT
 // @icon         https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png

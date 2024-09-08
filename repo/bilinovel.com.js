@@ -1,8 +1,8 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.3
-// @author       hualiang
-// @lang         zh
+// @version      v0.0.4
+// @author       hualiong
+// @lang         zh-cn
 // @icon         https://www.bilinovel.com/favicon.ico
 // @license      MIT
 // @package      bilinovel.com
@@ -39,7 +39,7 @@ export default class extends Extension {
     };
     this.handle = async (url, count = 10) => {
       try {
-        const response = await this.request(url, { headers: { "Accept-Language": "zh-cn", Accept: "*/*" } });
+        const response = await this.request(url, { headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" } });
         const row = await this.querySelectorAll(response, "#acontentz > p, img");
         return row.map(this.filter);
       } catch (error) {
@@ -134,7 +134,7 @@ export default class extends Extension {
 
   async watch(url) {
     url = url.slice(0, -5);
-    const res = await this.request(`${url}_2.html`, { headers: { "Accept-Language": "zh-cn", Accept: "*/*" } });
+    const res = await this.request(`${url}_2.html`, { headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" } });
     const subtitle = this.text(await this.querySelector(res, "#apage h1"));
     const total = parseInt(subtitle.split("/")[1].slice(0, -1)) || 1;
     let tasks = [];

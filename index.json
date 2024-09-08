@@ -178,6 +178,18 @@
   "webSite": "https://bestlightnovel.com"
  },
  {
+  "author": "hualiang",
+  "icon": "https://www.bilinovel.com/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "哔哩轻小说",
+  "package": "bilinovel.com",
+  "type": "fikushon",
+  "url": "bilinovel.com.js",
+  "version": "v0.0.3",
+  "webSite": "https://www.bilinovel.com"
+ },
+ {
   "author": "yxxyun",
   "icon": "https://m.bi17.cc/favicon.ico",
   "lang": "zh-cn",

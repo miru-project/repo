@@ -2,7 +2,7 @@
 // @name         哔哩轻小说
 // @version      v0.0.4
 // @author       hualiong
-// @lang         zh-cn
+// @lang         zh
 // @icon         https://www.bilinovel.com/favicon.ico
 // @license      MIT
 // @package      bilinovel.com

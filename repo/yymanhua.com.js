@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         YY漫画
 // @version      v0.0.1
-// @author       hualiang
+// @author       hualiong
 // @lang         zh-cn
 // @license      MIT
 // @package      yymanhua.com

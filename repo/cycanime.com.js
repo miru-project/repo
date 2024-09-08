@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         次元城动漫
 // @version      v0.0.6
-// @author       hualiang
+// @author       hualiong
 // @lang         zh
 // @license      MIT
 // @icon         https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png

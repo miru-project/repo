@@ -1,8 +1,8 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.4
-// @author       hualiong
-// @lang         zh-cn
+// @version      v0.0.5
+// @author       hualiang
+// @lang         zh
 // @icon         https://www.bilinovel.com/favicon.ico
 // @license      MIT
 // @package      bilinovel.com
@@ -28,7 +28,7 @@ export default class extends Extension {
       return res === null ? null : res[0];
     };
     this.text = (element) => {
-      return [...element.content.matchAll(/>([^<\n]+?)</g)].map((m) => m[1].trim()).join("");
+      return [...element.content.matchAll(/>([^<]+?)</g)].map((m) => m[1]).join("").trim();
     };
     this.filter = (element) => { // 59392
       if (element.content.startsWith("<img")) {
@@ -91,17 +91,18 @@ export default class extends Extension {
       return await Promise.all(tasks);
     }
     // 此时已经在详情页
+    const desc = this.querySelector(res, "#bookSummary > content");
     const head = await this.querySelector(res, "head");
-    const desc = await this.querySelector(res, "#bookSummary > content");
-    const title = await this.getAttributeText(head.content, "meta[property='og:title']", "content");
-    const cover = await this.getAttributeText(head.content, "meta[property='og:image']", "content");
-    const url = await this.getAttributeText(head.content, "meta[property='og:novel:read_url']", "content");
+    const title = this.getAttributeText(head.content, "meta[property='og:title']", "content");
+    const cover = this.getAttributeText(head.content, "meta[property='og:image']", "content");
+    const url = this.getAttributeText(head.content, "meta[property='og:novel:read_url']", "content");
+    const remark = this.getAttributeText(head.content, "meta[property='og:novel:author']", "content");
     return [
       {
         title,
         cover,
-        url: `${url.substring(25)}|${title}|${cover}|${this.text(desc).replace("<br>", "")}`,
-        update: await this.getAttributeText(head.content, "meta[property='og:novel:author']", "content"),
+        url: `${(await url).substring(25)}|${await title}|${await cover}|${this.text(await desc)}`,
+        update: await remark,
       },
     ];
   }
@@ -113,40 +114,37 @@ export default class extends Extension {
       promise = (async (data) => {
         const res = await this.request(data[0]);
         const desc = await this.querySelector(res, "#bookSummary > content");
-        data.push(this.text(desc).replace("<br>", ""));
+        data.push(this.text(desc));
       }).call(this, data);
       data[0] = `${data[0].slice(0, -5)}/catalog`;
     }
     const catalog = await this.request(data[0]);
     const volumes = await this.querySelectorAll(catalog, ".volume-chapters");
-    const episodes = volumes.map(async (volume) => {
+    const episodes = await Promise.all(volumes.map(async (volume) => {
       const title = this.text(await this.querySelector(volume.content, ".chapter-bar > h3"));
       const urls = await this.querySelectorAll(volume.content, ".chapter-li-a");
       const tasks = await Promise.all(
         urls.map(async (url) => ({ name: this.text(url), url: await url.getAttributeText("href") }))
       );
       return { title, urls: tasks };
-    });
-    const newLocal = await Promise.all(episodes);
+    }));
     if (promise) await promise;
-    return { title: data[1], cover: data[2], desc: data[3], episodes: newLocal };
+    return { title: data[1], cover: data[2], desc: data[3], episodes };
   }
 
   async watch(url) {
     url = url.slice(0, -5);
+    let tasks = [this.handle(`${url}.html`)];
     const res = await this.request(`${url}_2.html`, { headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" } });
     const subtitle = this.text(await this.querySelector(res, "#apage h1"));
     const total = parseInt(subtitle.split("/")[1].slice(0, -1)) || 1;
-    let tasks = [];
-    for (let i = 1; i <= total; i++) {
-      if (i != 2) {
-        tasks.push(this.handle(`${url}_${i}.html`));
-      }
+    for (let i = 3; i <= total; i++) {
+      tasks.push(this.handle(`${url}_${i}.html`));
     }
     tasks = await Promise.all(tasks);
     if (total > 1) {
       tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontentz > p")).map(this.filter));
     }
-    return { title: "Test", subtitle: subtitle.split("（")[0], content: tasks.flat() };
+    return { title: "Why is this 'title' attribute not valid?", subtitle: subtitle.split("（")[0], content: tasks.flat() };
   }
 }

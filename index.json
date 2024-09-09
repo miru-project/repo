@@ -178,6 +178,18 @@
   "webSite": "https://bestlightnovel.com"
  },
  {
+  "author": "hualiong",
+  "icon": "https://www.bilinovel.com/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "哔哩轻小说",
+  "package": "bilinovel.com",
+  "type": "fikushon",
+  "url": "bilinovel.com.js",
+  "version": "v0.0.4",
+  "webSite": "https://www.bilinovel.com"
+ },
+ {
   "author": "yxxyun",
   "icon": "https://m.bi17.cc/favicon.ico",
   "lang": "zh-cn",
@@ -317,7 +329,7 @@
   "webSite": "https://api.comick.io"
  },
  {
-  "author": "hualiang",
+  "author": "hualiong",
   "icon": "https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
   "lang": "zh",
   "license": "MIT",
@@ -326,7 +338,7 @@
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.6",
   "webSite": "https://www.cycanime.com"
  },
  {
@@ -1461,7 +1473,7 @@
   "webSite": "https://wtr-lab.com"
  },
  {
-  "author": "hualiang",
+  "author": "hualiong",
   "icon": "https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png",
   "lang": "zh",
   "license": "MIT",
@@ -1470,7 +1482,7 @@
   "package": "xfani.com",
   "type": "bangumi",
   "url": "xfani.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.6",
   "webSite": "https://dick.xfani.com"
  },
  {
@@ -1575,6 +1587,18 @@
   "url": "yurineko.net.js",
   "version": "v0.0.1",
   "webSite": "https://api.yurineko.net"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://www.yymanhua.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "YY漫画",
+  "package": "yymanhua.com",
+  "type": "manga",
+  "url": "yymanhua.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.yymanhua.com"
  },
  {
   "author": "OshekharO",

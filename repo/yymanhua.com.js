@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         YY漫画
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -45,14 +45,24 @@ export default class extends Extension {
       const match = element.content.match(/<[^>]+>([^<]+)<\/[^>]+>/);
       return !match ? "" : match[1].trim();
     };
-    this.$get = async (url, count = 3) => {
+    this.$get = async (url, count = 3, timeout = 5000) => {
       try {
-        return await this.request(url, {
-          headers: { cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=", referer: "https://www.yymanhua.com/" },
-        });
+        return await Promise.race([
+          this.request(url, {
+            headers: {
+              cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=",
+              referer: "https://www.yymanhua.com/",
+            },
+          }),
+          new Promise((_, reject) => {
+            setTimeout(() => {
+              reject(new Error("Request timed out!"));
+            }, timeout);
+          }),
+        ]);
       } catch (error) {
-        if (count > 0) {
-          console.log(`Retry ${count} times: ${url}`);
+        if (count > 1) {
+          console.log(`[Retry]: ${url}`);
           return this.$get(url, count - 1);
         } else {
           throw error;

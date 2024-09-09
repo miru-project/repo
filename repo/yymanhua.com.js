@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         YY漫画
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -45,10 +45,19 @@ export default class extends Extension {
       const match = element.content.match(/<[^>]+>([^<]+)<\/[^>]+>/);
       return !match ? "" : match[1].trim();
     };
-    this.$get = async (url) => {
-      return await this.request(url, {
-        headers: { cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=", referer: "https://www.yymanhua.com/" },
-      });
+    this.$get = async (url, count = 3) => {
+      try {
+        return await this.request(url, {
+          headers: { cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=", referer: "https://www.yymanhua.com/" },
+        });
+      } catch (error) {
+        if (count > 0) {
+          console.log(`Retry ${count} times: ${url}`);
+          return this.$get(url, count - 1);
+        } else {
+          throw error;
+        }
+      }
     };
   }
 
@@ -108,7 +117,7 @@ export default class extends Extension {
     const data = str.split("|");
     const cid = data[0].match(/\d+/)[0];
     const seq = Array.from({ length: parseInt(data[1]) }, (_, i) => i);
-    const urls = await this.asyncPool(50, seq, async (i) => {
+    const urls = await this.asyncPool(40, seq, async (i) => {
       const resp = await this.$get(`${data[0]}chapterimage.ashx?cid=${cid}&page=${i + 1}`);
       const match = this.deobfuscator(resp).match(/var pix="(.*?)".*var pvalue=\["(.*?)"/);
       return match[1] + match[2];

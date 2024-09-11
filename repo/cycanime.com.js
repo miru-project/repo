@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         次元城动漫
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       hualiong
 // @lang         zh
 // @license      MIT
@@ -12,29 +12,33 @@
 // ==/MiruExtension==
 export default class extends Extension {
   async load() {
-    this.decrypt = {
-      player: (src, key1, key2) => {
-        let prefix = new Array(key2.length);
-        for (let i = 0; i < key2.length; i++) {
-          prefix[key1[i]] = key2[i];
-        }
-        let a = CryptoJS.MD5(prefix.join("") + "YLwJVbXw77pk2eOrAnFdBo2c3mWkLtodMni2wk81GCnP94ZltW").toString(),
-          key = CryptoJS.enc.Utf8.parse(a.substring(16)),
-          iv = CryptoJS.enc.Utf8.parse(a.substring(0, 16)),
-          dec = CryptoJS.AES.decrypt(src, key, {
-            iv: iv,
-            mode: CryptoJS.mode.CBC,
-            padding: CryptoJS.pad.Pkcs7,
-          });
-        return dec.toString(CryptoJS.enc.Utf8);
-      },
-      timestamp: () => {
-        const time = Math.ceil(new Date().getTime() / 1000);
-        return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
-      },
+    // this.decrypt = {
+    //   player: (src, key1, key2) => {
+    //     let prefix = new Array(key2.length);
+    //     for (let i = 0; i < key2.length; i++) {
+    //       prefix[key1[i]] = key2[i];
+    //     }
+    //     let a = CryptoJS.MD5(prefix.join("") + "YLwJVbXw77pk2eOrAnFdBo2c3mWkLtodMni2wk81GCnP94ZltW").toString(),
+    //       key = CryptoJS.enc.Utf8.parse(a.substring(16)),
+    //       iv = CryptoJS.enc.Utf8.parse(a.substring(0, 16)),
+    //       dec = CryptoJS.AES.decrypt(src, key, {
+    //         iv: iv,
+    //         mode: CryptoJS.mode.CBC,
+    //         padding: CryptoJS.pad.Pkcs7,
+    //       });
+    //     return dec.toString(CryptoJS.enc.Utf8);
+    //   },
+    //   timestamp: () => {
+    //     const time = Math.ceil(new Date().getTime() / 1000);
+    //     return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
+    //   },
+    // };
+    this.decrypt = () => {
+      const time = Math.ceil(new Date().getTime() / 1000);
+      return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
     };
     this.base64decode = (str) => {
-      var words = CryptoJS.enc.Base64.parse(str);
+      let words = CryptoJS.enc.Base64.parse(str);
       return CryptoJS.enc.Utf8.stringify(words);
     };
     this.querySelector = async (content, selector) => {
@@ -122,7 +126,7 @@ export default class extends Extension {
       return [];
     }
     const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
-    const { time, key } = this.decrypt.timestamp();
+    const { time, key } = this.decrypt();
     let res = await this.request("/index.php/api/weekday", {
       method: "post",
       data: { weekday: weekdays[new Date().getDay()], num: 20, time, key },
@@ -176,7 +180,7 @@ export default class extends Extension {
   }
 
   async select(page, filter) {
-    const { time, key } = this.decrypt.timestamp();
+    const { time, key } = this.decrypt();
     const res = await this.request(`/index.php/api/vod`, {
       method: "post",
       data: { type: filter.channels[0], class: filter.genres[0], year: filter.years[0], page, time, key },
@@ -192,31 +196,35 @@ export default class extends Extension {
   async detail(str) {
     const data = str.split("|");
     const res = await this.request(data[0]);
-    const descTask = this.querySelector(res, "#height_limit");
+    const desc = res.match(/\bid="height_limit".*?>([\s\S]*?)</)[1].replace("&nbsp;", " ");
     const labelTask = this.querySelectorAll(res, ".anthology-tab a");
     const sources = await this.querySelectorAll(res, ".anthology-list-play");
     const labels = (await labelTask).map((e) => e.content.match(/i>(.*?)</)[1].replace("&nbsp;", ""));
-    const episodes = await Promise.all(
-      sources.map(async (source, i) => {
-        const urls = (await this.querySelectorAll(source.content, "a")).map(async (a) => {
-          const resp = await this.request(await a.getAttributeText("href"));
-          const json = JSON.parse(resp.match(/var player_aaaa=({.+?})</)[1]);
-          const url = json.encrypt ? decodeURIComponent(this.base64decode(json.url)) : decodeURIComponent(json.url);
-          return { name: this.text(a), url };
-        });
-        return { title: labels[i], urls: await Promise.all(urls) };
-      })
-    );
-    const desc = this.text(await descTask).replace("&nbsp;", "");
-    return { title: data[1], cover: data[2], desc, episodes };
+    let reg = /href="(.*?)">(.*?)</;
+    const episodes = sources.map(async (source, i) => {
+      const urls = (await this.querySelectorAll(source.content, "a")).map(async (a) => {
+        const match = reg.exec(a.content);
+        const resp = await this.request(match[1]);
+        const json = JSON.parse(resp.match(/var player_aaaa=({.+?})</)[1]);
+        const url = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
+        return { name: match[2], url };
+      });
+      return { title: labels[i], urls: await Promise.all(urls) };
+    });
+    return { title: data[1], cover: data[2], desc, episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
-    const resp = await this.request(`/?url=${url}`, { headers: { "Miru-Url": "https://player.cycanime.com" } });
-    const reg = /now_(\w+)/g;
-    const link = this.decrypt.player(resp.match(/"url": "([^:]+?)"/)[1], reg.exec(resp)[1], reg.exec(resp)[1]);
-    return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
+    console.log(url);
+    return { type: url.indexOf(".mp4") > 0 ? "mp4" : "hls", url };
   }
+
+  // async watch(url) {
+  //   const resp = await this.request(`/?url=${url}`, { headers: { "Miru-Url": "https://player.cycanime.com" } });
+  //   const reg = /now_(\w+)/g;
+  //   const link = this.decrypt.player(resp.match(/"url": "([^:]+?)"/)[1], reg.exec(resp)[1], reg.exec(resp)[1]);
+  //   return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
+  // }
 
   async checkUpdate(str) {
     const url = str.split("|")[0];

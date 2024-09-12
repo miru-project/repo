@@ -93,15 +93,15 @@ export default class extends Extension {
     // 此时已经在详情页
     const desc = this.querySelector(res, "#bookSummary > content");
     const head = await this.querySelector(res, "head");
-    const title = this.getAttributeText(head.content, "meta[property='og:title']", "content");
-    const cover = this.getAttributeText(head.content, "meta[property='og:image']", "content");
+    const title = await this.getAttributeText(head.content, "meta[property='og:title']", "content");
+    const cover = await this.getAttributeText(head.content, "meta[property='og:image']", "content");
     const url = this.getAttributeText(head.content, "meta[property='og:novel:read_url']", "content");
     const remark = this.getAttributeText(head.content, "meta[property='og:novel:author']", "content");
     return [
       {
         title,
         cover,
-        url: `${(await url).substring(25)}|${await title}|${await cover}|${this.text(await desc)}`,
+        url: `${(await url).substring(25)}|${title}|${cover}|${this.text(await desc)}`,
         update: await remark,
       },
     ];
@@ -120,22 +120,29 @@ export default class extends Extension {
     }
     const catalog = await this.request(data[0]);
     const volumes = await this.querySelectorAll(catalog, ".volume-chapters");
-    const episodes = await Promise.all(volumes.map(async (volume) => {
+    const episodes = volumes.map(async (volume) => {
       const title = this.text(await this.querySelector(volume.content, ".chapter-bar > h3"));
       const urls = await this.querySelectorAll(volume.content, ".chapter-li-a");
-      const tasks = await Promise.all(
-        urls.map(async (url) => ({ name: this.text(url), url: await url.getAttributeText("href") }))
-      );
-      return { title, urls: tasks };
-    }));
+      const tasks = urls.map((url, i) => {
+        const regex = /\/novel\/\d+\/([0-9_]+)/;
+        let match = regex.exec(url.content);
+        if (!match) {
+          const id = i ? parseInt(regex.exec(urls[i - 1].content)[1]) + 1 : parseInt(regex.exec(urls[i + 1].content)[1]) - 1;
+          match = [`${data[0].slice(0, -8)}/${id}`];
+        }
+        return { name: this.text(url), url: match[0] };
+      });
+      return { title, urls: await Promise.all(tasks) };
+    });
     if (promise) await promise;
-    return { title: data[1], cover: data[2], desc: data[3], episodes };
+    return { title: data[1], cover: data[2], desc: data[3], episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
-    url = url.slice(0, -5);
     let tasks = [this.handle(`${url}.html`)];
-    const res = await this.request(`${url}_2.html`, { headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" } });
+    const res = await this.request(`${url}_2.html`, {
+      headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
+    });
     const subtitle = this.text(await this.querySelector(res, "#apage h1"));
     const total = parseInt(subtitle.split("/")[1].slice(0, -1)) || 1;
     for (let i = 3; i <= total; i++) {
@@ -145,6 +152,10 @@ export default class extends Extension {
     if (total > 1) {
       tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontentz > p")).map(this.filter));
     }
-    return { title: "Why is this 'title' attribute not valid?", subtitle: subtitle.split("（")[0], content: tasks.flat() };
+    return {
+      title: "Why is this 'title' attribute not valid?",
+      subtitle: subtitle.split("（")[0],
+      content: tasks.flat(),
+    };
   }
 }

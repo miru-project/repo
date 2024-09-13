@@ -55,7 +55,7 @@ export default class extends Extension {
   async search(kw, page) {
     // Search
     const paddedPage = page.toString().padStart(2, "0");
-    const url = `/search/${kw}/?mode=async&function=get_block&block_id=custom_list_videos_videos_list_search&q=bitch&sort_by=&from_videos=${paddedPage}&from_albums=${paddedPage}`;
+    const url = `/search/?mode=async&function=get_block&block_id=custom_list_videos_videos_list_search&q=${kw}&sort_by=&from_videos=${paddedPage}&from_albums=${paddedPage}`;
     const res = await this.request(url);
     const videoList = await this.querySelectorAll(res, "#custom_list_videos_videos_list_search_items .item.thumb");
     const videos = [];

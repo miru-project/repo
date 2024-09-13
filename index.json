@@ -1148,6 +1148,19 @@
   "webSite": "https://www.royalroad.com"
  },
  {
+  "author": "jeylists",
+  "icon": "https://rule34video.com/favicon-32x32.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Rule34Video",
+  "nsfw": "true",
+  "package": "rule34video.com",
+  "type": "bangumi",
+  "url": "rule34video.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://rule34video.com"
+ },
+ {
   "author": "Monster",
   "icon": "https://cdn.yinghuazy.xyz/webjs/zkk7/statics/img/favicon.ico",
   "lang": "zh-cn",

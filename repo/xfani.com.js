@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       hualiong
 // @lang         zh
 // @license      MIT
@@ -136,29 +136,25 @@ export default class extends Extension {
     if (res.length < 25000) {
       throw Error("您没有权限访问此数据，请升级会员 -【稀饭动漫】");
     }
-    const descTask = this.querySelector(res, "#height_limit");
+    const desc = res.match(/\bid="height_limit".*?>([\s\S]*?)</)[1].replace("&nbsp;", " ");
     const labelTask = this.querySelectorAll(res, ".anthology-tab a");
     const sources = await this.querySelectorAll(res, ".anthology-list-play");
     const labels = (await labelTask).map((e) => e.content.match(/i>(.*?)</)[1].replace("&nbsp;", ""));
-    const episodes = await Promise.all(
-      sources.map(async (source, i) => {
-        const urls = await this.querySelectorAll(source.content, "a");
-        for (let j = 0; j < urls.length; j++) {
-          urls[j] = { name: this.text(urls[j]), url: await urls[j].getAttributeText("href") };
-        }
-        return { title: labels[i], urls };
+    let reg = /href="(.*?)">(.*?)</;
+    const episodes = sources.map(async (source, i) => {
+      const urls = (await this.querySelectorAll(source.content, "a")).map((a) => {
+        const match = reg.exec(a.content);
+        return { name: match[2], url: match[1] };
       })
-    );
-    const desc = this.text(await descTask).replace("&nbsp;", "");
-    return { title: data[1], cover: data[2], desc, episodes };
+      return { title: labels[i], urls };
+    });
+    return { title: data[1], cover: data[2], desc, episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
     const res = await this.request(url);
-    const json = JSON.parse(
-      this.text(await this.querySelector(res, ".player-left > script:nth-child(7)")).substring(16)
-    );
-    const link = json.encrypt ? decodeURIComponent(this.base64decode(json.url)) : decodeURIComponent(json.url);
+    const json = JSON.parse(res.match(/var player_aaaa=({.+?})</)[1]);
+    const link = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
     console.log(link);
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }

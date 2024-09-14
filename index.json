@@ -186,7 +186,7 @@
   "package": "bilinovel.com",
   "type": "fikushon",
   "url": "bilinovel.com.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://www.bilinovel.com"
  },
  {
@@ -338,7 +338,7 @@
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v0.0.6",
+  "version": "v0.0.7",
   "webSite": "https://www.cycanime.com"
  },
  {
@@ -1495,7 +1495,7 @@
   "package": "xfani.com",
   "type": "bangumi",
   "url": "xfani.com.js",
-  "version": "v0.0.6",
+  "version": "v0.0.7",
   "webSite": "https://dick.xfani.com"
  },
  {
@@ -1610,7 +1610,7 @@
   "package": "yymanhua.com",
   "type": "manga",
   "url": "yymanhua.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.3",
   "webSite": "https://www.yymanhua.com"
  },
  {

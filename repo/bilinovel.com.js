@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       hualiong
 // @lang         zh
 // @icon         https://www.bilinovel.com/favicon.ico

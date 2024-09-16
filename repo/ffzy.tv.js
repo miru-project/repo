@@ -50,7 +50,7 @@ export default class extends Extension {
     const domains = count > 1 ? this.domains.primary : this.domains.alternate;
     try {
       const list = domains.map((domain) =>
-        this.request("/api.php/provide/vod?ac=detail" + params, {
+        this.request("/api.php/provide/vod?ac=detail&from=ffm3u8" + params, {
           headers: { "Miru-Url": `https://${domain}` },
         })
       );

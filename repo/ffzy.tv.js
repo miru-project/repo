@@ -1,17 +1,31 @@
 // ==MiruExtension==
-// @name         非凡资源网
+// @name         非凡资源
 // @version      v0.0.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
 // @icon         https://cj.ffzyapi.com/favicon.ico
-// @package      ffzyapi.com
+// @package      ffzy.tv
 // @type         bangumi
 // @webSite      https://cj.ffzyapi.com
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
+
+  domains = {
+    primary: [
+      "api.ffzyapi.com",
+      "ffzy.tv",
+    ],
+    alternate: [
+      "ffzy1.tv",
+      "ffzy2.tv",
+      "ffzy3.tv",
+      "ffzy4.tv",
+      "ffzy5.tv",
+    ],
+  };
 
   dict = new Map([
     ["&nbsp;", " "],
@@ -33,18 +47,24 @@ export default class extends Extension {
   }
 
   async $get(params, count = 3, timeout = 4000) {
+    const domains = count > 1 ? this.domains.primary : this.domains.alternate;
     try {
-      return await Promise.race([
-        this.request("/api.php/provide/vod?ac=detail&from=ffm3u8" + params),
+      const list = domains.map((domain) =>
+        this.request("/api.php/provide/vod?ac=detail" + params, {
+          headers: { "Miru-Url": `https://${domain}` },
+        })
+      );
+      list.push(
         new Promise((_, reject) => {
           setTimeout(() => {
             reject(new Error("Request timed out!"));
           }, timeout);
-        }),
-      ]);
+        })
+      );
+      return await Promise.any(list);
     } catch (error) {
       if (count > 1) {
-        console.log(`[Retry]: ${url}`);
+        console.log(`[Retry (${count})]: ${params}`);
         return this.$get(params, count - 1);
       } else {
         throw error;

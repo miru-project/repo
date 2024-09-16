@@ -48,7 +48,7 @@ export default class extends Extension {
   async $get(params, count = 2, timeout = 4000) {
     try {
       const list = this.domains.map((e) =>
-        this.request(`/api.php/provide/vod?ac=detail${params}`, {
+        this.request("/api.php/provide/vod?ac=detail" + params, {
           headers: { "Miru-Url": `https://${e}` },
         })
       );

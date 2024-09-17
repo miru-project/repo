@@ -1,30 +1,31 @@
 // ==MiruExtension==
-// @name         量子资源
+// @name         玉兔资源
 // @version      v0.0.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://lzizy2.com/favicon.ico
-// @package      lzzy.tv
+// @icon         https://yutuzy4.com/template/demo/img/logo.png
+// @package      yutuzy.com
 // @type         bangumi
-// @webSite      https://lzizy.com
-// @nsfw         false
+// @webSite      https://yutuzy.com
+// @nsfw         true
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
   domains = [
-    // "www.lzzy.tv",
-    "lzizy.com",
-    "lzizy1.com",
-    "lzizy2.com",
-    "lzizy3.com",
-    "lzizy4.com",
-    "lzizy5.com",
-    "lzizy6.com",
-    "lzizy7.com",
-    "lzizy8.com",
-    // "cj.lzcaiji.com",
+    "yutuzy.com",
+    "yutuzy1.com",
+    "yutuzy2.com",
+    "yutuzy3.com",
+    "yutuzy4.com",
+    "yutuzy5.com",
+    "yutuzy6.com",
+    "yutuzy7.com",
+    "yutuzy8.com",
+    "yutuzy9.com",
+    "yutuzy10.com",
+    "apiyutu.com",
   ];
 
   dict = new Map([
@@ -48,23 +49,10 @@ export default class extends Extension {
 
   async $get(params, count = 2, timeout = 4000) {
     try {
-      const list = this.domains.map(
-        (domain) =>
-          new Promise((resolve, reject) => {
-            this.request("/api.php/provide/vod?ac=detail&from=lzm3u8" + params, {
-              headers: { "Miru-Url": `https://${domain}` },
-            })
-              .then((result) => {
-                if (typeof result === "object") {
-                  resolve(result);
-                } else {
-                  reject(new Error("Error: Response is not an json object"));
-                }
-              })
-              .catch((error) => {
-                reject(error);
-              });
-          })
+      const list = this.domains.map((domain) =>
+        this.request("/api.php/provide/vod?ac=detail" + params, {
+          headers: { "Miru-Url": `https://${domain}` },
+        })
       );
       list.push(
         new Promise((_, reject) => {

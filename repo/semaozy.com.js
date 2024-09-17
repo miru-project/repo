@@ -1,30 +1,29 @@
 // ==MiruExtension==
-// @name         量子资源
+// @name         色猫资源
 // @version      v0.0.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://lzizy2.com/favicon.ico
-// @package      lzzy.tv
+// @icon         https://semaozy3.com/template/svpro/img/logo.png
+// @package      semaozy.com
 // @type         bangumi
-// @webSite      https://lzizy.com
-// @nsfw         false
+// @webSite      https://semaozy.com
+// @nsfw         true
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
   domains = [
-    // "www.lzzy.tv",
-    "lzizy.com",
-    "lzizy1.com",
-    "lzizy2.com",
-    "lzizy3.com",
-    "lzizy4.com",
-    "lzizy5.com",
-    "lzizy6.com",
-    "lzizy7.com",
-    "lzizy8.com",
-    // "cj.lzcaiji.com",
+    "semaozy1.com",
+    "semaozy2.com",
+    "semaozy3.com",
+    "semaozy4.com",
+    "semaozy5.com",
+    "semaozy6.com",
+    "semaozy7.com",
+    "semaozy8.com",
+    "semaozy9.com",
+    "caiji.semaozy.net",
   ];
 
   dict = new Map([
@@ -48,23 +47,10 @@ export default class extends Extension {
 
   async $get(params, count = 2, timeout = 4000) {
     try {
-      const list = this.domains.map(
-        (domain) =>
-          new Promise((resolve, reject) => {
-            this.request("/api.php/provide/vod?ac=detail&from=lzm3u8" + params, {
-              headers: { "Miru-Url": `https://${domain}` },
-            })
-              .then((result) => {
-                if (typeof result === "object") {
-                  resolve(result);
-                } else {
-                  reject(new Error("Error: Response is not an json object"));
-                }
-              })
-              .catch((error) => {
-                reject(error);
-              });
-          })
+      const list = this.domains.map((domain) =>
+        this.request("/inc/apijson_vod.php?ac=detail" + params, {
+          headers: { "Miru-Url": `https://${domain}` },
+        })
       );
       list.push(
         new Promise((_, reject) => {

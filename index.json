@@ -419,6 +419,19 @@
  },
  {
   "author": "hualiong",
+  "icon": "https://feisuzy.com/statics/img/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "飞速资源",
+  "nsfw": "false",
+  "package": "feisuzy.com",
+  "type": "bangumi",
+  "url": "feisuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://feisuzy.com"
+ },
+ {
+  "author": "hualiong",
   "icon": "https://cj.ffzyapi.com/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
@@ -596,6 +609,19 @@
   "webSite": "https://vip.idlixofficial.net"
  },
  {
+  "author": "hualiong",
+  "icon": "https://ikunzy.org/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "iKun资源",
+  "nsfw": "true",
+  "package": "ikunzy.com",
+  "type": "bangumi",
+  "url": "ikunzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://ikunzy.org"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://invidious.io/apple-touch-icon.png",
   "lang": "all",
@@ -736,6 +762,19 @@
   "webSite": "https://kuromanhua.xyz"
  },
  {
+  "author": "hualiong",
+  "icon": "https://lyzy8.top/upload/site/20240405-1/0abc49d6b935f5ff17488568f99d2d52.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "老鸭资源",
+  "nsfw": "true",
+  "package": "laoyazy.com",
+  "type": "bangumi",
+  "url": "laoyazy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://laoyazy.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://letv.im/template/letv/asset/img/favicon.png",
   "lang": "zh",
@@ -790,7 +829,7 @@
   "lang": "zh-cn",
   "license": "MIT",
   "name": "量子资源",
-  "nsfw": "true",
+  "nsfw": "false",
   "package": "lzzy.tv",
   "type": "bangumi",
   "url": "lzzy.tv.js",
@@ -1266,6 +1305,19 @@
  },
  {
   "author": "hualiong",
+  "icon": "https://semaozy3.com/template/svpro/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "色猫资源",
+  "nsfw": "true",
+  "package": "semaozy.com",
+  "type": "bangumi",
+  "url": "semaozy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://semaozy.com"
+ },
+ {
+  "author": "hualiong",
   "icon": "https://senlinzy.com/template/demo/img/logo.gif",
   "lang": "zh-cn",
   "license": "MIT",
@@ -1417,6 +1469,32 @@
   "webSite": "https://thunderscans.com"
  },
  {
+  "author": "hualiong",
+  "icon": "https://api.tiankongapi.com/template/v10012/images/logo.jpg",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "天空资源网",
+  "nsfw": "false",
+  "package": "tiankongzy.com",
+  "type": "bangumi",
+  "url": "tiankongzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://tiankongzy.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://to-long.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "橘猫资源",
+  "nsfw": "true",
+  "package": "to-long.com",
+  "type": "bangumi",
+  "url": "to-long.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://to-long.com"
+ },
+ {
   "author": "zj",
   "icon": "https://www.lkp2.top/template/muban8/favicon.ico",
   "lang": "zh-cn",
@@ -1479,6 +1557,19 @@
   "url": "uaa.com.js",
   "version": "v0.0.1",
   "webSite": "https://www.uaa.com/api/video/app/video"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://ukuzy3.com/template/vipzy/images/logo.gif",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "U酷资源网",
+  "nsfw": "false",
+  "package": "ukuzy.com",
+  "type": "bangumi",
+  "url": "ukuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://ukuzy.com"
  },
  {
   "author": "CakesTwix",
@@ -1578,6 +1669,19 @@
   "webSite": "https://api.mystorywave.com/story-wave-backend/api/v1/content"
  },
  {
+  "author": "hualiong",
+  "icon": "https://wolongzy.cc/template/zyz/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "卧龙资源",
+  "nsfw": "false",
+  "package": "wolongzyw.com",
+  "type": "bangumi",
+  "url": "wolongzyw.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://wolongzyw.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://wtr-lab.com/images/favicon.png",
   "lang": "en",
@@ -1588,6 +1692,19 @@
   "url": "wtr-lab.com.js",
   "version": "v0.0.1",
   "webSite": "https://wtr-lab.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://wujinzy.com/template/ziyuan2/images/logo.jpg",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "无尽资源网",
+  "nsfw": "false",
+  "package": "wujinzy.com",
+  "type": "bangumi",
+  "url": "wujinzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://wujinzy.com"
  },
  {
   "author": "hualiong",
@@ -1655,6 +1772,19 @@
   "webSite": "https://caocao15.xyz"
  },
  {
+  "author": "hualiong",
+  "icon": "https://yhzy.cc/template/ziyuan2/images/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "樱花资源",
+  "nsfw": "false",
+  "package": "yhzy.cc",
+  "type": "bangumi",
+  "url": "yhzy.cc.js",
+  "version": "v0.0.1",
+  "webSite": "https://yhzy.cc"
+ },
+ {
   "author": "Mg",
   "icon": "https://oss-cdn.meowa.cn/mxtheme/images/favicon.png",
   "lang": "zh-cn",
@@ -1707,6 +1837,19 @@
  },
  {
   "author": "hualiong",
+  "icon": "https://yutuzy4.com/template/demo/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "玉兔资源",
+  "nsfw": "true",
+  "package": "yutuzy.com",
+  "type": "bangumi",
+  "url": "yutuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://yutuzy.com"
+ },
+ {
+  "author": "hualiong",
   "icon": "https://www.yymanhua.com/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
@@ -1716,6 +1859,19 @@
   "url": "yymanhua.com.js",
   "version": "v0.0.3",
   "webSite": "https://www.yymanhua.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://yzzy.tv/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "优质资源库",
+  "nsfw": "false",
+  "package": "yzzy.tv",
+  "type": "bangumi",
+  "url": "yzzy.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://yzzy.tv"
  },
  {
   "author": "OshekharO",

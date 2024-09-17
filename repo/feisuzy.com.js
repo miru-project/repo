@@ -1,31 +1,33 @@
 // ==MiruExtension==
-// @name         量子资源
+// @name         飞速资源
 // @version      v0.0.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://lzizy2.com/favicon.ico
-// @package      lzzy.tv
+// @icon         https://feisuzy.com/statics/img/favicon.ico
+// @package      feisuzy.com
 // @type         bangumi
-// @webSite      https://lzizy.com
+// @webSite      https://feisuzy.com
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
-  domains = [
-    // "www.lzzy.tv",
-    "lzizy.com",
-    "lzizy1.com",
-    "lzizy2.com",
-    "lzizy3.com",
-    "lzizy4.com",
-    "lzizy5.com",
-    "lzizy6.com",
-    "lzizy7.com",
-    "lzizy8.com",
-    // "cj.lzcaiji.com",
-  ];
+  domains = {
+    primary: [ "www.feisuzyapi.com" ],
+    alternate: [
+      "fszy1.com",
+      "fszy2.com",
+      "fszy3.com",
+      "fszy4.com",
+      "fszy5.com",
+      "fszy6.com",
+      "fszy7.com",
+      "fszy8.com",
+      "fszy9.com",
+      "fszy10.com",
+    ],
+  };
 
   dict = new Map([
     ["&nbsp;", " "],
@@ -47,24 +49,12 @@ export default class extends Extension {
   }
 
   async $get(params, count = 2, timeout = 4000) {
+    const domains = count > 1 ? this.domains.primary : this.domains.alternate;
     try {
-      const list = this.domains.map(
-        (domain) =>
-          new Promise((resolve, reject) => {
-            this.request("/api.php/provide/vod?ac=detail&from=lzm3u8" + params, {
-              headers: { "Miru-Url": `https://${domain}` },
-            })
-              .then((result) => {
-                if (typeof result === "object") {
-                  resolve(result);
-                } else {
-                  reject(new Error("Error: Response is not an json object"));
-                }
-              })
-              .catch((error) => {
-                reject(error);
-              });
-          })
+      const list = domains.map((domain) =>
+        this.request("/api.php/provide/vod?ac=detail&from=fsm3u8" + params, {
+          headers: { "Miru-Url": `https://${domain}` },
+        })
       );
       list.push(
         new Promise((_, reject) => {

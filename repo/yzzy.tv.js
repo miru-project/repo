@@ -1,31 +1,17 @@
 // ==MiruExtension==
-// @name         量子资源
+// @name         优质资源库
 // @version      v0.0.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://lzizy2.com/favicon.ico
-// @package      lzzy.tv
+// @icon         https://yzzy.tv/favicon.ico
+// @package      yzzy.tv
 // @type         bangumi
-// @webSite      https://lzizy.com
+// @webSite      https://yzzy.tv
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
-
-  domains = [
-    // "www.lzzy.tv",
-    "lzizy.com",
-    "lzizy1.com",
-    "lzizy2.com",
-    "lzizy3.com",
-    "lzizy4.com",
-    "lzizy5.com",
-    "lzizy6.com",
-    "lzizy7.com",
-    "lzizy8.com",
-    // "cj.lzcaiji.com",
-  ];
 
   dict = new Map([
     ["&nbsp;", " "],
@@ -46,34 +32,18 @@ export default class extends Extension {
     return str.replace(/&[a-z]+;/g, (c) => this.dict.get(c) || c);
   }
 
-  async $get(params, count = 2, timeout = 4000) {
+  async $get(params, count = 3, timeout = 4000) {
     try {
-      const list = this.domains.map(
-        (domain) =>
-          new Promise((resolve, reject) => {
-            this.request("/api.php/provide/vod?ac=detail&from=lzm3u8" + params, {
-              headers: { "Miru-Url": `https://${domain}` },
-            })
-              .then((result) => {
-                if (typeof result === "object") {
-                  resolve(result);
-                } else {
-                  reject(new Error("Error: Response is not an json object"));
-                }
-              })
-              .catch((error) => {
-                reject(error);
-              });
-          })
-      );
-      list.push(
+      return await Promise.race([
+        this.request("/inc/apijson.php?ac=detail" + params, {
+          headers: { "Miru-Url": "https://api.1080zyku.com" },
+        }),
         new Promise((_, reject) => {
           setTimeout(() => {
             reject(new Error("Request timed out!"));
           }, timeout);
-        })
-      );
-      return await Promise.any(list);
+        }),
+      ]);
     } catch (error) {
       if (count > 1) {
         console.log(`[Retry (${count})]: ${params}`);

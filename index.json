@@ -1,5 +1,18 @@
 [
  {
+  "author": "hualiong",
+  "icon": "https://360zy.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "360资源",
+  "nsfw": "false",
+  "package": "360zy.com",
+  "type": "bangumi",
+  "url": "360zy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://360zy.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://9animetv.to/images/favicon.png",
   "lang": "en",
@@ -101,6 +114,19 @@
   "url": "animeworld.js",
   "version": "v0.0.1",
   "webSite": "https://www.animeworld.so"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://aosikazy10.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "奥斯卡资源站",
+  "nsfw": "true",
+  "package": "aosikazy.com",
+  "type": "bangumi",
+  "url": "aosikazy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://aosikazy.vip"
  },
  {
   "author": "vvsolo",
@@ -392,6 +418,19 @@
   "webSite": "https://eroticmv.com"
  },
  {
+  "author": "hualiong",
+  "icon": "https://cj.ffzyapi.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "非凡资源",
+  "nsfw": "false",
+  "package": "ffzy.tv",
+  "type": "bangumi",
+  "url": "ffzy.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://cj.ffzyapi.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://i.postimg.cc/SNhTmxT5/FilmyCab.png",
   "lang": "hi",
@@ -530,6 +569,19 @@
   "webSite": "https://hianime.to"
  },
  {
+  "author": "hualiong",
+  "icon": "https://tse3-mm.cn.bing.net/th/id/OIP-C.PrZFaCYKWBtyufV16WIxhQBRBQ",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "华为吧资源",
+  "nsfw": "false",
+  "package": "huaweiba.live",
+  "type": "bangumi",
+  "url": "huaweiba.live.js",
+  "version": "v0.0.1",
+  "webSite": "https://huaweiba.live"
+ },
+ {
   "author": "Nazz",
   "icon": "https://vip.idlixofficial.net/wp-content/uploads/2020/06/idlix.png",
   "lang": "id",
@@ -595,7 +647,7 @@
   "webSite": "https://javhd.icu"
  },
  {
-  "author": "SendHX",
+  "author": "hualiong",
   "icon": "https://www.jisuzy.com/template/default/images/site_logo.png",
   "lang": "zh-cn",
   "license": "MIT",
@@ -604,8 +656,8 @@
   "package": "jisuzy.com",
   "type": "bangumi",
   "url": "jisuzy.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://jszyapi.com/api.php/provide/vod/?ac=videolist"
+  "version": "v0.0.2",
+  "webSite": "https://jisuzy.com"
  },
  {
   "author": "OshekharO",
@@ -731,6 +783,19 @@
   "url": "lk21official.js",
   "version": "v0.0.2",
   "webSite": "https://tv3.lk21official.wiki"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://lzizy2.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "量子资源",
+  "nsfw": "true",
+  "package": "lzzy.tv",
+  "type": "bangumi",
+  "url": "lzzy.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://lzizy.com"
  },
  {
   "author": "appdevelpo",
@@ -879,6 +944,19 @@
   "url": "me.mikanani.js",
   "version": "v0.0.4",
   "webSite": "https://mikanani.me"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://moduzy.vip/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "魔都资源网",
+  "nsfw": "true",
+  "package": "moduzy.com",
+  "type": "bangumi",
+  "url": "moduzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://moduzy.vip"
  },
  {
   "author": "MiaoMint",
@@ -1187,6 +1265,19 @@
   "webSite": "https://samehadaku.email"
  },
  {
+  "author": "hualiong",
+  "icon": "https://senlinzy.com/template/demo/img/logo.gif",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "森林资源",
+  "nsfw": "true",
+  "package": "senlinzy.com",
+  "type": "bangumi",
+  "url": "senlinzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://senlinzy.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://img.sflix.to/xxrz/100x100/100/a2/33/a233d4c4a1426ca77ec1d34deec62f71/a233d4c4a1426ca77ec1d34deec62f71.png",
   "lang": "en",
@@ -1224,6 +1315,19 @@
   "url": "stream.mkvdrama.org.js",
   "version": "v0.0.2",
   "webSite": "https://stream.mkvdrama.org"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://www.subozy.com/upload/site/20230220-1/e632a403d903b831199109f99189f480.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "速播资源",
+  "nsfw": "false",
+  "package": "subozy.com",
+  "type": "bangumi",
+  "url": "subozy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.subozy.com"
  },
  {
   "author": "bachig26",

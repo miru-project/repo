@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         次元城动漫
-// @version      v0.0.8
+// @version      v0.0.9
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -146,8 +146,7 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const h = (new Date().getUTCHours() + 9) % 24;
-    const res = await this.$req(`/api.php/provide/vod?ac=detail&pg=${page}&h=${h || 24}`);
+    const res = await this.$req(`/api.php/provide/vod?ac=detail&pg=${page}&pagesize=20`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

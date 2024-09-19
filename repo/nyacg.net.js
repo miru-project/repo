@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NyaFun动漫
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -11,21 +11,25 @@
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
-  dict = new Map([
-    ["&nbsp;", " "],
-    ["&quot;", '"'],
-    ["&lt;", "<"],
-    ["&gt;", ">"],
-    ["&amp;", "&"],
-    ["&sdot;", "·"],
-  ]);
-
-  text(content) {
-    const str = [...content.matchAll(/>([^<]+?)</g)]
-      .map((m) => m[1])
-      .join("")
-      .trim();
-    return str.replace(/&[a-z]+;/g, (c) => this.dict.get(c) || c);
+  
+  text(element) {
+    const str = [...element.content.matchAll(/>([^<]+?)</g)]
+    .map((m) => m[1])
+    .join("")
+    .trim();
+    return this.textParser(str);
+  }
+  
+  textParser(str) {
+    const dict = new Map([
+      ["&nbsp;", " "],
+      ["&quot;", '"'],
+      ["&lt;", "<"],
+      ["&gt;", ">"],
+      ["&amp;", "&"],
+      ["&sdot;", "·"],
+    ]);
+    return str.replace(/&[a-z]+;/g, (c) => dict.get(c) || c);
   }
 
   decrypt(src, key) {
@@ -81,9 +85,9 @@ export default class extends Extension {
       const label = await this.querySelector(e.content, ".public-list-exp");
       const title = await label.getAttributeText("title");
       const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
-      const update = await this.querySelector(label.content, "span.public-list-prb");
+      const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
       const url = await label.getAttributeText("href");
-      return { title, url: url.match(/\/bangumi\/(\d+)\.html/)[1], cover, update: this.text(update.content) };
+      return { title, url: url.match(/\/bangumi\/(\d+)\.html/)[1], cover, update };
     });
     return await Promise.all(videos);
   }
@@ -156,11 +160,10 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const h = (new Date().getUTCHours() + 9) % 24;
-    const res = await this.$req(`/api.php/provide/vod?ac=detail&pg=${page}&h=${h || 24}`);
+    const res = await this.$req(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
-      url: `${e.vod_id}`,
+      url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
       cover: e.vod_pic,
       update: e.vod_remarks,
     }));
@@ -171,30 +174,41 @@ export default class extends Extension {
       if (kw) throw new Error("在使用筛选器时无法同时使用搜索功能！");
       return this.select(page, filter);
     } else if (!kw) return this.latest(page);
-    const res = await this.$req(`/api.php/provide/vod?ac=detail&wd=${kw}&t=${filter.genres[0] ?? ""}&pg=${page}`);
-    return res.list.map((e) => ({
-      title: e.vod_name,
-      url: `${e.vod_id}`,
-      cover: e.vod_pic,
-      update: e.vod_remarks,
-    }));
+    const res = await this.$req(`/search/wd/${encodeURI(kw)}/page/${page}.html`);
+    const list = await this.querySelectorAll(res, "div.search-box");
+    if (list === null) {
+      return [];
+    }
+    const videos = list.map(async (e) => {
+      const label = await this.querySelector(e.content, ".public-list-exp");
+      const title = this.text(await this.querySelector(e.content, ".right .thumb-txt"));
+      const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
+      const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
+      const url = `${await label.getAttributeText("href")}|${title}|${cover}`;
+      return { title, url, cover, update };
+    });
+    return await Promise.all(videos);
   }
 
-  async detail(id) {
-    let desc = "无";
-    const anime = (await this.$req(`/api.php/provide/vod?ac=detail&ids=${id}`)).list[0];
-    const blurb = this.text(anime.vod_blurb);
-    const content = this.text(anime.vod_content);
-    desc = desc.length < blurb?.length ? blurb : desc;
-    desc = desc.length < content.length ? content : desc;
-    const urls = anime.vod_play_url
-      .split("#")
-      .filter((e) => e)
-      .map((e) => {
-        const s = e.split("$");
-        return { name: s[0], url: s[1] };
+  async detail(str) {
+    const data = str.split("|");
+    const res = await this.request(data[0]);
+    const desc = this.textParser(res.match(/\bid="height_limit".*?>([\s\S]*?)</)[1]);
+    const labelTask = this.querySelectorAll(res, ".anthology-tab a");
+    const sources = await this.querySelectorAll(res, ".anthology-list-play");
+    const labels = (await labelTask).map((e) => this.textParser(e.content.match(/i>(.*?)</)[1]));
+    let reg = /href="(.*?)">(.*?)</;
+    const episodes = sources.map(async (source, i) => {
+      const urls = (await this.querySelectorAll(source.content, "a")).map(async (a) => {
+        const match = reg.exec(a.content);
+        const resp = await this.request(match[1]);
+        const json = JSON.parse(resp.match(/var player_aaaa=({.+?})</)[1]);
+        const url = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
+        return { name: match[2], url };
       });
-    return { title: anime.vod_name, cover: anime.vod_pic, desc, episodes: [{ title: this.name, urls }] };
+      return { title: labels[i], urls: await Promise.all(urls) };
+    });
+    return { title: data[1], cover: data[2], desc, episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
@@ -205,10 +219,5 @@ export default class extends Extension {
     const link = this.decrypt(json.url, json.config.uid);
     console.log(link);
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
-  }
-
-  async checkUpdate(id) {
-    const anime = await this.$req(`/api.php/provide/vod?ids=${id}`);
-    return anime.list[0].vod_remarks;
   }
 }

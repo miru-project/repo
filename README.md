@@ -29,7 +29,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | ComicExtra | comicextra | v0.0.1 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comicextra.js) |
 | Comick | comick.app | v0.0.5 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
-| 次元城动漫 | cycanime.com | v0.0.7 | hualiong | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cycanime.com.js) |
+| 次元城动漫 | cycanime.com | v0.0.8 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cycanime.com.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.7 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | DramaCool | dramacool.pa | v0.0.3 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dramacool.pa.js) |
 | 飞速资源 | feisuzy.com | v0.0.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/feisuzy.com.js) |
@@ -63,7 +63,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | MangaLife | manga4life.com | v0.0.1 | appdevelpo | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga4life.com.js) |
 | MangaBat | mangabat.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangabat.com.js) |
 | MangaClash | mangaclash.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangaclash.com.js) |
-| 拷贝漫画 | mangacopy.comic | v0.0.1 | Monster | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
+| 拷贝漫画 | mangacopy.comic | v0.0.2 | Monster | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | MangaDex | mangadex.org | v0.0.2 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |
 | Mangakatana | mangakatana.com | v0.0.1 | shashankx86 | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangakatana.com.js) |
@@ -79,6 +79,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Nimegami | nimegami.id | v0.0.2 | JerukPurut404 | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nimegami.id.js) |
 | Nyaa | nyaa.si | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyaa.si.js) |
+| NyaFun动漫 | nyacg.net | v0.0.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyacg.net.js) |
 | Otakudesu | otakudesu | v0.0.1 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/otakudesu.js) |
 | Piped | piped.video | v0.0.1 | bethro | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/piped.video.js) |
 | Ravenscans | ravenscans.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ravenscans.com.js) |

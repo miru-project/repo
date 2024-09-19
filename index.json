@@ -357,14 +357,14 @@
  {
   "author": "hualiong",
   "icon": "https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
-  "lang": "zh",
+  "lang": "zh-cn",
   "license": "MIT",
   "name": "次元城动漫",
   "nsfw": "false",
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v0.0.7",
+  "version": "v0.0.8",
   "webSite": "https://www.cycanime.com"
  },
  {
@@ -882,7 +882,7 @@
   "package": "mangacopy.comic",
   "type": "manga",
   "url": "mangacopy.comic.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://www.mangacopy.com"
  },
  {
@@ -1111,6 +1111,19 @@
   "url": "nyaa.si.js",
   "version": "v0.0.1",
   "webSite": "https://nyaa.si"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://files.superbed.cn/proxy/7468686c6f26333378737f75717b2f3278737f6f326d6d327f73713375717d7b79335d7b5d5d5f2a6931484a4c5d71757f28666d4650502b682c28702f4b2b566a6c326c727b",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "NyaFun动漫",
+  "nsfw": "false",
+  "package": "nyacg.net",
+  "type": "bangumi",
+  "url": "nyacg.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.nyacg.net"
  },
  {
   "author": "bethro",

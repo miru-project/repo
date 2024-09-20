@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.0.7
+// @version      v0.0.8
 // @author       hualiong
 // @lang         zh
 // @license      MIT
@@ -34,8 +34,8 @@ export default class extends Extension {
     const channels = {
       title: "频道",
       max: 1,
-      min: 1,
-      default: "1",
+      min: 0,
+      default: "",
       options: {
         1: "连载新番",
         2: "完结旧番",
@@ -79,27 +79,38 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    if (page > 1) {
-      return [];
-    }
-    const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
-    const { time, key } = this.decrypt();
-    let res = await this.request("/index.php/api/weekday", {
-      method: "post",
-      data: { weekday: weekdays[new Date().getDay()], num: 20, time, key },
-    });
+    const res = await this.request(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
-      url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
+      url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
       cover: e.vod_pic,
-      update: e.vod_remarks,
+      update: e.vod_remarks.replace("|", " | "),
     }));
   }
 
+  // async latest(page) {
+  //   if (page > 1) {
+  //     return [];
+  //   }
+  //   const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+  //   const { time, key } = this.decrypt();
+  //   let res = await this.request("/index.php/api/weekday", {
+  //     method: "post",
+  //     data: { weekday: weekdays[new Date().getDay()], num: 20, time, key },
+  //   });
+  //   return res.list.map((e) => ({
+  //     title: e.vod_name,
+  //     url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
+  //     cover: e.vod_pic,
+  //     update: e.vod_remarks,
+  //   }));
+  // }
+
   async search(kw, page, filter) {
-    if (!kw) {
+    if (filter.channels?.[0] || filter.genres?.[0] || filter.years?.[0]) {
+      if (kw) throw new Error("在使用筛选器时无法同时使用搜索功能！");
       return this.select(page, filter);
-    }
+    } else if (!kw) return this.latest(page);
     const res = await this.request(`/search/wd/${encodeURI(kw)}/page/${page}.html`);
     const list = await this.querySelectorAll(res, "div.search-box");
     if (list === null) {
@@ -111,7 +122,7 @@ export default class extends Extension {
       const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
       const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
       const url = `${await label.getAttributeText("href")}|${title}|${cover}`;
-      return { title, url, cover, update };
+      return { title, url, cover, update: update.replace("|", " | ") };
     });
     return await Promise.all(videos);
   }
@@ -159,9 +170,9 @@ export default class extends Extension {
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }
 
-  async checkUpdate(str) {
-    const url = str.split("|")[0];
-    const res = await this.request(url);
-    return this.text(await this.querySelector(res, ".slide-info > .slide-info-remarks:nth-child(1)"));
-  }
+  // async checkUpdate(str) {
+  //   const url = str.split("|")[0];
+  //   const res = await this.request(url);
+  //   return this.text(await this.querySelector(res, ".slide-info > .slide-info-remarks:nth-child(1)"));
+  // }
 }

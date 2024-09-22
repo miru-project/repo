@@ -156,11 +156,11 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (filter.channels?.[0] || filter.genres?.[0] || filter.years?.[0]) {
+    if (filter?.channels?.[0] || filter?.genres?.[0] || filter?.years?.[0]) {
       if (kw) throw new Error("在使用筛选器时无法同时使用搜索功能！");
       return this.select(page, filter);
     } else if (!kw) return this.latest(page);
-    const res = await this.$req(`/api.php/provide/vod?ac=detail&wd=${kw}&t=${filter.genres[0] ?? ""}&pg=${page}`);
+    const res = await this.$req(`/api.php/provide/vod?ac=detail&wd=${kw}&pg=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

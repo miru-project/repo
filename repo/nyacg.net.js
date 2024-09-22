@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NyaFun动漫
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -170,7 +170,7 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (filter.channels?.[0] || filter.genres?.[0] || filter.years?.[0]) {
+    if (filter?.channels?.[0] || filter?.genres?.[0] || filter?.years?.[0]) {
       if (kw) throw new Error("在使用筛选器时无法同时使用搜索功能！");
       return this.select(page, filter);
     } else if (!kw) return this.latest(page);

@@ -364,7 +364,7 @@
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v0.0.9",
+  "version": "v0.1.0",
   "webSite": "https://www.cycanime.com"
  },
  {
@@ -1122,7 +1122,7 @@
   "package": "nyacg.net",
   "type": "bangumi",
   "url": "nyacg.net.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://www.nyacg.net"
  },
  {
@@ -1729,7 +1729,7 @@
   "package": "xfani.com",
   "type": "bangumi",
   "url": "xfani.com.js",
-  "version": "v0.0.8",
+  "version": "v0.0.9",
   "webSite": "https://dick.xfani.com"
  },
  {

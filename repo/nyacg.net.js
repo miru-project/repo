@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NyaFun动漫
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.0.8
+// @version      v0.0.9
 // @author       hualiong
 // @lang         zh
 // @license      MIT

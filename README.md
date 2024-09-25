@@ -63,7 +63,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | MangaLife | manga4life.com | v0.0.1 | appdevelpo | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga4life.com.js) |
 | MangaBat | mangabat.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangabat.com.js) |
 | MangaClash | mangaclash.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangaclash.com.js) |
-| 拷贝漫画 | mangacopy.comic | v0.0.3 | Monster | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.comic.js) |
+| 拷贝漫画 | mangacopy.com | v0.0.4 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.com.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | MangaDex | mangadex.org | v0.0.2 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |
 | Mangakatana | mangakatana.com | v0.0.1 | shashankx86 | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangakatana.com.js) |

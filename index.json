@@ -874,15 +874,15 @@
   "webSite": "https://mangaclash.com"
  },
  {
-  "author": "Monster",
-  "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
+  "author": "hualiong",
+  "icon": "https://tse1-mm.cn.bing.net/th/id/OIP-C.KCerrBL9dq9e8ydGaiyy2QAAAA",
   "lang": "zh-cn",
   "license": "MIT",
   "name": "拷贝漫画",
-  "package": "mangacopy.comic",
+  "package": "mangacopy.com",
   "type": "manga",
-  "url": "mangacopy.comic.js",
-  "version": "v0.0.3",
+  "url": "mangacopy.com.js",
+  "version": "v0.0.4",
   "webSite": "https://www.mangacopy.com"
  },
  {

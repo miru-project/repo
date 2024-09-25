@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         拷贝漫画
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       Monster
 // @lang         zh-cn
 // @license      MIT
@@ -23,7 +23,7 @@ export default class extends Extension {
   }
 
   decodeUnicode(str) {
-    return decodeURIComponent(str.replace(/\\u/gi, "%u"));
+    return unescape(str.replace(/\\u/gi, "%u"));
   }
   async latest(page) {
     let keyword = `/api/v3/comics?free_type=1&limit=24&offset=${page - 1}*20&_update=true&ordering=popular`;

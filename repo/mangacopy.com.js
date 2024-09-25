@@ -1,15 +1,15 @@
 // ==MiruExtension==
 // @name         拷贝漫画
-// @version      v0.0.3
-// @author       Monster
+// @version      v0.0.4
+// @author       Monster & hualiong
 // @lang         zh-cn
 // @license      MIT
-// @package      mangacopy.comic
+// @package      mangacopy.com
 // @type         manga
-// @icon         https://hi77-overseas.mangafuna.xyz/static/free.ico
+// @icon         https://tse1-mm.cn.bing.net/th/id/OIP-C.KCerrBL9dq9e8ydGaiyy2QAAAA
 // @webSite      https://www.mangacopy.com
 // ==/MiruExtension==
-
+// 旧版图标：https://hi77-overseas.mangafuna.xyz/static/free.ico
 export default class extends Extension {
   decrypt(data, key, iv) {
     iv = CryptoJS.enc.Utf8.parse(iv);
@@ -25,6 +25,13 @@ export default class extends Extension {
   decodeUnicode(str) {
     return unescape(str.replace(/\\u/gi, "%u"));
   }
+
+  async load() {
+    const res = await this.request("/search");
+    this.searchApi = res.match(/countApi = "(.*?)";/)[1];
+    console.log(this.searchApi);
+  }
+
   async latest(page) {
     let keyword = `/api/v3/comics?free_type=1&limit=24&offset=${page - 1}*20&_update=true&ordering=popular`;
 
@@ -43,7 +50,7 @@ export default class extends Extension {
 
   async search(kw, page) {
     let offset = (page - 1) * 20;
-    let keyword = `/api/kb/web/searchba/comics?offset=${offset}&platform=2&limit=12&q=${kw}&q_type=`;
+    let keyword = `${this.searchApi}?offset=${offset}&platform=2&limit=12&q=${kw}&q_type=`;
 
     const res = await this.request(keyword);
 

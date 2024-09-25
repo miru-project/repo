@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         次元城动漫
-// @version      v0.0.9
+// @version      v0.1.0
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT

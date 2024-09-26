@@ -11,8 +11,8 @@
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
-  text(content) {
-    if (!content) return "";
+  text(element) {
+    if (!element.content) return "";
     const dict = new Map([
       ["&nbsp;", " "],
       ["&quot;", '"'],
@@ -22,10 +22,10 @@ export default class extends Extension {
       ["&sdot;", "·"],
     ]);
     const str =
-      [...content.matchAll(/>([^<]+?)</g)]
+      [...element.content.matchAll(/>([^<]+?)</g)]
         .map((m) => m[1])
         .join("")
-        .trim() || content;
+        .trim() || element.content;
     return str.replace(/&[a-z]+;/g, (c) => dict.get(c) || c);
   }
 

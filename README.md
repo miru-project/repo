@@ -112,7 +112,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 卧龙资源 | wolongzyw.com | v0.0.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wolongzyw.com.js) |
 | WTR-LAB | wtr-lab.com | v0.0.1 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wtr-lab.com.js) |
 | 无尽资源网 | wujinzy.com | v0.0.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wujinzy.com.js) |
-| 稀饭动漫 | xfani.com | v0.0.9 | hualiong | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xfani.com.js) |
+| 稀饭动漫 | xfani.com | v0.1.0 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xfani.com.js) |
 | 樱花资源 | yhzy.cc | v0.0.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yhzy.cc.js) |
 | CC | yinhuadm | v0.0.1 | Mg | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yinhuadm.js) |
 | YoMovies | yomovies | v0.0.7 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yomovies.js) |

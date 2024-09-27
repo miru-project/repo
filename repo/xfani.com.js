@@ -1,8 +1,8 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.0.9
+// @version      v0.1.0
 // @author       hualiong
-// @lang         zh
+// @lang         zh-cn
 // @license      MIT
 // @icon         https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png
 // @package      xfani.com
@@ -11,26 +11,40 @@
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
-  async load() {
-    this.decrypt = () => {
-      const time = Math.ceil(new Date().getTime() / 1000);
-      return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
-    };
-    this.base64decode = (str) => {
-      var words = CryptoJS.enc.Base64.parse(str);
-      return CryptoJS.enc.Utf8.stringify(words);
-    };
-    this.querySelector = async (content, selector) => {
-      const res = await this.querySelectorAll(content, selector);
-      return res === null ? null : res[0];
-    };
-    this.text = (element) => {
-      const match = element.content.match(/<[^>]+>([^<]+)<\/[^>]+>/);
-      return !match ? "" : match[1].trim();
-    };
+  text(element) {
+    if (!element.content) return "";
+    const dict = new Map([
+      ["&nbsp;", " "],
+      ["&quot;", '"'],
+      ["&lt;", "<"],
+      ["&gt;", ">"],
+      ["&amp;", "&"],
+      ["&sdot;", "·"],
+    ]);
+    const str =
+      [...element.content.matchAll(/>([^<]+?)</g)]
+        .map((m) => m[1])
+        .join("")
+        .trim() || element.content;
+    return str.replace(/&[a-z]+;/g, (c) => dict.get(c) || c);
   }
 
-  async createFilter() {
+  async querySelector(content, selector) {
+    const res = await this.querySelectorAll(content, selector);
+    return res === null ? null : res[0];
+  }
+
+  decrypt() {
+    const time = Math.ceil(new Date().getTime() / 1000);
+    return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
+  }
+
+  base64decode(str) {
+    let words = CryptoJS.enc.Base64.parse(str);
+    return CryptoJS.enc.Utf8.stringify(words);
+  }
+
+  createFilter() {
     const channels = {
       title: "频道",
       max: 1,
@@ -79,13 +93,23 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const res = await this.request(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
-    return res.list.map((e) => ({
-      title: e.vod_name,
-      url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
-      cover: e.vod_pic,
-      update: e.vod_remarks.replace("|", " | "),
-    }));
+    try {
+      const res = await this.request(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
+      return res.list.map((e) => ({
+        title: e.vod_name,
+        url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
+        cover: e.vod_pic,
+        update: e.vod_remarks.replace("|", " | "),
+      }));
+    } catch (error) {
+      return [
+        {
+          title: "请先进入此详细页点击 Webview 窗口输入验证码后才能正常使用该扩展",
+          url: "/",
+          cover: null,
+        },
+      ];
+    }
   }
 
   // async latest(page) {
@@ -142,6 +166,13 @@ export default class extends Extension {
   }
 
   async detail(str) {
+    if (str === "/") {
+      return {
+        title: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+        cover: null,
+        desc: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+      };
+    }
     const data = str.split("|");
     const res = await this.request(data[0]);
     if (res.length < 25000) {

@@ -1,8 +1,8 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.0.6
+// @version      v0.1.0
 // @author       hualiong
-// @lang         zh
+// @lang         zh-cn
 // @license      MIT
 // @icon         https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png
 // @package      xfani.com
@@ -11,31 +11,45 @@
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
-  async load() {
-    this.decrypt = () => {
-      const time = Math.ceil(new Date().getTime() / 1000);
-      return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
-    };
-    this.base64decode = (str) => {
-      var words = CryptoJS.enc.Base64.parse(str);
-      return CryptoJS.enc.Utf8.stringify(words);
-    };
-    this.querySelector = async (content, selector) => {
-      const res = await this.querySelectorAll(content, selector);
-      return res === null ? null : res[0];
-    };
-    this.text = (element) => {
-      const match = element.content.match(/<[^>]+>([^<]+)<\/[^>]+>/);
-      return !match ? "" : match[1].trim();
-    };
+  text(element) {
+    if (!element.content) return "";
+    const dict = new Map([
+      ["&nbsp;", " "],
+      ["&quot;", '"'],
+      ["&lt;", "<"],
+      ["&gt;", ">"],
+      ["&amp;", "&"],
+      ["&sdot;", "·"],
+    ]);
+    const str =
+      [...element.content.matchAll(/>([^<]+?)</g)]
+        .map((m) => m[1])
+        .join("")
+        .trim() || element.content;
+    return str.replace(/&[a-z]+;/g, (c) => dict.get(c) || c);
   }
 
-  async createFilter() {
+  async querySelector(content, selector) {
+    const res = await this.querySelectorAll(content, selector);
+    return res === null ? null : res[0];
+  }
+
+  decrypt() {
+    const time = Math.ceil(new Date().getTime() / 1000);
+    return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
+  }
+
+  base64decode(str) {
+    let words = CryptoJS.enc.Base64.parse(str);
+    return CryptoJS.enc.Utf8.stringify(words);
+  }
+
+  createFilter() {
     const channels = {
       title: "频道",
       max: 1,
-      min: 1,
-      default: "1",
+      min: 0,
+      default: "",
       options: {
         1: "连载新番",
         2: "完结旧番",
@@ -79,27 +93,48 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    if (page > 1) {
-      return [];
+    try {
+      const res = await this.request(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
+      return res.list.map((e) => ({
+        title: e.vod_name,
+        url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
+        cover: e.vod_pic,
+        update: e.vod_remarks.replace("|", " | "),
+      }));
+    } catch (error) {
+      return [
+        {
+          title: "请先进入此详细页点击 Webview 窗口输入验证码后才能正常使用该扩展",
+          url: "/",
+          cover: null,
+        },
+      ];
     }
-    const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
-    const { time, key } = this.decrypt();
-    let res = await this.request("/index.php/api/weekday", {
-      method: "post",
-      data: { weekday: weekdays[new Date().getDay()], num: 20, time, key },
-    });
-    return res.list.map((e) => ({
-      title: e.vod_name,
-      url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
-      cover: e.vod_pic,
-      update: e.vod_remarks,
-    }));
   }
 
+  // async latest(page) {
+  //   if (page > 1) {
+  //     return [];
+  //   }
+  //   const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+  //   const { time, key } = this.decrypt();
+  //   let res = await this.request("/index.php/api/weekday", {
+  //     method: "post",
+  //     data: { weekday: weekdays[new Date().getDay()], num: 20, time, key },
+  //   });
+  //   return res.list.map((e) => ({
+  //     title: e.vod_name,
+  //     url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
+  //     cover: e.vod_pic,
+  //     update: e.vod_remarks,
+  //   }));
+  // }
+
   async search(kw, page, filter) {
-    if (!kw) {
+    if (filter?.channels?.[0] || filter?.genres?.[0] || filter?.years?.[0]) {
+      if (kw) throw new Error("在使用筛选器时无法同时使用搜索功能！");
       return this.select(page, filter);
-    }
+    } else if (!kw) return this.latest(page);
     const res = await this.request(`/search/wd/${encodeURI(kw)}/page/${page}.html`);
     const list = await this.querySelectorAll(res, "div.search-box");
     if (list === null) {
@@ -111,7 +146,7 @@ export default class extends Extension {
       const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
       const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
       const url = `${await label.getAttributeText("href")}|${title}|${cover}`;
-      return { title, url, cover, update };
+      return { title, url, cover, update: update.replace("|", " | ") };
     });
     return await Promise.all(videos);
   }
@@ -131,41 +166,44 @@ export default class extends Extension {
   }
 
   async detail(str) {
+    if (str === "/") {
+      return {
+        title: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+        cover: null,
+        desc: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+      };
+    }
     const data = str.split("|");
     const res = await this.request(data[0]);
     if (res.length < 25000) {
       throw Error("您没有权限访问此数据，请升级会员 -【稀饭动漫】");
     }
-    const descTask = this.querySelector(res, "#height_limit");
+    const desc = res.match(/\bid="height_limit".*?>([\s\S]*?)</)[1].replace("&nbsp;", " ");
     const labelTask = this.querySelectorAll(res, ".anthology-tab a");
     const sources = await this.querySelectorAll(res, ".anthology-list-play");
     const labels = (await labelTask).map((e) => e.content.match(/i>(.*?)</)[1].replace("&nbsp;", ""));
-    const episodes = await Promise.all(
-      sources.map(async (source, i) => {
-        const urls = await this.querySelectorAll(source.content, "a");
-        for (let j = 0; j < urls.length; j++) {
-          urls[j] = { name: this.text(urls[j]), url: await urls[j].getAttributeText("href") };
-        }
-        return { title: labels[i], urls };
+    let reg = /href="(.*?)">(.*?)</;
+    const episodes = sources.map(async (source, i) => {
+      const urls = (await this.querySelectorAll(source.content, "a")).map((a) => {
+        const match = reg.exec(a.content);
+        return { name: match[2], url: match[1] };
       })
-    );
-    const desc = this.text(await descTask).replace("&nbsp;", "");
-    return { title: data[1], cover: data[2], desc, episodes };
+      return { title: labels[i], urls };
+    });
+    return { title: data[1], cover: data[2], desc, episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
     const res = await this.request(url);
-    const json = JSON.parse(
-      this.text(await this.querySelector(res, ".player-left > script:nth-child(7)")).substring(16)
-    );
-    const link = json.encrypt ? decodeURIComponent(this.base64decode(json.url)) : decodeURIComponent(json.url);
+    const json = JSON.parse(res.match(/var player_aaaa=({.+?})</)[1]);
+    const link = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
     console.log(link);
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }
 
-  async checkUpdate(str) {
-    const url = str.split("|")[0];
-    const res = await this.request(url);
-    return this.text(await this.querySelector(res, ".slide-info > .slide-info-remarks:nth-child(1)"));
-  }
+  // async checkUpdate(str) {
+  //   const url = str.split("|")[0];
+  //   const res = await this.request(url);
+  //   return this.text(await this.querySelector(res, ".slide-info > .slide-info-remarks:nth-child(1)"));
+  // }
 }

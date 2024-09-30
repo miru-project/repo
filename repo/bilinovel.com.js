@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.4
+// @version      v0.0.6
 // @author       hualiong
 // @lang         zh
 // @icon         https://www.bilinovel.com/favicon.ico
@@ -10,16 +10,18 @@
 // @webSite      https://www.bilinovel.com
 // ==/MiruExtension==
 export default class extends Extension {
-  dict = { "“": "「", "”": "」", "‘": "『", "’": "』", "": "的", "": "一", "": "是", "": "了", "": "我", "": "不", "": "人",
-    "": "在", "": "他", "": "有", "": "这", "": "个", "": "上", "": "们", "": "来", "": "到", "": "时", "": "大",
-    "": "地", "": "为", "": "子", "": "中", "": "你", "": "说", "": "生", "": "国", "": "年", "": "着", "": "就",
-    "": "那", "": "和", "": "要", "": "她", "": "出", "": "也", "": "得", "": "里", "": "后", "": "自", "": "以",
-    "": "会", "": "家", "": "可", "": "下", "": "而", "": "过", "": "天", "": "去", "": "能", "": "对", "": "小",
-    "": "多", "": "然", "": "于", "": "心", "": "学", "": "么", "": "之", "": "都", "": "好", "": "看", "": "起",
-    "": "发", "": "当", "": "没", "": "成", "": "只", "": "如", "": "事", "": "把", "": "还", "": "用", "": "第",
-    "": "样", "": "道", "": "想", "": "作", "": "种", "": "开", "": "美", "": "乳", "": "阴", "": "液", "": "茎",
-    "": "欲", "": "呻", "": "肉", "": "交", "": "性", "": "胸", "": "私", "": "穴", "": "淫", "": "臀", "": "舔",
-    "": "射", "": "脱", "": "裸", "": "骚", "": "唇", "&nbsp;": " ", "&lt;": "<", "&gt;": ">", "&amp;": "&", "&sdot;": '·',
+  dict = {
+    "“": "「", "”": "」", "‘": "『", "’": "』", "": "的", "": "一", "": "是", "": "了", "": "我", "": "不",
+    "": "人", "": "在", "": "他", "": "有", "": "这", "": "个", "": "上", "": "们", "": "来", "": "到",
+    "": "时", "": "大", "": "地", "": "为", "": "子", "": "中", "": "你", "": "说", "": "生", "": "国",
+    "": "年", "": "着", "": "就", "": "那", "": "和", "": "要", "": "她", "": "出", "": "也", "": "得",
+    "": "里", "": "后", "": "自", "": "以", "": "会", "": "家", "": "可", "": "下", "": "而", "": "过",
+    "": "天", "": "去", "": "能", "": "对", "": "小", "": "多", "": "然", "": "于", "": "心", "": "学",
+    "": "么", "": "之", "": "都", "": "好", "": "看", "": "起", "": "发", "": "当", "": "没", "": "成",
+    "": "只", "": "如", "": "事", "": "把", "": "还", "": "用", "": "第", "": "样", "": "道", "": "想",
+    "": "作", "": "种", "": "开", "": "美", "": "乳", "": "阴", "": "液", "": "茎", "": "欲", "": "呻",
+    "": "肉", "": "交", "": "性", "": "胸", "": "私", "": "穴", "": "淫", "": "臀", "": "舔", "": "射",
+    "": "脱", "": "裸", "": "骚", "": "唇", "&nbsp;": " ", "&lt;": "<", "&gt;": ">", "&amp;": "&", "&sdot;": "·",
   };
 
   async load() {
@@ -28,9 +30,12 @@ export default class extends Extension {
       return res === null ? null : res[0];
     };
     this.text = (element) => {
-      return [...element.content.matchAll(/>([^<\n]+?)</g)].map((m) => m[1].trim()).join("");
+      return [...element.content.matchAll(/>([^<]+?)</g)]
+        .map((m) => m[1])
+        .join("")
+        .trim();
     };
-    this.filter = (element) => { // 59392
+    this.filter = (element) => {
       if (element.content.startsWith("<img")) {
         const match = [...element.content.matchAll(/src="(.*?)"/g)];
         return `【Miru 暂不支持查看插图${match.length ? "：" + match[match.length - 1][1] : ""}】`;
@@ -39,7 +44,9 @@ export default class extends Extension {
     };
     this.handle = async (url, count = 10) => {
       try {
-        const response = await this.request(url, { headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" } });
+        const response = await this.request(url, {
+          headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
+        });
         const row = await this.querySelectorAll(response, "#acontentz > p, img");
         return row.map(this.filter);
       } catch (error) {
@@ -91,17 +98,18 @@ export default class extends Extension {
       return await Promise.all(tasks);
     }
     // 此时已经在详情页
+    const desc = this.querySelector(res, "#bookSummary > content");
     const head = await this.querySelector(res, "head");
-    const desc = await this.querySelector(res, "#bookSummary > content");
     const title = await this.getAttributeText(head.content, "meta[property='og:title']", "content");
     const cover = await this.getAttributeText(head.content, "meta[property='og:image']", "content");
-    const url = await this.getAttributeText(head.content, "meta[property='og:novel:read_url']", "content");
+    const url = this.getAttributeText(head.content, "meta[property='og:novel:read_url']", "content");
+    const remark = this.getAttributeText(head.content, "meta[property='og:novel:author']", "content");
     return [
       {
         title,
         cover,
-        url: `${url.substring(25)}|${title}|${cover}|${this.text(desc).replace("<br>", "")}`,
-        update: await this.getAttributeText(head.content, "meta[property='og:novel:author']", "content"),
+        url: `${(await url).substring(25)}|${title}|${cover}|${this.text(await desc)}`,
+        update: await remark,
       },
     ];
   }
@@ -113,7 +121,7 @@ export default class extends Extension {
       promise = (async (data) => {
         const res = await this.request(data[0]);
         const desc = await this.querySelector(res, "#bookSummary > content");
-        data.push(this.text(desc).replace("<br>", ""));
+        data.push(this.text(desc));
       }).call(this, data);
       data[0] = `${data[0].slice(0, -5)}/catalog`;
     }
@@ -122,31 +130,39 @@ export default class extends Extension {
     const episodes = volumes.map(async (volume) => {
       const title = this.text(await this.querySelector(volume.content, ".chapter-bar > h3"));
       const urls = await this.querySelectorAll(volume.content, ".chapter-li-a");
-      const tasks = await Promise.all(
-        urls.map(async (url) => ({ name: this.text(url), url: await url.getAttributeText("href") }))
-      );
-      return { title, urls: tasks };
+      const tasks = urls.map((url, i) => {
+        const regex = /\/novel\/\d+\/([0-9_]+)/;
+        let match = regex.exec(url.content);
+        if (!match) {
+          const id = i ? parseInt(regex.exec(urls[i - 1].content)[1]) + 1 : parseInt(regex.exec(urls[i + 1].content)[1]) - 1;
+          match = [`${data[0].slice(0, -8)}/${id}`];
+        }
+        return { name: this.text(url), url: match[0] };
+      });
+      return { title, urls: await Promise.all(tasks) };
     });
-    const newLocal = await Promise.all(episodes);
     if (promise) await promise;
-    return { title: data[1], cover: data[2], desc: data[3], episodes: newLocal };
+    return { title: data[1], cover: data[2], desc: data[3], episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
-    url = url.slice(0, -5);
-    const res = await this.request(`${url}_2.html`, { headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" } });
+    let tasks = [this.handle(`${url}.html`)];
+    const res = await this.request(`${url}_2.html`, {
+      headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
+    });
     const subtitle = this.text(await this.querySelector(res, "#apage h1"));
     const total = parseInt(subtitle.split("/")[1].slice(0, -1)) || 1;
-    let tasks = [];
-    for (let i = 1; i <= total; i++) {
-      if (i != 2) {
-        tasks.push(this.handle(`${url}_${i}.html`));
-      }
+    for (let i = 3; i <= total; i++) {
+      tasks.push(this.handle(`${url}_${i}.html`));
     }
     tasks = await Promise.all(tasks);
     if (total > 1) {
       tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontentz > p")).map(this.filter));
     }
-    return { title: "Test", subtitle: subtitle.split("（")[0], content: tasks.flat() };
+    return {
+      title: "Why is this 'title' attribute not valid?",
+      subtitle: subtitle.split("（")[0],
+      content: tasks.flat(),
+    };
   }
 }

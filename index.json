@@ -1,5 +1,18 @@
 [
  {
+  "author": "hualiong",
+  "icon": "https://360zy.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "360资源",
+  "nsfw": "false",
+  "package": "360zy.com",
+  "type": "bangumi",
+  "url": "360zy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://360zy.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://9animetv.to/images/favicon.png",
   "lang": "en",
@@ -103,6 +116,19 @@
   "webSite": "https://www.animeworld.so"
  },
  {
+  "author": "hualiong",
+  "icon": "https://aosikazy10.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "奥斯卡资源站",
+  "nsfw": "true",
+  "package": "aosikazy.com",
+  "type": "bangumi",
+  "url": "aosikazy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://aosikazy.vip"
+ },
+ {
   "author": "vvsolo",
   "icon": "https://www.yinyuetai.com/images/favicon.ico",
   "lang": "zh",
@@ -186,7 +212,7 @@
   "package": "bilinovel.com",
   "type": "fikushon",
   "url": "bilinovel.com.js",
-  "version": "v0.0.4",
+  "version": "v0.0.6",
   "webSite": "https://www.bilinovel.com"
  },
  {
@@ -331,14 +357,14 @@
  {
   "author": "hualiong",
   "icon": "https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
-  "lang": "zh",
+  "lang": "zh-cn",
   "license": "MIT",
   "name": "次元城动漫",
   "nsfw": "false",
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v0.0.6",
+  "version": "v0.1.0",
   "webSite": "https://www.cycanime.com"
  },
  {
@@ -390,6 +416,32 @@
   "url": "eroticmv.com.js",
   "version": "v0.0.1",
   "webSite": "https://eroticmv.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://feisuzy.com/statics/img/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "飞速资源",
+  "nsfw": "false",
+  "package": "feisuzy.com",
+  "type": "bangumi",
+  "url": "feisuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://feisuzy.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://cj.ffzyapi.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "非凡资源",
+  "nsfw": "false",
+  "package": "ffzy.tv",
+  "type": "bangumi",
+  "url": "ffzy.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://cj.ffzyapi.com"
  },
  {
   "author": "OshekharO",
@@ -530,6 +582,19 @@
   "webSite": "https://hianime.to"
  },
  {
+  "author": "hualiong",
+  "icon": "https://tse3-mm.cn.bing.net/th/id/OIP-C.PrZFaCYKWBtyufV16WIxhQBRBQ",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "华为吧资源",
+  "nsfw": "false",
+  "package": "huaweiba.live",
+  "type": "bangumi",
+  "url": "huaweiba.live.js",
+  "version": "v0.0.1",
+  "webSite": "https://huaweiba.live"
+ },
+ {
   "author": "Nazz",
   "icon": "https://vip.idlixofficial.net/wp-content/uploads/2020/06/idlix.png",
   "lang": "id",
@@ -542,6 +607,19 @@
   "url": "idlix.js",
   "version": "v0.0.2",
   "webSite": "https://vip.idlixofficial.net"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://ikunzy.org/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "iKun资源",
+  "nsfw": "true",
+  "package": "ikunzy.com",
+  "type": "bangumi",
+  "url": "ikunzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://ikunzy.org"
  },
  {
   "author": "OshekharO",
@@ -595,7 +673,7 @@
   "webSite": "https://javhd.icu"
  },
  {
-  "author": "SendHX",
+  "author": "hualiong",
   "icon": "https://www.jisuzy.com/template/default/images/site_logo.png",
   "lang": "zh-cn",
   "license": "MIT",
@@ -604,8 +682,8 @@
   "package": "jisuzy.com",
   "type": "bangumi",
   "url": "jisuzy.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://jszyapi.com/api.php/provide/vod/?ac=videolist"
+  "version": "v0.0.2",
+  "webSite": "https://jisuzy.com"
  },
  {
   "author": "OshekharO",
@@ -684,6 +762,19 @@
   "webSite": "https://kuromanhua.xyz"
  },
  {
+  "author": "hualiong",
+  "icon": "https://lyzy8.top/upload/site/20240405-1/0abc49d6b935f5ff17488568f99d2d52.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "老鸭资源",
+  "nsfw": "true",
+  "package": "laoyazy.com",
+  "type": "bangumi",
+  "url": "laoyazy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://laoyazy.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://letv.im/template/letv/asset/img/favicon.png",
   "lang": "zh",
@@ -733,6 +824,19 @@
   "webSite": "https://tv3.lk21official.wiki"
  },
  {
+  "author": "hualiong",
+  "icon": "https://lzizy2.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "量子资源",
+  "nsfw": "false",
+  "package": "lzzy.tv",
+  "type": "bangumi",
+  "url": "lzzy.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://lzizy.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://www.manga4life.com/media/favicon.png",
   "lang": "en",
@@ -770,15 +874,15 @@
   "webSite": "https://mangaclash.com"
  },
  {
-  "author": "Monster",
-  "icon": "https://hi77-overseas.mangafuna.xyz/static/free.ico",
+  "author": "hualiong",
+  "icon": "https://tse1-mm.cn.bing.net/th/id/OIP-C.KCerrBL9dq9e8ydGaiyy2QAAAA",
   "lang": "zh-cn",
   "license": "MIT",
   "name": "拷贝漫画",
-  "package": "mangacopy.comic",
+  "package": "mangacopy.com",
   "type": "manga",
-  "url": "mangacopy.comic.js",
-  "version": "v0.0.1",
+  "url": "mangacopy.com.js",
+  "version": "v0.0.4",
   "webSite": "https://www.mangacopy.com"
  },
  {
@@ -879,6 +983,19 @@
   "url": "me.mikanani.js",
   "version": "v0.0.4",
   "webSite": "https://mikanani.me"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://moduzy.vip/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "魔都资源网",
+  "nsfw": "true",
+  "package": "moduzy.com",
+  "type": "bangumi",
+  "url": "moduzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://moduzy.vip"
  },
  {
   "author": "MiaoMint",
@@ -994,6 +1111,19 @@
   "url": "nyaa.si.js",
   "version": "v0.0.1",
   "webSite": "https://nyaa.si"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://files.superbed.cn/proxy/7468686c6f26333378737f75717b2f3278737f6f326d6d327f73713375717d7b79335d7b5d5d5f2a6931484a4c5d71757f28666d4650502b682c28702f4b2b566a6c326c727b",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "NyaFun动漫",
+  "nsfw": "false",
+  "package": "nyacg.net",
+  "type": "bangumi",
+  "url": "nyacg.net.js",
+  "version": "v0.0.3",
+  "webSite": "https://www.nyacg.net"
  },
  {
   "author": "bethro",
@@ -1148,6 +1278,19 @@
   "webSite": "https://www.royalroad.com"
  },
  {
+  "author": "jeylists",
+  "icon": "https://rule34video.com/favicon-32x32.png",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Rule34Video",
+  "nsfw": "true",
+  "package": "rule34video.com",
+  "type": "bangumi",
+  "url": "rule34video.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://rule34video.com"
+ },
+ {
   "author": "Monster",
   "icon": "https://cdn.yinghuazy.xyz/webjs/zkk7/statics/img/favicon.ico",
   "lang": "zh-cn",
@@ -1172,6 +1315,32 @@
   "url": "samehadaku.js",
   "version": "v0.0.1",
   "webSite": "https://samehadaku.email"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://semaozy3.com/template/svpro/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "色猫资源",
+  "nsfw": "true",
+  "package": "semaozy.com",
+  "type": "bangumi",
+  "url": "semaozy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://semaozy.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://senlinzy.com/template/demo/img/logo.gif",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "森林资源",
+  "nsfw": "true",
+  "package": "senlinzy.com",
+  "type": "bangumi",
+  "url": "senlinzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://senlinzy.com"
  },
  {
   "author": "appdevelpo",
@@ -1211,6 +1380,19 @@
   "url": "stream.mkvdrama.org.js",
   "version": "v0.0.2",
   "webSite": "https://stream.mkvdrama.org"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://www.subozy.com/upload/site/20230220-1/e632a403d903b831199109f99189f480.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "速播资源",
+  "nsfw": "false",
+  "package": "subozy.com",
+  "type": "bangumi",
+  "url": "subozy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.subozy.com"
  },
  {
   "author": "bachig26",
@@ -1300,6 +1482,32 @@
   "webSite": "https://thunderscans.com"
  },
  {
+  "author": "hualiong",
+  "icon": "https://api.tiankongapi.com/template/v10012/images/logo.jpg",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "天空资源网",
+  "nsfw": "false",
+  "package": "tiankongzy.com",
+  "type": "bangumi",
+  "url": "tiankongzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://tiankongzy.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://to-long.com/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "橘猫资源",
+  "nsfw": "true",
+  "package": "to-long.com",
+  "type": "bangumi",
+  "url": "to-long.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://to-long.com"
+ },
+ {
   "author": "zj",
   "icon": "https://www.lkp2.top/template/muban8/favicon.ico",
   "lang": "zh-cn",
@@ -1362,6 +1570,19 @@
   "url": "uaa.com.js",
   "version": "v0.0.1",
   "webSite": "https://www.uaa.com/api/video/app/video"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://ukuzy3.com/template/vipzy/images/logo.gif",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "U酷资源网",
+  "nsfw": "false",
+  "package": "ukuzy.com",
+  "type": "bangumi",
+  "url": "ukuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://ukuzy.com"
  },
  {
   "author": "CakesTwix",
@@ -1461,6 +1682,19 @@
   "webSite": "https://api.mystorywave.com/story-wave-backend/api/v1/content"
  },
  {
+  "author": "hualiong",
+  "icon": "https://wolongzy.cc/template/zyz/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "卧龙资源",
+  "nsfw": "false",
+  "package": "wolongzyw.com",
+  "type": "bangumi",
+  "url": "wolongzyw.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://wolongzyw.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://wtr-lab.com/images/favicon.png",
   "lang": "en",
@@ -1474,15 +1708,28 @@
  },
  {
   "author": "hualiong",
+  "icon": "https://wujinzy.com/template/ziyuan2/images/logo.jpg",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "无尽资源网",
+  "nsfw": "false",
+  "package": "wujinzy.com",
+  "type": "bangumi",
+  "url": "wujinzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://wujinzy.com"
+ },
+ {
+  "author": "hualiong",
   "icon": "https://dick.xfani.com/upload/site/20240308-1/813e41f81d6f85bfd7a44bf8a813f9e5.png",
-  "lang": "zh",
+  "lang": "zh-cn",
   "license": "MIT",
   "name": "稀饭动漫",
   "nsfw": "false",
   "package": "xfani.com",
   "type": "bangumi",
   "url": "xfani.com.js",
-  "version": "v0.0.6",
+  "version": "v0.1.0",
   "webSite": "https://dick.xfani.com"
  },
  {
@@ -1538,6 +1785,19 @@
   "webSite": "https://caocao15.xyz"
  },
  {
+  "author": "hualiong",
+  "icon": "https://yhzy.cc/template/ziyuan2/images/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "樱花资源",
+  "nsfw": "false",
+  "package": "yhzy.cc",
+  "type": "bangumi",
+  "url": "yhzy.cc.js",
+  "version": "v0.0.1",
+  "webSite": "https://yhzy.cc"
+ },
+ {
   "author": "Mg",
   "icon": "https://oss-cdn.meowa.cn/mxtheme/images/favicon.png",
   "lang": "zh-cn",
@@ -1590,6 +1850,19 @@
  },
  {
   "author": "hualiong",
+  "icon": "https://yutuzy4.com/template/demo/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "玉兔资源",
+  "nsfw": "true",
+  "package": "yutuzy.com",
+  "type": "bangumi",
+  "url": "yutuzy.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://yutuzy.com"
+ },
+ {
+  "author": "hualiong",
   "icon": "https://www.yymanhua.com/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
@@ -1597,8 +1870,21 @@
   "package": "yymanhua.com",
   "type": "manga",
   "url": "yymanhua.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.3",
   "webSite": "https://www.yymanhua.com"
+ },
+ {
+  "author": "hualiong",
+  "icon": "https://yzzy.tv/favicon.ico",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "优质资源库",
+  "nsfw": "false",
+  "package": "yzzy.tv",
+  "type": "bangumi",
+  "url": "yzzy.tv.js",
+  "version": "v0.0.1",
+  "webSite": "https://yzzy.tv"
  },
  {
   "author": "OshekharO",

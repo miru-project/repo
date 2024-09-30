@@ -148,12 +148,13 @@ export default class extends Extension {
         const aid = url.split("/#/")[2]
         const cid = url.split("/#/")[3]
         const content = await (await this.req(this.generate_encrypted_body(`action=book&do=text&aid=${aid}&cid=${cid}&t=0`))).text()
-        let contents = content.split("\n")
+        let contents = content.split("\n").filter(line => line.trim() !== "").map(line => line.replace(/\s+/g, " ").trim());
         if (content.includes("<!--image-->")) {
             contents = ["Miru暂不支持查看插图！"]
         }
         return {title, subtitle, "content": contents}
-    }
+    }    
+    
 
     async load() {
         this.APPVER = "Wenku8-Extension-For-Miru v0.0.1(https://github.com/WorldObservationLog/miru-extensions)"

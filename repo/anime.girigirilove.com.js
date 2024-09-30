@@ -121,8 +121,8 @@ export default class extends Extension {
     const title = web_res.match(/<h3[^;]+?>(.+?)<\/h3>/)[1]
     const cover = this.baseurl + web_res.match(/<img referrerpolicy="no-referrer"[^+]+?data-src="(.+?)"/)[1]
     const desc = web_res.match(/"text cor3">(.+?)</)[1]
-    const playListArea = web_res.match(/anthology-list-play size[\s\S]+?<\/ul>/g)
-    const playListTitle = web_res.match(/fa ds-dianying"><\/i>.+?<span/g)
+    const playListArea = web_res.match(/anthology-list-play size[\s\S]+?<\/ul>/g) || []
+    const playListTitle = web_res.match(/fa ds-dianying"><\/i>.+?<span/g) || []
     playListTitle.forEach((element, index) => {
       const stream_title = element.match(/>&nbsp;(.+?)</)[1]
       const ep_list = playListArea[index].match(/<li[\s\S]+?<\/li>/g).map((ep_element) => {

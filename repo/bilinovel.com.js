@@ -1,8 +1,8 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       hualiong
-// @lang         zh
+// @lang         zh-cn
 // @icon         https://www.bilinovel.com/favicon.ico
 // @license      MIT
 // @package      bilinovel.com
@@ -24,45 +24,72 @@ export default class extends Extension {
     "": "脱", "": "裸", "": "骚", "": "唇", "&nbsp;": " ", "&lt;": "<", "&gt;": ">", "&amp;": "&", "&sdot;": "·",
   };
 
-  async load() {
-    this.querySelector = async (content, selector) => {
-      const res = await this.querySelectorAll(content, selector);
-      return res === null ? null : res[0];
-    };
-    this.text = (element) => {
-      return [...element.content.matchAll(/>([^<]+?)</g)]
-        .map((m) => m[1])
-        .join("")
-        .trim();
-    };
-    this.filter = (element) => {
-      if (element.content.startsWith("<img")) {
-        const match = [...element.content.matchAll(/src="(.*?)"/g)];
-        return `【Miru 暂不支持查看插图${match.length ? "：" + match[match.length - 1][1] : ""}】`;
-      }
-      return this.text(element).replace(/&[a-z]+;|./g, (c) => this.dict[c] || c);
-    };
-    this.handle = async (url, count = 10) => {
-      try {
-        const response = await this.request(url, {
-          headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
-        });
-        const row = await this.querySelectorAll(response, "#acontentz > p, img");
-        return row.map(this.filter);
-      } catch (error) {
-        if (count > 0) {
-          console.log(`Retry ${count} times: ${url}`);
-          await new Promise((resolve) => setTimeout(resolve, 1000));
-          return this.handle(url, count - 1);
-        } else {
-          throw error;
-        }
-      }
-    };
+  text(element) {
+    return [...element.content.matchAll(/>([^<]+?)</g)]
+    .map((m) => m[1])
+    .join("")
+    .trim();
   }
 
-  async latest(page) {
-    const res = await this.request(`/top/lastupdate/${page}.html`);
+  filter(element) {
+    if (element.content.startsWith("<img")) {
+      const match = [...element.content.matchAll(/src="(.*?)"/g)];
+      return `【Miru 暂不支持查看插图${match.length ? "：" + match[match.length - 1][1] : ""}】`;
+    }
+    return this.text(element).replace(/&[a-z]+;|./g, (c) => this.dict[c] || c);
+  }
+
+  async querySelector(content, selector) {
+    const res = await this.querySelectorAll(content, selector);
+    return res === null ? null : res[0];
+  }
+
+  async handle(url, count = 3) {
+    try {
+      const response = await this.request(url, {
+        headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
+      });
+      const row = await this.querySelectorAll(response, "#acontentz > p, img");
+      return row.map(e => this.filter.call(this, e));
+    } catch (error) {
+      if (count > 0) {
+        console.log(`Retry ${count} times: ${url}`);
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        return this.handle(url, count - 1);
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  /* =============================== 分割线 ============================== */
+
+  async createFilter() {
+    const ranks = {
+      title: "轻小说榜单",
+      max: 1,
+      min: 1,
+      default: "lastupdate",
+      options: {
+        monthvisit: "月点击榜",
+        weekvisit: "周点击榜",
+        monthvote: "月推荐榜",
+        weekvote: "周推荐榜",
+        monthflower: "月鲜花榜",
+        weekflower: "周鲜花榜",
+        monthegg: "月鸡蛋榜",
+        weekegg: "周鸡蛋榜",
+        lastupdate: "最近更新",
+        postdate: "最新入库",
+        goodnum: "收藏榜",
+        newhot: "新书榜",
+      },
+    };
+    return { ranks };
+  }
+
+  async latest(page, filter) {
+    const res = await this.request(`/top/${filter?.ranks[0] ?? "lastupdate"}/${page}.html`);
     const list = await this.querySelectorAll(res, ".book-li > a");
     const tasks = list.map(async (e) => {
       const img = await this.querySelector(e.content, "img");
@@ -75,7 +102,8 @@ export default class extends Extension {
     return await Promise.all(tasks);
   }
 
-  async search(kw, page) {
+  async search(kw, page, filter) {
+    if (!kw) return this.latest(page, filter);
     const res = await this.request(`/search/${encodeURI(kw)}_${page}.html`);
     const total = await this.querySelector(res, "#pagelink > span");
     if (total) {
@@ -98,34 +126,31 @@ export default class extends Extension {
       return await Promise.all(tasks);
     }
     // 此时已经在详情页
-    const desc = this.querySelector(res, "#bookSummary > content");
+    // const desc = this.querySelector(res, "#bookSummary > content");
     const head = await this.querySelector(res, "head");
     const title = await this.getAttributeText(head.content, "meta[property='og:title']", "content");
     const cover = await this.getAttributeText(head.content, "meta[property='og:image']", "content");
-    const url = this.getAttributeText(head.content, "meta[property='og:novel:read_url']", "content");
+    const url = this.getAttributeText(head.content, "meta[property='og:url']", "content");
     const remark = this.getAttributeText(head.content, "meta[property='og:novel:author']", "content");
     return [
       {
         title,
         cover,
-        url: `${(await url).substring(25)}|${title}|${cover}|${this.text(await desc)}`,
+        url: `${(await url).substring(25)}|${title}|${cover}`,
         update: await remark,
       },
     ];
   }
 
   async detail(string) {
-    let promise;
     const data = string.split("|");
-    if (data.length == 3) {
-      promise = (async (data) => {
-        const res = await this.request(data[0]);
-        const desc = await this.querySelector(res, "#bookSummary > content");
-        data.push(this.text(desc));
-      }).call(this, data);
-      data[0] = `${data[0].slice(0, -5)}/catalog`;
-    }
-    const catalog = await this.request(data[0]);
+    const desc = (async (data) => {
+      const res = await this.request(data[0]);
+      const desc = await this.querySelector(res, "#bookSummary > content");
+      return this.text(desc);
+    })(data);
+    const prefix = data[0].slice(0, -5);
+    const catalog = await this.request(prefix + "/catalog");
     const volumes = await this.querySelectorAll(catalog, ".volume-chapters");
     const episodes = volumes.map(async (volume) => {
       const title = this.text(await this.querySelector(volume.content, ".chapter-bar > h3"));
@@ -135,14 +160,13 @@ export default class extends Extension {
         let match = regex.exec(url.content);
         if (!match) {
           const id = i ? parseInt(regex.exec(urls[i - 1].content)[1]) + 1 : parseInt(regex.exec(urls[i + 1].content)[1]) - 1;
-          match = [`${data[0].slice(0, -8)}/${id}`];
+          match = [`${prefix}/${id}`];
         }
         return { name: this.text(url), url: match[0] };
       });
       return { title, urls: await Promise.all(tasks) };
     });
-    if (promise) await promise;
-    return { title: data[1], cover: data[2], desc: data[3], episodes: await Promise.all(episodes) };
+    return { title: data[1], cover: data[2], desc: await desc, episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
@@ -157,7 +181,7 @@ export default class extends Extension {
     }
     tasks = await Promise.all(tasks);
     if (total > 1) {
-      tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontentz > p")).map(this.filter));
+      tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontentz > p")).map(e => this.filter.call(this, e)));
     }
     return {
       title: "Why is this 'title' attribute not valid?",

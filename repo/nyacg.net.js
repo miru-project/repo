@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NyaFun动漫
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -64,9 +64,9 @@ export default class extends Extension {
         }),
       ]);
     } catch (error) {
-      if (count > 1) {
+      if (count > 0) {
         console.log(`[Retry (${count})]: ${url}`);
-        return this.$req(url, options, count - 1);
+        return this.$req(url, options, count - 1, timeout + 1000);
       } else {
         throw error;
       }
@@ -87,7 +87,12 @@ export default class extends Extension {
       const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
       const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
       const url = await label.getAttributeText("href");
-      return { title, url: url.match(/\/bangumi\/(\d+)\.html/)[1], cover, update };
+      return {
+        title,
+        url: `${url.match(/\/bangumi\/\d+\.html/)[0]}|${title}|${cover}`,
+        cover,
+        update
+      };
     });
     return await Promise.all(videos);
   }
@@ -192,27 +197,37 @@ export default class extends Extension {
 
   async detail(str) {
     const data = str.split("|");
-    const res = await this.request(data[0]);
+    const res = await this.$req(data[0]);
     const desc = this.textParser(res.match(/\bid="height_limit".*?>([\s\S]*?)</)[1]);
     const labelTask = this.querySelectorAll(res, ".anthology-tab a");
     const sources = await this.querySelectorAll(res, ".anthology-list-play");
     const labels = (await labelTask).map((e) => this.textParser(e.content.match(/i>(.*?)</)[1]));
     let reg = /href="(.*?)">(.*?)</;
+    // const episodes = sources.map(async (source, i) => {
+    //   const urls = (await this.querySelectorAll(source.content, "a")).map(async (a) => {
+    //     const match = reg.exec(a.content);
+    //     const resp = await this.$req(match[1]);
+    //     const json = JSON.parse(resp.match(/var player_aaaa=({.+?})</)[1]);
+    //     const url = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
+    //     return { name: match[2], url };
+    //   });
+    //   return { title: labels[i], urls: await Promise.all(urls) };
+    // });
     const episodes = sources.map(async (source, i) => {
-      const urls = (await this.querySelectorAll(source.content, "a")).map(async (a) => {
+      const urls = (await this.querySelectorAll(source.content, "a")).map((a) => {
         const match = reg.exec(a.content);
-        const resp = await this.request(match[1]);
-        const json = JSON.parse(resp.match(/var player_aaaa=({.+?})</)[1]);
-        const url = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
-        return { name: match[2], url };
-      });
-      return { title: labels[i], urls: await Promise.all(urls) };
+        return { name: match[2], url: match[1] };
+      })
+      return { title: labels[i], urls };
     });
     return { title: data[1], cover: data[2], desc, episodes: await Promise.all(episodes) };
   }
 
   async watch(url) {
-    const resp = await this.$req(`/player/ec.php?code=qw&url=${url}`, {
+    const res = await this.$req(url);
+    const player = JSON.parse(res.match(/var player_aaaa=({.+?})</)[1]);
+    const raw = decodeURIComponent(player.encrypt ? this.base64decode(player.url) : player.url);
+    const resp = await this.$req(`/player/ec.php?code=qw&url=${raw}`, {
       headers: { "Miru-Url": "https://play.nyacg.net", Referer: "https://www.nyacg.net" },
     });
     const json = JSON.parse(resp.match(/let ConFig = ({.+})/)[1]);

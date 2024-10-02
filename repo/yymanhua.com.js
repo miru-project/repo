@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         YY漫画
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -10,69 +10,116 @@
 // @webSite      https://www.yymanhua.com
 // ==/MiruExtension==
 export default class extends Extension {
-  async load() {
-    this.asyncPool = async (limit, items, f) => {
-      const ret = [];
-      const executing = [];
-      for (const item of items) {
-        const p = Promise.resolve().then(() => f(item));
-        ret.push(p);
-        if (limit <= items.length) {
-          const e = p.then(() => executing.splice(executing.indexOf(e), 1));
-          executing.push(e);
-          if (executing.length >= limit) {
-            await Promise.race(executing);
-          }
+  async asyncPool(limit, items, f) {
+    const ret = [];
+    const executing = [];
+    for (const item of items) {
+      const p = Promise.resolve().then(() => f(item));
+      ret.push(p);
+      if (limit <= items.length) {
+        const e = p.then(() => executing.splice(executing.indexOf(e), 1));
+        executing.push(e);
+        if (executing.length >= limit) {
+          await Promise.race(executing);
         }
       }
-      return Promise.all(ret);
-    };
-    this.deobfuscator = (string) => {
-      const match = string.match(/return p;}\('(.*?)',(\d+),(\d+),'(.*?)'/);
-      let d = {};
-      match[4] = match[4].split("|");
-      let e = function (c) {
-        return (c = c % match[2]) > 35 ? String.fromCharCode(c + 29) : c.toString(36);
-      };
-      while (match[3]--) d[e(match[3])] = match[4][match[3]] || e(match[3]);
-      return match[1].replace(/\b\w+\b/g, (e) => d[e]);
-    };
-    this.querySelector = async (content, selector) => {
-      const res = await this.querySelectorAll(content, selector);
-      return res === null ? null : res[0];
-    };
-    this.text = (element) => {
-      const match = element.content.match(/<[^>]+>([^<]+)<\/[^>]+>/);
-      return !match ? "" : match[1].trim();
-    };
-    this.$get = async (url, count = 3, timeout = 5000) => {
-      try {
-        return await Promise.race([
-          this.request(url, {
-            headers: {
-              cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=",
-              referer: "https://www.yymanhua.com/",
-            },
-          }),
-          new Promise((_, reject) => {
-            setTimeout(() => {
-              reject(new Error("Request timed out!"));
-            }, timeout);
-          }),
-        ]);
-      } catch (error) {
-        if (count > 1) {
-          console.log(`[Retry]: ${url}`);
-          return this.$get(url, count - 1);
-        } else {
-          throw error;
-        }
-      }
-    };
+    }
+    return Promise.all(ret);
   }
 
-  async search(kw, page) {
-    const res = await this.$get(`/search?title=${encodeURI(kw)}&page=${page}`);
+  deobfuscator(string) {
+    const match = string.match(/return p;}\('(.*?)',(\d+),(\d+),'(.*?)'/);
+    let d = {};
+    match[4] = match[4].split("|");
+    let e = function (c) {
+      return (c = c % match[2]) > 35 ? String.fromCharCode(c + 29) : c.toString(36);
+    };
+    while (match[3]--) d[e(match[3])] = match[4][match[3]] || e(match[3]);
+    return match[1].replace(/\b\w+\b/g, (e) => d[e]);
+  }
+
+  async querySelector(content, selector) {
+    const res = await this.querySelectorAll(content, selector);
+    return res === null ? null : res[0];
+  }
+
+  text(element) {
+    const match = element.content.match(/<[^>]+>([^<]+)<\/[^>]+>/);
+    return !match ? "" : match[1].trim();
+  }
+
+  async $get(url, count = 3, timeout = 5000) {
+    try {
+      return await Promise.race([
+        this.request(url, {
+          headers: {
+            cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=",
+            referer: "https://www.yymanhua.com/",
+          },
+        }),
+        new Promise((_, reject) => {
+          setTimeout(() => {
+            reject(new Error("Request timed out!"));
+          }, timeout);
+        }),
+      ]);
+    } catch (error) {
+      if (count > 1) {
+        console.log(`[Retry]: ${url}`);
+        return this.$get(url, count - 1);
+      } else {
+        throw error;
+      }
+    }
+  };
+
+  /* =============================== 分割线 ============================== */
+
+  async createFilter() {
+    const theme = {
+      title: "题材",
+      max: 1,
+      min: 1,
+      default: "0",
+      options: {
+        0: "全部",
+        31: "热血",
+        26: "恋爱",
+        1: "校园",
+        2: "冒险",
+        25: "科幻",
+        11: "生活",
+        17: "悬疑",
+        15: "魔法",
+        34: "运动",
+      },
+    };
+    const status = {
+      title: "状态",
+      max: 1,
+      min: 1,
+      default: "0",
+      options: {
+        0: "全部",
+        1: "连载中",
+        2: "完结",
+      },
+    };
+    const sort = {
+      title: "排序",
+      max: 1,
+      min: 1,
+      default: "2",
+      options: {
+        10: "人气",
+        2: "更新时间",
+      },
+    };
+    return { theme, status, sort };
+  }
+
+  async latest(page, filter = { theme: [0], status: [0], sort: [2] }) {
+    const res = await this.$get(`/manga-list-${filter.theme[0]}-${filter.status[0]}-${filter.sort[0]}-p${page}/`);
     const list = await this.querySelectorAll(res, ".mh-list li");
     if (list === null) {
       return [];
@@ -88,8 +135,9 @@ export default class extends Extension {
     return await Promise.all(videos);
   }
 
-  async latest(page) {
-    const res = await this.$get(`/manga-list-0-0-2-p${page}/`);
+  async search(kw, page, filter) {
+    if (!kw) return this.latest(page, filter);
+    const res = await this.$get(`/search?title=${encodeURI(kw)}&page=${page}`);
     const list = await this.querySelectorAll(res, ".mh-list li");
     if (list === null) {
       return [];
@@ -120,7 +168,7 @@ export default class extends Extension {
     const txt = (await descTask).content;
     const extra = txt.match(/none">([\s\S]*?)</);
     const desc = txt.match(/content">([\s\S]*?)</)[1] + (extra ? extra[1] : "");
-    return { title: data[1], cover: data[2], desc: desc.trim(), episodes: [{ title: "独家源", urls: urls.reverse() }] };
+    return { title: data[1], cover: data[2], desc: desc.trim(), episodes: [{ title: this.name, urls: urls.reverse() }] };
   }
 
   async watch(str) {

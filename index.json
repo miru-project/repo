@@ -206,13 +206,13 @@
  {
   "author": "hualiong",
   "icon": "https://www.bilinovel.com/favicon.ico",
-  "lang": "zh",
+  "lang": "zh-cn",
   "license": "MIT",
   "name": "哔哩轻小说",
   "package": "bilinovel.com",
   "type": "fikushon",
   "url": "bilinovel.com.js",
-  "version": "v0.0.6",
+  "version": "v0.0.7",
   "webSite": "https://www.bilinovel.com"
  },
  {
@@ -1122,7 +1122,7 @@
   "package": "nyacg.net",
   "type": "bangumi",
   "url": "nyacg.net.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://www.nyacg.net"
  },
  {

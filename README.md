@@ -52,6 +52,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 聚小说 | juxiaoshuo | v0.0.1 | OshekharO | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/juxiaoshuo.js) |
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |
 | Kisskh | kisskh.co | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
+| Komiic漫畫 | komiic.com | v0.0.1 | hualiong | zh-tw | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiic.com.js) |
 | Komikcast | komikcast.lol | v0.0.1 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komikcast.lol.js) |
 | Komiku.com | komiku.com | v0.0.1 | Nazz | id | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiku.com.js) |
 | Kuromanhua.xyz | komiku.com | v0.0.1 | ZenZEE | id | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kuromanhua.xyz.js) |
@@ -117,6 +118,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | CC | yinhuadm | v0.0.1 | Mg | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yinhuadm.js) |
 | YoMovies | yomovies | v0.0.7 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yomovies.js) |
 | YuriNeko | yurineko.net | v0.0.1 | OshekharO | vi | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yurineko.net.js) |
-| YY漫画 | yymanhua.com | v0.0.3 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yymanhua.com.js) |
+| YY漫画 | yymanhua.com | v0.0.4 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yymanhua.com.js) |
 | 优质资源库 | yzzy.tv | v0.0.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yzzy.tv.js) |
 | ZeroScans | zeroscans.com | v0.0.2 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/zeroscans.com.js) |

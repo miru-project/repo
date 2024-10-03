@@ -722,6 +722,19 @@
   "webSite": "https://kisskh.co"
  },
  {
+  "author": "hualiong",
+  "icon": "https://komiic.com/favicon.ico",
+  "lang": "zh-tw",
+  "license": "MIT",
+  "name": "Komiic漫畫",
+  "nsfw": "false",
+  "package": "komiic.com",
+  "type": "manga",
+  "url": "komiic.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://komiic.com"
+ },
+ {
   "author": "bethro",
   "icon": "https://komikcast.lol/wp-content/uploads/2021/02/cropped-logo-kc-180x180.png",
   "lang": "all",
@@ -1870,7 +1883,7 @@
   "package": "yymanhua.com",
   "type": "manga",
   "url": "yymanhua.com.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://www.yymanhua.com"
  },
  {

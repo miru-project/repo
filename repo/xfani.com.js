@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         稀饭动漫
-// @version      v0.1.0
+// @version      v0.1.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -99,7 +99,7 @@ export default class extends Extension {
         title: e.vod_name,
         url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
         cover: e.vod_pic,
-        update: e.vod_remarks.replace("|", " | "),
+        update: e.vod_remarks.replace("|", " | ") || "已完结",
       }));
     } catch (error) {
       return [

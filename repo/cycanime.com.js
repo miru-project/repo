@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         次元城动漫
-// @version      v0.1.0
+// @version      v0.1.1
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -20,6 +20,22 @@ export default class extends Extension {
     ["&sdot;", "·"],
   ]);
 
+  decrypt(src, key1, key2) {
+    let prefix = new Array(key2.length);
+    for (let i = 0; i < key2.length; i++) {
+      prefix[key1[i]] = key2[i];
+    }
+    let a = CryptoJS.MD5(prefix.join("") + "YLwJVbXw77pk2eOrAnFdBo2c3mWkLtodMni2wk81GCnP94ZltW").toString(),
+      key = CryptoJS.enc.Utf8.parse(a.substring(16)),
+      iv = CryptoJS.enc.Utf8.parse(a.substring(0, 16)),
+      dec = CryptoJS.AES.decrypt(src, key, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7,
+      });
+    return dec.toString(CryptoJS.enc.Utf8);
+  }
+
   text(content) {
     if (!content) return "";
     const str =
@@ -28,11 +44,6 @@ export default class extends Extension {
         .join("")
         .trim() || content;
     return str.replace(/&[a-z]+;/g, (c) => this.dict.get(c) || c);
-  }
-
-  decrypt() {
-    const time = Math.ceil(new Date().getTime() / 1000);
-    return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
   }
 
   base64decode(str) {
@@ -151,7 +162,7 @@ export default class extends Extension {
       title: e.vod_name,
       url: `${e.vod_id}`,
       cover: e.vod_pic,
-      update: e.vod_remarks,
+      update: e.vod_remarks || "已完结",
     }));
   }
 
@@ -165,7 +176,7 @@ export default class extends Extension {
       title: e.vod_name,
       url: `${e.vod_id}`,
       cover: e.vod_pic,
-      update: e.vod_remarks,
+      update: e.vod_remarks || "已完结",
     }));
   }
 
@@ -187,8 +198,11 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    console.log(url);
-    return { type: url.indexOf(".mp4") > 0 ? "mp4" : "hls", url };
+    const resp = await this.request(`/?url=${url}`, { headers: { "Miru-Url": "https://player.cycanime.com" } });
+    const reg = /now_(\w+)/g;
+    const link = this.decrypt(resp.match(/"url": "([^:]+?)"/)[1], reg.exec(resp)[1], reg.exec(resp)[1]);
+    console.log(link);
+    return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }
 
   async checkUpdate(id) {

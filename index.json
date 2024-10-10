@@ -228,18 +228,6 @@
   "webSite": "https://m.bi17.cc"
  },
  {
-  "author": "MiaoMint",
-  "lang": "zh-cn",
-  "license": "MIT",
-  "name": "咕咕影视",
-  "nsfw": "false",
-  "package": "cc.cooing",
-  "type": "bangumi",
-  "url": "cc.cooing.js",
-  "version": "v0.0.3",
-  "webSite": "https://cooing.cc"
- },
- {
   "author": "vvsolo",
   "description": "client",
   "icon": "https://s11.ax1x.com/2024/01/11/pFCMKit.png",
@@ -353,6 +341,18 @@
   "url": "comick.app.js",
   "version": "v0.0.5",
   "webSite": "https://api.comick.io"
+ },
+ {
+  "author": "MiaoMint",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "咕咕影视",
+  "nsfw": "false",
+  "package": "cooing.cc",
+  "type": "bangumi",
+  "url": "cooing.cc.js",
+  "version": "v0.0.4",
+  "webSite": "https://cooing.cc"
  },
  {
   "author": "hualiong",

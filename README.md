@@ -23,12 +23,12 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
 | 哔哩轻小说 | bilinovel.com | v0.0.7 | hualiong | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bilinovel.com.js) |
 | 笔趣阁 | bqg.cc | v0.0.1 | yxxyun | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bqg.cc.js) |
-| 咕咕影视 | cc.cooing | v0.0.3 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cc.cooing.js) |
 | MyIPTV | client.iptv | v0.0.6 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/client.iptv.js) |
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | ComicExtra | comicextra | v0.0.1 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comicextra.js) |
 | Comick | comick.app | v0.0.5 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
+| 咕咕影视 | cooing.cc | v0.0.4 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cooing.cc.js) |
 | 次元城动漫 | cycanime.com | v0.1.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cycanime.com.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.7 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | DramaCool | dramacool.pa | v0.0.3 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dramacool.pa.js) |

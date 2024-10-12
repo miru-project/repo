@@ -800,16 +800,16 @@
   "webSite": "https://letv.im"
  },
  {
-  "author": "appdevelpo",
-  "icon": "https://xiaoxiaojia.oss-cn-shanghai.aliyuncs.com/statics/img/favicon.ico",
-  "lang": "zh",
+  "author": "hualiong",
+  "icon": "https://libvio.art/statics/img/favicon.ico",
+  "lang": "zh-cn",
   "license": "MIT",
   "name": "libvio",
-  "package": "libvio.pro",
+  "package": "libvio.app",
   "type": "bangumi",
-  "url": "libvio.pro.js",
-  "version": "v0.0.2",
-  "webSite": "https://www.libvio.pro"
+  "url": "libvio.app.js",
+  "version": "v0.0.3",
+  "webSite": "https://www.libvio.app"
  },
  {
   "author": "bethro",

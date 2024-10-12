@@ -260,7 +260,7 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const res = await this.request(url);
+    const res = await this.$req(url);
     const player = JSON.parse(res.match(/var player_aaaa=({.+?})</)[1]);
     const raw = decodeURIComponent(player.encrypt == 2 ? this.base64decode(player.url) : player.url);
     const resp = await this.$req(`/player/ec.php?code=qw&url=${raw}`, {

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Komiic漫畫
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       hualiong
 // @lang         zh-tw
 // @license      MIT
@@ -63,15 +63,15 @@ export default class extends Extension {
 
   // =============================== 分割线 ============================== //
 
-  async load() {
-    try {
-      await this.request("/api/image/076f7800-7ac6-41dd-9ffd-0362bdb93a13", {
-        headers: { Referer: "https://komiic.com/comic/2487/chapter/74408/images/all" },
-      });
-    } catch (error) {
-      this.flag = true;
-    }
-  }
+  // async load() {
+  //   try {
+  //     await this.request("/api/image/076f7800-7ac6-41dd-9ffd-0362bdb93a13", {
+  //       headers: { Referer: "https://komiic.com/comic/2487/chapter/74408/images/all" },
+  //     });
+  //   } catch (error) {
+  //     this.flag = true;
+  //   }
+  // }
 
   // async createFilter() {
   //   const response = await this.request("/api/image/076f7800-7ac6-41dd-9ffd-0362bdb93a13", {

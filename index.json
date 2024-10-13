@@ -731,7 +731,7 @@
   "package": "komiic.com",
   "type": "manga",
   "url": "komiic.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://komiic.com"
  },
  {
@@ -1135,7 +1135,7 @@
   "package": "nyacg.net",
   "type": "bangumi",
   "url": "nyacg.net.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://www.nyacg.net"
  },
  {

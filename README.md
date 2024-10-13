@@ -52,7 +52,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 聚小说 | juxiaoshuo | v0.0.1 | OshekharO | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/juxiaoshuo.js) |
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |
 | Kisskh | kisskh.co | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
-| Komiic漫畫 | komiic.com | v0.0.1 | hualiong | zh-tw | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiic.com.js) |
+| Komiic漫畫 | komiic.com | v0.0.2 | hualiong | zh-tw | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiic.com.js) |
 | Komikcast | komikcast.lol | v0.0.1 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komikcast.lol.js) |
 | Komiku.com | komiku.com | v0.0.1 | Nazz | id | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiku.com.js) |
 | Kuromanhua.xyz | komiku.com | v0.0.1 | ZenZEE | id | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kuromanhua.xyz.js) |
@@ -80,7 +80,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Nimegami | nimegami.id | v0.0.2 | JerukPurut404 | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nimegami.id.js) |
 | Nyaa | nyaa.si | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyaa.si.js) |
-| NyaFun动漫 | nyacg.net | v0.0.4 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyacg.net.js) |
+| NyaFun动漫 | nyacg.net | v0.0.5 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyacg.net.js) |
 | Otakudesu | otakudesu | v0.0.1 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/otakudesu.js) |
 | Piped | piped.video | v0.0.1 | bethro | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/piped.video.js) |
 | Ravenscans | ravenscans.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ravenscans.com.js) |

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         NyaFun动漫
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -11,15 +11,31 @@
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
-  
+  decrypt = {
+    filter: () => {
+      const time = Math.ceil(new Date().getTime() / 1000);
+      return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
+    },
+    player: (src, key) => {
+      let ut = CryptoJS.enc.Utf8.parse("2890" + key + "tB959C"),
+        mm = CryptoJS.enc.Utf8.parse("2F131BE91247866E"),
+        decrypted = CryptoJS.AES.decrypt(src, ut, {
+          iv: mm,
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7,
+        });
+      return CryptoJS.enc.Utf8.stringify(decrypted);
+    },
+  };
+
   text(element) {
     const str = [...element.content.matchAll(/>([^<]+?)</g)]
-    .map((m) => m[1])
-    .join("")
-    .trim();
+      .map((m) => m[1])
+      .join("")
+      .trim();
     return this.textParser(str);
   }
-  
+
   textParser(str) {
     const dict = new Map([
       ["&nbsp;", " "],
@@ -30,17 +46,6 @@ export default class extends Extension {
       ["&sdot;", "·"],
     ]);
     return str.replace(/&[a-z]+;/g, (c) => dict.get(c) || c);
-  }
-
-  decrypt(src, key) {
-    let ut = CryptoJS.enc.Utf8.parse("2890" + key + "tB959C"),
-      mm = CryptoJS.enc.Utf8.parse("2F131BE91247866E"),
-      decrypted = CryptoJS.AES.decrypt(src, ut, {
-        iv: mm,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
-      });
-    return CryptoJS.enc.Utf8.stringify(decrypted);
   }
 
   base64decode(str) {
@@ -74,28 +79,42 @@ export default class extends Extension {
   }
 
   async select(page, filter) {
-    const res = await this.$req(
-      `/show/${filter.channels[0] || 1}${filter.genres[0] ? "/class/" + filter.genres[0] : ""}/page/${page}${
-        filter.years[0] ? "/year/" + filter.years[0] : ""
-      }.html`
-    );
-    const list = await this.querySelectorAll(res, ".public-list-box");
-    if (list === null) return [];
-    const videos = list.map(async (e) => {
-      const label = await this.querySelector(e.content, ".public-list-exp");
-      const title = await label.getAttributeText("title");
-      const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
-      const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
-      const url = await label.getAttributeText("href");
-      return {
-        title,
-        url: `${url.match(/\/bangumi\/\d+\.html/)[0]}|${title}|${cover}`,
-        cover,
-        update
-      };
+    const { time, key } = this.decrypt.filter();
+    const res = await this.$req("/index.php/api/vod", {
+      method: "post",
+      data: { type: filter.channels[0], class: filter.genres[0], year: filter.years[0], page, time, key },
     });
-    return await Promise.all(videos);
+    return res.list.map((e) => ({
+      title: e.vod_name,
+      url: `/bangumi/${e.vod_id}.html|${e.vod_name}|${e.vod_pic}`,
+      cover: e.vod_pic,
+      update: e.vod_remarks,
+    }));
   }
+
+  // async select(page, filter) {
+  //   const res = await this.$req(
+  //     `/show/${filter.channels[0] || 1}${filter.genres[0] ? "/class/" + filter.genres[0] : ""}/page/${page}${
+  //       filter.years[0] ? "/year/" + filter.years[0] : ""
+  //     }.html`
+  //   );
+  //   const list = await this.querySelectorAll(res, ".public-list-box");
+  //   if (list === null) return [];
+  //   const videos = list.map(async (e) => {
+  //     const label = await this.querySelector(e.content, ".public-list-exp");
+  //     const title = await label.getAttributeText("title");
+  //     const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
+  //     const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
+  //     const url = await label.getAttributeText("href");
+  //     return {
+  //       title,
+  //       url: `${url.match(/\/bangumi\/\d+\.html/)[0]}|${title}|${cover}`,
+  //       cover,
+  //       update,
+  //     };
+  //   });
+  //   return await Promise.all(videos);
+  // }
 
   // =============================== 分割线 ============================== //
 
@@ -165,13 +184,23 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const res = await this.$req(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
-    return res.list.map((e) => ({
-      title: e.vod_name,
-      url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
-      cover: e.vod_pic,
-      update: e.vod_remarks,
-    }));
+    try {
+      const res = await this.$req(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
+      return res.list.map((e) => ({
+        title: e.vod_name,
+        url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
+        cover: e.vod_pic,
+        update: e.vod_remarks,
+      }));
+    } catch (error) {
+      return [
+        {
+          title: "请先进入此详细页点击 Webview 窗口输入验证码后才能正常使用该扩展",
+          url: "/",
+          cover: null,
+        },
+      ];
+    }
   }
 
   async search(kw, page, filter) {
@@ -196,6 +225,13 @@ export default class extends Extension {
   }
 
   async detail(str) {
+    if (str === "/") {
+      return {
+        title: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+        cover: null,
+        desc: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+      };
+    }
     const data = str.split("|");
     const res = await this.$req(data[0]);
     const desc = this.textParser(res.match(/\bid="height_limit".*?>([\s\S]*?)</)[1]);
@@ -217,7 +253,7 @@ export default class extends Extension {
       const urls = (await this.querySelectorAll(source.content, "a")).map((a) => {
         const match = reg.exec(a.content);
         return { name: match[2], url: match[1] };
-      })
+      });
       return { title: labels[i], urls };
     });
     return { title: data[1], cover: data[2], desc, episodes: await Promise.all(episodes) };
@@ -226,12 +262,12 @@ export default class extends Extension {
   async watch(url) {
     const res = await this.$req(url);
     const player = JSON.parse(res.match(/var player_aaaa=({.+?})</)[1]);
-    const raw = decodeURIComponent(player.encrypt ? this.base64decode(player.url) : player.url);
+    const raw = decodeURIComponent(player.encrypt == 2 ? this.base64decode(player.url) : player.url);
     const resp = await this.$req(`/player/ec.php?code=qw&url=${raw}`, {
       headers: { "Miru-Url": "https://play.nyacg.net", Referer: "https://www.nyacg.net" },
     });
     const json = JSON.parse(resp.match(/let ConFig = ({.+})/)[1]);
-    const link = this.decrypt(json.url, json.config.uid);
+    const link = this.decrypt.player(json.url, json.config.uid);
     console.log(link);
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }

@@ -356,7 +356,7 @@
  },
  {
   "author": "hualiong",
-  "icon": "https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
+  "icon": "https://www.cyc-anime.net/upload/site/20240319-1/25e700991446a527804c82a744731b60.png",
   "lang": "zh-cn",
   "license": "MIT",
   "name": "次元城动漫",
@@ -364,8 +364,8 @@
   "package": "cycanime.com",
   "type": "bangumi",
   "url": "cycanime.com.js",
-  "version": "v0.1.1",
-  "webSite": "https://www.cycanime.com"
+  "version": "v0.1.2",
+  "webSite": "https://www.cyc-anime.net"
  },
  {
   "author": "MiaoMint",

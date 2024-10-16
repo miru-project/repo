@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         次元城动漫
-// @version      v0.1.1
+// @version      v0.1.2
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://www.cycanime.com/upload/site/20240319-1/25e700991446a527804c82a744731b60.png
+// @icon         https://www.cyc-anime.net/upload/site/20240319-1/25e700991446a527804c82a744731b60.png
 // @package      cycanime.com
 // @type         bangumi
-// @webSite      https://www.cycanime.com
+// @webSite      https://www.cyc-anime.net
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
@@ -20,21 +20,27 @@ export default class extends Extension {
     ["&sdot;", "·"],
   ]);
 
-  decrypt(src, key1, key2) {
-    let prefix = new Array(key2.length);
-    for (let i = 0; i < key2.length; i++) {
-      prefix[key1[i]] = key2[i];
-    }
-    let a = CryptoJS.MD5(prefix.join("") + "YLwJVbXw77pk2eOrAnFdBo2c3mWkLtodMni2wk81GCnP94ZltW").toString(),
-      key = CryptoJS.enc.Utf8.parse(a.substring(16)),
-      iv = CryptoJS.enc.Utf8.parse(a.substring(0, 16)),
-      dec = CryptoJS.AES.decrypt(src, key, {
-        iv: iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
-      });
-    return dec.toString(CryptoJS.enc.Utf8);
-  }
+  decrypt = {
+    filter: () => {
+      const time = Math.ceil(new Date().getTime() / 1000);
+      return { time, key: CryptoJS.MD5("DS" + time + "DCC147D11943AF75").toString() }; // EC.Pop.Uid: DCC147D11943AF75
+    },
+    player: (src, key1, key2) => {
+      let prefix = new Array(key2.length);
+      for (let i = 0; i < key2.length; i++) {
+        prefix[key1[i]] = key2[i];
+      }
+      let a = CryptoJS.MD5(prefix.join("") + "YLwJVbXw77pk2eOrAnFdBo2c3mWkLtodMni2wk81GCnP94ZltW").toString(),
+        key = CryptoJS.enc.Utf8.parse(a.substring(16)),
+        iv = CryptoJS.enc.Utf8.parse(a.substring(0, 16)),
+        dec = CryptoJS.AES.decrypt(src, key, {
+          iv: iv,
+          mode: CryptoJS.mode.CBC,
+          padding: CryptoJS.pad.Pkcs7,
+        });
+      return dec.toString(CryptoJS.enc.Utf8);
+    },
+  };
 
   text(content) {
     if (!content) return "";
@@ -72,7 +78,7 @@ export default class extends Extension {
   }
 
   async select(page, filter) {
-    const { time, key } = this.decrypt();
+    const { time, key } = this.decrypt.filter();
     const res = await this.$req("/index.php/api/vod", {
       method: "post",
       data: { type: filter.channels[0], class: filter.genres[0], year: filter.years[0], page, time, key },
@@ -198,9 +204,9 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const resp = await this.request(`/?url=${url}`, { headers: { "Miru-Url": "https://player.cycanime.com" } });
+    const resp = await this.request(`/?url=${url}`, { headers: { "Miru-Url": "https://player.cyc-anime.net" } });
     const reg = /now_(\w+)/g;
-    const link = this.decrypt(resp.match(/"url": "([^:]+?)"/)[1], reg.exec(resp)[1], reg.exec(resp)[1]);
+    const link = this.decrypt.player(resp.match(/"url": "([^:]+?)"/)[1], reg.exec(resp)[1], reg.exec(resp)[1]);
     console.log(link);
     return { type: link.indexOf(".mp4") > 0 ? "mp4" : "hls", url: link };
   }

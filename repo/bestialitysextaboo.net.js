@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         BestialitySexTaboo
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       javxsub.com
 // @lang         en
 // @license      MIT
@@ -89,8 +89,9 @@ if (page == 1) {
     const strippedpath = url.replace(/^(https?:\/\/)?([^\/]+)(\/.*)?/, '$3');
     const res    = await this.request(strippedpath);
     const title  = await this.querySelector(res, 'h1').text;
-    const cover  = await this.querySelector(res, 'meta[property="og:image"]').getAttributeText("content");
-    const desc   = await this.querySelector(res, 'div.content-info:nth-child(5) > span').text;
+    const covst  = await this.querySelector(res, 'img[alt="Thumb 1"]').getAttributeText("src");
+    const cover  = await covst.match(/.*\//)+"player.jpg";
+    const desc   = await this.querySelector(res, 'div.content-info > span').text;
     const user   = await this.querySelector(res, 'div.content-info > a > strong').text;
     //const video  = await this.querySelector(res, 'source[type="video\/mp4"]').getAttributeText("src");
     const videos = await this.querySelector(res, 'video[id="player-fluid"]').innerHTML;
@@ -109,7 +110,7 @@ if (page == 1) {
 
     return {
       title: title.trim(),
-      cover: cover.match(/.*\//)+"player.jpg",
+      cover: cover,
       desc,
       episodes: [
         {

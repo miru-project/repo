@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         BestialitySexTaboo
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       javxsub.com
 // @lang         en
 // @license      MIT

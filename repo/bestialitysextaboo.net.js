@@ -115,11 +115,11 @@ if (page == 1) {
         {
           title: user.trim(),
           urls: [{
-            name: result[0].substring(video.length-9, video.length-4).replace("_", ""),
+            name: result[0].substring(result[0].length-9, result[0].length-4).replace("_", ""),
             url: result[0],
          },
          {
-            name: result[nomer].substring(video.length-9, video.length-4).replace("_", ""),
+            name: result[nomer].substring(result[nomer].length-9, result[nomer].length-4).replace("_", ""),
             url: result[nomer],
          }]
         },

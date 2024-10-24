@@ -39,7 +39,7 @@ export default class extends Extension {
                 title: title,
                 url: url,
                 cover: cover,
-                update: updt
+                update: updt.trim(),
             });
         }
     }
@@ -66,7 +66,7 @@ export default class extends Extension {
                 title: title,
                 url: url,
                 cover: cover,
-                update: updt
+                update: updt.trim(),
             });
         }
     }

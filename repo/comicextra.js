@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         ComicExtra
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @icon         https://comicextra.me/favicon.ico
 // @package      comicextra
 // @type         manga
-// @webSite      https://comicextra.me
+// @webSite      https://comixextra.com
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
    key: "comicextra",
    type: "input",
    description: "Homepage URL for ComicExtra",
-   defaultValue: "https://comicextra.me",
+   defaultValue: "https://comixextra.com",
   });
 
   this.registerSetting({

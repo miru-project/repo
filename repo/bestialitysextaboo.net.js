@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         BestialitySexTaboo
-// @version      v0.0.5
+// @version      v0.0.4
 // @author       javxsub.com
 // @lang         en
 // @license      MIT
@@ -73,7 +73,7 @@ export default class extends Extension {
         const cover = await covst.match(/.*\//) + "player.jpg";
         const desc1 = await this.querySelector(res, 'meta[property="og:description"]').getAttributeText("content");
         const desc2 = await this.querySelector(res, 'div.content-info > span').text;
-        if (desc1 == desc2) {
+        if (desc1 == title.trim()) {
             var desc = desc2;
         } else {
             var desc = desc1;

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         奥斯卡资源站
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -100,10 +100,11 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (!kw && !(filter.genres && filter.genres[0])) {
+    if (kw) throw new Error("该站不支持搜索！");
+    if (!(filter?.genres?.[0])) {
       return this.latest(page);
     }
-    const res = await this.$get(`&wd=${kw}&t=${filter.genres[0] ?? ""}&pg=${page}`);
+    const res = await this.$get(`&t=${filter?.genres?.[0] ?? ""}&pg=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

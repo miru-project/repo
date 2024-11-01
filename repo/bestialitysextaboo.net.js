@@ -73,10 +73,10 @@ export default class extends Extension {
         const cover = await covst.match(/.*\//) + "player.jpg";
         const desc1 = await this.querySelector(res, 'meta[property="og:description"]').getAttributeText("content");
         const desc2 = await this.querySelector(res, 'div.content-info > span').text;
-        if (desc2 == desc1) {
-            var desc = desc1;
-        } else {
+        if (desc1 == desc2) {
             var desc = desc2;
+        } else {
+            var desc = desc1;
         }
         const video = await this.querySelectorAll(res, 'video#player-fluid > source');
 

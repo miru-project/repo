@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         BestialitySexTaboo
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       javxsub.com
 // @lang         en
 // @license      MIT
@@ -71,201 +71,38 @@ export default class extends Extension {
         const title = await this.querySelector(res, 'h1').text;
         const covst = await this.querySelector(res, 'img[alt="Thumb 1"]').getAttributeText("src");
         const cover = await covst.match(/.*\//) + "player.jpg";
-        const desc = await this.querySelector(res, 'div.content-info > span').text;
-        const user = await this.querySelector(res, 'div.content-info > a > strong').text;
-        //const video  = await this.querySelector(res, 'source[type="video\/mp4"]').getAttributeText("src");
-        const videos = await this.querySelector(res, 'video[id="player-fluid"]').innerHTML;
-        const jsonRegex = /https[^"]*/gm
-        const result = videos.match(jsonRegex);
-        const nomer = result.length;
+        const desc1 = await this.querySelector(res, 'meta[property="og:description"]').getAttributeText("content");
+        const desc2 = await this.querySelector(res, 'div.content-info > span').text;
+        if (desc2 == desc1) {
+            var desc = desc1;
+        } else {
+            var desc = desc2;
+        }
+        const video = await this.querySelectorAll(res, 'video#player-fluid > source');
 
-        function resolusi(url) {
-            return url.substring(url.length - 9, url.length - 4).replace("_", "").trim();
+        const episodes = [];
+        for (const element of video) {
+            const html = await element.content;
+            const name = await this.querySelector(html, "source").getAttributeText("title");
+            const url = await this.querySelector(html, "source").getAttributeText("src");
+            if (name && url) {
+                episodes.push({
+                        title: name,
+                        urls: [{
+                            name: "[" + name + "] " + title,
+                            url: url
+                        }]
+                    }
+
+                );
+            }
         }
 
-        if (nomer == 2) {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                            name: resolusi(result[0]),
-                            url: result[0],
-                        },
-                        {
-                            name: resolusi(result[1]),
-                            url: result[1],
-                        }
-                    ]
-                }]
-            }
-        } else if (nomer == 3) {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                            name: resolusi(result[0]),
-                            url: result[0],
-                        },
-                        {
-                            name: resolusi(result[1]),
-                            url: result[1],
-                        },
-                        {
-                            name: resolusi(result[2]),
-                            url: result[2],
-                        }
-                    ]
-                }]
-            }
-        } else if (nomer == 4) {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                            name: resolusi(result[0]),
-                            url: result[0],
-                        },
-                        {
-                            name: resolusi(result[1]),
-                            url: result[1],
-                        },
-                        {
-                            name: resolusi(result[2]),
-                            url: result[2],
-                        },
-                        {
-                            name: resolusi(result[3]),
-                            url: result[3],
-                        }
-                    ]
-                }]
-            }
-
-        } else if (nomer == 5) {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                            name: resolusi(result[0]),
-                            url: result[0],
-                        },
-                        {
-                            name: resolusi(result[1]),
-                            url: result[1],
-                        },
-                        {
-                            name: resolusi(result[2]),
-                            url: result[2],
-                        },
-                        {
-                            name: resolusi(result[3]),
-                            url: result[3],
-                        },
-                        {
-                            name: resolusi(result[4]),
-                            url: result[4],
-                        }
-                    ]
-                }]
-            }
-
-        } else if (nomer == 6) {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                            name: resolusi(result[0]),
-                            url: result[0],
-                        },
-                        {
-                            name: resolusi(result[1]),
-                            url: result[1],
-                        },
-                        {
-                            name: resolusi(result[2]),
-                            url: result[2],
-                        },
-                        {
-                            name: resolusi(result[3]),
-                            url: result[3],
-                        },
-                        {
-                            name: resolusi(result[4]),
-                            url: result[4],
-                        },
-                        {
-                            name: resolusi(result[5]),
-                            url: result[5],
-                        }
-                    ]
-                }]
-            }
-        } else if (nomer == 7) {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                            name: resolusi(result[0]),
-                            url: result[0],
-                        },
-                        {
-                            name: resolusi(result[1]),
-                            url: result[1],
-                        },
-                        {
-                            name: resolusi(result[2]),
-                            url: result[2],
-                        },
-                        {
-                            name: resolusi(result[3]),
-                            url: result[3],
-                        },
-                        {
-                            name: resolusi(result[4]),
-                            url: result[4],
-                        },
-                        {
-                            name: resolusi(result[5]),
-                            url: result[5],
-                        },
-                        {
-                            name: resolusi(result[6]),
-                            url: result[6],
-                        }
-                    ]
-                }]
-            }
-        } else {
-            return {
-                title: title.trim(),
-                cover: cover,
-                desc,
-                episodes: [{
-                    title: "Video",
-                    urls: [{
-                        name: resolusi(result[0]),
-                        url: result[0],
-                    }]
-                }]
-            }
+        return {
+            title: title.trim(),
+            cover: cover,
+            desc: desc,
+            episodes: episodes
         }
     }
 

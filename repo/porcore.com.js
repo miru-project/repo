@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         PorCore
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       javxsub.com
 // @lang         en
 // @license      MIT
@@ -12,14 +12,6 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-
-    async req(url) {
-        const res = await this.request("", {
-            "Miru-Url": url,
-        });
-        return url;
-    }
-
     async createFilter(filter) {
         const filters = {
             sort_by: {
@@ -43,66 +35,59 @@ export default class extends Extension {
     }
 
     async latest(page) {
-        // Latest updates
         const url = `/?ajax&p=${page}`;
         const res = await this.request(url);
         const videoList = await this.querySelectorAll(res, "div.onevideothumb");
         const videos = [];
-
         for (const element of videoList) {
             const html = await element.content;
             const title = await this.getAttributeText(html, "h5", "title");
             const url = await this.getAttributeText(html, "a", "href");
             const cover = await this.getAttributeText(html, "img.flipbookimages", "src");
             const updt = await this.querySelector(html, "div.floatlefttop").text;
-
             if (title && url && cover && cover.includes("res.php")) {
                 videos.push({
                     title: title,
                     url: url,
                     cover: cover,
-                    update: updt.trim(),
+                    update: updt.trim()
                 });
             }
         }
-
         return videos;
     }
 
     async search(kw, page, filter) {
-        // Search
         if (kw) {
             var search_string = `/show/${kw}?p=${page}`;
         } else {
             var search_string = `/?ajax&p=${page}`;
         }
-        search_string += filter['sort_by']
+        if (filter) {
+            search_string += filter['sort_by']
+        }
         const res = await this.request(search_string);
         const videoList = await this.querySelectorAll(res, "div.onevideothumb");
         const videos = [];
-
         for (const element of videoList) {
             const html = await element.content;
             const title = await this.getAttributeText(html, "h5", "title");
             const url = await this.getAttributeText(html, "a", "href");
             const cover = await this.getAttributeText(html, "img.flipbookimages", "src");
             const updt = await this.querySelector(html, "div.floatlefttop").text;
-
             if (title && url && cover && cover.includes("res.php")) {
                 videos.push({
                     title: title,
                     url: url,
                     cover: cover,
-                    update: updt.trim(),
+                    update: updt.trim()
                 });
             }
         }
-
         return videos;
     }
 
     async detail(url) {
-        // Details
         const strippedpath = url.replace(/^(https?:\/\/)?([^\/]+)(\/.*)?/, '$3');
         const res = await this.request(strippedpath);
         const title = await this.querySelector(res, 'h1').text;
@@ -118,16 +103,16 @@ export default class extends Extension {
                 title: user.trim(),
                 urls: [{
                     name: title.trim(),
-                    url: video,
+                    url: video
                 }]
-            }, ],
+            }]
         };
     }
 
     async watch(url) {
         return {
             type: "hls",
-            url: url || "",
+            url: url || ""
         };
     }
 }

@@ -64,13 +64,12 @@ export default class extends Extension {
         const title = await this.querySelector(res, 'h1').text;
         const cover = await this.querySelector(res, 'meta[property="og:image"]').getAttributeText("content");
         const desc = await this.querySelector(res, 'meta[property="og:description"]').getAttributeText("content");
-        const jsonRegex = /le":"h[^"]*/gm
-        const result = res.match(jsonRegex);
+        const regex = /"file":"(.*?)","label":"(.*?)"/g;
+        const result = res.matchAll(regex);
         const episodes = [];
         for (const element of result) {
-            var raw = element.replace('le":"', '');
-            var name = raw.match(/_[^.]*/gm)[0].substr(1, 6);
-            var url = raw;
+            var name = element[2];
+            var url = element[1];
             if (name && url) {
                 episodes.push({
                         title: name,
@@ -83,7 +82,6 @@ export default class extends Extension {
                 );
             }
         }
-
         return {
             title: title.trim(),
             cover: cover,

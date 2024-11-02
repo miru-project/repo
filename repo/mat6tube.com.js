@@ -13,7 +13,7 @@
 
 export default class extends Extension {
     async latest(page) {
-        const url = `/video/fc2?sort=0&p=${page}`;
+        const url = `/video/fc2?sort=0&p=${page-1}`;
         const res = await this.request(url);
         const videoList = await this.querySelectorAll(res, "div.item");
         const videos = [];
@@ -36,7 +36,7 @@ export default class extends Extension {
     }
 
     async search(kw, page) {
-        const url = `/video/${kw}?p=${page}`;
+        const url = `/video/${kw}?p=${page-1}`;
         const res = await this.request(url);
         const videoList = await this.querySelectorAll(res, "div.item");
         const videos = [];

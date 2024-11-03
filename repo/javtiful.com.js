@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Javtiful
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       javxsub.com
 // @lang         en
 // @license      MIT
@@ -27,7 +27,7 @@ export default class extends Extension {
                 videos.push({
                     title: title.trim(),
                     url: url,
-                    cover: cover,
+                    cover: cover.replace('//', '//i1.wp.com/')+"?crop=53,0,53,288",
                     update: updt.trim()
                 });
             }
@@ -50,7 +50,7 @@ export default class extends Extension {
                 videos.push({
                     title: title.trim(),
                     url: url,
-                    cover: cover,
+                    cover: cover.replace('//', '//i1.wp.com/')+"?crop=53,0,53,288",
                     update: updt.trim()
                 });
             }

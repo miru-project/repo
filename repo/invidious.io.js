@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         Invidious
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       OshekharO
 // @lang         all
 // @license      MIT
 // @icon         https://invidious.io/apple-touch-icon.png
 // @package      invidious.io
 // @type         bangumi
-// @webSite      https://iv.ggtyler.dev/api/v1
+// @webSite      https://cal1.iv.ggtyler.dev/api/v1
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -38,7 +38,7 @@ export default class extends Extension {
   async detail(url) {
     const res = await this.request(`/videos/${url}`, {
     headers: {
-      "Miru-Url": "https://vid.puffyan.us/api/v1",
+      "Miru-Url": "https://cal1.iv.ggtyler.dev/api/v1",
     },
     });    
   

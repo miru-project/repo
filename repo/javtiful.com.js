@@ -36,7 +36,7 @@ export default class extends Extension {
     }
 
     async search(kw, page) {
-        const url = `/search/sort=newest/videos?search_query=${kw}&page=${page}`;
+        const url = `/search/videos?search_query=${kw}&page=${page}`;
         const res = await this.request(url);
         const videoList = await this.querySelectorAll(res, "div.pb-3 > div.card");
         const videos = [];

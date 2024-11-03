@@ -365,8 +365,8 @@
   "package": "comick.app",
   "type": "manga",
   "url": "comick.app.js",
-  "version": "v0.0.5",
-  "webSite": "https://api.comick.io"
+  "version": "v0.0.6",
+  "webSite": "https://api.comick.fun"
  },
  {
   "author": "MiaoMint",

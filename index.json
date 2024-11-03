@@ -712,6 +712,19 @@
   "webSite": "https://javhd.icu"
  },
  {
+  "author": "javxsub.com",
+  "icon": "https://javtiful.com/favicon.ico",
+  "lang": "en",
+  "license": "MIT",
+  "name": "Javtiful",
+  "nsfw": "true",
+  "package": "javtiful.com",
+  "type": "bangumi",
+  "url": "javtiful.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://javtiful.com"
+ },
+ {
   "author": "hualiong",
   "icon": "https://www.jisuzy.com/template/default/images/site_logo.png",
   "lang": "zh-cn",

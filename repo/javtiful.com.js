@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Javtiful
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       javxsub.com
 // @lang         en
 // @license      MIT
@@ -27,7 +27,7 @@ export default class extends Extension {
                 videos.push({
                     title: title.trim(),
                     url: url,
-                    cover: cover,
+                    cover: cover.replace('//', '//i1.wp.com/')+"?crop=53,0,53,288",
                     update: updt.trim()
                 });
             }
@@ -36,7 +36,7 @@ export default class extends Extension {
     }
 
     async search(kw, page) {
-        const url = `/search/sort=newest/videos?search_query=${kw}&page=${page}`;
+        const url = `/search/videos?search_query=${kw}&page=${page}`;
         const res = await this.request(url);
         const videoList = await this.querySelectorAll(res, "div.pb-3 > div.card");
         const videos = [];
@@ -50,7 +50,7 @@ export default class extends Extension {
                 videos.push({
                     title: title.trim(),
                     url: url,
-                    cover: cover,
+                    cover: cover.replace('//', '//i1.wp.com/')+"?crop=53,0,53,288",
                     update: updt.trim()
                 });
             }

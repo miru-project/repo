@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         iKun资源
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -103,10 +103,10 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (!kw && !(filter.genres && filter.genres[0])) {
+    if (!kw && !(filter?.genres?.[0])) {
       return this.latest(page);
     }
-    const res = await this.$get(`&wd=${kw}&t=${filter.genres[0] ?? ""}&pg=${page}`);
+    const res = await this.$get(`&wd=${kw}&t=${filter?.genres?.[0] ?? ""}&pg=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

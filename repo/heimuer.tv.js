@@ -1,19 +1,23 @@
 // ==MiruExtension==
-// @name         橘猫资源
-// @version      v0.0.1
+// @name         黑木耳资源
+// @version      v0.0.2
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://to-long.com/favicon.ico
-// @package      to-long.com
+// @icon         https://heimuer.tv/favicon.ico
+// @package      heimuer.tv
 // @type         bangumi
-// @webSite      https://to-long.com
-// @nsfw         true
+// @webSite      https://heimuer.tv
+// @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
-  domains = ["to-long.com", "xoxoxo.vip"];
+  domains = [
+    "heimuer.tv",
+    "json.heimuer.xyz",
+    "json02.heimuer.xyz",
+  ];
 
   dict = new Map([
     ["&nbsp;", " "],
@@ -34,7 +38,7 @@ export default class extends Extension {
     return str.replace(/&[a-z]+;/g, (c) => this.dict.get(c) || c);
   }
 
-  async $get(params, count = 2, timeout = 4000) {
+  async $get(params, count = 3, timeout = 4000) {
     try {
       const list = this.domains.map((domain) =>
         this.request("/api.php/provide/vod?ac=detail" + params, {
@@ -79,7 +83,7 @@ export default class extends Extension {
 
   async latest(page) {
     const h = (new Date().getUTCHours() + 9) % 24;
-    const res = await this.$get(`&pg=${page}&h=${h || 24}`, 3, 8000);
+    const res = await this.$get(`&pg=${page}&h=${h || 24}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,
@@ -89,10 +93,10 @@ export default class extends Extension {
   }
 
   async search(kw, page, filter) {
-    if (!kw && !(filter.genres && filter.genres[0])) {
+    if (!kw && !(filter?.genres?.[0])) {
       return this.latest(page);
     }
-    const res = await this.$get(`&wd=${kw}&t=${filter.genres[0] ?? ""}&pg=${page}`);
+    const res = await this.$get(`&wd=${kw}&t=${filter?.genres?.[0] ?? ""}&pg=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

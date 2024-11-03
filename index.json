@@ -168,14 +168,14 @@
  },
  {
   "author": "bethro",
-  "icon": "https://asuracomic.net/images/logo.png",
+  "icon": "https://asuracomic.net/images/logo.webp",
   "lang": "en",
   "license": "MIT",
   "name": "AsuraScan",
   "package": "asuratoon.com",
   "type": "manga",
   "url": "asuratoon.com.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://asuracomic.net"
  },
  {

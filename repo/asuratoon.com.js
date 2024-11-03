@@ -1,10 +1,10 @@
 // ==MiruExtension==
 // @name         AsuraScan
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       bethro
 // @lang         en
 // @license      MIT
-// @icon         https://asuracomic.net/images/logo.png
+// @icon         https://asuracomic.net/images/logo.webp
 // @package      asuratoon.com
 // @type         manga
 // @webSite      https://asuracomic.net
@@ -38,14 +38,14 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const res = await this.req(`/page/${page}/`);
-    const latest = await this.querySelectorAll(res, "div.grid.grid-rows-1.grid-cols-1.sm\\:grid-cols-2 > div");
+    const res = await this.req(`/series?page=${page}/`);
+    const latest = await this.querySelectorAll(res, "div.grid.grid-cols-2 > a");
 
     let comic = [];
     for (const element of latest) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "span.text-\\[15px\\].font-medium a").text;
+      const title = await this.querySelector(html, "span.block").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
 
       comic.push({

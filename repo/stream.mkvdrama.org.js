@@ -13,14 +13,15 @@
 
 export default class extends Extension {
   async latest(page) {
-    const res = await this.request(`/?page=${page}`);
-    const bsxList = await this.querySelectorAll(res, "div.list-upd > a");
+    const res = await this.request(`/popular?page=${page}`);
+    const bsxList = await this.querySelectorAll(res, "div.list-upd > div.drama-item");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
       const title = await this.querySelector(html, "b").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
+
       novel.push({
         title: title.trim(),
         url: "https://stream.mkvdrama.org" + url,
@@ -32,14 +33,14 @@ export default class extends Extension {
 
   async search(kw) {
     const res = await this.request(`/search.html?keyword=${kw}`);
-    const bsxList = await this.querySelectorAll(res, "div.drama-item");
+    const bsxList = await this.querySelectorAll(res, "div.list-upd > div.drama-item");
     const novel = [];
-
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
       const title = await this.querySelector(html, "b").text;
       const cover = await this.querySelector(html, "img").getAttributeText("src");
+
       novel.push({
         title: title.trim(),
         url: "https://stream.mkvdrama.org" + url,
@@ -50,7 +51,7 @@ export default class extends Extension {
   }
 
   async detail(url) {
-    const res = await this.request('', {
+    const res = await this.request("", {
       headers: {
         "Miru-Url": url,
       },
@@ -58,19 +59,20 @@ export default class extends Extension {
 
     const title = await this.querySelector(res, "span.date").text;
     const cover = await this.querySelector(res, "img.episode-picture").getAttributeText("src");
-    const desc = res.match(/<div class="content-more-js" .*>([\s\S]+?)<\/div>/)[1].replace(/<\/?p[^>]*>/g,"").replace(/<\/?span[^>]*>/g,"");
-
+    const desc = await this.querySelector(res, "div.content-more-js > p").text;
     const episodes = [];
-    const epiList = res.match(/<article class="episode-card">([\s\S]+?)<\/article>/g);
-    
-    epiList.forEach((element) => {
-      const name = element.match(/<h2.*><h2.*>(.+?)<\/h2>/)[1];
-      const url = element.match(/href="([^"]+)"/)[1];
+    const epiList = await this.querySelectorAll(res, "div.episode-grid > article.episode-card");
+
+    for (const element of epiList) {
+      const html = await element.content;
+      const name = await this.querySelector(html, "h2").text;
+      const url = await this.getAttributeText(html, "a", "href");
+
       episodes.push({
-        name,
+        name: name.trim(),
         url,
       });
-    });
+    }
 
     return {
       title: title.trim(),
@@ -86,13 +88,13 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const res = await this.request('', {
-      headers: {
-        "Miru-Url": `https://stream.mkvdrama.org${url}`,
-      },
-    });
+    const res = await this.request("", {
+      headers: {
+        "Miru-Url": `https://stream.mkvdrama.org${url}`,
+      },
+    });
     const urlPatterns = [/<iframe id="iframe-to-load" src="(.+?)"/];
- 
+
     let episodeUrl = "";
 
     for (const pattern of urlPatterns) {
@@ -103,7 +105,7 @@ export default class extends Extension {
       }
     }
 
-    const iframeLinkRes = await this.request('', {
+    const iframeLinkRes = await this.request("", {
       headers: {
         "Miru-Url": "https://stream.mkvdrama.org" + episodeUrl,
       },
@@ -115,11 +117,11 @@ export default class extends Extension {
     return {
       type: "hls",
       url: directUrl || "",
-    headers: {
-        "referer": "https://stream.mkvdrama.org/",
-        "origin": "https://stream.mkvdrama.org",
+      headers: {
+        referer: "https://stream.mkvdrama.org/",
+        origin: "https://stream.mkvdrama.org",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.142.86 Safari/537.36",
-      }
+      },
     };
   }
 }

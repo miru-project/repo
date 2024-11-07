@@ -135,7 +135,32 @@ export default class extends Extension {
     return await Promise.all(videos);
   }
 
-  async search(kw, page, filter) {
+  async search(kw, page, filter, retryCount = 3) {
+    try {
+      if (!kw) return this.latest(page, filter);
+      const res = await this.$get(`/search?title=${encodeURI(kw)}&page=${page}`);
+      const list = await this.querySelectorAll(res, ".mh-list li");
+      if (list === null) {
+        return [];
+      }
+      let reg = /<span.*?>(.*?)<\/span>\s*?<a.*?>(.*?)<\/a>/;
+      const videos = list.map(async (e) => {
+        const cover = await this.getAttributeText(e.content, "img", "src");
+        const match = reg.exec((await this.querySelector(e.content, ".chapter")).content);
+        const title = this.text(await this.querySelector(e.content, ".title"));
+        const url = `${await this.getAttributeText(e.content, ".title a", "href")}|${title}|${cover}`;
+        return { title, url, cover, update: `${match[1]} | ${match[2].replace(title, "").trim()}` };
+      });
+      return await Promise.all(videos);
+    } catch (error) {
+      console.error(`Error in search: ${error.message}`);
+      if (retryCount > 0) {
+        console.log(`Retrying search... (${retryCount} attempts left)`);
+        return this.search(kw, page, filter, retryCount - 1);
+      } else {
+        throw new Error(`Failed to search after multiple attempts: ${error.message}`);
+      }
+    }
     if (!kw) return this.latest(page, filter);
     const res = await this.$get(`/search?title=${encodeURI(kw)}&page=${page}`);
     const list = await this.querySelectorAll(res, ".mh-list li");
@@ -151,7 +176,6 @@ export default class extends Extension {
       return { title, url, cover, update: `${match[1]} | ${match[2].replace(title, "").trim()}` };
     });
     return await Promise.all(videos);
-  }
 
   async detail(str) {
     const data = str.split("|");

@@ -1,10 +1,10 @@
 // ==MiruExtension==
 // @name         MoviesArc
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         all
 // @license      MIT
-// @icon         https://themoviearchive.site/favicons/apple-touch-icon.png
+// @icon         https://pbs.twimg.com/profile_images/1243623122089041920/gVZIvphd_400x400.jpg
 // @package      themoviearchive
 // @type         bangumi
 // @webSite      https://api.themoviedb.org/3
@@ -26,13 +26,6 @@ export default class extends Extension {
       type: "input",
       description: "MoviesArc Api Url",
       defaultValue: "https://api.themoviedb.org/3",
-    });
-    this.registerSetting({
-      title: "Preferred quality",
-      key: "prefQuality",
-      type: "input",
-      description: "Choose between 360/480/720/1080",
-      defaultValue: "auto",
     });
   }
 
@@ -83,54 +76,15 @@ export default class extends Extension {
     }));
   }
 
-  
   async watch(url) {
-  const quality = await this.getSetting("prefQuality");
-  const res = await this.request(`tmdbId=${url}`, {
-    headers: {
-      "Miru-Url": "https://flixquest-api.vercel.app/vidsrcto/watch-movie?",
-    },
-  });
-
-  // Check if sources are empty
-  if (!res.sources.length) {
-    const proxiedRes = await this.request(`tmdbId=${url}&proxied=true`, {
+    const res = await this.request(`${url}`, {
       headers: {
-        "Miru-Url": "https://flixquest-api.vercel.app/showbox/watch-movie?",
+        "Miru-Url": "https://vidsrc-api-js-eosin.vercel.app/vidsrc/",
       },
     });
-
-    if (!proxiedRes.sources.length) {
-      throw new Error("No sources available");
-    }
-
-    return {
-      type: "mp4",
-      url: proxiedRes.sources.pop().url,
-      subtitles: proxiedRes.subtitles.map((item) => ({
-        title: item.lang,
-        url: item.url,
-        language: item.lang,
-      })),
-    };
-  }
-
-  const prefQuality = res.sources.find((source) => source.quality === quality);
-
-  if (prefQuality) {
     return {
       type: "hls",
-      url: prefQuality.url,
-    };
-  } else {
-    return {
-      type: "mp4",
-      url: res.sources.pop().url,
-      subtitles: res.subtitles.map((item) => ({
-        title: item.lang,
-        url: item.url,
-        language: item.lang,
-      })),
+      url: res.sources[0].url,
     };
   }
-}}
+}

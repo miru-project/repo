@@ -97,7 +97,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | swatmanhua | swatmanhua.com | v0.0.1 | bethro | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/swatmanhua.com.js) |
 | TamilYogi | tamilyogi | v0.0.4 | appdevelpo | hi-ta | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/tamilyogi.js) |
 | TeamxNovel | teamxnovel.com | v0.0.1 | OshekharO | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/teamxnovel.com.js) |
-| MoviesArc | themoviearchive | v0.0.2 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/themoviearchive.js) |
+| MoviesArc | themoviearchive | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/themoviearchive.js) |
 | thunderscans | thunderscans.com | v0.0.1 | bethro | ar | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/thunderscans.com.js) |
 | 天空资源网 | tiankongzy.com | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/tiankongzy.com.js) |
 | TopCartoons | topcartoons.tv | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/topcartoons.tv.js) |

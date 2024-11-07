@@ -1576,14 +1576,14 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://themoviearchive.site/favicons/apple-touch-icon.png",
+  "icon": "https://pbs.twimg.com/profile_images/1243623122089041920/gVZIvphd_400x400.jpg",
   "lang": "all",
   "license": "MIT",
   "name": "MoviesArc",
   "package": "themoviearchive",
   "type": "bangumi",
   "url": "themoviearchive.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://api.themoviedb.org/3"
  },
  {

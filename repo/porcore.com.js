@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         PorCore
-// @version      v0.0.3
-// @author       javxsub.com
+// @version      v0.0.4
+// @author       ijs77
 // @lang         en
 // @license      MIT
 // @icon         https://porcore.com/favicon-96x96.png

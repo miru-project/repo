@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         Javtiful
-// @version      v0.0.2
-// @author       javxsub.com
+// @version      v0.0.3
+// @author       ijs77
 // @lang         en
 // @license      MIT
 // @icon         https://javtiful.com/favicon.ico

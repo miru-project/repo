@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         BestialitySexTaboo
-// @version      v0.0.5
-// @author       javxsub.com
+// @version      v0.0.6
+// @author       ijs77
 // @lang         en
 // @license      MIT
 // @icon         https://bestialitysextaboo.net/favicon.ico

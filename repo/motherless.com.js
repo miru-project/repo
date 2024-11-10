@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         Motherless
-// @version      v0.0.1
-// @author       javxsub.com
+// @version      v0.0.2
+// @author       ijs77
 // @lang         en
 // @license      MIT
 // @icon         https://motherless.com/favicon.ico

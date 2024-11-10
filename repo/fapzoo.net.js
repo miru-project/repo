@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         FapZoo
-// @version      v0.0.1
-// @author       javxsub.com
+// @version      v0.0.2
+// @author       ijs77
 // @lang         en
 // @license      MIT
 // @icon         https://i0.wp.com/fapzoo.net/wp-content/uploads/2024/04/favicon.png?fit=80,80&ssl=1

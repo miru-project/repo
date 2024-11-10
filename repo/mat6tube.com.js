@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         Mat6tube
-// @version      v0.0.1
-// @author       javxsub.com
+// @version      v0.0.2
+// @author       ijs77
 // @lang         en
 // @license      MIT
 // @icon         https://cdn.nmcorp.video/static/extend/dark/favicon-96x96.png

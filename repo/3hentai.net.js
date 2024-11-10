@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         3hentai
 // @version      v0.0.1
-// @author       javxsub.com
+// @author       ijs77
 // @lang         all
 // @license      MIT
 // @icon         https://3hentai.net/favicon.ico

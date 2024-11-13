@@ -420,14 +420,14 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://proxy.techzbots1.workers.dev/?u=https://dramacool.pa/images/mobi/logo.png",
+  "icon": "https://proxy.techzbots1.workers.dev/?u=https://dramacool.bg/frontend/images/mobi/logo.png",
   "lang": "en",
   "license": "MIT",
   "name": "DramaCool",
   "package": "dramacool.pa",
   "type": "bangumi",
   "url": "dramacool.pa.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://proxy.techzbots1.workers.dev/?u=https://nontan-source-kgw9jch3s-imkryp70n.vercel.app/movies/dramacool"
  },
  {

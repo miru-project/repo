@@ -234,12 +234,12 @@
   "icon": "https://bfzy.tv/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
-  "name": "极速高清无水印",
+  "name": "暴风资源[高清无水印]",
   "nsfw": "false",
   "package": "bfzy.tv",
   "type": "bangumi",
   "url": "bfzy.tv.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://bfzy.tv"
  },
  {
@@ -1900,6 +1900,19 @@
   "url": "xyz.xdtv2.js",
   "version": "v0.0.2",
   "webSite": "https://caocao15.xyz"
+ },
+ {
+  "author": "jason",
+  "icon": "https://yayazy3.com/template/yayazy/statics/img/logo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "丫丫资源[1080无水印]",
+  "nsfw": "false",
+  "package": "yayazy.net",
+  "type": "bangumi",
+  "url": "yayazy.net.js",
+  "version": "v0.0.1",
+  "webSite": "https://yayazy.net"
  },
  {
   "author": "hualiong",

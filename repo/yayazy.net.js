@@ -1,22 +1,22 @@
 // ==MiruExtension==
-// @name         暴风资源[高清无水印]
-// @version      v0.0.2
+// @name         丫丫资源[1080无水印]
+// @version      v0.0.1
 // @author       jason
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://bfzy.tv/favicon.ico
-// @package      bfzy.tv
+// @icon         https://yayazy3.com/template/yayazy/statics/img/logo.png
+// @package      yayazy.net
 // @type         bangumi
-// @webSite      https://bfzy.tv
+// @webSite      https://yayazy.net
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
   domains = [
-    "bfzy.tv",
-    "bfzyapi.com",
-    "by.bfzyapi.com",
+    "yayazy.net",
+    "cj.yayazy.net",
+    "cj2.yayazy.net",
   ];
 
   dict = new Map([

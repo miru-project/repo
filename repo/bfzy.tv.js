@@ -1,6 +1,6 @@
 // ==MiruExtension==
-// @name         暴风资源 - 极速高清无水印
-// @version      v0.0.1
+// @name         暴风资源[高清无水印]
+// @version      v0.0.2
 // @author       jason
 // @lang         zh-cn
 // @license      MIT

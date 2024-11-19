@@ -52,7 +52,7 @@ export default class extends Extension {
       const res = await this.request(`/json?sortid=${filter["categories"]}&page=${page}`)
       return res.map((e)=>{return {title:e.articlename,url:e.url_list,cover:e.url_img}})
     }
-    const res = await this.request(`/user/search.html?q=${encodeURIComponent(kw)}&so=`)
+    const res = await this.request(`/user/search.html?q=${kw}`)
     return res.map(item => ({
       title: item.articlename,
       url: item.url_list,

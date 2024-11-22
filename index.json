@@ -407,6 +407,20 @@
   "webSite": "https://www.cyc-anime.net"
  },
  {
+  "author": "Weiske",
+  "description": "Club",
+  "icon": "https://media.ccc.de/favicon-96x96.png",
+  "lang": "en",
+  "license": "AGPL",
+  "name": "media.ccc.de",
+  "nsfw": "false",
+  "package": "de.ccc.media",
+  "type": "bangumi",
+  "url": "de.ccc.media.js",
+  "version": "v0.0.1",
+  "webSite": "https://api.media.ccc.de"
+ },
+ {
   "author": "MiaoMint",
   "icon": "https://www.7xi.tv/upload/site/20220630-1/f0aa6861d2399c58f87faab0f1928b10.png",
   "lang": "zh-cn",

@@ -1,14 +1,15 @@
 // ==MiruExtension==
-// @name  media.ccc.de
-// @description Video material provided by the Chaos Computer Club
-// @version v0.1.0
-// @author Christian Weiske, https://cweiske.de/
-// @license AGPL
-// @lang en
-// @icon https://media.ccc.de/favicon-96x96.png
-// @package de.ccc.media
-// @type bangumi
-// @webSite https://api.media.ccc.de
+// @name         media.ccc.de
+// @version      v0.0.1
+// @author       Christian Weiske
+// @lang         en
+// @license      AGPL
+// @icon         https://media.ccc.de/favicon-96x96.png
+// @package      de.ccc.media
+// @type         bangumi
+// @webSite      https://api.media.ccc.de
+// @description  Video material provided by the Chaos Computer Club
+// @nsfw         false
 // ==/MiruExtension==
 
 /**

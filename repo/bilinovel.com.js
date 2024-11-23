@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.7
+// @version      v0.0.8
 // @author       hualiong
 // @lang         zh-cn
 // @icon         https://www.bilinovel.com/favicon.ico
@@ -49,12 +49,12 @@ export default class extends Extension {
       const response = await this.request(url, {
         headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
       });
-      const row = await this.querySelectorAll(response, "#acontentz > p, img");
+      const row = await this.querySelectorAll(response, "#acontent > p, img");
       return row.map(e => this.filter.call(this, e));
     } catch (error) {
       if (count > 0) {
         console.log(`Retry ${count} times: ${url}`);
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 10000));
         return this.handle(url, count - 1);
       } else {
         throw error;
@@ -181,7 +181,7 @@ export default class extends Extension {
     }
     tasks = await Promise.all(tasks);
     if (total > 1) {
-      tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontentz > p")).map(e => this.filter.call(this, e)));
+      tasks.splice(1, 0, (await this.querySelectorAll(res, "#acontent > p, img")).map(e => this.filter.call(this, e)));
     }
     return {
       title: "Why is this 'title' attribute not valid?",

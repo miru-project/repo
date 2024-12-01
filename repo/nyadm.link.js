@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         NyaFun动漫
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://files.superbed.cn/proxy/7468686c6f26333378737f75717b2f3278737f6f326d6d327f73713375717d7b79335d7b5d5d5f2a6931484a4c5d71757f28666d4650502b682c28702f4b2b566a6c326c727b
-// @package      nyacg.net
+// @icon         https://s1.imagehub.cc/images/2024/07/18/4cd2cce8076bb8ffeb7c8f8b34c02a31.png
+// @package      nyadm.link
 // @type         bangumi
-// @webSite      https://www.nyacg.net
+// @webSite      https://www.nyadm.net
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {
@@ -58,8 +58,9 @@ export default class extends Extension {
     return res === null ? null : res[0];
   }
 
-  async $req(url, options = {}, count = 3, timeout = 5000) {
+  async $req(url, options = { headers: {} }, count = 3, timeout = 5000) {
     try {
+      if (!options.headers["Miru-Url"]) options.headers["Miru-Url"] = this.domain;
       return await Promise.race([
         this.request(url, options),
         new Promise((_, reject) => {
@@ -92,31 +93,24 @@ export default class extends Extension {
     }));
   }
 
-  // async select(page, filter) {
-  //   const res = await this.$req(
-  //     `/show/${filter.channels[0] || 1}${filter.genres[0] ? "/class/" + filter.genres[0] : ""}/page/${page}${
-  //       filter.years[0] ? "/year/" + filter.years[0] : ""
-  //     }.html`
-  //   );
-  //   const list = await this.querySelectorAll(res, ".public-list-box");
-  //   if (list === null) return [];
-  //   const videos = list.map(async (e) => {
-  //     const label = await this.querySelector(e.content, ".public-list-exp");
-  //     const title = await label.getAttributeText("title");
-  //     const cover = await this.getAttributeText(label.content, "img.gen-movie-img", "data-src");
-  //     const update = this.text(await this.querySelector(label.content, "span.public-list-prb"));
-  //     const url = await label.getAttributeText("href");
-  //     return {
-  //       title,
-  //       url: `${url.match(/\/bangumi\/\d+\.html/)[0]}|${title}|${cover}`,
-  //       cover,
-  //       update,
-  //     };
-  //   });
-  //   return await Promise.all(videos);
-  // }
+  async test() {
+    try {
+      await this.request("/play/7566-1-1.html", { headers: { "Miru-Url": this.domain } });
+      this.verify = false;
+    } catch (error) {
+      this.verify = true;
+    }
+    return this.verify;
+  }
 
   // =============================== 分割线 ============================== //
+
+  async load() {
+    const res = await this.$req("/", { headers: { "Miru-Url": "https://www.nyadm.link" } });
+    this.domain = await this.getAttributeText(res, "div.links > a:nth-child(1)", "href");
+    console.log(this.domain);
+    console.log(await this.test())
+  }
 
   async createFilter() {
     const channels = {
@@ -184,26 +178,22 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    try {
-      const res = await this.$req(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
-      return res.list.map((e) => ({
-        title: e.vod_name,
-        url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
-        cover: e.vod_pic,
-        update: e.vod_remarks,
-      }));
-    } catch (error) {
-      return [
-        {
-          title: "请先进入此详细页点击 Webview 窗口输入验证码后才能正常使用该扩展",
-          url: "/",
-          cover: null,
-        },
-      ];
+    if (this.verify && await this.test()) {
+      return [{ title: "需要验证才能使用该扩展！", url: "/play/7566-1-1.html", cover: null }];
     }
+    const res = await this.$req(`/index.php/ajax/data.html?mid=1&limit=20&page=${page}`);
+    return res.list.map((e) => ({
+      title: e.vod_name,
+      url: `${e.detail_link}|${e.vod_name}|${e.vod_pic}`,
+      cover: e.vod_pic,
+      update: e.vod_remarks,
+    }));
   }
 
   async search(kw, page, filter) {
+    if (this.verify && await this.test()) {
+      return [{ title: "需要验证才能使用该扩展！", url: "/play/7566-1-1.html", cover: null }];
+    }
     if (filter?.channels?.[0] || filter?.genres?.[0] || filter?.years?.[0]) {
       if (kw) throw new Error("在使用筛选器时无法同时使用搜索功能！");
       return this.select(page, filter);
@@ -225,11 +215,11 @@ export default class extends Extension {
   }
 
   async detail(str) {
-    if (str === "/") {
+    if (this.verify) {
       return {
-        title: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+        title: "请点击右上角的 Webview 窗口进入网站通过验证",
         cover: null,
-        desc: "点击右上角的 Webview 窗口进入网站通过验证加载首页后再重新搜索",
+        desc: "请点击右上角的 Webview 窗口进入网站通过验证",
       };
     }
     const data = str.split("|");
@@ -239,16 +229,6 @@ export default class extends Extension {
     const sources = await this.querySelectorAll(res, ".anthology-list-play");
     const labels = (await labelTask).map((e) => this.textParser(e.content.match(/i>(.*?)</)[1]));
     let reg = /href="(.*?)">(.*?)</;
-    // const episodes = sources.map(async (source, i) => {
-    //   const urls = (await this.querySelectorAll(source.content, "a")).map(async (a) => {
-    //     const match = reg.exec(a.content);
-    //     const resp = await this.$req(match[1]);
-    //     const json = JSON.parse(resp.match(/var player_aaaa=({.+?})</)[1]);
-    //     const url = decodeURIComponent(json.encrypt ? this.base64decode(json.url) : json.url);
-    //     return { name: match[2], url };
-    //   });
-    //   return { title: labels[i], urls: await Promise.all(urls) };
-    // });
     const episodes = sources.map(async (source, i) => {
       const urls = (await this.querySelectorAll(source.content, "a")).map((a) => {
         const match = reg.exec(a.content);
@@ -260,11 +240,17 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const res = await this.$req(url);
+    let res = null;
+    try {
+      res = await this.$req(url);
+    } catch (error) {
+      this.verify = true
+      throw new Error("若网络没问题，则可能是网站需要验证，请重启应用再试");
+    }
     const player = JSON.parse(res.match(/var player_aaaa=({.+?})</)[1]);
     const raw = decodeURIComponent(player.encrypt == 2 ? this.base64decode(player.url) : player.url);
     const resp = await this.$req(`/player/ec.php?code=qw&url=${raw}`, {
-      headers: { "Miru-Url": "https://play.nyacg.net", Referer: "https://www.nyacg.net" },
+      headers: { "Miru-Url": this.domain.replace("www", "play"), Referer: this.domain },
     });
     const json = JSON.parse(resp.match(/let ConFig = ({.+})/)[1]);
     const link = this.decrypt.player(json.url, json.config.uid);

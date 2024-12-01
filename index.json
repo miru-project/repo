@@ -1245,16 +1245,16 @@
  },
  {
   "author": "hualiong",
-  "icon": "https://files.superbed.cn/proxy/7468686c6f26333378737f75717b2f3278737f6f326d6d327f73713375717d7b79335d7b5d5d5f2a6931484a4c5d71757f28666d4650502b682c28702f4b2b566a6c326c727b",
+  "icon": "https://s1.imagehub.cc/images/2024/07/18/4cd2cce8076bb8ffeb7c8f8b34c02a31.png",
   "lang": "zh-cn",
   "license": "MIT",
   "name": "NyaFun动漫",
   "nsfw": "false",
-  "package": "nyacg.net",
+  "package": "nyadm.link",
   "type": "bangumi",
-  "url": "nyacg.net.js",
-  "version": "v0.0.5",
-  "webSite": "https://www.nyacg.net"
+  "url": "nyadm.link.js",
+  "version": "v0.0.6",
+  "webSite": "https://www.nyadm.net"
  },
  {
   "author": "bethro",

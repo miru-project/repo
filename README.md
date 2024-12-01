@@ -82,7 +82,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | YTS.mx | mx.yts | v0.0.6 | MiaoMint | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mx.yts.js) |
 | Nimegami | nimegami.id | v0.0.2 | JerukPurut404 | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nimegami.id.js) |
 | Nyaa | nyaa.si | v0.0.1 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyaa.si.js) |
-| NyaFun动漫 | nyacg.net | v0.0.5 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyacg.net.js) |
+| NyaFun动漫 | nyadm.link | v0.0.6 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/nyadm.link.js) |
 | Otakudesu | otakudesu | v0.0.1 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/otakudesu.js) |
 | Piped | piped.video | v0.0.1 | bethro | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/piped.video.js) |
 | Ravenscans | ravenscans.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ravenscans.com.js) |

@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         AsuraScan
-// @version      v0.0.3
-// @author       bethro
+// @version      v0.0.4
+// @author       bethro(代修改者-瑜君之学-杨瑜候)
 // @lang         en
 // @license      MIT
 // @icon         https://asuracomic.net/images/logo.webp

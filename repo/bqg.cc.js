@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         笔趣阁
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       yxxyun
 // @lang         zh-cn
 // @icon         https://m.bi17.cc/favicon.ico
@@ -52,7 +52,7 @@ export default class extends Extension {
       const res = await this.request(`/json?sortid=${filter["categories"]}&page=${page}`)
       return res.map((e)=>{return {title:e.articlename,url:e.url_list,cover:e.url_img}})
     }
-    const res = await this.request(`/user/search.html?q=${encodeURIComponent(kw)}&so=`)
+    const res = await this.request(`/user/search.html?q=${kw}`)
     return res.map(item => ({
       title: item.articlename,
       url: item.url_list,

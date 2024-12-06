@@ -175,7 +175,7 @@
   "package": "asuratoon.com",
   "type": "manga",
   "url": "asuratoon.com.js",
-  "version": "v0.0.3",
+  "version": "v0.0.5",
   "webSite": "https://asuracomic.net"
  },
  {
@@ -595,6 +595,19 @@
   "url": "gogo.anime.js",
   "version": "v0.0.8",
   "webSite": "https://consumet-leox-api.vercel.app/anime/gogoanime"
+ },
+ {
+  "author": "瑜君之学-杨瑜候",
+  "icon": "https://www.gufengmh.com/favicon.ico",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "古风漫画",
+  "nsfw": "false",
+  "package": "gufengmh",
+  "type": "manga",
+  "url": "gufengmh.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.gufengmh.com"
  },
  {
   "author": "瑜君之学-杨瑜候",

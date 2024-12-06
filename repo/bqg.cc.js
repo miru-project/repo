@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         笔趣阁
-// @version      v0.0.3
+// @version      v0.0.2
 // @author       yxxyun
 // @lang         zh-cn
 // @icon         https://m.bi17.cc/favicon.ico

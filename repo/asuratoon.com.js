@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         AsuraScan
-// @version      v0.0.4
-// @author       bethro(代修改者-瑜君之学-杨瑜候)
+// @version      v0.0.5
+// @author       bethro
 // @lang         en
 // @license      MIT
 // @icon         https://asuracomic.net/images/logo.webp
@@ -150,26 +150,25 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    console.log(url + " url");
+    //console.log(url + " url");
 
     const res = await this.request("", {
       headers: {
         "Miru-Url": "https://asuracomic.net/series/" + url,
         referer: "https://asuracomic.net/",
         origin: "https://asuracomic.net",
-        "User-Agent":
-          "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
       },
     });
     const regex = /<script>(.*?)\<\/script>/gs;
     const matches = res.match(regex);
     const pageRegex = /\\"pages\\":\[(.*?)\]/gs;
     const pageMatches = matches.join("").match(pageRegex);
-    console.log(pageMatches + "pageMatches");
+    //console.log(pageMatches + "pageMatches");
     const httpRegex = /https:\/\/[^\\]+/g;
     const httpMatches = pageMatches.join("").match(httpRegex);
-    console.log(httpMatches.length + "httpMatches.length");
-    console.log(httpMatches + "httpMatches");
+    //console.log(httpMatches.length + "httpMatches.length");
+    //console.log(httpMatches + "httpMatches");
 
     return {
       urls: httpMatches,

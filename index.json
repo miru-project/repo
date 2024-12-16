@@ -968,6 +968,19 @@
   "webSite": "https://lzizy.com"
  },
  {
+  "author": "瑜君之学-杨瑜候",
+  "icon": "https://www.mhua5.com/template/pc/default/images/pic_nav_logo.png?v=0504b75",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "漫画屋",
+  "nsfw": "false",
+  "package": "manHuaWu",
+  "type": "manga",
+  "url": "manHuaWu.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.mhua5.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://www.manga4life.com/media/favicon.png",
   "lang": "en",

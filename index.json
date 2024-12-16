@@ -597,6 +597,19 @@
   "webSite": "https://consumet-leox-api.vercel.app/anime/gogoanime"
  },
  {
+  "author": "瑜君之学-杨瑜候",
+  "icon": "https://m.g-mh.org/assets/images/Logo.png",
+  "lang": "zh",
+  "license": "MIT",
+  "name": "G站漫画",
+  "nsfw": "false",
+  "package": "gzhanmh",
+  "type": "manga",
+  "url": "gzhanmh.js",
+  "version": "v0.0.1",
+  "webSite": "https://m.g-mh.org"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://img4.qy0.ru/data/2205/36/tab_logo.png",
   "lang": "zh",

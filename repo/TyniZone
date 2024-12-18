@@ -1,0 +1,185 @@
+// ==MiruExtension==
+// @name         TyniZone Extension
+// @version      v1.4.0
+// @author       appdevelpo
+// @lang         en
+// @license      MIT
+// @icon         https://www.tynizone.com/favicon.ico
+// @package      tynizone.com
+// @type         streaming
+// @webSite      https://www.tynizone.com
+// @nsfw         false
+// ==/MiruExtension==
+
+export default class extends Extension {
+  async load() {
+    const CryptoJS = require("crypto-js");
+
+    // Funzione per eseguire una richiesta di contenuto dalla pagina di TyniZone
+    const getContentFromTyniZone = async (url) => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const content = await response.text();
+        console.log("TyniZone content loaded successfully.");
+        return content;
+      } catch (error) {
+        console.error("Error loading TyniZone content:", error);
+        return null;
+      }
+    };
+
+    // Funzione di cifratura (AES) del messaggio con chiave dinamica (più sicura)
+    const encryptMessage = (message, secretKey) => {
+      return CryptoJS.AES.encrypt(message, secretKey).toString();
+    };
+
+    // Funzione di decifrazione (AES) del messaggio con chiave dinamica
+    const decryptMessage = (encryptedMessage, secretKey) => {
+      const bytes = CryptoJS.AES.decrypt(encryptedMessage, secretKey);
+      return bytes.toString(CryptoJS.enc.Utf8);
+    };
+
+    // Funzione per analizzare il contenuto della pagina e ottenere i link di streaming
+    const parsePageContent = (content) => {
+      const titles = [];
+      const linkPattern = /href="(https:\/\/www\.tynizone\.com\/[^"]+)"/g;
+      let match;
+
+      while ((match = linkPattern.exec(content)) !== null) {
+        titles.push(match[1]); // Aggiungi il link trovato alla lista
+      }
+
+      return titles;
+    };
+
+    // Funzione per gestire i preferiti (memorizzazione nel localStorage)
+    const getFavorites = () => {
+      const favorites = localStorage.getItem("favorites");
+      return favorites ? JSON.parse(favorites) : [];
+    };
+
+    const addToFavorites = (link) => {
+      const favorites = getFavorites();
+      if (!favorites.includes(link)) {
+        favorites.push(link);
+        localStorage.setItem("favorites", JSON.stringify(favorites));
+        console.log("Added to favorites:", link);
+      }
+    };
+
+    const removeFromFavorites = (link) => {
+      let favorites = getFavorites();
+      favorites = favorites.filter(fav => fav !== link);
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      console.log("Removed from favorites:", link);
+    };
+
+    // Funzione per visualizzare i link di streaming nell'interfaccia
+    const displayLinks = (links, page = 1, itemsPerPage = 10) => {
+      const startIndex = (page - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const paginatedLinks = links.slice(startIndex, endIndex);
+
+      const container = document.createElement('div');
+      container.classList.add('streaming-container');
+
+      let html = `<h3>Streaming Links Found:</h3><ul>`;
+      paginatedLinks.forEach(link => {
+        html += `<li class="streaming-link">
+                  <a href="${link}" target="_blank">${link}</a>
+                  <button onclick="addToFavorites('${link}')">Add to Favorites</button>
+                  <button onclick="removeFromFavorites('${link}')">Remove from Favorites</button>
+                </li>`;
+      });
+      html += `</ul>`;
+
+      // Aggiungi paginazione
+      const totalPages = Math.ceil(links.length / itemsPerPage);
+      if (totalPages > 1) {
+        html += `<div class="pagination">Page: `;
+        for (let i = 1; i <= totalPages; i++) {
+          html += `<button onclick="navigatePage(${i})">${i}</button>`;
+        }
+        html += `</div>`;
+      }
+
+      container.innerHTML = html;
+      document.body.appendChild(container);
+    };
+
+    // Funzione per navigare tra le pagine
+    const navigatePage = (page) => {
+      displayLinks(links, page);
+    };
+
+    // Funzione per visualizzare i preferiti
+    const displayFavorites = () => {
+      const favorites = getFavorites();
+      if (favorites.length > 0) {
+        const container = document.createElement('div');
+        container.classList.add('favorites-container');
+
+        let html = `<h3>Your Favorites:</h3><ul>`;
+        favorites.forEach(link => {
+          html += `<li><a href="${link}" target="_blank">${link}</a></li>`;
+        });
+        html += `</ul>`;
+        container.innerHTML = html;
+        document.body.appendChild(container);
+      } else {
+        console.log("No favorites found.");
+      }
+    };
+
+    // Funzione per filtrare i link di streaming tramite una barra di ricerca
+    const filterLinks = (searchTerm, links) => {
+      return links.filter(link => link.includes(searchTerm));
+    };
+
+    // Carica il contenuto della pagina principale di TyniZone
+    const url = 'https://www.tynizone.com';
+    const pageContent = await getContentFromTyniZone(url);
+
+    // Verifica se il contenuto è stato caricato correttamente
+    if (!pageContent) {
+      console.error('Unable to load TyniZone content.');
+      return;
+    }
+
+    // Esegui la cifratura di un messaggio di esempio con chiave dinamica (sicura)
+    const secretKey = prompt("Enter your secret key for encryption:", "your-dynamic-key");
+    const message = "This is a secret message from TyniZone!";
+    const encryptedMessage = encryptMessage(message, secretKey);
+    console.log("Encrypted message:", encryptedMessage);
+
+    // Decifra il messaggio con la chiave segreta dinamica
+    const decryptedMessage = decryptMessage(encryptedMessage, secretKey);
+    console.log("Decrypted message:", decryptedMessage);
+
+    // Analizza il contenuto della pagina per trovare i link di streaming
+    const streamingLinks = parsePageContent(pageContent);
+
+    // Visualizza la barra di ricerca per filtrare i link
+    const searchInput = document.createElement('input');
+    searchInput.setAttribute('type', 'text');
+    searchInput.setAttribute('placeholder', 'Search streaming links...');
+    searchInput.classList.add('search-input');
+    searchInput.addEventListener('input', () => {
+      const filteredLinks = filterLinks(searchInput.value, streamingLinks);
+      displayLinks(filteredLinks);
+    });
+    document.body.appendChild(searchInput);
+
+    // Se sono stati trovati dei link, visualizzali nella UI
+    if (streamingLinks.length > 0) {
+      console.log("Found streaming links:", streamingLinks);
+      displayLinks(streamingLinks); // Mostra i link paginati
+    } else {
+      console.log("No streaming links found.");
+    }
+
+    // Visualizza i preferiti all'inizio
+    displayFavorites();
+  }
+}

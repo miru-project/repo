@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         哔哩轻小说
-// @version      v0.0.8
+// @version      v0.0.9
 // @author       hualiong
 // @lang         zh-cn
 // @icon         https://www.bilinovel.com/favicon.ico
@@ -39,6 +39,12 @@ export default class extends Extension {
     return this.text(element).replace(/&[a-z]+;|./g, (c) => this.dict[c] || c);
   }
 
+  $api(url) {
+    return this.request(url, {
+      headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
+    })
+  }
+
   async querySelector(content, selector) {
     const res = await this.querySelectorAll(content, selector);
     return res === null ? null : res[0];
@@ -46,9 +52,7 @@ export default class extends Extension {
 
   async handle(url, count = 3) {
     try {
-      const response = await this.request(url, {
-        headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
-      });
+      const response = await this.$api(url);
       const row = await this.querySelectorAll(response, "#acontent > p, img");
       return row.map(e => this.filter.call(this, e));
     } catch (error) {
@@ -89,7 +93,7 @@ export default class extends Extension {
   }
 
   async latest(page, filter) {
-    const res = await this.request(`/top/${filter?.ranks[0] ?? "lastupdate"}/${page}.html`);
+    const res = await this.$api(`/top/${filter?.ranks[0] ?? "lastupdate"}/${page}.html`);
     const list = await this.querySelectorAll(res, ".book-li > a");
     const tasks = list.map(async (e) => {
       const img = await this.querySelector(e.content, "img");
@@ -104,7 +108,7 @@ export default class extends Extension {
 
   async search(kw, page, filter) {
     if (!kw) return this.latest(page, filter);
-    const res = await this.request(`/search/${encodeURI(kw)}_${page}.html`);
+    const res = await this.$api(`/search/${encodeURI(kw)}_${page}.html`);
     const total = await this.querySelector(res, "#pagelink > span");
     if (total) {
       if (parseInt(this.text(total).split("/")[1].slice(0, -1)) < page) {
@@ -145,12 +149,12 @@ export default class extends Extension {
   async detail(string) {
     const data = string.split("|");
     const desc = (async (data) => {
-      const res = await this.request(data[0]);
+      const res = await this.$api(data[0]);
       const desc = await this.querySelector(res, "#bookSummary > content");
       return this.text(desc);
     })(data);
     const prefix = data[0].slice(0, -5);
-    const catalog = await this.request(prefix + "/catalog");
+    const catalog = await this.$api(prefix + "/catalog");
     const volumes = await this.querySelectorAll(catalog, ".volume-chapters");
     const episodes = volumes.map(async (volume) => {
       const title = this.text(await this.querySelector(volume.content, ".chapter-bar > h3"));
@@ -171,9 +175,7 @@ export default class extends Extension {
 
   async watch(url) {
     let tasks = [this.handle(`${url}.html`)];
-    const res = await this.request(`${url}_2.html`, {
-      headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
-    });
+    const res = await this.$api(`${url}_2.html`);
     const subtitle = this.text(await this.querySelector(res, "#apage h1"));
     const total = parseInt(subtitle.split("/")[1].slice(0, -1)) || 1;
     for (let i = 3; i <= total; i++) {

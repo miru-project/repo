@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         MangaDex
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       bethro
 // @lang         all
 // @license      MIT
@@ -31,10 +31,10 @@ export default class extends Extension {
     });
 
     this.registerSetting({
-      title: "Language",
+      title: "Preferred Language",
       key: "lang",
       type: "input",
-      description: "Language",
+      description: "Chapters will be downloaded in this language",
       defaultValue: "en",
     })
 
@@ -114,6 +114,7 @@ export default class extends Extension {
 async detail(mangaId) {
   const mangaRes = await this.req(`/manga/${mangaId}?includes[]=cover_art`);
   const manga = mangaRes.data;
+  const preferredLang = await this.getSetting("lang"); 
 
   const coverArtObject = manga.relationships.find(
     (relationship) => relationship.type === "cover_art"
@@ -128,7 +129,7 @@ async detail(mangaId) {
       return metadata;
     }, {});
 
-  const chapRes = await this.req(`/manga/${mangaId}/feed?&order[volume]=asc&order[chapter]=asc&limit=500`);
+  const chapRes = await this.req(`/manga/${mangaId}/feed?&order[volume]=asc&order[chapter]=asc&limit=500&translatedLanguage%5B%5D=${preferredLang}`);
   const chapters = chapRes.data;
 
   if (await this.getSetting("reverseChaptersOrder") === "true") {
@@ -136,7 +137,6 @@ async detail(mangaId) {
   }
 
   const chapMap = new Map();
-  const defaultLang = await this.getSetting("lang"); 
 
   for (const item of chapters) {
     const lang = item.attributes.translatedLanguage;
@@ -153,8 +153,8 @@ async detail(mangaId) {
   }
 
   const sortedChapMap = new Map([...chapMap.entries()].sort((a, b) => {
-    if (a[0] === defaultLang) return -1;
-    if (b[0] === defaultLang) return 1;
+    if (a[0] === preferredLang) return -1;
+    if (b[0] === preferredLang) return 1;
     return a[0].localeCompare(b[0]); // order alphabetically
   }));
 

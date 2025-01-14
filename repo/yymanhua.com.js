@@ -53,6 +53,7 @@ export default class extends Extension {
       return await Promise.race([
         this.request(url, {
           headers: {
+            "user-agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36 EdgA/131.0.0.0",
             cookie: "yymanhua_lang=2;image_time_cookie=;mangabzimgpage=",
             referer: "https://www.yymanhua.com/",
           },

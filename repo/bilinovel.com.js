@@ -67,7 +67,12 @@ export default class extends Extension {
 
   $api(url) {
     return this.request(url, {
-      headers: { "Accept-Language": "zh-cn", Accept: "*/*", Cookie: "night=0" },
+      headers: {
+        "User-Agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36 EdgA/131.0.0.0",
+        "Accept-Language": "zh-cn",
+        Accept: "*/*",
+        Cookie: "night=0"
+      },
     })
   }
 

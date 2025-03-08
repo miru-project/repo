@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         weebcentral
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bethro
 // @lang         en
 // @license      MIT
@@ -94,15 +94,11 @@ async detail(url) {
       },
     });
 
-    let html = await this.querySelector(res, "div#top section").outerHTML;
-
     const [title, cover, desc] = await Promise.all([
       this.querySelector(res, "div#top section h1").text,
       this.getAttributeText(res, "div#top section img","src"),
       this.querySelector(res, "div#top section p").text,
     ]);
-
- 
 
     const fullChapsUrl = await this.getAttributeText(res, "#chapter-list > button","hx-get") || "";
     

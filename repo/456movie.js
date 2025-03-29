@@ -155,4 +155,3 @@ export default class extends Extension {
       return null;
     }
   }
-  console.log("Response data:", res.data);

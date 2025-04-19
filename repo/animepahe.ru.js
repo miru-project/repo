@@ -1,10 +1,10 @@
 // ==MiruExtension==
 // @name         Animepahe
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       appdevelpo
 // @lang         en
 // @license      MIT
-// @icon         https://animepahe.ru/pikacon.ico
+// @icon         https://animepahe.ru/web-app-manifest-512x512.png
 // @package      animepahe.ru
 // @type         bangumi
 // @webSite      https://animepahe.ru
@@ -32,7 +32,7 @@ export default class extends Extension {
       }));
     } catch (e){
       const bangumi = [{
-        title: "error",
+        title: "Need to use webview",
         url: "/",
         cover: null
       }];
@@ -41,23 +41,28 @@ export default class extends Extension {
   }
 
   async detail(url) {
+
+    // Webview is needed to get the detail page
     if(url=="/"){
       return {
-        title: "Blocked",
+        title: "Use webview",
         cover: null,
         desc: "Please use webview to enter the website then close the webview window.",
       }
     }
+
     const res = await this.request("", {
       headers: {
         "Miru-Url": `https://animepahe.ru/anime/${url}`,
       },
     });
-    const title = res.match(/<span>(.+?)<\/span>/)[1];
+    // console.log(`https://animepahe.ru/anime/${url}`);
+    const title = await this.querySelector(res,".user-select-none > span").text
     const cover = res.match(/<a href="(https:\/\/i.animepahe.ru\/posters.+?)"/)[1];
-    const desc = res.match(/<div class="anime-synopsis">(.+?)<\/div>/)[1];
+    const desc = await this.querySelector(res,".anime-synopsis").text
+    // console.log(`/api?m=release&id=${url}`);
     const epRes = await this.request(`/api?m=release&id=${url}`)
-    // console.log(title[1]);
+    // console.log(epRes);
     const reverse_data = epRes.data.reverse();
     return {
       title: title,

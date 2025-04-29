@@ -1,5 +1,18 @@
 [
  {
+  "author": "qizaru",
+  "description": "content",
+  "icon": "https://345movie.net/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "345movie",
+  "package": "345movie.net",
+  "type": "bangumi",
+  "url": "345movie.js",
+  "version": "v0.0.2",
+  "webSite": "https://345movie.net/movies"
+ },
+ {
   "author": "hualiong",
   "icon": "https://360zy.com/favicon.ico",
   "lang": "zh-cn",

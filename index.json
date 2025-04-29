@@ -103,7 +103,7 @@
  },
  {
   "author": "appdevelpo",
-  "icon": "https://animepahe.ru/pikacon.ico",
+  "icon": "https://animepahe.ru/web-app-manifest-512x512.png",
   "lang": "en",
   "license": "MIT",
   "name": "Animepahe",
@@ -111,7 +111,7 @@
   "package": "animepahe.ru",
   "type": "bangumi",
   "url": "animepahe.ru.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://animepahe.ru"
  },
  {

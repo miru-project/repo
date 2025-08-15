@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniLiberty
-// @version      v0.0.7
+// @version      v0.0.8
 // @author       Virus (viridius-hub)
 // @lang         ru
 // @license      MIT
@@ -73,13 +73,9 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const res = await this.request(url);
-    const srv = Object.values(res.servers).filter(
-        (server) => server.name === "Our Server"
-    );
     return {
       type: "hls",
-      url: srv[0].file_url,
+      url: url,
     };
   }
 }

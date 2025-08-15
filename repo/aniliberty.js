@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniLiberty
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       Virus (viridius-hub)
 // @lang         ru
 // @license      MIT
@@ -33,9 +33,7 @@ export default class extends Extension {
   async latest(page) {
     const res = await this.req(`/api/v1/anime/releases/latest?limit=42`);
 
-    console.log(res)
-
-    return res.results.map((item) => ({
+    return res.map((item) => ({
       url: `/api/v1/anime/releases/${item.alias}`,
       title: item.name.main,
       cover: item.poster.src,

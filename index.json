@@ -1,17 +1,5 @@
 [
  {
-  "author": "viridius-hub",
-  "icon": "https://anilibria.top/static/favicon-96x96.png",
-  "lang": "ru",
-  "license": "MIT",
-  "name": "AniLiberty",
-  "package": "aniliberty.top",
-  "type": "bangumi",
-  "url": "aniliberty.js",
-  "version": "v0.0.1",
-  "webSite": "https://aniliberty.top"
- },
- {
   "author": "qizaru",
   "description": "content",
   "icon": "https://345movie.net/favicon.ico",
@@ -87,6 +75,19 @@
   "url": "ani.gogo.js",
   "version": "v0.0.3",
   "webSite": "https://api.amvstr.me/api/v2"
+ },
+ {
+  "author": "(viridius-hub)",
+  "icon": "https://anilibria.top/static/favicon-96x96.png",
+  "lang": "ru",
+  "license": "MIT",
+  "name": "AniLiberty",
+  "nsfw": "false",
+  "package": "aniliberty.top",
+  "type": "bangumi",
+  "url": "aniliberty.js",
+  "version": "v0.0.1",
+  "webSite": "https://anilibria.top"
  },
  {
   "author": "(koikiss-dev)",

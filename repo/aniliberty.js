@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniLiberty
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       Virus (viridius-hub)
 // @lang         ru
 // @license      MIT

@@ -15,19 +15,13 @@ export default class extends Extension {
   async req(url) {
     return this.request(url, {
       headers: {
-        "Miru-Url": await this.getSetting("aniliberty"),
+        "Miru-Url": "https://anilibria.top/api/v1",
       },
     });
   }
 
   async load() {
-    this.registerSetting({
-      title: "Aniliberty API",
-      key: "aniliberty",
-      type: "input",
-      description: "Aniliberty Api Url",
-      defaultValue: "https://anilibria.top/api/v1",
-    });
+
   }
 
   async latest(page) {

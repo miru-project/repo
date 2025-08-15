@@ -1,5 +1,18 @@
 [
  {
+  "author": "Virus",
+  "description": "content",
+  "icon": "https://anilibria.top/static/favicon.svg",
+  "lang": "ru",
+  "license": "MIT",
+  "name": "AniLiberty",
+  "package": "aniliberty.top",
+  "type": "bangumi",
+  "url": "aniliberty.js",
+  "version": "v0.0.1",
+  "webSite": "https://aniliberty.top"
+ },
+ {
   "author": "qizaru",
   "description": "content",
   "icon": "https://345movie.net/favicon.ico",

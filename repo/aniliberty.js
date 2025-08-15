@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniLiberty
-// @version      v0.0.8
+// @version      v0.0.9
 // @author       Virus (viridius-hub)
 // @lang         ru
 // @license      MIT
@@ -39,7 +39,7 @@ export default class extends Extension {
 
     return res.map((item) => ({
       url: `/api/v1/anime/releases/${item.alias}`,
-      title: item.name.main,
+      title: item.name.english,
       cover: this.domain + item.poster.src,
     }));
   }
@@ -47,7 +47,7 @@ export default class extends Extension {
   async detail(url) {
     const res = await this.req(`${url}`);
     return {
-      title: res.name.main,
+      title: res.name.english,
       cover: this.domain + res.poster.src,
       desc: res.description,
       episodes: [
@@ -65,7 +65,7 @@ export default class extends Extension {
   async search(kw, page) {
     const res = await this.req(`/api/v1/app/search/releases?query=${kw}`);
     return res.results.map((item) => ({
-      title: item.name.main,
+      title: item.name.english,
       url: `/api/v1/anime/releases/${item.alias}`,
       cover: this.domain + item.poster.src,
       desc: item.description,

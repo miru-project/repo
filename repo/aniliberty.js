@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         AniLiberty
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       Virus (viridius-hub)
 // @lang         ru
 // @license      MIT
 // @icon         https://anilibria.top/static/favicon-96x96.png
 // @package      aniliberty.top
 // @type         bangumi
-// @webSite      https://anilibria.top
+// @webSite      https://anilibria.top/api/v1
 // @nsfw         false
 // ==/MiruExtension==
 

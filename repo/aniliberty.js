@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AniLiberty
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       Virus (viridius-hub)
 // @lang         ru
 // @license      MIT
@@ -12,20 +12,24 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
+  domain = 'https://anilibria.top'
+
   async load() {
     this.registerSetting({
       title: "AniLiberty",
       key: "domain_aniliberty",
       type: "input",
       description: "AniLiberty Domain",
-      defaultValue: "https://anilibria.top",
+      defaultValue: this.domain,
     });
+
+    this.domain = await this.getSetting("domain_aniliberty")
   }
 
   async req(url) {
     return this.request(url, {
       headers: {
-        "Miru-Url": await this.getSetting("domain_aniliberty"),
+        "Miru-Url": this.domain,
       },
     });
   }
@@ -36,7 +40,7 @@ export default class extends Extension {
     return res.map((item) => ({
       url: `/api/v1/anime/releases/${item.alias}`,
       title: item.name.main,
-      cover: item.poster.src,
+      cover: this.domain + item.poster.src,
     }));
   }
 
@@ -44,7 +48,7 @@ export default class extends Extension {
     const res = await this.req(`${url}`);
     return {
       title: res.name.main,
-      cover: res.poster.src,
+      cover: this.domain + res.poster.src,
       desc: res.description,
       episodes: [
         {
@@ -63,13 +67,13 @@ export default class extends Extension {
     return res.results.map((item) => ({
       title: item.name.main,
       url: `/api/v1/anime/releases/${item.alias}`,
-      cover: item.poster.src,
+      cover: this.domain + item.poster.src,
       desc: item.description,
     }));
   }
 
   async watch(url) {
-    const res = await this.req(`${url}`);
+    const res = await this.request(url);
     const srv = Object.values(res.servers).filter(
         (server) => server.name === "Our Server"
     );

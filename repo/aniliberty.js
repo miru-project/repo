@@ -1,14 +1,14 @@
 // ==MiruExtension==
-// @name  AniLiberty
-// @version v0.0.1
-// @author Virus (viridius-hub)
-// @lang ru
+// @name         AniLiberty
+// @version      v0.0.1
+// @author       Virus (viridius-hub)
+// @lang         ru
 // @license      MIT
-// @icon https://anilibria.top/static/favicon.svg
-// @package aniliberty.top
-// @type bangumi
-// @webSite https://anilibria.top.
-// @description  This project is an open source API for searching multimedia content such as anime, movies and TV series, and news in Russian.
+// @icon         https://anilibria.top/static/favicon-96x96.png
+// @package      aniliberty.top
+// @type         bangumi
+// @webSite      https://anilibria.top
+// @nsfw         false
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,17 +25,17 @@ export default class extends Extension {
       title: "Aniliberty API",
       key: "aniliberty",
       type: "input",
-      description: "Aniliberty API",
-      defaultValue: "https://anilibria.top",
+      description: "Aniliberty Api Url",
+      defaultValue: "https://anilibria.top/api/v1",
     });
   }
 
   async latest(page) {
     const res = await this.req(
-        `/api/v1/anime/releases/latest?limit=42`
+        `/anime/releases/latest?limit=42`
     );
     return res.results.map((item) => ({
-      url: `/api/v1/anime/releases/${item.alias}`,
+      url: `/anime/releases/${item.alias}`,
       title: item.name.main,
       cover: item.poster.src,
     }));
@@ -49,7 +49,7 @@ export default class extends Extension {
       desc: res.description,
       episodes: [
         {
-          title: "Ep",
+          title: "Episodes",
           urls: res.episodes.map((item) => ({
             name: `${item.ordinal}`,
             url: item.hls_1080,
@@ -60,10 +60,10 @@ export default class extends Extension {
   }
 
   async search(kw, page) {
-    const res = await this.req(`/api/v1/app/search/releases?query=${kw}`);
+    const res = await this.req(`/app/search/releases?query=${kw}`);
     return res.results.map((item) => ({
       title: item.name.main,
-      url: `/api/v1/anime/releases/${item.alias}`,
+      url: `/anime/releases/${item.alias}`,
       cover: item.poster.src,
       desc: item.description,
     }));

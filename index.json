@@ -77,6 +77,19 @@
   "webSite": "https://api.amvstr.me/api/v2"
  },
  {
+  "author": "(viridius-hub)",
+  "icon": "https://anilibria.top/static/favicon-96x96.png",
+  "lang": "ru",
+  "license": "MIT",
+  "name": "AniLiberty",
+  "nsfw": "false",
+  "package": "aniliberty",
+  "type": "bangumi",
+  "url": "aniliberty.js",
+  "version": "v0.0.9",
+  "webSite": "https://anilibria.top/api/v1"
+ },
+ {
   "author": "(koikiss-dev)",
   "description": "https://github.com/koikiss-dev/jimov_api",
   "icon": "https://animeflv.vc/static/img/icon/logo.png",

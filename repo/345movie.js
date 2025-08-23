@@ -11,8 +11,6 @@
 // @description  Extension for accessing 345movie.net content
 // ==/MiruExtension==
 
-import { Extension } from './Extension.js';
-
 export default class Movie345Extension extends Extension {
     constructor() {
         super();
@@ -95,3 +93,4 @@ export default class Movie345Extension extends Extension {
         return null;
     }
 }
+

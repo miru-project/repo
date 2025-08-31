@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         345movie
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       qizaru
 // @lang         all
 // @license      MIT
@@ -93,4 +93,5 @@ export default class Movie345Extension extends Extension {
         return null;
     }
 }
+
 

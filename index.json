@@ -8,8 +8,8 @@
   "name": "345movie",
   "package": "345movie.net",
   "type": "bangumi",
-  "url": "345movie.js",
-  "version": "v0.0.2",
+  "url": "345movie.net.js",
+  "version": "v0.0.3",
   "webSite": "https://345movie.net/movies"
  },
  {

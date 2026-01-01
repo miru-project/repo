@@ -26,19 +26,6 @@
   "webSite": "https://360zy.com"
  },
  {
-  "author": "ijs77",
-  "icon": "https://3hentai.net/favicon.ico",
-  "lang": "all",
-  "license": "MIT",
-  "name": "3hentai",
-  "nsfw": "true",
-  "package": "3hentai.net",
-  "type": "manga",
-  "url": "3hentai.net.js",
-  "version": "v0.0.1",
-  "webSite": "https://3hentai.net"
- },
- {
   "author": "appdevelpo",
   "icon": "https://9animetv.to/images/favicon.png",
   "lang": "en",

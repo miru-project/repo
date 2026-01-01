@@ -1219,19 +1219,6 @@
   "webSite": "https://monoschinos2.com"
  },
  {
-  "author": "ijs77",
-  "icon": "https://motherless.com/favicon.ico",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Motherless",
-  "nsfw": "true",
-  "package": "motherless.com",
-  "type": "bangumi",
-  "url": "motherless.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://motherless.com"
- },
- {
   "author": "appdevelpo",
   "icon": "https://i2.wp.com/107.152.37.223/wp-content/uploads/2020/12/cropped-Movieku-2-32x32.jpg",
   "lang": "id",

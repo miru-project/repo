@@ -1142,19 +1142,6 @@
   "webSite": "https://api-manhuagui.aoihosizora.top/v1"
  },
  {
-  "author": "ijs77",
-  "icon": "https://cdn.nmcorp.video/static/extend/dark/favicon-96x96.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "Mat6tube",
-  "nsfw": "true",
-  "package": "mat6tube.com",
-  "type": "bangumi",
-  "url": "mat6tube.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://mat6tube.com"
- },
- {
   "author": "MiaoMint",
   "description": "蜜柑计划：新一代的动漫下载站",
   "icon": "https://mikanani.me/images/mikan-pic.png",

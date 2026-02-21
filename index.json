@@ -675,7 +675,7 @@
  },
  {
   "author": "Nazz",
-  "icon": "https://vip.idlixofficial.net/wp-content/uploads/2020/06/idlix.png",
+  "icon": "https://tv.idlixku.com/wp-content/uploads/2022/11/2_logoIDLIX_CNY.webp",
   "lang": "id",
   "license": "MIT",
   "name": "IDLIX",
@@ -684,8 +684,8 @@
   "tags": "movie,tvseries,anime,english",
   "type": "bangumi",
   "url": "idlix.js",
-  "version": "v0.0.2",
-  "webSite": "https://vip.idlixofficial.net"
+  "version": "v0.0.3",
+  "webSite": "https://tv.idlixku.com/"
  },
  {
   "author": "hualiong",
@@ -1280,7 +1280,7 @@
   "tags": "anime,indonesia",
   "type": "bangumi",
   "url": "otakudesu.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://otakudesu.cloud"
  },
  {

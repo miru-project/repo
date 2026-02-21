@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         IDLIX
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       Nazz
 // @lang         id
 // @license      MIT
 // @type         bangumi
-// @icon         https://vip.idlixofficial.net/wp-content/uploads/2020/06/idlix.png
+// @icon         https://tv.idlixku.com/wp-content/uploads/2022/11/2_logoIDLIX_CNY.webp
 // @package      idlix
-// @webSite      https://vip.idlixofficial.net
+// @webSite      https://tv.idlixku.com
 // @nsfw         false
 // @tags         movie,tvseries,anime,english
 // ==/MiruExtension==
@@ -20,7 +20,7 @@ export default class extends Extension {
 			key: "domain_idlix",
 			type: "input",
 			description: "Idlix Domain",
-			defaultValue: "https://vip.idlixofficial.net",
+			defaultValue: "https://tv.idlixku.com",
 		});
 	}
 	async requestWSetting(url) {
@@ -283,7 +283,7 @@ export default class extends Extension {
 			method: "POST",
 			data: raw_data_embed_url,
 			headers: {
-				"Miru-Url": "https://vip.idlixofficial.net/wp-admin/admin-ajax.php",
+				"Miru-Url": "https://tv.idlixku.com/wp-admin/admin-ajax.php",
 				"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
 			},
 		});
@@ -293,8 +293,8 @@ export default class extends Extension {
 		);
 
 		const parsedUrl = this.parseUrl(embed_url);
-		const videoUrlHash = parsedUrl.pathname.indexOf("video") >= 0 ? parsedUrl.pathname.replace("/video/","") : "data" in parseUrl.searchParams ? parseUrl.searchParams["data"] : false
-		let raw_data_m3u8_url = `hash=${videoUrlHash}&r=https%3A%2F%2Fvip.idlixofficial.net%2F`
+		const videoUrlHash = parsedUrl.pathname.indexOf("video") >= 0 ? parsedUrl.pathname.replace("/video/","") : "data" in parsedUrl.searchParams ? parsedUrl.searchParams["data"] : false
+		let raw_data_m3u8_url = `hash=${videoUrlHash}&r=https%3A%2F%2Ftv.idlixku.com%2F`
 		const fetch_m3u8_url = await this.request("", {
 			method: "POST",
 			data: raw_data_m3u8_url,
@@ -339,7 +339,7 @@ export default class extends Extension {
 		const fetch_m3u8_subtitle = await this.request("", {
 			headers: {
 				"Miru-Url": `https://jeniusplay.com/video/${videoUrlHash}`,
-				'Referer': 'https://vip.idlixofficial.net/',
+				'Referer': 'https://tv.idlixku.com/',
 				"X-Requested-With": "XMLHttpRequest"
 			}
 		});

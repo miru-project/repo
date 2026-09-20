@@ -1825,14 +1825,14 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://wtr-lab.com/images/favicon.png",
+  "icon": "https://wtr-lab.com/assets/favicon/favicon.svg",
   "lang": "en",
   "license": "MIT",
   "name": "WTR-LAB",
   "package": "wtr-lab.com",
   "type": "fikushon",
   "url": "wtr-lab.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://wtr-lab.com"
  },
  {

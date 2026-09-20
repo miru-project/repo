@@ -1,61 +1,82 @@
 // ==MiruExtension==
 // @name         WTR-LAB
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       OshekharO
 // @lang         en
 // @license      MIT
 // @package      wtr-lab.com
 // @type         fikushon
-// @icon         https://wtr-lab.com/images/favicon.png
+// @icon         https://wtr-lab.com/assets/favicon/favicon.svg
 // @webSite      https://wtr-lab.com
 // ==/MiruExtension==
 
 export default class extends Extension {
-  async latest() {
-    const res = await this.request("/en/novel-list/");
-    const jsonData = res.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/)[1];
-    const parsedData = JSON.parse(jsonData);
-    const novels = parsedData.props.pageProps.series;
+  async latest(page) {
+    const res = await this.request("/en/novel-list");
+    const novelList = [];
 
-    const novelList = novels.map((item) => ({
-      url: `https://wtr-lab.com/en/serie-${item.raw_id}/${item.slug}`,
-      title: item.data.title,
-      cover: item.data.image,
-    }));
+    const strRes = typeof res === "string" ? res : JSON.stringify(res || {});
+    const match = strRes.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/);
+
+    if (match) {
+      try {
+        const parsedData = JSON.parse(match[1]);
+        const series = parsedData?.props?.pageProps?.series || [];
+        for (const item of series) {
+          const rawId = item.raw_id || item.id;
+          const title = item.data?.title || item.title;
+          const cover = item.data?.image || item.image;
+          const slug = item.slug || "novel";
+
+          if (!title || !rawId) continue;
+
+          novelList.push({
+            title,
+            url: `https://wtr-lab.com/en/novel/${rawId}/${slug}`,
+            cover,
+          });
+        }
+      } catch (_) {}
+    }
+
+    if (novelList.length === 0) {
+      return this.search("the");
+    }
 
     return novelList;
   }
 
   async search(kw) {
-    const requestBody = {
-      text: kw,
-    };
-
-    const res = await this.request("", {
+    const res = await this.request("/api/search", {
       headers: {
-        "Miru-Url": "https://wtr-lab.com/api/search",
+        "Content-Type": "application/json",
       },
-      data: requestBody,
+      data: {
+        text: kw || "the",
+      },
       method: "post",
     });
 
-    const mangaList = [];
+    const novelList = [];
 
-    if (res.success && res.data) {
-      for (const comic of res.data) {
-        const id = comic.raw_id;
-        const title = comic.data.title;
-        if (!title || !comic.data.image) continue;
+    if (res && res.data) {
+      for (const item of res.data) {
+        const rawId = item.raw_id || item.id;
+        const title = item.data?.title || item.title;
+        const cover = item.data?.image || item.image;
+        const slug = item.slug || "novel";
 
-        mangaList.push({
-          title: title,
-          url: `https://wtr-lab.com/en/serie-${id}/${comic.slug}`,
-          cover: comic.data.image,
+        if (!title || !rawId) continue;
+
+        novelList.push({
+          title,
+          url: `https://wtr-lab.com/en/novel/${rawId}/${slug}`,
+          cover,
         });
       }
     }
 
-    return mangaList;
+    return novelList;
   }
 
   async detail(url) {
@@ -65,24 +86,33 @@ export default class extends Extension {
       },
     });
 
-    const title = await this.querySelector(res, "h1.text-uppercase").text;
-    const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
-    const desc = await this.querySelector(res, "p.lead").text;
+    const strRes = typeof res === "string" ? res : JSON.stringify(res || {});
+    const jsonData = strRes.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/)[1];
+    const parsedData = JSON.parse(jsonData);
+    const serie = parsedData.props.pageProps.serie;
+    const serieData = serie.serie_data;
+    const rawId = serieData.raw_id || serieData.id;
+    const slug = serieData.slug;
+
+    const title = serieData.data?.title || "";
+    const cover = serieData.data?.image || "";
+    const desc = serieData.data?.description || "";
+
+    const chaptersRes = await this.request(`/api/chapters/${rawId}`);
 
     const episodes = [];
+    if (chaptersRes && Array.isArray(chaptersRes.chapters)) {
+      for (const chapter of chaptersRes.chapters) {
+        const chapterNo = chapter.order || 1;
+        const chapterId = chapter.id;
+        const chapterTitle = chapter.title || chapter.name || `Chapter ${chapterNo}`;
+        const chapterUrl = `https://wtr-lab.com/en/novel/${rawId}/${slug}/chapter-${chapterNo}?chapter_id=${chapterId}`;
 
-    const jsonData = res.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/)[1];
-    const parsedData = JSON.parse(jsonData);
-    const chapters = parsedData.props.pageProps.serie.chapters;
-    const { serie_data } = parsedData.props.pageProps.serie;
-
-    for (const chapter of chapters) {
-      const url = `https://wtr-lab.com/en/serie-${serie_data.raw_id}/${serie_data.slug}/chapter-${chapter.slug}`;
-
-      episodes.push({
-        name: chapter.title,
-        url: url,
-      });
+        episodes.push({
+          name: chapterTitle,
+          url: chapterUrl,
+        });
+      }
     }
 
     return {
@@ -99,21 +129,52 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const res = await this.request("", {
+    const rawIdMatch = url.match(/\/novel\/(\d+)\//i) || url.match(/\/serie-(\d+)\//i);
+    const rawId = rawIdMatch ? parseInt(rawIdMatch[1]) : 0;
+
+    const chapterNoMatch = url.match(/chapter-(\d+)/i);
+    const chapterNo = chapterNoMatch ? parseInt(chapterNoMatch[1]) : 1;
+
+    const chapterIdMatch = url.match(/chapter_id=(\d+)/i);
+    const chapterId = chapterIdMatch ? parseInt(chapterIdMatch[1]) : 0;
+
+    const res = await this.request("/api/reader/get", {
       headers: {
-        "Miru-Url": url,
+        "Content-Type": "application/json",
+        Accept: "application/json, text/plain, */*",
+        Origin: "https://wtr-lab.com",
+        Referer: url,
       },
+      data: {
+        translate: "web",
+        language: "en",
+        raw_id: rawId,
+        chapter_no: chapterNo,
+        retry: false,
+        force_retry: false,
+        chapter_id: chapterId,
+      },
+      method: "post",
     });
 
-    const jsonData = res.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/)[1];
-    const parsedData = JSON.parse(jsonData);
-    const chapterData = parsedData.props.pageProps.serie.chapter_data;
+    const chapterObj = res?.chapter || {};
+    const title = chapterObj.title || `Chapter ${chapterNo}`;
 
-    const title = chapterData.data.title;
+    let body = res?.data?.data?.body || res?.data?.body || "";
+    let contentList = [];
+
+    if (Array.isArray(body)) {
+      contentList = body.map((item) => (typeof item === "string" ? item : JSON.stringify(item)));
+    } else if (typeof body === "string" && body.trim().length > 0) {
+      contentList = body
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
 
     return {
-      title: title,
-      content: chapterData.data.body.map((item) => item),
+      title,
+      content: contentList,
     };
   }
 }

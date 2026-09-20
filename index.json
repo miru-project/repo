@@ -2027,17 +2027,5 @@
   "url": "yzzy.tv.js",
   "version": "v0.0.2",
   "webSite": "https://yzzy.tv"
- },
- {
-  "author": "OshekharO",
-  "icon": "https://zscans.com/favicon.ico",
-  "lang": "en",
-  "license": "MIT",
-  "name": "ZeroScans",
-  "package": "zeroscans.com",
-  "type": "manga",
-  "url": "zeroscans.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://zscans.com"
  }
 ]

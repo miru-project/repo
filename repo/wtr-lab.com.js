@@ -6,7 +6,7 @@
 // @license      MIT
 // @package      wtr-lab.com
 // @type         fikushon
-// @icon         https://wtr-lab.com/assets/favicon/favicon.svg
+// @icon         https://wtr-lab.com/images/favicon.png
 // @webSite      https://wtr-lab.com
 // ==/MiruExtension==
 

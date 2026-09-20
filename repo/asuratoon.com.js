@@ -1,13 +1,13 @@
 // ==MiruExtension==
 // @name         AsuraScan
-// @version      v0.0.5
+// @version      v0.0.6
 // @author       bethro
 // @lang         en
 // @license      MIT
-// @icon         https://asuracomic.net/images/logo.webp
+// @icon         https://asurascans.com/images/logo.webp
 // @package      asuratoon.com
 // @type         manga
-// @webSite      https://asuracomic.net
+// @webSite      https://asurascans.com
 // ==/MiruExtension==
 
 export default class extends Extension {
@@ -25,7 +25,7 @@ export default class extends Extension {
       key: "asurascans",
       type: "input",
       description: "Homepage URL for AsuraScan",
-      defaultValue: "https://asuracomic.net",
+      defaultValue: "https://asurascans.com",
     });
 
     this.registerSetting({
@@ -38,99 +38,87 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const res = await this.req(`/series?page=${page}/`);
-    const latest = await this.querySelectorAll(res, "div.grid.grid-cols-2 > a");
+    const res = await this.req(`/comics?page=${page}`);
+    const regex = /<a[^>]*href="(\/comics\/[^"]+)"[^>]*>[\s\S]*?<img[^>]*src="([^"]+)"[^>]*alt="([^"]+)"/gi;
+    const matches = [...res.matchAll(regex)];
 
     let comic = [];
-    for (const element of latest) {
-      const html = await element.content;
-      const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "span.block").text;
-      const cover = await this.querySelector(html, "img").getAttributeText(
-        "src"
-      );
-
-      comic.push({
-        title: title.trim(),
-        url,
-        cover: cover,
-      });
+    const seen = new Set();
+    for (const m of matches) {
+      const url = m[1];
+      const cover = m[2];
+      const title = m[3];
+      if (url && title && title !== "poster" && title !== "logo" && !seen.has(url)) {
+        seen.add(url);
+        comic.push({
+          title: title.trim(),
+          url,
+          cover,
+        });
+      }
     }
     return comic;
   }
 
   async search(kw, page) {
-    const res = await this.req(`/series?page=${page}&name=${kw}`);
-    const searchList = await this.querySelectorAll(
-      res,
-      "div.grid.grid-cols-2.sm\\:grid-cols-2.md\\:grid-cols-5.gap-3.p-4 > a"
-    );
+    const res = await this.req(`/comics?page=${page}&name=${kw}`);
+    const regex = /<a[^>]*href="(\/comics\/[^"]+)"[^>]*>[\s\S]*?<img[^>]*src="([^"]+)"[^>]*alt="([^"]+)"/gi;
+    const matches = [...res.matchAll(regex)];
 
-    const result = await Promise.all(
-      searchList.map(async (element) => {
-        const html = await element.content;
-        const url = await this.getAttributeText(html, "a", "href");
-        const title = await this.querySelector(
-          html,
-          "span.block.text-\\[13\\.3px\\].font-bold"
-        ).text;
-        const cover = await this.querySelector(html, "img").getAttributeText(
-          "src"
-        );
-
-        return {
+    let comic = [];
+    const seen = new Set();
+    for (const m of matches) {
+      const url = m[1];
+      const cover = m[2];
+      const title = m[3];
+      if (url && title && title !== "poster" && title !== "logo" && !seen.has(url)) {
+        seen.add(url);
+        comic.push({
           title: title.trim(),
           url,
           cover,
-        };
-      })
-    );
-
-    return result;
+        });
+      }
+    }
+    return comic;
   }
 
   async detail(url) {
+    const baseUrl = await this.getSetting("asurascans");
+    let cleanUrl = url.startsWith("/") ? url : "/" + url;
+    cleanUrl = cleanUrl.replace(/^\/series\//, "/comics/");
+
     const res = await this.request("", {
       headers: {
-        "Miru-Url": "https://asuracomic.net/" + url,
+        "Miru-Url": baseUrl + cleanUrl,
       },
     });
 
-    const title = await this.querySelector(
-      res,
-      "div.text-center.sm\\:text-left span.text-xl.font-bold"
-    ).text;
-    const cover = await this.querySelector(
-      res,
-      "img[alt='poster']"
-    ).getAttributeText("src");
-    const desc = await this.querySelector(
-      res,
-      "span.font-medium.text-sm.text-\\[\\#A2A2A2\\]"
-    ).text;
+    const titleMatch = res.match(/<h1[^>]*>([\s\S]+?)<\/h1>/i) || res.match(/span class="[^"]*text-xl[^"]*"[^>]*>([\s\S]+?)</i);
+    const title = titleMatch ? titleMatch[1].trim() : "";
 
-    const epiList = await this.querySelectorAll(
-      res,
-      "div.pl-4.pr-2.pb-4.overflow-y-auto > div"
-    );
-    const episodes = await Promise.all(
-      epiList.map(async (element) => {
-        const html = await element.content;
-        const name = await this.querySelector(
-          html,
-          "h3.text-sm.text-white.font-medium a"
-        ).text;
-        const url = await this.getAttributeText(
-          html,
-          "h3.text-sm.text-white.font-medium a",
-          "href"
-        );
-        return {
-          name: name.trim(),
-          url: url,
-        };
-      })
-    );
+    const coverMatch = res.match(/<img[^>]*src="([^"]+)"[^>]*alt="poster"/i) || res.match(/<img[^>]*alt="poster"[^>]*src="([^"]+)"/i) || res.match(/<img[^>]*src="([^"]*covers[^"]*)"/i);
+    const cover = coverMatch ? coverMatch[1] : "";
+
+    const descMatch = res.match(/span class="font-medium text-sm text-\[\#A2A2A2\]">([\s\S]+?)<\/span>/i) || res.match(/<p[^>]*class="[^"]*text-sm[^"]*"[^>]*>([\s\S]+?)<\/p>/i);
+    const desc = descMatch ? descMatch[1].trim() : "";
+
+    const chapMatches = [...res.matchAll(/<a[^>]*href="(\/comics\/[^"]*\/chapter\/[^"]*)"[^>]*>([\s\S]+?)<\/a>/gi)];
+
+    const seen = new Set();
+    const episodes = [];
+    for (const m of chapMatches) {
+      const href = m[1];
+      if (!href || seen.has(href)) continue;
+      seen.add(href);
+
+      let name = m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+
+      episodes.push({
+        name,
+        url: href,
+      });
+    }
 
     if ((await this.getSetting("reverseChaptersOrderAsura")) === "true") {
       episodes.reverse();
@@ -150,28 +138,39 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    //console.log(url + " url");
+    const baseUrl = await this.getSetting("asurascans");
+    let cleanUrl = url.startsWith("/") ? url : "/" + url;
+    cleanUrl = cleanUrl.replace(/^\/series\//, "/comics/");
+    const fullUrl = url.startsWith("http") ? url : baseUrl + cleanUrl;
 
     const res = await this.request("", {
       headers: {
-        "Miru-Url": "https://asuracomic.net/series/" + url,
-        referer: "https://asuracomic.net/",
-        origin: "https://asuracomic.net",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36",
+        "Miru-Url": fullUrl,
+        referer: baseUrl + "/",
+        origin: baseUrl,
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
       },
     });
-    const regex = /<script>(.*?)\<\/script>/gs;
-    const matches = res.match(regex);
-    const pageRegex = /\\"pages\\":\[(.*?)\]/gs;
-    const pageMatches = matches.join("").match(pageRegex);
-    //console.log(pageMatches + "pageMatches");
-    const httpRegex = /https:\/\/[^\\]+/g;
-    const httpMatches = pageMatches.join("").match(httpRegex);
-    //console.log(httpMatches.length + "httpMatches.length");
-    //console.log(httpMatches + "httpMatches");
+
+    const imgRegex = /<img[^>]+src="([^"]+)"[^>]*alt="Page \d+[^"]*"/gi;
+    let httpMatches = [...res.matchAll(imgRegex)].map((m) => m[1]);
+
+    if (!httpMatches || httpMatches.length === 0) {
+      const fallbackRegex = /<img[^>]+src="([^"]*asura-images\/chapters\/[^"]+)"/gi;
+      httpMatches = [...res.matchAll(fallbackRegex)].map((m) => m[1]);
+    }
+
+    if (!httpMatches || httpMatches.length === 0) {
+      const regex = /<script>(.*?)\<\/script>/gs;
+      const matches = res.match(regex) || [];
+      const pageRegex = /\\"pages\\":\[(.*?)\]/gs;
+      const pageMatches = matches.join("").match(pageRegex) || [];
+      const httpRegex = /https:\/\/[^\\]+/g;
+      httpMatches = (pageMatches.join("").match(httpRegex) || []);
+    }
 
     return {
-      urls: httpMatches,
+      urls: httpMatches || [],
     };
   }
 }

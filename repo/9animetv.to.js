@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         9Anime
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       appdevelpo
 // @lang         en
 // @license      MIT
@@ -58,7 +58,7 @@ export default class extends Extension {
       }
       
        const res = await this.request(search_str);
-       const bsxList = res.match(/flw-item item-qtip[\s\S]+?"clearfix"/g);
+       const bsxList = res.match(/flw-item item-qtip[\s\S]+?"clearfix"/g) || [];
        const videos = [];
        bsxList.forEach((element) => {
            const url = element.match(/href="(.+?)"/)[1];
@@ -160,7 +160,7 @@ export default class extends Extension {
     async latest(page) {
       const res = await this.request(`/filter?keyword=&type=1,2,3,4,5,6&status=all&genre=&season=&language=&year=&sort=all&page=${page}`);
       await this.get_filter(res);
-      const bsxList = res.match(/flw-item item-qtip[\s\S]+?"clearfix"/g);
+      const bsxList = res.match(/flw-item item-qtip[\s\S]+?"clearfix"/g) || [];
       const videos = [];
       bsxList.forEach((element) => {
           const url = element.match(/href="(.+?)"/)[1];
@@ -189,7 +189,7 @@ export default class extends Extension {
       const res = await this.request(`/ajax/episode/list/${video_id}`);
       const res_html = JSON.parse(JSON.stringify(res)).html;
       // const ep_title = res_html.match(/title/)
-      const res_html_area = res_html.match(/<a[\s\S]+?<\/a>/g)
+      const res_html_area = res_html.match(/<a[\s\S]+?<\/a>/g) || []
       const ep = res_html_area.map((element) => {
           return{
               name: "Ep "+element.match(/data-number="(.+?)"/)[1]+" "+element.match(/title="(.+?)"/)[1],
@@ -233,25 +233,32 @@ export default class extends Extension {
       });
       const encrypted_res_data = JSON.parse(JSON.stringify(encrypted_res));
       
-      this.subs=encrypted_res_data.tracks.map((element) => {
-        return{
-          title:element.label,
-          url:element.file}
-      })
+      this.subs = (encrypted_res_data.tracks || []).map((element) => {
+        return {
+          title: element.label || element.kind,
+          url: element.file
+        };
+      });
       let m3u8_link = "";
       const isEncrypt = encrypted_res_data["encrypted"];
       if(isEncrypt){
-        const key =await this.start(encrypted_res_data.sources);
-      
+        const key = await this.start(encrypted_res_data.sources);
         const decryptedVal = CryptoJS.AES.decrypt(key[1], key[0]).toString(CryptoJS.enc.Utf8);
-        
-        m3u8_link = decryptedVal.match(/https:\/\/.+m3u8/)[0]
+        m3u8_link = decryptedVal.match(/https:\/\/.+m3u8/)[0];
       }else{
-        m3u8_link = encrypted_res_data.sources
+        if (Array.isArray(encrypted_res_data.sources)) {
+          m3u8_link = encrypted_res_data.sources[0].file || encrypted_res_data.sources[0].url;
+        } else if (typeof encrypted_res_data.sources === "string") {
+          const match = encrypted_res_data.sources.match(/https:\/\/.+m3u8/);
+          m3u8_link = match ? match[0] : encrypted_res_data.sources;
+        } else if (encrypted_res_data.sources && encrypted_res_data.sources.file) {
+          m3u8_link = encrypted_res_data.sources.file;
+        } else {
+          m3u8_link = JSON.stringify(encrypted_res_data.sources).match(/https:\/\/.+?m3u8/)[0];
+        }
       }
       
-      
-      return m3u8_link
+      return m3u8_link;
     }
   
     async watch(url) {
@@ -260,7 +267,7 @@ export default class extends Extension {
       const episode_res_html = JSON.parse(JSON.stringify(episode_res)).html;
       // 
       
-      const episode_server_list = episode_res_html.match(/data-type[\s\S]+?"btn">\w+/g)
+      const episode_server_list = episode_res_html.match(/data-type[\s\S]+?"btn">\w+/g) || []
       
       for(const element of episode_server_list){
           if(element.includes(options[1])&&element.includes(options[2])){
@@ -275,15 +282,20 @@ export default class extends Extension {
               }
           }
       }
-      const server_id = episode_server_list[0].match(/data-id="(.+?)"/)[1]
-      
-      const m3u8_link = await this.anime9(server_id)
-      
+      if (episode_server_list.length > 0) {
+        const server_id = episode_server_list[0].match(/data-id="(.+?)"/)[1];
+        const m3u8_link = await this.anime9(server_id);
+        return {
+            type:"hls",
+            url:m3u8_link,
+            subtitles:this.subs || []
+        };
+      }
       return {
           type:"hls",
-          url:m3u8_link,//auto
-          subtitles:this.subs
-      }
+          url:"",
+          subtitles:this.subs || []
+      };
       
     }
     async anime9(server_id){

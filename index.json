@@ -35,7 +35,7 @@
   "package": "9animetv.to",
   "type": "bangumi",
   "url": "9animetv.to.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://9animetv.to"
  },
  {
@@ -181,15 +181,15 @@
  },
  {
   "author": "bethro",
-  "icon": "https://asuracomic.net/images/logo.webp",
+  "icon": "https://asurascans.com/images/logo.webp",
   "lang": "en",
   "license": "MIT",
   "name": "AsuraScan",
   "package": "asuratoon.com",
   "type": "manga",
   "url": "asuratoon.com.js",
-  "version": "v0.0.5",
-  "webSite": "https://asuracomic.net"
+  "version": "v0.0.6",
+  "webSite": "https://asurascans.com"
  },
  {
   "author": "appdevelpo",

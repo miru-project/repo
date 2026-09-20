@@ -22,7 +22,8 @@ export default class extends Extension {
 
   async latest(page) {
     // Latest updates
-    const paddedPage = page.toString().padStart(2, "0");
+    const safePage = Math.max(1, parseInt(page, 10) || 1);
+    const paddedPage = safePage.toString().padStart(2, "0");
     const url = `/latest-updates/?mode=async&function=get_block&block_id=custom_list_videos_latest_videos_list&sort_by=post_date&from=${paddedPage}`;
     const res = await this.request(url);
     const videoList = await this.querySelectorAll(res, "#custom_list_videos_latest_videos_list_items .item.thumb");

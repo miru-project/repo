@@ -21,7 +21,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Arabsama | arabsama.net | v0.0.1 | JerukPurut404 | ar | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/arabsama.net.js) |
 | AsuraScan | asuratoon.com | v0.0.7 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
 | 包子漫画 | baozimh.com | v0.0.2 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
-| Bato | bato.to | v0.0.2 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bato.to.js) |
 | 暴风资源[高清无水印] | bfzy.tv | v0.0.2 | jason | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bfzy.tv.js) |
 | 哔哩轻小说 | bilinovel.com | v0.1.0 | hualiong | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bilinovel.com.js) |
 | 笔趣阁 | bqg.cc | v0.0.2 | yxxyun | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bqg.cc.js) |

@@ -357,18 +357,6 @@
   "webSite": "https://comixextra.com"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://comick.app/static/icons/unicorn-256_maskable.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "Comick",
-  "package": "comick.app",
-  "type": "manga",
-  "url": "comick.app.js",
-  "version": "v0.0.6",
-  "webSite": "https://api.comick.fun"
- },
- {
   "author": "Shahed",
   "lang": "en",
   "license": "MIT",

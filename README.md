@@ -64,7 +64,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | LayarKaca | lk21official | v0.0.2 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
 | 量子资源 | lzzy.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lzzy.tv.js) |
 | 漫画屋 | manHuaWu | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manHuaWu.js) |
-| MangaBat | mangabat.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangabat.com.js) |
 | 拷贝漫画 | mangacopy.com | v0.0.4 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.com.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | MangaDex | mangadex.org | v0.0.3 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |

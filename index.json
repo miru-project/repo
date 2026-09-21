@@ -979,18 +979,6 @@
   "webSite": "https://h.mangabat.com"
  },
  {
-  "author": "bethro",
-  "icon": "https://mangaclash.com/wp-content/uploads/2020/03/cropped-22.jpg",
-  "lang": "en",
-  "license": "MIT",
-  "name": "MangaClash",
-  "package": "mangaclash.com",
-  "type": "manga",
-  "url": "mangaclash.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://mangaclash.com"
- },
- {
   "author": "hualiong",
   "icon": "https://tse1-mm.cn.bing.net/th/id/OIP-C.KCerrBL9dq9e8ydGaiyy2QAAAA",
   "lang": "zh-cn",

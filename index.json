@@ -1652,14 +1652,14 @@
  },
  {
   "author": "bethro",
-  "icon": "https://weebcentral.com/static/images/brand.png",
+  "icon": "https://weebcentral.com/static/images/apple-touch-icon.png",
   "lang": "en",
   "license": "MIT",
   "name": "weebcentral",
   "package": "weebcentral.com",
   "type": "manga",
   "url": "weebcentral.com.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://weebcentral.com"
  },
  {

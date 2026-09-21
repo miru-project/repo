@@ -1,20 +1,21 @@
 // ==MiruExtension==
 // @name         FlameComics
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bethro
 // @lang         en
 // @license      MIT
-// @icon         https://flamecomics.com/wp-content/uploads/2021/03/cropped-fds-1-192x192.png
+// @icon         https://flamecomics.xyz/favicon.ico
 // @package      flamecomics.com
 // @type         manga
-// @webSite      https://flamecomics.com/
+// @webSite      https://flamecomics.xyz/
 // ==/MiruExtension==
 
 export default class extends Extension {
     async req(url) {
+        const baseUrl = await this.getSetting("flamecomics");
         return this.request(url, {
             headers: {
-                "Miru-Url": await this.getSetting("flamecomics"),
+                "Miru-Url": baseUrl,
             },
         });
     }
@@ -25,63 +26,95 @@ export default class extends Extension {
             key: "flamecomics",
             type: "input",
             desc: "This is the URL where the comics are fetched from",
-            defaultValue: "https://flamecomics.com",
+            defaultValue: "https://flamecomics.xyz",
         });
     }
 
+    async getNextData(res) {
+        const str = typeof res === "string" ? res : JSON.stringify(res || {});
+        const match = str.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/);
+        if (!match) return null;
+        try {
+            return JSON.parse(match[1]);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    async getFullUrl(url) {
+        const baseUrl = (await this.getSetting("flamecomics")) || "https://flamecomics.xyz";
+        if (url.startsWith("http://") || url.startsWith("https://")) {
+            return url;
+        }
+        return `${baseUrl.replace(/\/$/, "")}${url.startsWith("/") ? "" : "/"}${url}`;
+    }
+
     async latest(page) {
-        let res = await this.req(`/series/?page=${page}&order=update`);
+        if (page > 1) return [];
+        const res = await this.req("/browse");
+        const nextData = await this.getNextData(res);
+        if (!nextData) return [];
 
-        let items = await this.querySelectorAll(res, "div.listupd > div.bs > div.bsx");
-
-        let respItems = await Promise.all(items.map(async (item) => ({
-            url: await this.getAttributeText(item.content, "a", "href"),
-            cover: await this.getAttributeText(item.content, "img", "src"),
-            title: await this.getAttributeText(item.content, "a", "title")
-        })))
-
-        return respItems
+        const seriesList = nextData.props?.pageProps?.series || [];
+        return seriesList.map((item) => {
+            const cover = item.cover?.startsWith("http")
+                ? item.cover
+                : `https://cdn.flamecomics.xyz/uploads/images/series/${item.series_id}/${item.cover}`;
+            return {
+                url: `/series/${item.series_id}`,
+                cover: cover,
+                title: item.title,
+            };
+        });
     }
 
     async search(kw, page) {
-        let res = await this.req(`/page/${page}/?s=${kw}`);
+        if (page > 1) return [];
+        const res = await this.req("/browse");
+        const nextData = await this.getNextData(res);
+        if (!nextData) return [];
 
-        let items = await this.querySelectorAll(res, "div.listupd > div.bs > div.bsx");
+        const seriesList = nextData.props?.pageProps?.series || [];
+        const filtered = seriesList.filter((item) =>
+            item.title && item.title.toLowerCase().includes(kw.toLowerCase())
+        );
 
-        let respItems = await Promise.all(items.map(async (item) => ({
-            url: await this.getAttributeText(item.content, "a", "href"),
-            cover: await this.getAttributeText(item.content, "img", "src"),
-            title: await this.getAttributeText(item.content, "a", "title")
-        })))
-        return respItems;
+        return filtered.map((item) => {
+            const cover = item.cover?.startsWith("http")
+                ? item.cover
+                : `https://cdn.flamecomics.xyz/uploads/images/series/${item.series_id}/${item.cover}`;
+            return {
+                url: `/series/${item.series_id}`,
+                cover: cover,
+                title: item.title,
+            };
+        });
     }
 
     async detail(url) {
-        // Implement the detail method to get details of a specific comic
-        let res  = await this.request('',{
+        const fullUrl = await this.getFullUrl(url);
+        const res = await this.request("", {
             headers: {
-                "Miru-Url": url,
-            }
-        })
+                "Miru-Url": fullUrl,
+            },
+        });
+        const nextData = await this.getNextData(res);
+        if (!nextData) return {};
 
-        let title = await this.querySelector(res, "title").text
-        const cover = await this.querySelector(res, "img.wp-post-image").getAttributeText("src");
+        const pageProps = nextData.props?.pageProps || {};
+        const series = pageProps.series || {};
+        const chapters = pageProps.chapters || [];
 
-        const desclist = await this.querySelectorAll(res, "div.entry-content.entry-content-single > p");
-        const desc = await Promise.all(desclist.map(async (element) => {
-            const decHtml = await element.content;
-            return await this.querySelector(decHtml, "p").text;
-        })).then((texts) => texts.join(""));
+        const title = series.title || "";
+        const cover = series.cover?.startsWith("http")
+            ? series.cover
+            : `https://cdn.flamecomics.xyz/uploads/images/series/${series.series_id}/${series.cover}`;
+        const rawDesc = series.description || "";
+        const desc = rawDesc.replace(/<[^>]+>/g, "").trim();
 
-        const epiList = await this.querySelectorAll(res, "#chapterlist > ul > li");
-        const episodes = await Promise.all(epiList.map(async (element) => {
-            const html = await element.content;
-            const name = (await this.querySelector(html, "span.chapternum").text).trim().replace(/[\n\t]/g, '');;
-            const url = await this.getAttributeText(html, "a", "href");
-            return {
-                name,
-                url: url,
-            };
+        const episodeList = chapters.map((ch) => ({
+            name: ch.chapter ? `Chapter ${ch.chapter}` : `Chapter ${ch.chapter_id}`,
+            url: `/series/${series.series_id}/${ch.token}`,
         }));
 
         return {
@@ -91,26 +124,36 @@ export default class extends Extension {
             episodes: [
                 {
                     title: "Chapters",
-                    urls: episodes,
+                    urls: episodeList,
                 },
             ],
         };
     }
 
     async watch(url) {
+        const fullUrl = await this.getFullUrl(url);
         const res = await this.request("", {
             headers: {
-                "Miru-Url": url,
+                "Miru-Url": fullUrl,
             },
         });
+        const nextData = await this.getNextData(res);
+        if (!nextData) return { urls: [] };
 
-        const images = await Promise.all((await this.querySelectorAll(res, "div#readerarea > p > img")).map(async (element) => {
-            const html = await element.content;
-            return this.getAttributeText(html, "img", "src");
-        }));
+        const chProps = nextData.props?.pageProps?.chapter || {};
+        const imagesObj = chProps.images || {};
+        const seriesId = chProps.series_id;
+        const token = chProps.token;
+
+        const images = Object.values(imagesObj).map((img) => {
+            return `https://cdn.flamecomics.xyz/uploads/images/series/${seriesId}/${token}/${img.name}`;
+        });
 
         return {
             urls: images,
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            },
         };
     }
 }

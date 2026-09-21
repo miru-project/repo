@@ -1168,7 +1168,7 @@
  {
   "author": "MiaoMint",
   "description": "info",
-  "icon": "https://yts.mx/assets/images/website/apple-touch-icon-144x144.png",
+  "icon": "https://yts.gg/assets/images/website/apple-touch-icon-144x144.png",
   "lang": "all",
   "license": "MIT",
   "name": "YTS.mx",
@@ -1176,7 +1176,7 @@
   "type": "bangumi",
   "url": "mx.yts.js",
   "version": "v0.0.6",
-  "webSite": "https://yts.mx"
+  "webSite": "https://yts.gg"
  },
  {
   "author": "bachig26",

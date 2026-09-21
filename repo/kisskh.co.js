@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Kisskh
-// @version      v0.0.3
+// @version      v0.0.5
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -33,14 +33,15 @@ export default class extends Extension {
   
     async detail(url) {
       const res = await this.request(`/api/DramaList/Drama/${url}?isq=true`);
+      const episodes = Array.isArray(res?.episodes) ? [...res.episodes].reverse() : [];
       return {
-        title: res.title,
-        cover: res.thumbnail,
-        desc: res.description,
+        title: res?.title || "",
+        cover: res?.thumbnail || "",
+        desc: res?.description || "",
         episodes: [
           {
             title: "Directory",
-            urls: res.episodes.reverse().map((item) => ({
+            urls: episodes.map((item) => ({
               name: `Episode ${item.number}`,
               url: item.id.toString(),
             })),
@@ -50,14 +51,36 @@ export default class extends Extension {
     }
   
     async watch(url) {
+      let vidKey = "";
+      let subKey = "";
+      try {
+        const vidEncRes = await this.request("", {
+          headers: { "Miru-Url": `https://enc-dec.app/api/enc-kisskh?text=${url}&type=vid` },
+        });
+        if (vidEncRes?.status === 200) {
+          vidKey = vidEncRes.result || "";
+        }
+      } catch (e) {}
+
+      try {
+        const subEncRes = await this.request("", {
+          headers: { "Miru-Url": `https://enc-dec.app/api/enc-kisskh?text=${url}&type=sub` },
+        });
+        if (subEncRes?.status === 200) {
+          subKey = subEncRes.result || "";
+        }
+      } catch (e) {}
+
       const res = await this.request(
-        `/api/DramaList/Episode/${url}.png?err=false&ts=&time=`
+        `/api/DramaList/Episode/${url}.png?err=false&ts=&time=&kkey=${vidKey}`
       );
-      const subRes = await this.request(`/api/Sub/${url}`);
+      const subRes = await this.request(`/api/Sub/${url}?kkey=${subKey}`);
+      const subtitles = Array.isArray(subRes) ? subRes : [];
+
       return {
         type: "hls",
-        url: res.Video,
-        subtitles: subRes.map((item) => ({
+        url: res?.Video || res?.Video_tmp,
+        subtitles: subtitles.map((item) => ({
           title: item.label,
           url: item.src,
           language: item.land,
@@ -65,4 +88,3 @@ export default class extends Extension {
       };
     }
   }
-  

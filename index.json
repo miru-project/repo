@@ -1651,7 +1651,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://www2.turkish123.org/wp-content/uploads/favicon.png",
+  "icon": "https://turkish123.ac/wp-content/uploads/favicon-150x150.png",
   "lang": "tr",
   "license": "MIT",
   "name": "Turkish123",
@@ -1659,8 +1659,8 @@
   "package": "turkish123",
   "type": "bangumi",
   "url": "turkish123.js",
-  "version": "v0.0.2",
-  "webSite": "https://www2.turkish123.org"
+  "version": "v0.0.3",
+  "webSite": "https://turkish123.ac"
  },
  {
   "author": "wenmoux",

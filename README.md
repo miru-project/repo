@@ -19,7 +19,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Animeworld | animeworld | v0.0.1 | Nazz | it | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animeworld.js) |
 | 音悦台MTV | api.yinyuetai | v0.0.2 | vvsolo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/api.yinyuetai.js) |
 | Arabsama | arabsama.net | v0.0.1 | JerukPurut404 | ar | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/arabsama.net.js) |
-| AsuraScan | asuratoon.com | v0.0.6 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
+| AsuraScan | asuratoon.com | v0.0.7 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
 | 包子漫画 | baozimh.com | v0.0.2 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
 | Bato | bato.to | v0.0.2 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bato.to.js) |
 | BestLightNovel | best.light.novel | v0.0.1 | anishi7 | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/best.light.novel.js) |
@@ -119,7 +119,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 风车动漫 | windmill | v0.0.1 | Monster | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/windmill.js) |
 | Wnmtl | wnmtl.org | v0.0.1 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wnmtl.org.js) |
 | 卧龙资源 | wolongzyw.com | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wolongzyw.com.js) |
-| WTR-LAB | wtr-lab.com | v0.0.2 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wtr-lab.com.js) |
+| WTR-LAB | wtr-lab.com | v0.0.3 | OshekharO | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wtr-lab.com.js) |
 | 无尽资源网 | wujinzy.com | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/wujinzy.com.js) |
 | 稀饭动漫 | xfani.com | v0.1.1 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/xfani.com.js) |
 | 丫丫资源[1080无水印] | yayazy.net | v0.0.1 | jason | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/yayazy.net.js) |

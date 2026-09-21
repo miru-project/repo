@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         WTR-LAB
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         en
 // @license      MIT
@@ -129,47 +129,72 @@ export default class extends Extension {
   }
 
   async watch(url) {
-    const rawIdMatch = url.match(/\/novel\/(\d+)\//i) || url.match(/\/serie-(\d+)\//i);
-    const rawId = rawIdMatch ? parseInt(rawIdMatch[1]) : 0;
-
     const chapterNoMatch = url.match(/chapter-(\d+)/i);
     const chapterNo = chapterNoMatch ? parseInt(chapterNoMatch[1]) : 1;
 
-    const chapterIdMatch = url.match(/chapter_id=(\d+)/i);
-    const chapterId = chapterIdMatch ? parseInt(chapterIdMatch[1]) : 0;
+    let res;
+    try {
+      res = await this.request("", {
+        headers: {
+          "Miru-Url": `https://wtr-scraper.vercel.app/api/scrape?url=${encodeURIComponent(url)}`,
+        },
+      });
+    } catch (_) {}
 
-    const res = await this.request("/api/reader/get", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json, text/plain, */*",
-        Origin: "https://wtr-lab.com",
-        Referer: url,
-      },
-      data: {
-        translate: "web",
-        language: "en",
-        raw_id: rawId,
-        chapter_no: chapterNo,
-        retry: false,
-        force_retry: false,
-        chapter_id: chapterId,
-      },
-      method: "post",
-    });
+    const resObj = typeof res === "string" ? JSON.parse(res) : res;
+    const title = resObj?.title || `Chapter ${chapterNo}`;
 
-    const chapterObj = res?.chapter || {};
-    const title = chapterObj.title || `Chapter ${chapterNo}`;
-
-    let body = res?.data?.data?.body || res?.data?.body || "";
     let contentList = [];
 
-    if (Array.isArray(body)) {
-      contentList = body.map((item) => (typeof item === "string" ? item : JSON.stringify(item)));
-    } else if (typeof body === "string" && body.trim().length > 0) {
-      contentList = body
+    if (Array.isArray(resObj?.lines) && resObj.lines.length > 0) {
+      contentList = resObj.lines;
+    } else if (Array.isArray(resObj?.content)) {
+      contentList = resObj.content;
+    } else if (typeof resObj?.content === "string" && resObj.content.trim().length > 0) {
+      contentList = resObj.content
         .split("\n")
         .map((s) => s.trim())
         .filter(Boolean);
+    }
+
+    if (contentList.length === 0) {
+      const rawIdMatch = url.match(/\/novel\/(\d+)\//i) || url.match(/\/serie-(\d+)\//i);
+      const rawId = rawIdMatch ? parseInt(rawIdMatch[1]) : 0;
+      const chapterIdMatch = url.match(/chapter_id=(\d+)/i);
+      const chapterId = chapterIdMatch ? parseInt(chapterIdMatch[1]) : 0;
+
+      const fallbackRes = await this.request("/api/reader/get", {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json, text/plain, */*",
+          Origin: "https://wtr-lab.com",
+          Referer: url,
+        },
+        data: {
+          translate: "web",
+          language: "en",
+          raw_id: rawId,
+          chapter_no: chapterNo,
+          retry: false,
+          force_retry: false,
+          chapter_id: chapterId,
+        },
+        method: "post",
+      });
+
+      let body = fallbackRes?.data?.data?.content || fallbackRes?.data?.data?.body || fallbackRes?.data?.content || fallbackRes?.data?.body || fallbackRes?.content || fallbackRes?.body || "";
+
+      if (Array.isArray(body)) {
+        contentList = body.map((item) => (typeof item === "string" ? item : JSON.stringify(item)));
+      } else if (typeof body === "string" && body.trim().length > 0) {
+        contentList = body
+          .replace(/<br\s*\/?>/gi, "\n")
+          .replace(/<\/(?:p|div)>/gi, "\n")
+          .replace(/<[^>]+>/g, "")
+          .split("\n")
+          .map((s) => s.trim())
+          .filter(Boolean);
+      }
     }
 
     return {

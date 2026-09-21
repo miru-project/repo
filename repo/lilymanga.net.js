@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         LilyManga
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bethro
 // @lang         en
 // @license      MIT
@@ -30,31 +30,49 @@ export default class extends Extension {
     }
 
     async latest(page) {
-        let res = await this.req(`/ys/page/${page}/?m_orderby=latest`);
+        let res = await this.req(`/gl/page/${page}/?m_orderby=latest`);
 
-        let items = await this.querySelectorAll(res, "div.page-content-listing.item-default > div > div > div > div.manga");
+        let items = await this.querySelectorAll(res, "div.page-item-detail");
 
-        let respItems = await Promise.all(items.map(async (item) => ({
-            url: await this.getAttributeText(item.content, "a", "href"),
-            cover: await this.getAttributeText(item.content, "img", "data-src"),
-            title: await this.getAttributeText(item.content, "a", "title")
-        })))
+        let respItems = await Promise.all(items.map(async (item) => {
+            const url = await this.getAttributeText(item.content, "div.post-title h3 a", "href");
+            const title = (await this.querySelector(item.content, "div.post-title h3 a").text).trim();
+            let cover = await this.getAttributeText(item.content, "div.item-thumb img", "data-src");
+            if (!cover) {
+                cover = await this.getAttributeText(item.content, "div.item-thumb img", "src");
+            }
 
-        return respItems
+            return {
+                url: url ? url.trim() : "",
+                cover: cover ? cover.trim() : "",
+                title: title || ""
+            };
+        }));
+
+        return respItems.filter(item => item.url && item.title);
     }
 
     async search(kw, page) {
         let res = await this.req(`/page/${page}/?s=${kw}&post_type=wp-manga&m_orderby=trending`);
 
-        let items = await this.querySelectorAll(res, "div.main-col-inner > div > div.tab-content-wrap > div.c-tabs-item > div.row");
+        let items = await this.querySelectorAll(res, "div.page-item-detail");
 
-        let respItems = await Promise.all(items.map(async (item) => ({
-            url: await this.getAttributeText(item.content, "a", "href"),
-            cover: await this.getAttributeText(item.content, "img", "data-src"),
-            title: await this.getAttributeText(item.content, "a", "title")
-        })))
+        let respItems = await Promise.all(items.map(async (item) => {
+            const url = await this.getAttributeText(item.content, "div.post-title h3 a", "href");
+            const title = (await this.querySelector(item.content, "div.post-title h3 a").text).trim();
+            let cover = await this.getAttributeText(item.content, "div.item-thumb img", "data-src");
+            if (!cover) {
+                cover = await this.getAttributeText(item.content, "div.item-thumb img", "src");
+            }
 
-        return respItems
+            return {
+                url: url ? url.trim() : "",
+                cover: cover ? cover.trim() : "",
+                title: title || ""
+            };
+        }));
+
+        return respItems.filter(item => item.url && item.title);
     }
 
     async detail(url) {
@@ -62,12 +80,21 @@ export default class extends Extension {
             headers: {
                 "Miru-Url": url,
             }
-        })
-
+        });
 
         const title = (await this.querySelector(res, "div.post-title > h1").text).trim();
-        const cover = (await this.getAttributeText(res, "div.summary_image > a > img", "data-src")).trim();
-        const desc = (await this.getAttributeText(res, "head > meta[name='description']","content")).trim();
+        let cover = await this.getAttributeText(res, "div.summary_image img", "data-src");
+        if (!cover) {
+            cover = await this.getAttributeText(res, "div.summary_image img", "src");
+        }
+        cover = cover ? cover.trim() : "";
+
+        let desc = "";
+        try {
+            desc = (await this.getAttributeText(res, "head > meta[name='description']", "content")).trim();
+        } catch (e) {
+            desc = "";
+        }
 
         let chapters_res = await this.request('ajax/chapters/', {
             headers: {
@@ -79,10 +106,10 @@ export default class extends Extension {
         let chapters = await this.querySelectorAll(chapters_res, 'ul.main > li.wp-manga-chapter');
 
         let episodes = await Promise.all(chapters.map(async (chapter) => ({
-            url: await this.getAttributeText(chapter.content, "a", "href"),
+            url: (await this.getAttributeText(chapter.content, "a", "href")).trim(),
             name: (await this.querySelector(chapter.content, "a").text).trim()
-        })))
-        
+        })));
+
         return {
             title,
             cover,
@@ -101,14 +128,20 @@ export default class extends Extension {
             headers: {
                 "Miru-Url": url,
             }
-        })
+        });
 
-        const images = await Promise.all((await this.querySelectorAll(res, "div.reading-content> div > img")).map(async (element) => {
-            return (await this.getAttributeText(element.content, "img", "data-src")).trim();
+        const elements = await this.querySelectorAll(res, "div.reading-content img");
+
+        const images = await Promise.all(elements.map(async (element) => {
+            let src = await this.getAttributeText(element.content, "img", "data-src");
+            if (!src) {
+                src = await this.getAttributeText(element.content, "img", "src");
+            }
+            return src ? src.trim() : "";
         }));
 
         return {
-            urls: images, 
-        }
+            urls: images.filter(src => src.length > 0 && !src.includes("avatar") && !src.includes("logo")),
+        };
     }
 }

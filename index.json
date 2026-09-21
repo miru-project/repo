@@ -205,18 +205,6 @@
   "webSite": "https://www.baozimh.com"
  },
  {
-  "author": "bethro",
-  "icon": "https://bato.to/amsta/img/batoto/favicon.ico?v0",
-  "lang": "all",
-  "license": "MIT",
-  "name": "Bato",
-  "package": "bato.to",
-  "type": "manga",
-  "url": "bato.to.js",
-  "version": "v0.0.2",
-  "webSite": "https://bato.to"
- },
- {
   "author": "jason",
   "icon": "https://bfzy.tv/favicon.ico",
   "lang": "zh-cn",
@@ -355,18 +343,6 @@
   "url": "comicextra.js",
   "version": "v0.0.2",
   "webSite": "https://comixextra.com"
- },
- {
-  "author": "OshekharO",
-  "icon": "https://comick.app/static/icons/unicorn-256_maskable.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "Comick",
-  "package": "comick.app",
-  "type": "manga",
-  "url": "comick.app.js",
-  "version": "v0.0.6",
-  "webSite": "https://api.comick.fun"
  },
  {
   "author": "Shahed",
@@ -726,18 +702,6 @@
   "webSite": "https://iptv-org.github.io/iptv"
  },
  {
-  "author": "bethro",
-  "icon": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_192,h_192/https://m.isekaiscan.to/wp-content/uploads/2023/03/0_20230304_101820_0000-300x300.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "IsekaiScan",
-  "package": "isekaiscan.to",
-  "type": "manga",
-  "url": "isekaiscan.to.js",
-  "version": "v0.0.3",
-  "webSite": "https://m.isekaiscan.to"
- },
- {
   "author": "hualiong",
   "icon": "https://www.iwara.tv/logo.png",
   "lang": "en",
@@ -954,19 +918,6 @@
   "webSite": "https://www.mhua5.com"
  },
  {
-  "author": "appdevelpo",
-  "icon": "https://www.manga4life.com/media/favicon.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "MangaLife",
-  "nsfw": "false",
-  "package": "manga4life.com",
-  "type": "manga",
-  "url": "manga4life.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://www.manga4life.com"
- },
- {
   "author": "bethro",
   "icon": "https://h.mangabat.com/favicon-96x96.png",
   "lang": "en",
@@ -977,18 +928,6 @@
   "url": "mangabat.com.js",
   "version": "v0.0.1",
   "webSite": "https://h.mangabat.com"
- },
- {
-  "author": "bethro",
-  "icon": "https://mangaclash.com/wp-content/uploads/2020/03/cropped-22.jpg",
-  "lang": "en",
-  "license": "MIT",
-  "name": "MangaClash",
-  "package": "mangaclash.com",
-  "type": "manga",
-  "url": "mangaclash.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://mangaclash.com"
  },
  {
   "author": "hualiong",

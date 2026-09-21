@@ -21,7 +21,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Arabsama | arabsama.net | v0.0.1 | JerukPurut404 | ar | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/arabsama.net.js) |
 | AsuraScan | asuratoon.com | v0.0.7 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/asuratoon.com.js) |
 | 包子漫画 | baozimh.com | v0.0.2 | appdevelpo | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/baozimh.com.js) |
-| Bato | bato.to | v0.0.2 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bato.to.js) |
 | 暴风资源[高清无水印] | bfzy.tv | v0.0.2 | jason | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bfzy.tv.js) |
 | 哔哩轻小说 | bilinovel.com | v0.1.0 | hualiong | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bilinovel.com.js) |
 | 笔趣阁 | bqg.cc | v0.0.2 | yxxyun | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/bqg.cc.js) |
@@ -29,7 +28,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 动漫之家 | com.dmzj.www | v0.0.2 | MiaoMint | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.dmzj.www.js) |
 | 欧乐影院 | com.olevod.www | v0.0.1 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/com.olevod.www.js) |
 | ComicExtra | comicextra | v0.0.2 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comicextra.js) |
-| Comick | comick.app | v0.0.6 | OshekharO | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/comick.app.js) |
 | 咕咕影视 | cooing.cc | v0.0.4 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cooing.cc.js) |
 | 次元城动漫 | cycanime.com | v0.1.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/cycanime.com.js) |
 | media.ccc.de | de.ccc.media | v0.0.1 | Weiske | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/de.ccc.media.js) |
@@ -52,7 +50,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | IDLIX | idlix | v0.0.2 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/idlix.js) |
 | Invidious | invidious.io | v0.0.4 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/invidious.io.js) |
 | IPTV-ORG | iptv-org | v0.0.1 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/iptv-org.js) |
-| IsekaiScan | isekaiscan.to | v0.0.3 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/isekaiscan.to.js) |
 | 极速资源 | jisuzy.com | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/jisuzy.com.js) |
 | 聚小说 | juxiaoshuo | v0.0.1 | OshekharO | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/juxiaoshuo.js) |
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |
@@ -67,9 +64,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | LayarKaca | lk21official | v0.0.2 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
 | 量子资源 | lzzy.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lzzy.tv.js) |
 | 漫画屋 | manHuaWu | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manHuaWu.js) |
-| MangaLife | manga4life.com | v0.0.1 | appdevelpo | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manga4life.com.js) |
 | MangaBat | mangabat.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangabat.com.js) |
-| MangaClash | mangaclash.com | v0.0.1 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangaclash.com.js) |
 | 拷贝漫画 | mangacopy.com | v0.0.4 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.com.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
 | MangaDex | mangadex.org | v0.0.3 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |

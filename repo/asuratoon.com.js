@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         AsuraScan
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       bethro
 // @lang         en
 // @license      MIT
@@ -100,8 +100,12 @@ export default class extends Extension {
     const coverMatch = res.match(/<img[^>]*src="([^"]+)"[^>]*alt="poster"/i) || res.match(/<img[^>]*alt="poster"[^>]*src="([^"]+)"/i) || res.match(/<img[^>]*src="([^"]*covers[^"]*)"/i);
     const cover = coverMatch ? coverMatch[1] : "";
 
-    const descMatch = res.match(/span class="font-medium text-sm text-\[\#A2A2A2\]">([\s\S]+?)<\/span>/i) || res.match(/<p[^>]*class="[^"]*text-sm[^"]*"[^>]*>([\s\S]+?)<\/p>/i);
-    const desc = descMatch ? descMatch[1].trim() : "";
+    const descMatch =
+      res.match(/id=["']description-text["'][^>]*>([\s\S]+?)<\/div>/i) ||
+      res.match(/<meta[^>]*name=["']description["'][^>]*content=["']([^"']+)["']/i) ||
+      res.match(/span class="font-medium text-sm text-\[\#A2A2A2\]">([\s\S]+?)<\/span>/i) ||
+      res.match(/<p[^>]*class="[^"]*text-sm[^"]*"[^>]*>([\s\S]+?)<\/p>/i);
+    const desc = descMatch ? descMatch[1].replace(/<[^>]+>/g, "").trim() : "";
 
     const chapMatches = [...res.matchAll(/<a[^>]*href="(\/comics\/[^"]*\/chapter\/[^"]*)"[^>]*>([\s\S]+?)<\/a>/gi)];
 
@@ -112,7 +116,23 @@ export default class extends Extension {
       if (!href || seen.has(href)) continue;
       seen.add(href);
 
-      let name = m[2].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      const inner = m[2];
+      if (inner.includes("First Chapter") || inner.includes("Last Chapter")) {
+        continue;
+      }
+
+      const chapSpan = inner.match(/<span[^>]*class="[^"]*group-hover:text-[^"]*"[^>]*>([\s\S]+?)<\/span>/i);
+      const subSpan = inner.match(/<span[^>]*class="[^"]*text-white\/50[^"]*"[^>]*>([\s\S]+?)<\/span>/i);
+
+      const cTitle = chapSpan ? chapSpan[1].replace(/<!--.*?-->/g, "").replace(/<[^>]+>/g, "").trim() : "";
+      const sTitle = subSpan ? subSpan[1].replace(/<!--.*?-->/g, "").replace(/<[^>]+>/g, "").trim() : "";
+
+      let name = "";
+      if (cTitle) {
+        name = sTitle ? `${cTitle} - ${sTitle}` : cTitle;
+      } else {
+        name = inner.replace(/<!--.*?-->/g, "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      }
 
       episodes.push({
         name,

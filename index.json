@@ -1213,15 +1213,15 @@
  },
  {
   "author": "bethro",
-  "icon": "https://i0.wp.com/ravenscans.com/wp-content/uploads/2022/12/cropped-33-192x192.png",
+  "icon": "https://ravenscans.net/wp-content/uploads/2025/05/logo.png",
   "lang": "en",
   "license": "MIT",
   "name": "Ravenscans",
   "package": "ravenscans.com",
   "type": "manga",
   "url": "ravenscans.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://ravenscans.com"
+  "version": "v0.0.2",
+  "webSite": "https://ravenscans.org"
  },
  {
   "author": "appdevelpo",

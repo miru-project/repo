@@ -52,7 +52,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 极速资源 | jisuzy.com | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/jisuzy.com.js) |
 | 聚小说 | juxiaoshuo | v0.0.1 | OshekharO | zh-cn | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/juxiaoshuo.js) |
 | KimCartoon | kimcartoon.li | v0.0.2 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kimcartoon.li.js) |
-| Kisskh | kisskh.co | v0.0.3 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
+| Kisskh | kisskh.co | v0.0.5 | OshekharO | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/kisskh.co.js) |
 | Komiic漫畫 | komiic.com | v0.0.2 | hualiong | zh-tw | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiic.com.js) |
 | Komikcast | komikcast.lol | v0.0.1 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komikcast.lol.js) |
 | Komiku.com | komiku.com | v0.0.1 | Nazz | id | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/komiku.com.js) |

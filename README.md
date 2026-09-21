@@ -65,7 +65,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | 漫画屋 | manHuaWu | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manHuaWu.js) |
 | 拷贝漫画 | mangacopy.com | v0.0.4 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.com.js) |
 | マンガクロス | mangacross.jp | v0.0.1 | OshekharO | jp | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacross.jp.js) |
-| MangaDex | mangadex.org | v0.0.3 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |
+| MangaDex | mangadex.org | v0.0.4 | bethro | all | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangadex.org.js) |
 | Mangakatana | mangakatana.com | v0.0.1 | shashankx86 | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangakatana.com.js) |
 | Manganato | manganato | v0.0.1 | OshekharO | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manganato.js) |
 | 漫画DB | manhuadb.com | v0.0.1 | ftbom | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manhuadb.com.js) |

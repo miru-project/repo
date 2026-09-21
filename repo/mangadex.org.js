@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         MangaDex
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       bethro
 // @lang         all
 // @license      MIT
@@ -36,7 +36,7 @@ export default class extends Extension {
       type: "input",
       description: "Chapters will be downloaded in this language",
       defaultValue: "en",
-    })
+    });
 
     this.registerSetting({
       title: "Reverse Order of Chapters",
@@ -47,31 +47,48 @@ export default class extends Extension {
     });
   }
 
+  getTitle(item) {
+    const titleObj = item.attributes?.title || {};
+    const keys = Object.keys(titleObj);
+    if (keys.length > 0 && titleObj[keys[0]]) {
+      return titleObj[keys[0]];
+    }
+    const altTitles = item.attributes?.altTitles;
+    if (altTitles && Array.isArray(altTitles)) {
+      for (const t of altTitles) {
+        if (!t) continue;
+        const k = Object.keys(t)[0];
+        if (k && t[k]) return t[k];
+      }
+    }
+    return "unknown title";
+  }
+
+  getDesc(item, preferredLang = "en") {
+    const descObj = item.attributes?.description || {};
+    return descObj[preferredLang] || descObj["en"] || descObj[Object.keys(descObj)[0]] || "";
+  }
+
   async latest(page) {
     const offset = page > 1 ? (page - 1) * 30 : 0;
     const res = await this.req(
       `/manga?order[rating]=desc&limit=30&offset=${offset}&includes[]=cover_art`
     );
 
-    let data = await res.data.map((item) => {
+    let data = (res.data || []).map((item) => {
       const mangaId = item.id;
-      const coverArtObject = item.relationships.find(
+      const coverArtObject = item.relationships?.find(
         (relationship) => relationship.type === "cover_art"
       );
-      if (!coverArtObject) return;
 
-      const coverFilename = coverArtObject.attributes.fileName;
-      const coverImageURL = `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}.256.jpg`;
-
-      const title = (() => {
-        const altTitle = item.attributes?.title;
-        const key = Object.keys(altTitle)[0];
-        return altTitle[key] || "unknown title";
-      })();
+      const coverFilename = coverArtObject?.attributes?.fileName;
+      const coverImageURL = coverFilename
+        ? `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}.256.jpg`
+        : "";
 
       return {
         url: item.id,
-        title: title,
+        title: this.getTitle(item),
         cover: coverImageURL,
       };
     });
@@ -85,25 +102,20 @@ export default class extends Extension {
     const response = await this.req(
       `/manga?title=${keyword}&limit=${limit}&offset=${offset}&includes[]=cover_art`
     );
-    const mangaList = response.data.map((item) => {
-      const title = (() => {
-        const altTitle = item.attributes?.title;
-        const key = Object.keys(altTitle)[0];
-        return altTitle[key] || "unknown title";
-      })();
-
+    const mangaList = (response.data || []).map((item) => {
       const mangaId = item.id;
-      const coverArtObject = item.relationships.find(
+      const coverArtObject = item.relationships?.find(
         (relationship) => relationship.type === "cover_art"
       );
-      const coverFilename = coverArtObject.attributes.fileName;
-      const coverImageURL = `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}.256.jpg`;
 
-      if (!coverArtObject) return;
+      const coverFilename = coverArtObject?.attributes?.fileName;
+      const coverImageURL = coverFilename
+        ? `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}.256.jpg`
+        : "";
 
       return {
         url: mangaId,
-        title,
+        title: this.getTitle(item),
         cover: coverImageURL,
       };
     });
@@ -111,72 +123,88 @@ export default class extends Extension {
     return mangaList;
   }
 
-async detail(mangaId) {
-  const mangaRes = await this.req(`/manga/${mangaId}?includes[]=cover_art`);
-  const manga = mangaRes.data;
-  const preferredLang = await this.getSetting("lang"); 
+  async detail(mangaId) {
+    const mangaRes = await this.req(`/manga/${mangaId}?includes[]=cover_art`);
+    const manga = mangaRes.data;
+    const preferredLang = await this.getSetting("lang");
 
-  const coverArtObject = manga.relationships.find(
-    (relationship) => relationship.type === "cover_art"
-  );
-  const coverFilename = coverArtObject.attributes.fileName;
-  const coverImageURL = `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}`;
+    const coverArtObject = manga.relationships?.find(
+      (relationship) => relationship.type === "cover_art"
+    );
+    const coverFilename = coverArtObject?.attributes?.fileName;
+    const coverImageURL = coverFilename
+      ? `https://uploads.mangadex.org/covers/${mangaId}/${coverFilename}`
+      : "";
 
-  const metadata = manga.attributes.tags
-    .filter((tag) => tag.group === "genre")
-    .reduce((metadata, tag) => {
-      metadata[tag.name] = tag.description;
-      return metadata;
-    }, {});
+    const metadata = (manga.attributes?.tags || [])
+      .filter((tag) => tag.attributes?.group === "genre")
+      .reduce((acc, tag) => {
+        const nameObj = tag.attributes?.name || {};
+        const nameKeys = Object.keys(nameObj);
+        const name = nameObj.en || (nameKeys.length > 0 ? nameObj[nameKeys[0]] : null);
 
-  const chapRes = await this.req(`/manga/${mangaId}/feed?&order[volume]=asc&order[chapter]=asc&limit=500&translatedLanguage%5B%5D=${preferredLang}`);
-  const chapters = chapRes.data;
+        const descObj = tag.attributes?.description || {};
+        const descKeys = Object.keys(descObj);
+        const description = descObj.en || (descKeys.length > 0 ? descObj[descKeys[0]] : "");
 
-  if (await this.getSetting("reverseChaptersOrder") === "true") {
-    chapters.reverse();
-  }
+        if (name) {
+          acc[name] = description;
+        }
+        return acc;
+      }, {});
 
-  const chapMap = new Map();
+    const chapRes = await this.req(
+      `/manga/${mangaId}/feed?&order[volume]=asc&order[chapter]=asc&limit=500&translatedLanguage%5B%5D=${preferredLang}`
+    );
+    const chapters = chapRes.data || [];
 
-  for (const item of chapters) {
-    const lang = item.attributes.translatedLanguage;
-    const chapter = {
-      name: `Chapter ${item.attributes.chapter}`,
-      url: item.id,
-    };
-
-    if (!chapMap.has(lang)) {
-      chapMap.set(lang, [chapter]);
-    } else {
-      chapMap.get(lang).push(chapter);
+    if ((await this.getSetting("reverseChaptersOrder")) === "true") {
+      chapters.reverse();
     }
+
+    const chapMap = new Map();
+
+    for (const item of chapters) {
+      const lang = item.attributes?.translatedLanguage || "unknown";
+      const chapter = {
+        name: `Chapter ${item.attributes?.chapter ?? ""}`,
+        url: item.id,
+      };
+
+      if (!chapMap.has(lang)) {
+        chapMap.set(lang, [chapter]);
+      } else {
+        chapMap.get(lang).push(chapter);
+      }
+    }
+
+    const sortedChapMap = new Map(
+      [...chapMap.entries()].sort((a, b) => {
+        if (a[0] === preferredLang) return -1;
+        if (b[0] === preferredLang) return 1;
+        return a[0].localeCompare(b[0]); // order alphabetically
+      })
+    );
+
+    const episodes = Array.from(sortedChapMap.entries()).map(([lang, list]) => ({
+      title: lang,
+      urls: list,
+    }));
+
+    return {
+      title: this.getTitle(manga),
+      cover: coverImageURL,
+      desc: this.getDesc(manga, preferredLang),
+      metadata,
+      episodes,
+    };
   }
-
-  const sortedChapMap = new Map([...chapMap.entries()].sort((a, b) => {
-    if (a[0] === preferredLang) return -1;
-    if (b[0] === preferredLang) return 1;
-    return a[0].localeCompare(b[0]); // order alphabetically
-  }));
-
-  const episodes = Array.from(sortedChapMap.entries()).map(([lang, list]) => ({
-    title: lang,
-    urls: list,
-  }));
-
-  return {
-    title: manga.attributes.title.en,
-    cover: coverImageURL,
-    desc: manga.attributes.description.en,
-    metadata,
-    episodes,
-  };
-}
 
   async watch(chapterId) {
     const response = await this.req(`/at-home/server/${chapterId}`);
     let { baseUrl: host, chapter: { hash: chapterHash, data } } = response;
 
-    const urls = data.map(filename => `${host}/data/${chapterHash}/${filename}`);
+    const urls = (data || []).map((filename) => `${host}/data/${chapterHash}/${filename}`);
 
     return { urls };
   }

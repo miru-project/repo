@@ -678,7 +678,7 @@
  {
   "author": "vvsolo",
   "description": "iptv-org",
-  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
+  "icon": "https://avatars.githubusercontent.com/u/55937028?s=200&v=4",
   "lang": "all",
   "license": "MIT",
   "name": "IPTV-ORG",
@@ -1020,7 +1020,7 @@
  {
   "author": "MiaoMint",
   "description": "https://github.com/Enime-Project/api.enime.moe",
-  "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",
+  "icon": "https://avatars.githubusercontent.com/u/74993083?s=200&v=4",
   "lang": "all",
   "license": "MIT",
   "name": "Enime",
@@ -1250,15 +1250,15 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://readcomicsonline.ru/images/banner.jpg",
+  "icon": "https://readcomicsonline.lol/favicon.ico",
   "lang": "en",
   "license": "MIT",
   "name": "ReadComicsOnline",
   "package": "readcomicsonline.ru",
   "type": "manga",
   "url": "readcomicsonline.ru.js",
-  "version": "v0.0.1",
-  "webSite": "https://readcomicsonline.ru"
+  "version": "v0.0.2",
+  "webSite": "https://readcomicsonline.lol"
  },
  {
   "author": "MiaoMint",
@@ -1593,7 +1593,7 @@
  },
  {
   "author": "CakesTwix",
-  "icon": "https://www.google.com/s2/favicons?domain=unimay.media\u0026sz=256",
+  "icon": "https://www.google.com/s2/favicons?domain=unimay.media&sz=256",
   "lang": "uk",
   "license": "GPL3",
   "name": "Unimay",

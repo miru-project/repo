@@ -269,19 +269,6 @@
   "webSite": "https://everia.club"
  },
  {
-  "author": "vvsolo",
-  "icon": "https://manga18.club/fav.png?v=1",
-  "lang": "all",
-  "license": "MIT",
-  "name": "manga18.club",
-  "nsfw": "true",
-  "package": "club.manga18",
-  "type": "manga",
-  "url": "club.manga18.js",
-  "version": "v0.0.5",
-  "webSite": "https://manga18.club"
- },
- {
   "author": "MiaoMint",
   "icon": "https://www.dmzj.com/_nuxt/logo_dmzj.1c94014a.png",
   "lang": "zh-cn",

@@ -265,7 +265,7 @@
   "package": "club.everia",
   "type": "manga",
   "url": "club.everia.js",
-  "version": "v0.0.4",
+  "version": "v0.0.5",
   "webSite": "https://everia.club"
  },
  {
@@ -278,7 +278,7 @@
   "package": "club.manga18",
   "type": "manga",
   "url": "club.manga18.js",
-  "version": "v0.0.3",
+  "version": "v0.0.5",
   "webSite": "https://manga18.club"
  },
  {
@@ -1081,7 +1081,7 @@
   "package": "nhentai.to",
   "type": "manga",
   "url": "nhentai.to.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://nhentai.to"
  },
  {
@@ -1427,7 +1427,7 @@
   "package": "taotu",
   "type": "manga",
   "url": "taotu.js",
-  "version": "v0.0.1",
+  "version": "v0.0.3",
   "webSite": "https://en.taotu.org"
  },
  {

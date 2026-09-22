@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         EVERIA.CLUB[Photo]
-// @version      v0.0.4
+// @version      v0.0.5
 // @author       vvsolo
 // @lang         all
 // @license      MIT
@@ -25,11 +25,23 @@ export default class extends Extension {
       let genres = {
         All: "All",
       };
-      await this.queryAll(res, "#menu-mainmenu > li.menu-item", async (html) => {
+      await this.queryAll(res, ".main-navigation li.menu-item, #menu-menu > li.menu-item", async (html) => {
         const title = ((await this.querySelector(html, "a").text) || "").trim();
         let href = await this.getAttributeText(html, "a", "href");
-        href = href.replace(this.#opts.base, "");
-        genres[href] = title;
+        if (href) {
+          href = href.replace(this.#opts.base, "");
+          if (
+            title &&
+            href &&
+            href !== "#" &&
+            !href.includes("search") &&
+            !href.includes("about") &&
+            !href.includes("contact") &&
+            !href.includes("disclaimer")
+          ) {
+            genres[href] = title;
+          }
+        }
       });
       this.#cache.set("@genres", genres);
     }
@@ -52,42 +64,67 @@ export default class extends Extension {
     const filt = (filter?.data && filter.data[0]) || "All";
     let seaKW = `/page/${page}/`;
     if (filt != "All") {
-      seaKW = filt + seaKW;
+      seaKW = filt + seaKW.replace(/^\//, "");
     }
     if (kw) {
-      seaKW = `/page/${page}/?s=${kw}`;
+      seaKW = `/page/${page}/?s=${encodeURIComponent(kw)}`;
     }
     return await this.getMangas(seaKW);
   }
 
   async detail(url) {
     const res = await this.req(url);
-    const title = await this.querySelector(res, "header > h1").text;
+    const titleEl = await this.querySelector(res, "h2.single-post-title, .entry-title, h1");
+    const title = titleEl ? ((await titleEl.text) || "").trim() : "";
 
-    const imgs = await this.queryAll(res, "figure.wp-block-image", async (html, v, i) => {
-      return {
-        name: `[P${(i + 1 + "").padStart(3, "0")}]`,
-        url: (await this.getAttributeText(html, "img", "data-src")) || (await this.getAttributeText(html, "img", "src")),
-      };
+    const imgs = await this.queryAll(res, "figure.wp-block-image, figure", async (html) => {
+      return (
+        (await this.getAttributeText(html, "img", "data-src")) ||
+        (await this.getAttributeText(html, "img", "src")) ||
+        (await this.getAttributeText(html, "img", "data-original")) ||
+        ""
+      );
     });
 
-    const cover = this.#cache.get("@cover")[url] || (imgs.length > 0 ? imgs[0].url : "");
+    const validImgs = imgs.filter((src) => src && !src.includes("gravatar") && !src.includes("logo"));
+    const cover = this.#cache.get("@cover")[url] || (validImgs.length > 0 ? validImgs[0] : "");
 
     return {
-      title: title.trim(),
+      title,
       cover,
       episodes: [
         {
-          title: "Images",
-          urls: imgs,
+          title: "Full Gallery",
+          urls: [
+            {
+              name: title || "Gallery",
+              url: url,
+            },
+          ],
         },
       ],
     };
   }
 
   async watch(url) {
+    if (!url.includes("everia.club")) {
+      return {
+        urls: [url],
+      };
+    }
+    const res = await this.req(url);
+    const imgs = await this.queryAll(res, "figure.wp-block-image, figure", async (html) => {
+      return (
+        (await this.getAttributeText(html, "img", "data-src")) ||
+        (await this.getAttributeText(html, "img", "src")) ||
+        (await this.getAttributeText(html, "img", "data-original")) ||
+        ""
+      );
+    });
+
+    const validImgs = imgs.filter((src) => src && !src.includes("gravatar") && !src.includes("logo"));
     return {
-      urls: [url],
+      urls: validImgs.length > 0 ? validImgs : [url],
     };
   }
 
@@ -97,11 +134,38 @@ export default class extends Extension {
       return this.#cache.get(md5path);
     }
     const res = await this.req(path);
-    const mangas = await this.queryAll(res, "#content .thumbnail", async (html) => {
-      let title = await this.getAttributeText(html, "img", "alt");
-      const url = await this.getAttributeText(html, "a", "href");
-      const cover = await this.getAttributeText(html, "img", "src");
-      title = title.trim().replace("Read more about the article ", "");
+    const seenUrls = new Set();
+    const mangas = await this.queryAll(res, ".rt-img-holder, article.entry, .thumbnail", async (html) => {
+      let title =
+        (await this.getAttributeText(html, "img", "alt")) ||
+        (await this.getAttributeText(html, "img", "title")) ||
+        (await this.getAttributeText(html, ".entry-title a", "title")) ||
+        "";
+
+      let url =
+        (await this.getAttributeText(html, "a", "href")) ||
+        (await this.getAttributeText(html, ".entry-title a", "href")) ||
+        "";
+
+      let cover =
+        (await this.getAttributeText(html, "img", "src")) ||
+        (await this.getAttributeText(html, "img", "data-src")) ||
+        "";
+
+      if (!title) {
+        const titleEl = await this.querySelector(html, ".entry-title a, a");
+        if (titleEl) {
+          title = (await titleEl.text) || "";
+        }
+      }
+
+      title = title.trim().replace(/^Read more about the article\s*/i, "");
+
+      if (!url || !cover || seenUrls.has(url)) {
+        return null;
+      }
+      seenUrls.add(url);
+
       this.#cache.get("@cover")[url] = cover;
       return {
         title,
@@ -109,10 +173,11 @@ export default class extends Extension {
         cover,
       };
     });
-    //this.#cache.clear();
-    this.#cache.set(md5path, mangas);
+
+    const filtered = mangas.filter((item) => item !== null);
+    this.#cache.set(md5path, filtered);
     this.#opts.uptime = Date.now();
-    return mangas;
+    return filtered;
   }
 
   async req(path) {

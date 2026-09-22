@@ -41,7 +41,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Funtoons | funtoons.online | v0.0.1 | funtoons | th | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/funtoons.online.js) |
 | GakiArchives | gakiarchives.com | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gakiarchives.com.js) |
 | gimy | gimy.su | v0.0.2 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gimy.su.js) |
-| GoGoAnime | gogo.anime | v0.0.8 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gogo.anime.js) |
 | 古风漫画 | gufengmh | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gufengmh.js) |
 | G站漫画 | gzhanmh | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gzhanmh.js) |
 | 黑木耳资源 | heimuer.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/heimuer.tv.js) |

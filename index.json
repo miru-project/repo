@@ -1406,7 +1406,7 @@
  },
  {
   "author": "appdevelpo",
-  "icon": "https://tamilyogi.plus/wp-content/uploads/2021/06/ty.png",
+  "icon": "https://tamilyogi.express/wp-content/uploads/2021/06/ty.png",
   "lang": "hi-ta",
   "license": "MIT",
   "name": "TamilYogi",
@@ -1414,8 +1414,8 @@
   "package": "tamilyogi",
   "type": "bangumi",
   "url": "tamilyogi.js",
-  "version": "v0.0.4",
-  "webSite": "https://tamilyogi.plus"
+  "version": "v0.0.5",
+  "webSite": "https://tamilyogi.express"
  },
  {
   "author": "OshekharO",

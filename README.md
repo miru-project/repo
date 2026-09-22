@@ -34,8 +34,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | DramaCool | dramacool.pa | v0.0.6 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dramacool.pa.js) |
 | EZTV | eztvx.to | v0.0.1 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/eztvx.to.js) |
 | 非凡资源 | ffzy.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ffzy.tv.js) |
-| FilmyCab | filmycab | v0.0.2 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/filmycab.js) |
-| FilmyPunjab | filmypunjab.com | v0.0.3 | appdevelpo | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/filmypunjab.com.js) |
 | FlameComics | flamecomics.com | v0.0.2 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flamecomics.com.js) |
 | FlixHQ | flixhq | v0.0.1 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/flixhq.js) |
 | Funtoons | funtoons.online | v0.0.1 | funtoons | th | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/funtoons.online.js) |
@@ -59,7 +57,6 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | Letv影院 | letv.im | v0.0.1 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/letv.im.js) |
 | libvio | libvio.app | v0.0.3 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/libvio.app.js) |
 | LilyManga | lilymanga.net | v0.0.2 | bethro | en | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lilymanga.net.js) |
-| LayarKaca | lk21official | v0.0.2 | OshekharO | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lk21official.js) |
 | 量子资源 | lzzy.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/lzzy.tv.js) |
 | 漫画屋 | manHuaWu | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/manHuaWu.js) |
 | 拷贝漫画 | mangacopy.com | v0.0.4 | hualiong | zh-cn | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/mangacopy.com.js) |

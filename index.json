@@ -447,32 +447,6 @@
   "webSite": "https://cj.ffzyapi.com"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://i.postimg.cc/SNhTmxT5/FilmyCab.png",
-  "lang": "hi",
-  "license": "MIT",
-  "name": "FilmyCab",
-  "nsfw": "false",
-  "package": "filmycab",
-  "type": "bangumi",
-  "url": "filmycab.js",
-  "version": "v0.0.2",
-  "webSite": "https://afilmyhub.mom"
- },
- {
-  "author": "appdevelpo",
-  "icon": "https://111.90.140.97/wp-content/uploads/2022/09/Fliz-Hindi-Movie-Website-02.jpg",
-  "lang": "hi",
-  "license": "MIT",
-  "name": "FilmyPunjab",
-  "nsfw": "false",
-  "package": "filmypunjab.com",
-  "type": "bangumi",
-  "url": "filmypunjab.com.js",
-  "version": "v0.0.3",
-  "webSite": "https://111.90.140.97"
- },
- {
   "author": "bethro",
   "icon": "https://flamecomics.xyz/favicon.ico",
   "lang": "en",
@@ -585,19 +559,6 @@
   "url": "heimuer.tv.js",
   "version": "v0.0.2",
   "webSite": "https://heimuer.tv"
- },
- {
-  "author": "OshekharO",
-  "icon": "https://s1.cdnimg.me:9000/hentaidexy/opengraph-image.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "HentaiDexy",
-  "nsfw": "true",
-  "package": "hentaidexy.net",
-  "type": "manga",
-  "url": "hentaidexy.net.js",
-  "version": "v0.0.1",
-  "webSite": "https://backend.hentaidexy.net"
  },
  {
   "author": "OshekharO",
@@ -841,19 +802,6 @@
   "url": "lilymanga.net.js",
   "version": "v0.0.2",
   "webSite": "https://lilymanga.net"
- },
- {
-  "author": "OshekharO",
-  "icon": "https://s8.lk21static.xyz/wp-content/themes/dunia21/images/favicon-set/apple-icon-144x144.png",
-  "lang": "id",
-  "license": "MIT",
-  "name": "LayarKaca",
-  "nsfw": "false",
-  "package": "lk21official",
-  "type": "bangumi",
-  "url": "lk21official.js",
-  "version": "v0.0.2",
-  "webSite": "https://tv3.lk21official.wiki"
  },
  {
   "author": "hualiong",

@@ -665,18 +665,6 @@
   "webSite": "https://ikunzy.org"
  },
  {
-  "author": "OshekharO",
-  "icon": "https://invidious.io/apple-touch-icon.png",
-  "lang": "all",
-  "license": "MIT",
-  "name": "Invidious",
-  "package": "invidious.io",
-  "type": "bangumi",
-  "url": "invidious.io.js",
-  "version": "v0.0.4",
-  "webSite": "https://cal1.iv.ggtyler.dev/api/v1"
- },
- {
   "author": "vvsolo",
   "description": "iptv-org",
   "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",

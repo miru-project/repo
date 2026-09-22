@@ -32,6 +32,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | media.ccc.de | de.ccc.media | v0.0.1 | Weiske | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/de.ccc.media.js) |
 | 7喜影院 | dev.0n0.miru.7xi | v0.0.7 | MiaoMint | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dev.0n0.miru.7xi.js) |
 | DramaCool | dramacool.pa | v0.0.4 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/dramacool.pa.js) |
+| EZTV | eztvx.to | v0.0.1 | Miru | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/eztvx.to.js) |
 | 非凡资源 | ffzy.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ffzy.tv.js) |
 | FilmyCab | filmycab | v0.0.2 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/filmycab.js) |
 | FilmyPunjab | filmypunjab.com | v0.0.3 | appdevelpo | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/filmypunjab.com.js) |

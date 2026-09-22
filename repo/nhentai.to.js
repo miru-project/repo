@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         Nhentai
-// @version      v0.0.3
+// @version      v0.0.4
 // @author       OshekharO
 // @lang         all
 // @license      MIT
@@ -12,41 +12,58 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-  async latest() {
-    const res = await this.request("/");
+  async latest(page) {
+    const res = await this.request(`/go?page=${page}`, {
+      headers: {
+        "miru-referer": "https://nhentai.to/",
+      },
+    });
+
     const bsxList = await this.querySelectorAll(res, "div.gallery");
-    const novel = [];
+    const mangas = [];
     for (const element of bsxList) {
       const html = await element.content;
-      const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "div.caption").text;
-      const cover = await this.querySelector(html, "img").getAttributeText("data-src");
-      novel.push({
+      const url = await this.getAttributeText(html, "a.cover", "href");
+      if (!url) continue;
+
+      const titleEl = await this.querySelector(html, "div.caption");
+      let title = (titleEl ? await titleEl.text : "") || (await this.getAttributeText(html, "img", "alt")) || "";
+      let cover = (await this.getAttributeText(html, "img", "src")) || (await this.getAttributeText(html, "img", "data-src")) || "";
+
+      mangas.push({
         title: title.trim(),
         url,
         cover,
       });
     }
-    return novel;
+    return mangas;
   }
 
   async search(kw, page) {
-    const res = await this.request(`/search?q=${kw}`);
-    const bsxList = await this.querySelectorAll(res, "div.gallery");
-    const novel = [];
+    const res = await this.request(`/search?q=${encodeURIComponent(kw)}&page=${page}`, {
+      headers: {
+        "miru-referer": "https://nhentai.to/",
+      },
+    });
 
+    const bsxList = await this.querySelectorAll(res, "div.gallery");
+    const mangas = [];
     for (const element of bsxList) {
       const html = await element.content;
-      const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "div.caption").text;
-      const cover = await this.querySelector(html, "img").getAttributeText("src");
-      novel.push({
+      const url = await this.getAttributeText(html, "a.cover", "href");
+      if (!url) continue;
+
+      const titleEl = await this.querySelector(html, "div.caption");
+      let title = (titleEl ? await titleEl.text : "") || (await this.getAttributeText(html, "img", "alt")) || "";
+      let cover = (await this.getAttributeText(html, "img", "src")) || (await this.getAttributeText(html, "img", "data-src")) || "";
+
+      mangas.push({
         title: title.trim(),
         url,
         cover,
       });
     }
-    return novel;
+    return mangas;
   }
 
   async detail(url) {
@@ -56,23 +73,16 @@ export default class extends Extension {
       },
     });
 
-    const title = await this.querySelector(res, "h1").text;
-    const cover = res.match(/https:\/\/zorocdn\.xyz\/[^"]+/)[0];
-    const desc = await this.querySelector(res, "h3").text;
+    const titleEl = await this.querySelector(res, "h1, h2");
+    const title = titleEl ? (await titleEl.text).trim() : "";
 
-    const episodes = [];
-    const epiList = await this.querySelectorAll(res, "#info-block");
+    const cover =
+      (await this.getAttributeText(res, "#cover img", "src")) ||
+      (await this.getAttributeText(res, "#cover img", "data-src")) ||
+      "";
 
-    for (const element of epiList) {
-      const html = await element.content;
-      const name = await this.querySelector(html, "h1").text;
-      const url = await this.querySelector(html, "h3#gallery_id").text;
-
-      episodes.push({
-        name,
-        url: url.replace("#", ""),
-      });
-    }
+    const descEl = await this.querySelector(res, "#info");
+    const desc = descEl ? (await descEl.text).trim() : "";
 
     return {
       title,
@@ -81,21 +91,41 @@ export default class extends Extension {
       episodes: [
         {
           title: "Chapters",
-          urls: episodes,
+          urls: [
+            {
+              name: title || "Gallery",
+              url: url,
+            },
+          ],
         },
       ],
     };
   }
 
   async watch(url) {
-    const res = await this.request(`/chapters/${url}`, {
+    const res = await this.request(`${url}`, {
       headers: {
-        "Miru-Url": "https://jimov-api.vercel.app/manga/nhentai",
+        "miru-referer": "https://nhentai.to/",
       },
     });
 
+    const imgList = await this.querySelectorAll(res, "#thumbnail-container img");
+    const images = [];
+    for (const element of imgList) {
+      const html = await element.content;
+      let src =
+        (await this.getAttributeText(html, "img", "data-src")) ||
+        (await this.getAttributeText(html, "img", "src")) ||
+        "";
+
+      if (src && !src.startsWith("data:image")) {
+        const fullSrc = src.replace(/t\.([a-zA-Z0-9]+)$/, ".$1");
+        images.push(fullSrc);
+      }
+    }
+
     return {
-      urls: res[0].images.map((item) => item.replace(/t\d\.nhentai\.net/, "cdn.dogehls.xyz").replace("t.jpg", ".jpg")),
+      urls: images.length > 0 ? images : [url],
     };
   }
 }

@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         YoMovies
-// @version      v0.0.8
+// @version      v0.0.9
 // @author       OshekharO
 // @lang         hi
 // @license      MIT
@@ -12,117 +12,103 @@
 // ==/MiruExtension==
 
 export default class extends Extension {
-  async latest(page) {
-    try {
-      const res = await this.request(`/?page=${page}`);
-      const bsxList = await this.querySelectorAll(res, "div.ml-item");
-      const novel = [];
-      for (const element of bsxList) {
-        const html = await element.content;
-        const url = await this.getAttributeText(html, "a", "href");
-        const title = await this.querySelector(html, "div.qtip-title").text;
-        const cover = await this.querySelector(html, "img").getAttributeText("data-original");
+  async request(url, options) {
+    let res = await super.request(url, options);
 
-        novel.push({
-          title: title.trim(),
-          url,
-          cover,
-        });
-      }
-      return novel;
-    } catch (e) {
-      return [
-        {
-          title: "Need to use webview",
-          url: "/",
-          cover: null,
-        },
-      ];
+    // Detect Cloudflare anti-bot page or Cloudflare challenge
+    if (
+      typeof res === "string" &&
+      (res.includes("Just a moment...") ||
+        res.includes("cf-mitigation") ||
+        res.includes("Attention Required! | Cloudflare") ||
+        res.includes("Enable JavaScript and cookies to continue"))
+    ) {
+      const targetUrl = options?.headers?.["Miru-Url"] || url;
+      // Open WebView so user can complete Cloudflare captcha
+      await this.openWebView(targetUrl);
+
+      // Retry request with updated Cloudflare cookies
+      res = await super.request(url, options);
     }
+
+    return res;
+  }
+
+  async latest(page) {
+    const res = await this.request(`/?page=${page}`);
+    const bsxList = await this.querySelectorAll(res, "div.ml-item");
+    const novel = [];
+    for (const element of bsxList) {
+      const html = await element.content;
+      const url = await this.getAttributeText(html, "a", "href");
+      const title = await this.querySelector(html, "div.qtip-title").text;
+      const cover = await this.querySelector(html, "img").getAttributeText("data-original");
+
+      novel.push({
+        title: title.trim(),
+        url,
+        cover,
+      });
+    }
+    return novel;
   }
 
   async search(kw) {
-    try {
-      const res = await this.request(`/?s=${kw}`);
-      const bsxList = await this.querySelectorAll(res, "div.ml-item");
-      const novel = [];
+    const res = await this.request(`/?s=${kw}`);
+    const bsxList = await this.querySelectorAll(res, "div.ml-item");
+    const novel = [];
 
-      for (const element of bsxList) {
-        const html = await element.content;
-        const url = await this.getAttributeText(html, "a", "href");
-        const title = await this.querySelector(html, "div.qtip-title").text;
-        const cover = await this.querySelector(html, "img").getAttributeText("data-original");
-        novel.push({
-          title: title.trim(),
-          url,
-          cover,
-        });
-      }
-      return novel;
-    } catch (e) {
-      return [
-        {
-          title: "Need to use webview",
-          url: "/",
-          cover: null,
-        },
-      ];
+    for (const element of bsxList) {
+      const html = await element.content;
+      const url = await this.getAttributeText(html, "a", "href");
+      const title = await this.querySelector(html, "div.qtip-title").text;
+      const cover = await this.querySelector(html, "img").getAttributeText("data-original");
+      novel.push({
+        title: title.trim(),
+        url,
+        cover,
+      });
     }
+    return novel;
   }
 
   async detail(url) {
-    if (url === "/") {
-      return {
-        title: "Use webview",
-        cover: null,
-        desc: "Please use webview to enter the website then close the webview window.",
-      };
-    }
+    const res = await this.request("", {
+      headers: {
+        "Miru-Url": url,
+      },
+    });
 
-    try {
-      const res = await this.request("", {
-        headers: {
-          "Miru-Url": url,
-        },
-      });
+    const title = await this.querySelector(res, "meta[property='og:title']").getAttributeText("content");
+    const cover = await this.querySelector(res, "img[itemprop='image']").getAttributeText("src");
+    const desc = await this.querySelector(res, "p.f-desc").text;
 
-      const title = await this.querySelector(res, "meta[property='og:title']").getAttributeText("content");
-      const cover = await this.querySelector(res, "img[itemprop='image']").getAttributeText("src");
-      const desc = await this.querySelector(res, "p.f-desc").text;
-
-      const matchedUrls = res.match(/https:\/\/(?:minoplres|speedostream[0-9]*)\.[^\s'"]+(?:embed-[^\s'"]+|\.html)/g) || [];
-      let episodeUrl = "";
-      for (let u of matchedUrls) {
-        if (!/\/embed-[a-zA-Z0-9]+/.test(u)) {
-          u = u.replace(/\/([a-zA-Z0-9]+)\.html$/, "/embed-$1.html");
-        }
-        episodeUrl = u;
-        break;
+    const matchedUrls = res.match(/https:\/\/(?:minoplres|speedostream[0-9]*)\.[^\s'"]+(?:embed-[^\s'"]+|\.html)/g) || [];
+    let episodeUrl = "";
+    for (let u of matchedUrls) {
+      if (!/\/embed-[a-zA-Z0-9]+/.test(u)) {
+        u = u.replace(/\/([a-zA-Z0-9]+)\.html$/, "/embed-$1.html");
       }
-
-      return {
-        title: title.trim(),
-        cover,
-        desc,
-        episodes: [
-          {
-            title: "Directory",
-            urls: [
-              {
-                name: title.trim(),
-                url: episodeUrl,
-              },
-            ],
-          },
-        ],
-      };
-    } catch (e) {
-      return {
-        title: "Use webview",
-        cover: null,
-        desc: "Please use webview to enter the website then close the webview window.",
-      };
+      episodeUrl = u;
+      break;
     }
+
+    return {
+      title: title.trim(),
+      cover,
+      desc,
+      episodes: [
+        {
+          title: "Directory",
+          urls: [
+            {
+              name: title.trim(),
+              url: episodeUrl,
+            },
+          ],
+        },
+      ],
+    };
   }
 
   async watch(url) {
@@ -141,7 +127,7 @@ export default class extends Extension {
           directUrl = directUrlMatch[0];
         }
       } catch (e) {
-        // Catch network/SSL HandshakeExceptions (e.g. CERTIFICATE_VERIFY_FAILED from Cloudflare protection)
+        // Catch network/SSL errors
       }
     }
 

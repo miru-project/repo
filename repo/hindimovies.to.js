@@ -130,13 +130,13 @@ export default class extends Extension {
         const tabHtml = tab.content;
         const sUrl = await this.getAttributeText(tabHtml, "a", "data-href");
         const name = await this.querySelector(tabHtml, "a").text;
-        if (sUrl && (sUrl.includes("ok.ru") || sUrl.includes("odnoklassniki.ru"))) {
+        if (sUrl && (sUrl.includes("ok.ru") || sUrl.includes("odnoklassniki.ru") || sUrl.includes("pkembed") || sUrl.includes("vkplus"))) {
           let fullSUrl = sUrl;
           if (fullSUrl.startsWith("//")) {
             fullSUrl = "https:" + fullSUrl;
           }
           serverLinks.push({
-            name: name.trim() || "OK.ru Server",
+            name: name.trim() || "Server",
             url: fullSUrl,
           });
         }
@@ -148,12 +148,12 @@ export default class extends Extension {
         const href = await this.getAttributeText(lHtml, "a", "href");
         const text = await this.querySelector(lHtml, "a").text;
 
-        if (href && (href.includes("ok.ru") || href.includes("odnoklassniki.ru"))) {
+        if (href && (href.includes("ok.ru") || href.includes("odnoklassniki.ru") || href.includes("pkembed") || href.includes("vkplus"))) {
           let fullHref = href;
           if (fullHref.startsWith("//")) {
             fullHref = "https:" + fullHref;
           }
-          const cleanText = text ? text.trim() : "OK.ru Stream";
+          const cleanText = text ? text.trim() : "Stream Link";
           if (!serverLinks.some((item) => item.url === fullHref)) {
             serverLinks.push({
               name: cleanText,
@@ -169,7 +169,7 @@ export default class extends Extension {
         desc: desc.trim(),
         episodes: [
           {
-            title: "OK.ru Servers",
+            title: "Servers / Stream Links",
             urls: serverLinks,
           },
         ],
@@ -186,7 +186,7 @@ export default class extends Extension {
 
   async watch(url) {
     let directUrl = "";
-    const referer = "https://ok.ru/";
+    let referer = "https://ww1.hindimovies.to/";
 
     if (url) {
       if (url.startsWith("//")) {
@@ -194,45 +194,100 @@ export default class extends Extension {
       }
 
       try {
-        let embedUrl = url;
-        if (!embedUrl.includes("/videoembed/")) {
-          const vidMatch = embedUrl.match(/video\/(\d+)/);
-          if (vidMatch) {
-            embedUrl = `https://ok.ru/videoembed/${vidMatch[1]}`;
-          }
-        }
-
-        const res = await this.request("", {
-          headers: {
-            "Miru-Url": embedUrl,
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-          },
-        });
-
-        const dataOptionsMatch = res.match(/data-options=["']([^"']+)["']/);
-        if (dataOptionsMatch) {
-          try {
-            const decoded = dataOptionsMatch[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&');
-            const opts = JSON.parse(decoded);
-            if (opts.flashvars && opts.flashvars.metadata) {
-              const meta = typeof opts.flashvars.metadata === 'string' ? JSON.parse(opts.flashvars.metadata) : opts.flashvars.metadata;
-              if (meta.hlsManifestUrl) {
-                directUrl = meta.hlsManifestUrl;
-              } else if (meta.videos && Array.isArray(meta.videos) && meta.videos.length > 0) {
-                const qualityOrder = ["full", "hd", "sd", "low", "lowest", "mobile"];
-                meta.videos.sort((a, b) => qualityOrder.indexOf(a.name) - qualityOrder.indexOf(b.name));
-                directUrl = meta.videos[0].url;
-              }
+        if (url.includes("ok.ru") || url.includes("odnoklassniki.ru")) {
+          referer = "https://ok.ru/";
+          let embedUrl = url;
+          if (!embedUrl.includes("/videoembed/")) {
+            const vidMatch = embedUrl.match(/video\/(\d+)/);
+            if (vidMatch) {
+              embedUrl = `https://ok.ru/videoembed/${vidMatch[1]}`;
             }
-          } catch (e) {
-            // json parse fail
           }
-        }
 
-        if (!directUrl) {
-          const videoUrlMatch = res.match(/https?:\/\/[^\s'"]+\.(?:mp4|m3u8)[^\s'"]*/);
-          if (videoUrlMatch) {
-            directUrl = videoUrlMatch[0];
+          const res = await this.request("", {
+            headers: {
+              "Miru-Url": embedUrl,
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            },
+          });
+
+          const dataOptionsMatch = res.match(/data-options=["']([^"']+)["']/);
+          if (dataOptionsMatch) {
+            try {
+              const decoded = dataOptionsMatch[1].replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+              const opts = JSON.parse(decoded);
+              if (opts.flashvars && opts.flashvars.metadata) {
+                const meta = typeof opts.flashvars.metadata === 'string' ? JSON.parse(opts.flashvars.metadata) : opts.flashvars.metadata;
+                if (meta.hlsManifestUrl) {
+                  directUrl = meta.hlsManifestUrl;
+                } else if (meta.videos && Array.isArray(meta.videos) && meta.videos.length > 0) {
+                  const qualityOrder = ["full", "hd", "sd", "low", "lowest", "mobile"];
+                  meta.videos.sort((a, b) => qualityOrder.indexOf(a.name) - qualityOrder.indexOf(b.name));
+                  directUrl = meta.videos[0].url;
+                }
+              }
+            } catch (e) {
+              // json parse fail
+            }
+          }
+
+          if (!directUrl) {
+            const videoUrlMatch = res.match(/https?:\/\/[^\s'"]+\.(?:mp4|m3u8)[^\s'"]*/);
+            if (videoUrlMatch) {
+              directUrl = videoUrlMatch[0];
+            }
+          }
+        } else if (url.includes("pkembed") || url.includes("vkplus")) {
+          referer = "https://vkplus.net/";
+          let res = await this.request("", {
+            headers: {
+              "Miru-Url": url,
+              "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            },
+          });
+
+          const iframeMatch = res.match(/<iframe[^>]+src=["']([^"']+)["']/i);
+          if (iframeMatch) {
+            let iframeUrl = iframeMatch[1];
+            if (iframeUrl.startsWith("//")) {
+              iframeUrl = "https:" + iframeUrl;
+            }
+            res = await this.request("", {
+              headers: {
+                "Miru-Url": iframeUrl,
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+              },
+            });
+          }
+
+          const match = res.match(/eval\(function\(p,a,c,k,e,d\)[\s\S]*?\}\s*\(\s*'(.*?)'\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*'(.*?)'\.split\('\|'\)/);
+          if (match) {
+            let p = match[1];
+            const a = parseInt(match[2], 10);
+            const c = parseInt(match[3], 10);
+            const kList = match[4].split("|");
+
+            const base36 = (num) => "0123456789abcdefghijklmnopqrstuvwxyz"[num];
+            const eFunc = (val, radix) => (val < radix ? "" : eFunc(Math.floor(val / radix), radix)) + (val % radix > 35 ? String.fromCharCode((val % radix) + 29) : base36(val % radix));
+
+            const dictionary = {};
+            for (let i = 0; i < c; i++) {
+              const key = eFunc(i, a);
+              dictionary[key] = kList[i] && kList[i].length > 0 ? kList[i] : key;
+            }
+
+            const unpacked = p.replace(/\b\w+\b/g, (word) => (dictionary[word] !== undefined ? dictionary[word] : word));
+            const videoMatches = unpacked.match(/https?:\/\/[^\s'\"<>]+\.(?:mp4|m3u8)[^\s'\"<>]*/g);
+            if (videoMatches && videoMatches.length > 0) {
+              directUrl = videoMatches[0];
+            }
+          }
+
+          if (!directUrl) {
+            const directMatch = res.match(/https?:\/\/[^\s'\"<>]+\.(?:mp4|m3u8)[^\s'\"<>]*/);
+            if (directMatch) {
+              directUrl = directMatch[0];
+            }
           }
         }
       } catch (e) {

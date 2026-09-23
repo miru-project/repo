@@ -1,7 +1,7 @@
 // ==MiruExtension==
 // @name         MyIPTV
 // @description  A simple IPTV client
-// @version      v0.0.6
+// @version      v0.0.7
 // @author       vvsolo
 // @lang         all
 // @license      MIT
@@ -15,15 +15,20 @@
 
 export default class extends Extension {
 	#opts = {
-		url: 'https://live.fanmingming.com/tv/m3u/ipv6.m3u',
-		exturl: "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/sources.json",
+		url: 'https://cdn.jsdelivr.net/gh/vbskycn/iptv@master/tv/iptv4.m3u',
+		exturl: "",
 		lists: {
 			"none": "",
+			"🇨🇳 vbskycn-IPV4": "https://cdn.jsdelivr.net/gh/vbskycn/iptv@master/tv/iptv4.m3u",
 			"🇨🇳 fanmingming-IPV6": "https://live.fanmingming.com/tv/m3u/ipv6.m3u",
-			"🇨🇳 MyIPTV-IPV6": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/ipv6.m3u",
-			"🇨🇳 MyIPTV-IPV4": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/ipv4.m3u",
-			"🇨🇳 MyIPTV-VOD": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/ipv4.vod.m3u",
-			"🇨🇳 MyIPTV-RADIO": "https://cdn.jsdelivr.net/gh/vvsolo/miru-extension-MyIPTV-sources/radio.m3u",
+			"🇨🇳 YueChan-IPV6": "https://cdn.jsdelivr.net/gh/YueChan/Live@main/IPTV.m3u",
+			"🇨🇳 YueChan-Radio": "https://cdn.jsdelivr.net/gh/YueChan/Live@main/Radio.m3u",
+			"🇨🇳 YanG-1989": "https://cdn.jsdelivr.net/gh/YanG-1989/m3u@main/Gather.m3u",
+			"🌐 iptv-org (Global)": "https://iptv-org.github.io/iptv/index.m3u",
+			"🌐 iptv-org (China)": "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/cn.m3u",
+			"🌐 iptv-org (USA)": "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/us.m3u",
+			"🇮🇳 iptv-org (India)": "https://raw.githubusercontent.com/iptv-org/iptv/master/streams/in.m3u",
+			"🌏 Free-TV": "https://cdn.jsdelivr.net/gh/Free-TV/IPTV/playlist.m3u8",
 		}
 	}
 	#group = {
@@ -41,16 +46,24 @@ export default class extends Extension {
 	}
 
 	async cacheJSON() {
+		if (!this.#opts.exturl) {
+			return null;
+		}
 		if (this.#cache.exturl && await this.checkExpire()) {
 			return this.#cache.exturl;
 		}
-		const res = await this.request('', {
-			headers: {
-				'Content-Type': 'application/json',
-				'Miru-Url': this.#opts.exturl
-			}
-		});
-		return (this.#cache.exturl = res);
+		try {
+			const res = await this.request('', {
+				headers: {
+					'Content-Type': 'application/json',
+					'Miru-Url': this.#opts.exturl
+				}
+			});
+			const json = typeof res === 'string' ? JSON.parse(res) : res;
+			return (this.#cache.exturl = json);
+		} catch (e) {
+			return null;
+		}
 	}
 
 	async load() {
@@ -91,6 +104,9 @@ export default class extends Extension {
 	}
 
 	async createFilter(filter) {
+		if (!this.#cache.items.length) {
+			await this.latest(1);
+		}
 		const filt = filter?.data && filter.data[0] || '';
 		// multiple groups
 		this.#cache.groups = this.#cache.items
@@ -128,7 +144,10 @@ export default class extends Extension {
 		if (page > 1) {
 			return [];
 		}
-		const baseUrl = (await this.getSetting('builtin')) || (await this.getSetting('source')) || '';
+		const builtinRaw = await this.getSetting('builtin');
+		const builtinUrl = this.#opts.lists[builtinRaw] || builtinRaw;
+		const source = await this.getSetting('source');
+		const baseUrl = (builtinUrl && builtinUrl !== 'none') ? builtinUrl : (source || '');
 		if (!baseUrl) {
 			throw 'No valid address set!';
 		}
@@ -224,7 +243,9 @@ export default class extends Extension {
 		if (page > 1) {
 			return [];
 		}
-		!~this.#cache.items.length && (await this.latest());
+		if (!this.#cache.items.length) {
+			await this.latest(1);
+		}
 		const filt = filter?.data && filter.data[0] || this.#group.val;
 		const bangumi = this.#cache.items;
 		if (filt === this.#group.val) {
@@ -234,7 +255,13 @@ export default class extends Extension {
 	}
 
 	async detail(url) {
-		const bangumi = this.#cache.items.find((v) => v.url === url);
+		if (!this.#cache.items.length) {
+			await this.latest(1);
+		}
+		const bangumi = this.#cache.items.find((v) => v.url === url || ~v.url.indexOf(url));
+		if (!bangumi) {
+			return null;
+		}
 		const parseUrls = (item) => [...new Set(item.url.split('#'))].map((v, i, t) => {
 			return {
 				name: t.length > 1 ? `${item.title} [${i + 1}]` : `${item.title}`,
@@ -254,7 +281,7 @@ export default class extends Extension {
 				.filter((v) => (v.group && ~`;${v.group};`.indexOf(`;${g};`)))
 				.map((v) => parseUrls(v)) || [];
 
-			~groups.length && bangumi.episodes.push({
+			groups.length && bangumi.episodes.push({
 				title: `[${g}]`,
 				urls: groups.flat()
 			})
@@ -263,12 +290,15 @@ export default class extends Extension {
 	}
 
 	async watch(url) {
+		if (!this.#cache.items.length) {
+			await this.latest(1);
+		}
 		const bangumi = this.#cache.items.find((v) => v.url === url || ~v.url.indexOf(url));
 		const item = {
 			type: 'hls',
 			url
 		}
-		if (('headers' in bangumi) && ~Object.keys(bangumi.headers).length) {
+		if (bangumi?.headers && Object.keys(bangumi.headers).length) {
 			item['headers'] = bangumi.headers
 		}
 		return item;

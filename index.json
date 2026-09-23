@@ -252,7 +252,7 @@
   "package": "client.iptv",
   "type": "bangumi",
   "url": "client.iptv.js",
-  "version": "v0.0.6",
+  "version": "v0.0.7",
   "webSite": "https://live.fanmingming.com"
  },
  {

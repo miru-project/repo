@@ -42,6 +42,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | G站漫画 | gzhanmh | v0.0.1 | 瑜君之学-杨瑜候 | zh | manga | [Source Code](https://github.com/miru-project/repo/blob/main/repo/gzhanmh.js) |
 | 黑木耳资源 | heimuer.tv | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/heimuer.tv.js) |
 | HiAnime | hianime.to | v0.0.8 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hianime.to.js) |
+| HindiMovies | hindimovies.to | v0.0.1 | OshekharO | hi | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/hindimovies.to.js) |
 | 华为吧资源 | huaweiba.live | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/huaweiba.live.js) |
 | IDLIX | idlix | v0.0.2 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/idlix.js) |
 | IPTV-ORG | iptv-org | v0.0.1 | vvsolo | all | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/iptv-org.js) |

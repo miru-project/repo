@@ -561,6 +561,19 @@
   "webSite": "https://hianime.to"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://img.hindimovies.to/hindimovies-logo.png",
+  "lang": "hi",
+  "license": "MIT",
+  "name": "HindiMovies",
+  "nsfw": "false",
+  "package": "hindimovies.to",
+  "type": "bangumi",
+  "url": "hindimovies.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://ww1.hindimovies.to"
+ },
+ {
   "author": "hualiong",
   "icon": "https://tse3-mm.cn.bing.net/th/id/OIP-C.PrZFaCYKWBtyufV16WIxhQBRBQ",
   "lang": "zh-cn",

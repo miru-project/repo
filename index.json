@@ -1380,14 +1380,14 @@
  {
   "author": "bethro",
   "icon": "https://i.ibb.co/XtNNVVT/AR-TH-WEB.png",
-  "lang": "ar",
+  "lang": "en",
   "license": "MIT",
   "name": "thunderscans",
   "package": "thunderscans.com",
   "type": "manga",
   "url": "thunderscans.com.js",
-  "version": "v0.0.1",
-  "webSite": "https://thunderscans.com"
+  "version": "v0.0.2",
+  "webSite": "https://en-thunderscans.com"
  },
  {
   "author": "hualiong",

@@ -1289,19 +1289,6 @@
   "webSite": "https://cors.notesnook.com/https://api.simply-hentai.com/v3"
  },
  {
-  "author": "bachig26",
-  "icon": "https://mkvdrama.org/wp-content/uploads/2023/03/474a064744e1d9fe02e1124b2b071c70.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "MkvDrama",
-  "nsfw": "false",
-  "package": "stream.mkvdrama.org",
-  "type": "bangumi",
-  "url": "stream.mkvdrama.org.js",
-  "version": "v0.0.2",
-  "webSite": "https://stream.mkvdrama.org"
- },
- {
   "author": "hualiong",
   "icon": "https://www.subozy.com/upload/site/20230220-1/e632a403d903b831199109f99189f480.png",
   "lang": "zh-cn",

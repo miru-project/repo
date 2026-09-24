@@ -1252,6 +1252,19 @@
   "webSite": "https://senlinzy.com"
  },
  {
+  "author": "OshekharO",
+  "description": "Tambayan.",
+  "icon": "https://senpaitambayan.com/assets/images/favicon.ico",
+  "lang": "fil",
+  "license": "MIT",
+  "name": "Tambayan",
+  "package": "senpaitambayan.com",
+  "type": "bangumi",
+  "url": "senpaitambayan.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://senpaitambayan.com"
+ },
+ {
   "author": "appdevelpo",
   "icon": "https://img.sflix.to/xxrz/100x100/100/a2/33/a233d4c4a1426ca77ec1d34deec62f71/a233d4c4a1426ca77ec1d34deec62f71.png",
   "lang": "en",

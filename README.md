@@ -81,6 +81,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | RoyalRoad | royalroad.com | v0.0.3 | appdevelpo | en | fikushon | [Source Code](https://github.com/miru-project/repo/blob/main/repo/royalroad.com.js) |
 | 樱花动漫 | sakura | v0.0.2 | Monster | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sakura.js) |
 | Samehadaku | samehadaku | v0.0.1 | Nazz | id | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/samehadaku.js) |
+| Tambayan | senpaitambayan.com | v0.0.1 | OshekharO | fil | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/senpaitambayan.com.js) |
 | sFlix | sflix.to | v0.0.3 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/sflix.to.js) |
 | 速播资源 | subozy.com | v0.0.2 | hualiong | zh-cn | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/subozy.com.js) |
 | SuperCartoons | supercartoons.net | v0.0.1 | bachig26 | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/supercartoons.net.js) |

@@ -6,7 +6,7 @@
 // @license      MIT
 // @package      vod.api.json.collection
 // @type         bangumi
-// @webSite      https://
+// @webSite      https://api.apibdzy.com
 // ==/MiruExtension==
 
 export default class extends Extension {

@@ -25,7 +25,7 @@ export default class extends Extension {
     }
 
     async load() {
-        this.registerSetting({
+        await this.registerSetting({
             title: "thunderscans URL",
             key: "thunderscans",
             type: "input",

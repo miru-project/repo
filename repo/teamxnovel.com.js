@@ -20,7 +20,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "TeamxNovel URL",
       key: "teamxnovel",
       type: "input",
@@ -28,7 +28,7 @@ export default class extends Extension {
       defaultValue: "https://teamxnovel.com",
     });
 
-    this.registerSetting({
+    await this.registerSetting({
       title: "Reverse Order of Chapters",
       key: "reverseChaptersOrder",
       type: "toggle",

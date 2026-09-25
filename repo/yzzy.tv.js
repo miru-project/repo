@@ -7,7 +7,7 @@
 // @icon         https://yzzy.tv/favicon.ico
 // @package      yzzy.tv
 // @type         bangumi
-// @webSite      https://yzzy.tv
+// @webSite      https://api.1080zyku.com
 // @nsfw         false
 // ==/MiruExtension==
 export default class extends Extension {

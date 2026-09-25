@@ -14,14 +14,14 @@
 
 export default class extends Extension {
     async load() {
-		this.registerSetting({
+		await this.registerSetting({
 			title: "Samehadaku",
 			key: "domain_samehadaku",
 			type: "input",
 			description: "Samehadaku Domain",
 			defaultValue: "https://samehadaku.email",
 		});
-        this.registerSetting({
+        await this.registerSetting({
 			title: "Samehadaku Source Priority",
 			key: "sources_samehadaku",
 			type: "input",

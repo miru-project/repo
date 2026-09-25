@@ -14,14 +14,14 @@
 
 export default class extends Extension {
     async load() {
-		this.registerSetting({
+		await this.registerSetting({
 			title: "Otakudesu",
 			key: "domain_otakudesu",
 			type: "input",
 			description: "Otakudesu Domain",
 			defaultValue: "https://otakudesu.cloud",
 		});
-        this.registerSetting({
+        await this.registerSetting({
 			title: "Otakudesu Source Priority",
 			key: "sources_otakudesu",
 			type: "input",

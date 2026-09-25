@@ -15,7 +15,7 @@ export default class extends Extension {
   domain = 'https://anilibria.top'
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "AniLiberty",
       key: "domain_aniliberty",
       type: "input",

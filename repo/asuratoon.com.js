@@ -20,7 +20,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "AsuraScan URL",
       key: "asurascans",
       type: "input",
@@ -28,7 +28,7 @@ export default class extends Extension {
       defaultValue: "https://asurascans.com",
     });
 
-    this.registerSetting({
+    await this.registerSetting({
       title: "Reverse Order of Chapters",
       key: "reverseChaptersOrderAsura",
       type: "toggle",

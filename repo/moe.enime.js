@@ -21,14 +21,14 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "Enime API",
       key: "enimeApi",
       type: "input",
       description: "Enime Api Url",
       defaultValue: "https://api.enime.moe",
     });
-    this.registerSetting({
+    await this.registerSetting({
       title: "Use nade.me Proxy",
       key: "nadeProxy",
       type: "toggle",

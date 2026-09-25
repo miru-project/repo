@@ -22,7 +22,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "Dramacool API",
       key: "dramacool",
       type: "input",

@@ -5,23 +5,23 @@
 // @lang         zh-tw
 // @license      MIT
 // @type         manga
-// @icon         http://mxsmh01.top/static/images/favicon.ico
+// @icon         https://www.mxsmh01.top/static/images/favicon.ico
 // @package      com.freexcomic
-// @webSite      http://
+// @webSite      https://www.mxsmh01.top
 // @nsfw         true
 // ==/MiruExtension==
 
 export default class extends Extension {
   #opts = {
-    base: 'http://www.mxsmh01.top',
+    base: 'https://www.mxsmh01.top',
     sources: {
-      'mxsmh01.top': 'http://www.mxsmh01.top',
-      'mxsmh1.com': 'http://www.mxsmh1.com',
-      'mxs2.com': 'http://www.mxs2.com',
-      'mxs02.top': 'http://www.mxs02.top',
-      'mxs03.top': 'http://www.mxs03.top',
-      'mxs04.top': 'http://www.mxs04.top',
-      '92hm.life': 'http://www.92hm.life'
+      'mxsmh01.top': 'https://www.mxsmh01.top',
+      'mxsmh1.com': 'https://www.mxsmh1.com',
+      'mxs2.com': 'https://www.mxs2.com',
+      'mxs02.top': 'https://www.mxs02.top',
+      'mxs03.top': 'https://www.mxs03.top',
+      'mxs04.top': 'https://www.mxs04.top',
+      '92hm.life': 'https://www.92hm.life'
     },
     filter: "/booklist",
     filters: {

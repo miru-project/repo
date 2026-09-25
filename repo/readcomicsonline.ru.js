@@ -20,7 +20,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "Base URL",
       key: "readcomicsonline",
       type: "input",
@@ -28,7 +28,7 @@ export default class extends Extension {
       defaultValue: "https://readcomicsonline.lol",
     });
 
-    this.registerSetting({
+    await this.registerSetting({
       title: "Reverse Order of Chapters",
       key: "reverseChaptersOrder",
       type: "toggle",

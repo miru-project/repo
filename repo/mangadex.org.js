@@ -22,7 +22,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "MangaDex API",
       key: "mangadex",
       type: "input",
@@ -30,7 +30,7 @@ export default class extends Extension {
       defaultValue: "https://api.mangadex.org",
     });
 
-    this.registerSetting({
+    await this.registerSetting({
       title: "Preferred Language",
       key: "lang",
       type: "input",
@@ -38,7 +38,7 @@ export default class extends Extension {
       defaultValue: "en",
     });
 
-    this.registerSetting({
+    await this.registerSetting({
       title: "Reverse Order of Chapters",
       key: "reverseChaptersOrder",
       type: "toggle",

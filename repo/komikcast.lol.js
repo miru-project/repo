@@ -20,7 +20,7 @@ export default class extends Extension {
     }
 
     async load() {
-        this.registerSetting({
+        await this.registerSetting({
             title: "Komikcast Base URL",
             key: "komikcast",
             type: "input",

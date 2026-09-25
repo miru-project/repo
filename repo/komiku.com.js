@@ -7,7 +7,7 @@
 // @icon         https://komiku.com/wp-content/uploads/2022/03/cropped-ico-komiku-180x180.jpg
 // @package      komiku.com
 // @type         manga
-// @webSite      https://komiku.com
+// @webSite      https://komiku.id
 // @nsfw         false
 // @tags         manhwa, manhua, manga, indonesia
 // ==/MiruExtension==
@@ -22,12 +22,12 @@ export default class extends Extension {
 	]);
 
     async load() {
-		this.registerSetting({
+		await this.registerSetting({
 			title: "Komiku.com",
 			key: "domain_komiku.com",
 			type: "input",
 			description: "Komiku.com Domain",
-			defaultValue: "https://komiku.com",
+			defaultValue: "https://komiku.id",
 		});
     }
     async requestWSetting(url) {

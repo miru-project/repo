@@ -20,7 +20,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "MoviesArc API",
       key: "moviesarc",
       type: "input",

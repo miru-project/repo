@@ -6,7 +6,7 @@
 // @license      MIT
 // @package      vod.api.json.collection18
 // @type         bangumi
-// @webSite      https://
+// @webSite      https://91md.me
 // @nsfw         true
 // ==/MiruExtension==
 

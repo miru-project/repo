@@ -7,7 +7,7 @@
 // @icon         https://wnmtl.com/logo.png
 // @package      wnmtl.org
 // @type         fikushon
-// @webSite      https://api.mystorywave.com/story-wave-backend/api/v1/content
+// @webSite      https://wnmtl.com
 // @nsfw         false
 // ==/MiruExtension==
 
@@ -21,7 +21,7 @@ export default class extends Extension {
   }
 
   async load() {
-    this.registerSetting({
+    await this.registerSetting({
       title: "MYSTORYWAVE API",
       key: "mystorywave",
       type: "input",

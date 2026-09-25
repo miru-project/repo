@@ -20,7 +20,7 @@ export default class extends Extension {
     }
 
     async load() {
-        this.registerSetting({
+        await this.registerSetting({
             title: "LilyManga Base URL",
             key: "lilymanga",
             type: "input",

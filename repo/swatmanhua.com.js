@@ -23,7 +23,7 @@ export default class extends Extension {
     }
 
     async load() {
-        this.registerSetting({
+        await this.registerSetting({
             title: "swatmanhua URL",
             key: "swatmanhua",
             type: "input",
@@ -99,7 +99,7 @@ export default class extends Extension {
         })
 
         let imageUrlsMatch = res.match(/"images":\[(.*?)\]/);
-        
+
         let images = [];
         if (imageUrlsMatch && imageUrlsMatch.length > 1) {
             let imageUrlsContent = imageUrlsMatch[1];

@@ -15,7 +15,7 @@
 
 export default class extends Extension {
 	async load() {
-		this.registerSetting({
+		await this.registerSetting({
 			title: "Idlix",
 			key: "domain_idlix",
 			type: "input",

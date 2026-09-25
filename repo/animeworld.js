@@ -14,7 +14,7 @@
 
 export default class extends Extension {
     async load() {
-		this.registerSetting({
+		await this.registerSetting({
 			title: "Animeworld",
 			key: "domain_animeworld",
 			type: "input",

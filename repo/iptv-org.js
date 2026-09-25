@@ -84,7 +84,8 @@ export default class extends Extension {
 	}
 
 	async req(path) {
-		return await this.request(path, {
+		const url = path.startsWith('http') ? path : `https://iptv-org.github.io/iptv${path.startsWith('/') ? '' : '/'}${path}`;
+		return await this.request(url, {
 			headers: {
 				"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
 			}

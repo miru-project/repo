@@ -819,6 +819,19 @@
   "webSite": "https://lzizy.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://res.xsnvshen.com/images/pwalogo.png",
+  "lang": "zh-cn",
+  "license": "MIT",
+  "name": "秀色女神",
+  "nsfw": "true",
+  "package": "m.xsnvshen.com",
+  "type": "manga",
+  "url": "m.xsnvshen.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://m.xsnvshen.com"
+ },
+ {
   "author": "瑜君之学-杨瑜候",
   "icon": "https://www.mhua5.com/template/pc/default/images/pic_nav_logo.png?v=0504b75",
   "lang": "zh",

@@ -983,6 +983,19 @@
   "webSite": "https://yts.gg"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://mydramanovel.com/wp-content/uploads/2025/01/Icon-300x300.webp",
+  "lang": "en",
+  "license": "MIT",
+  "name": "MyDramaNovel",
+  "nsfw": "false",
+  "package": "mydramanovel.com",
+  "type": "fikushon",
+  "url": "mydramanovel.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://mydramanovel.com"
+ },
+ {
   "author": "bachig26",
   "icon": "https://netfapx.com/wp-content/uploads/2017/11/netfapx-lg-1_319381e1f227e13ae1201bfa30857622.png",
   "lang": "en",
@@ -1742,19 +1755,6 @@
   "url": "yomovies.js",
   "version": "v0.0.9",
   "webSite": "https://yomovies.church"
- },
- {
-  "author": "appdevelpo",
-  "icon": "https://yugenanime.tv/static/img/favicon-32x32.png",
-  "lang": "en",
-  "license": "MIT",
-  "name": "yugenanime",
-  "nsfw": "true",
-  "package": "yugenanime.tv",
-  "type": "bangumi",
-  "url": "yugenanime.tv.js",
-  "version": "v0.0.1",
-  "webSite": "https://yugenanime.tv"
  },
  {
   "author": "OshekharO",

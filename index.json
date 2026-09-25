@@ -447,6 +447,19 @@
   "webSite": "https://cj.ffzyapi.com"
  },
  {
+  "author": "OshekharO",
+  "icon": "https://filmpalast.to/themes/downloadarchive/images/favicon.ico",
+  "lang": "de",
+  "license": "MIT",
+  "name": "Filmpalast",
+  "nsfw": "false",
+  "package": "filmpalast.to",
+  "type": "bangumi",
+  "url": "filmpalast.to.js",
+  "version": "v0.0.1",
+  "webSite": "https://filmpalast.to"
+ },
+ {
   "author": "bethro",
   "icon": "https://flamecomics.xyz/favicon.ico",
   "lang": "en",

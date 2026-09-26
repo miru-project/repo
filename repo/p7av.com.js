@@ -1,29 +1,30 @@
 // ==MiruExtension==
 // @name         在线影院
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       OshekharO
 // @lang         jp
 // @license      MIT
 // @package      p7av.com
 // @type         bangumi
-// @icon         https://haha888.xyz/wp-content/uploads/2024/03/cropped-Screenshot-from-2024-03-02-10-42-19-192x192.png
-// @webSite      https://www.haha888.xyz
+// @icon         https://cc.ovvtv.com/favicon.ico
+// @webSite      https://cc.ovvtv.com
 // @nsfw         true
 // ==/MiruExtension==
 
 export default class extends Extension {
   async latest(page) {
-    const res = await this.request(`/page/${page}/`);
-    const bsxList = await this.querySelectorAll(res, "article.entry-card");
+    const path = page > 1 ? `/bqgiw/page/${page}.html` : "/bqgiw/";
+    const res = await this.request(path);
+    const bsxList = await this.querySelectorAll(res, "div.entry-card");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "h2 > a").text;
-      const cover = await this.querySelector(html, "img.attachment-medium.size-medium.wp-post-image").getAttributeText("src");
+      const title = await this.querySelector(html, "h2.entry-title > a").text;
+      const cover = await this.querySelector(html, "img").getAttributeText("src");
       novel.push({
         title: title.trim(),
-        url: "https://www.haha888.xyz" + url,
+        url: url.startsWith("http") ? url : "https://cc.ovvtv.com" + url,
         cover,
       });
     }
@@ -31,18 +32,18 @@ export default class extends Extension {
   }
 
   async search(kw) {
-    const res = await this.request(`/search/${kw}`);
-    const bsxList = await this.querySelectorAll(res, "div.video-block.thumbs-rotation");
+    const res = await this.request(`/search/?q=${encodeURIComponent(kw)}`);
+    const bsxList = await this.querySelectorAll(res, "div.entry-card");
     const novel = [];
 
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "span.title").text;
-      const cover = await this.querySelector(html, "img").getAttributeText("data-src");
+      const title = await this.querySelector(html, "h2.entry-title > a").text;
+      const cover = await this.querySelector(html, "img").getAttributeText("src");
       novel.push({
         title: title.trim(),
-        url: "https://www.haha888.xyz" + url,
+        url: url.startsWith("http") ? url : "https://cc.ovvtv.com" + url,
         cover,
       });
     }
@@ -56,12 +57,12 @@ export default class extends Extension {
       },
     });
 
-    const title = await this.querySelector(res, "h1.page-title").text;
-    const cover = await this.querySelector(res, "meta[name='twitter:image']").getAttributeText("content");
-    const desc = await this.querySelector(res, "meta[name='twitter:card']").getAttributeText("content");
-    const name = await this.querySelector(res, "h6").text;
-    const urlPatterns = [/https?:\/\/[^\s'"]+\.(?:mp4|m3u8)/];
+    const titleMatch = res.match(/<title>([\s\S]+?)<\/title>/);
+    const title = titleMatch ? titleMatch[1].replace("- 在线影院", "").trim() : "Play";
+    const coverMatch = res.match(/<meta property="og:image" content="([^"]+)"/);
+    const cover = coverMatch ? coverMatch[1] : "";
 
+    const urlPatterns = [/https?:\/\/[^\s'"]+\.(?:mp4|m3u8)/];
     let episodeUrl = "";
 
     for (const pattern of urlPatterns) {
@@ -73,15 +74,15 @@ export default class extends Extension {
     }
 
     return {
-      title: title.trim(),
+      title,
       cover,
-      desc,
+      desc: title,
       episodes: [
         {
           title: "Directory",
           urls: [
             {
-              name: name,
+              name: "Play",
               url: episodeUrl,
             },
           ],
@@ -93,7 +94,7 @@ export default class extends Extension {
   async watch(url) {
     let hh = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
-      Referer: "https://www.haha888.xyz/",
+      Referer: "https://cc.ovvtv.com/",
     };
     return {
       type: "hls",

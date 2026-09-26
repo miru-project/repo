@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         JAVHD.icu
-// @version      v0.0.1
+// @version      v0.0.2
 // @author       bachig26
 // @lang         jp
 // @license      MIT
@@ -13,40 +13,45 @@
 
 export default class extends Extension {
   async latest(page) {
-    const res = await this.request("/page/${page}/");
-    const bsxList = await this.querySelectorAll(res, "div.col-xl-3.col-lg-3.col-md-6.col-6");
+    const res = await this.request(`/page/${page}/`);
+    const bsxList = await this.querySelectorAll(res, "div.col-xl-3.col-lg-3.col-md-6.col-6, article.post");
     const novel = [];
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "h3.post-title > a").text;
-      const cover = await this.querySelector(html, "img").getAttributeText("src");
-      //console.log(title+cover+url)
-      novel.push({
-        title: title.trim(),
-        url,
-        cover,
-      });
+      const titleEl = await this.querySelector(html, "h3.post-title > a, h2.entry-title > a");
+      const title = titleEl ? (await titleEl.text).trim() : "JAVHD Video";
+      const cover = await this.getAttributeText(html, "img", "src");
+      if (url) {
+        novel.push({
+          title,
+          url,
+          cover: cover || "",
+        });
+      }
     }
     return novel;
   }
 
   async search(kw) {
-	const kwstring = kw.replace(/ /g, '+');
+    const kwstring = kw.replace(/ /g, '+');
     const res = await this.request(`/?s=${kwstring}`);
-    const bsxList = await this.querySelectorAll(res, "div.item.col-xl-4.col-lg-4.col-md-4.col-sm-6");
+    const bsxList = await this.querySelectorAll(res, "div.item.col-xl-4.col-lg-4.col-md-4.col-sm-6, article.post");
     const novel = [];
 
     for (const element of bsxList) {
       const html = await element.content;
       const url = await this.getAttributeText(html, "a", "href");
-      const title = await this.querySelector(html, "h3.post-title > a").text;
-      const cover = await this.querySelector(html, "img").getAttributeText("src");
-      novel.push({
-        title: title.trim(),
-        url,
-        cover,
-      });
+      const titleEl = await this.querySelector(html, "h3.post-title > a, h2.entry-title > a");
+      const title = titleEl ? (await titleEl.text).trim() : "JAVHD Video";
+      const cover = await this.getAttributeText(html, "img", "src");
+      if (url) {
+        novel.push({
+          title,
+          url,
+          cover: cover || "",
+        });
+      }
     }
     return novel;
   }
@@ -55,35 +60,39 @@ export default class extends Extension {
     const res = await this.request("", {
         headers: {
             "Miru-Url": url,
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         },
     });
 
-    const title = await this.querySelector(res, "h1").text;
-    const cover = await this.querySelector(res, "meta[property='og:image']").getAttributeText("content");
-    const desc = await this.querySelector(res, "div.post-entry > p").text;
+    const titleEl = await this.querySelector(res, "h1, meta[property='og:title']");
+    const title = titleEl ? (await titleEl.text || await titleEl.getAttributeText("content")).trim() : "JAVHD Video";
+    const coverEl = await this.querySelector(res, "meta[property='og:image']");
+    const cover = coverEl ? await coverEl.getAttributeText("content") : "";
+    const descEl = await this.querySelector(res, "div.post-entry > p, meta[property='og:description']");
+    const desc = descEl ? (await descEl.text || await descEl.getAttributeText("content")).trim() : title;
 
-    const urlPatterns = [/https:\/\/emturbovid\.[^\s'"]+/];
+    const urlPatterns = [
+      /https?:\/\/emturbovid\.[^\s'"]+/i,
+      /<iframe[^>]+src=["']([^"']+)["']/i,
+      /https?:\/\/[^\s'"]+\.(?:m3u8|mp4)[^\s'"]*/i
+    ];
 
     let episodeUrl = "";
 
     for (const pattern of urlPatterns) {
         const match = res.match(pattern);
         if (match) {
-            episodeUrl = match[0];
+            episodeUrl = match[1] || match[0];
             break;
         }
     }
-    
-    function limitWords(text, maxWords) {
-        const words = text.split(/\s+/);
-        if (words.length > maxWords) {
-            return words.slice(0, maxWords).join(" ") + " ...";
-        }
-        return text;
+
+    if (!episodeUrl) {
+      episodeUrl = url;
     }
 
     return {
-        title: limitWords(title.trim(), 10),
+        title,
         cover,
         desc,
         episodes: [
@@ -91,43 +100,44 @@ export default class extends Extension {
                 title: "Directory",
                 urls: [
                     {
-                        name: limitWords(title.trim(), 10),
+                        name: title,
                         url: episodeUrl,
                     },
                 ],
             },
         ],
     };
-}
+  }
 
   async watch(url) {
+    if (url.includes(".m3u8") || url.includes(".mp4")) {
+      return {
+        type: url.includes(".mp4") ? "mp4" : "hls",
+        url: url,
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Referer": "https://javhd.icu/"
+        }
+      };
+    }
+
     const res = await this.request("", {
         headers: {
             "Miru-Url": url,
+            "referer": "https://javhd.icu/",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         },
     });
 
-    let directUrl = "";
-	{
-	const res = await this.request("", {
-            headers: {
-                "Miru-Url": url,
-                "referer": url.startsWith("https://emturbovid.com/"),
-                "origin": url.startsWith("https://emturbovid.com"),
-            },
-      method: "Get",
-	});
-	
-	const directUrlMatch = res.match(/(https:\/\/[^\s'"]*\.m3u8[^\s'"]*)/);
-    directUrl = directUrlMatch ? directUrlMatch[0] : "";
-	}
-	
+    const m3u8Match = res.match(/(https?:\/\/[^\s'"]+\.(?:m3u8|mp4)[^\s'"]*)/i);
+    const playUrl = m3u8Match ? m3u8Match[1] : url;
+
     return {
-        type: "hls",
-        url: directUrl || "",
+        type: playUrl.includes(".mp4") ? "mp4" : "hls",
+        url: playUrl || "",
         headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.142.86 Safari/537.36",
-          referer: directUrl,
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+          "Referer": "https://javhd.icu/"
         },
     };
   }

@@ -1,29 +1,21 @@
 // ==MiruExtension==
 // @name         魔都资源网
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://moduzy.vip/favicon.ico
+// @icon         https://moduzy.com/favicon.ico
 // @package      moduzy.com
 // @type         bangumi
-// @webSite      https://moduzy.vip
+// @webSite      https://moduzy.com
 // @nsfw         true
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
   domains = [
-    "moduzy1.com",
-    "moduzy2.com",
-    "moduzy3.com",
-    "moduzy4.com",
-    "moduzy5.com",
-    "moduzy6.com",
-    "moduzy7.com",
-    "moduzy8.com",
-    "moduzy9.com",
-    "moduzy10.com",
+    "moduzy.com",
+    "www.moduzy.com",
   ];
 
   dict = new Map([
@@ -89,8 +81,7 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const h = (new Date().getUTCHours() + 9) % 24;
-    const res = await this.$get(`&pg=${page}&h=${h || 24}`);
+    const res = await this.$get(`&pg=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

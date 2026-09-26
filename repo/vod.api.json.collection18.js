@@ -89,7 +89,7 @@ export default class extends Extension {
   }
   videoInfoCache = {}
   apiCategoryCache = {}
-  defaultApiKey = null
+  defaultApiKey = '91md'
 
   async latest(page) {
     let res

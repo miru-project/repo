@@ -37,48 +37,43 @@ export default class extends Extension {
       }
     }
 
-    async search(kw, page) {
-        const res = await this.request(`/search?query=${kw}&type=&genre=&sort=&year=&month=&page=${page}`);
-        if (!res) return [];
+    parseList(res) {
+        if (!res || typeof res !== "string") return [];
 
-        const bsxList = res.match(/<div class="col-xs-6 col-sm-4 col-md-2 search-doujin-videos hidden-xs hover-lighter multiple-link-wrapper[\s\S]+?<\/div>[\s\S]+?<\/div>/g) ||
-                        res.match(/<div class="[^\"]*search-doujin-videos[^\"]*"[\s\S]+?<\/div>[\s\S]+?<\/div>/g) || [];
+        const cardList = res.match(/<a[^>]+href="([^"]*hanime1\.me\/watch\?v=[^"]*|\/watch\?v=[^"]*)"[\s\S]+?<\/a>/g) || 
+                         res.match(/<div class="col-xs-6 col-sm-4 col-md-2 search-doujin-videos hidden-xs hover-lighter multiple-link-wrapper[\s\S]+?<\/div>[\s\S]+?<\/div>/g) || 
+                         res.match(/<div class="[^\"]*search-doujin-videos[^\"]*"[\s\S]+?<\/div>[\s\S]+?<\/div>/g) || [];
+
         const bangumi = [];
-        bsxList.forEach((element) => {
-         const urlMatch = element.match(/href="https:\/\/hanime1.me(\/.+?)"/) || element.match(/href="(\/.+?)"/);
-         const titleMatch = element.match(/"card-mobile-title".+?>(.+?)<\/div>/) || element.match(/title="([^"]+)"/);
-         const coverMatch = element.match(/src="([^"]+)"/);
-         if (urlMatch) {
-           bangumi.push({
-            title: titleMatch ? titleMatch[1].trim() : "Hanime Video",
-            url: urlMatch[1],
-            cover: coverMatch ? coverMatch[1] : "",
-           });
-         }
+        cardList.forEach((element) => {
+            const urlMatch = element.match(/href="(?:https:\/\/hanime1\.me)?(\/watch\?v=[^"]+)"/) || 
+                             element.match(/href="https:\/\/hanime1\.me(\/.+?)"/) || 
+                             element.match(/href="(\/.+?)"/);
+            const titleMatch = element.match(/class="home-rows-videos-title"[\s\S]*?>([\s\S]+?)<\/div>/) ||
+                               element.match(/"card-mobile-title".+?>(.+?)<\/div>/) || 
+                               element.match(/title="([^"]+)"/);
+            const coverMatch = element.match(/src="([^"]+)"/);
+
+            if (urlMatch) {
+                const titleStr = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, "").trim() : "Hanime Video";
+                bangumi.push({
+                    title: titleStr || "Hanime Video",
+                    url: urlMatch[1],
+                    cover: coverMatch ? coverMatch[1] : "",
+                });
+            }
         });
         return bangumi;
-      }
+    }
+
+    async search(kw, page) {
+        const res = await this.request(`/search?query=${kw}&type=&genre=&sort=&year=&month=&page=${page}`);
+        return this.parseList(res);
+    }
   
     async latest(page) {
-      const res = await this.request(`/search?genre=%E5%85%A8%E9%83%A8&sort=%E6%9C%80%E6%96%B0%E4%B8%8A%E5%B8%82&page=${page}`);
-      if (!res) return [];
-
-      const bsxList = res.match(/<div class="col-xs-6 col-sm-4 col-md-2 search-doujin-videos hidden-xs hover-lighter multiple-link-wrapper[\s\S]+?<\/div>[\s\S]+?<\/div>/g) ||
-                      res.match(/<div class="[^\"]*search-doujin-videos[^\"]*"[\s\S]+?<\/div>[\s\S]+?<\/div>/g) || [];
-       const bangumi = [];
-       bsxList.forEach((element) => {
-        const urlMatch = element.match(/href="https:\/\/hanime1.me(\/.+?)"/) || element.match(/href="(\/.+?)"/);
-        const titleMatch = element.match(/"card-mobile-title".+?>(.+?)<\/div>/) || element.match(/title="([^"]+)"/);
-        const coverMatch = element.match(/src="([^"]+)"/);
-        if (urlMatch) {
-          bangumi.push({
-           title: titleMatch ? titleMatch[1].trim() : "Hanime Video",
-           url: urlMatch[1],
-           cover: coverMatch ? coverMatch[1] : "",
-          });
-        }
-       });
-       return bangumi;
+      const res = await this.request(`/search?genre=%E8%A3%8F%E7%95%AA&page=${page}`);
+      return this.parseList(res);
     }
   
     async detail(url) {

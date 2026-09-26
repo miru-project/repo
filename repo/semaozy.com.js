@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         色猫资源
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
@@ -16,7 +16,6 @@ export default class extends Extension {
   domains = [
     "semaozy1.com",
     "semaozy2.com",
-    "semaozy3.com",
     "semaozy4.com",
     "semaozy5.com",
     "semaozy6.com",
@@ -71,10 +70,16 @@ export default class extends Extension {
   }
 
   async load() {
-    const res = await this.$get("&ac=list");
-    res.class.forEach((e) => {
-      this.genres[e.type_id] = e.type_name;
-    });
+    try {
+      const res = await this.$get("&ac=list");
+      if (res?.class && Array.isArray(res.class)) {
+        res.class.forEach((e) => {
+          this.genres[e.type_id] = e.type_name;
+        });
+      }
+    } catch (error) {
+      console.error("load error:", error);
+    }
   }
 
   async createFilter() {
@@ -89,48 +94,73 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const h = (new Date().getUTCHours() + 9) % 24;
-    const res = await this.$get(`&pg=${page}&h=${h || 24}`);
-    return res.list.map((e) => ({
-      title: e.vod_name,
-      url: `${e.vod_id}`,
-      cover: e.vod_pic,
-      update: e.vod_remarks,
-    }));
+    try {
+      const h = (new Date().getUTCHours() + 9) % 24;
+      const res = await this.$get(`&pg=${page}&h=${h || 24}`);
+      if (!res?.list || !Array.isArray(res.list)) {
+        return [];
+      }
+      return res.list.map((e) => ({
+        title: e.vod_name,
+        url: `${e.vod_id}`,
+        cover: e.vod_pic,
+        update: e.vod_remarks,
+      }));
+    } catch (error) {
+      console.error("latest error:", error);
+      return [];
+    }
   }
 
   async search(kw, page, filter) {
-    if (!kw && !(filter?.genres?.[0])) {
-      return this.latest(page);
+    try {
+      if (!kw && !(filter?.genres?.[0])) {
+        return this.latest(page);
+      }
+      const res = await this.$get(`&wd=${kw}&t=${filter?.genres?.[0] ?? ""}&pg=${page}`);
+      if (!res?.list || !Array.isArray(res.list)) {
+        return [];
+      }
+      return res.list.map((e) => ({
+        title: e.vod_name,
+        url: `${e.vod_id}`,
+        cover: e.vod_pic,
+        update: e.vod_remarks,
+      }));
+    } catch (error) {
+      console.error("search error:", error);
+      return [];
     }
-    const res = await this.$get(`&wd=${kw}&t=${filter?.genres?.[0] ?? ""}&pg=${page}`);
-    return res.list.map((e) => ({
-      title: e.vod_name,
-      url: `${e.vod_id}`,
-      cover: e.vod_pic,
-      update: e.vod_remarks,
-    }));
   }
 
   async detail(id) {
-    let desc = "无";
-    const anime = (await this.$get(`&ids=${id}`)).list[0];
-    const blurb = this.text(anime.vod_blurb);
-    const content = this.text(anime.vod_content);
-    desc = desc.length < blurb?.length ? blurb : desc;
-    desc = desc.length < content.length ? content : desc;
-    const urls = anime.vod_play_url
-      .split("#")
-      .filter((e) => e)
-      .map((e) => {
-        const s = e.split("$");
-        return { name: s[0], url: s[1] };
-      });
-    return { title: anime.vod_name, cover: anime.vod_pic, desc, episodes: [{ title: this.name, urls }] };
+    try {
+      let desc = "无";
+      const res = await this.$get(`&ids=${id}`);
+      const anime = res?.list?.[0];
+      if (!anime) {
+        return { title: "", cover: "", desc: "无", episodes: [] };
+      }
+      const blurb = this.text(anime.vod_blurb);
+      const content = this.text(anime.vod_content);
+      desc = desc.length < blurb?.length ? blurb : desc;
+      desc = desc.length < content.length ? content : desc;
+      const urls = (anime.vod_play_url || "")
+        .split("#")
+        .filter((e) => e)
+        .map((e) => {
+          const s = e.split("$");
+          return { name: s[0], url: s[1] };
+        });
+      return { title: anime.vod_name, cover: anime.vod_pic, desc, episodes: [{ title: this.name, urls }] };
+    } catch (error) {
+      console.error("detail error:", error);
+      return { title: "", cover: "", desc: "无", episodes: [] };
+    }
   }
 
   async watch(url) {
     console.log(url);
-    return { type: "hls", url };
+    return { type: "hls", url: url || "" };
   }
 }

@@ -1273,7 +1273,7 @@
   "package": "semaozy.com",
   "type": "bangumi",
   "url": "semaozy.com.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://semaozy.com"
  },
  {
@@ -1451,7 +1451,7 @@
   "package": "top.lkp2.www",
   "type": "bangumi",
   "url": "top.lkp2.www.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://www.lkp2.top/"
  },
  {
@@ -1502,7 +1502,7 @@
   "package": "uaa.com",
   "type": "bangumi",
   "url": "uaa.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://www.uaa.com/api/video/app/video"
  },
  {
@@ -1727,7 +1727,7 @@
   "package": "xyz.xdtv2",
   "type": "bangumi",
   "url": "xyz.xdtv2.js",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "webSite": "https://caocao15.xyz"
  },
  {

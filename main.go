@@ -68,12 +68,19 @@ func readRepoExtensions() []map[string]string {
 			log.Println("error: not extension")
 			continue
 		}
-		lines := strings.Split(data[0], "\n")
+		dataStr := strings.ReplaceAll(data[0], "\r\n", "\n")
+		lines := strings.Split(dataStr, "\n")
 		extension := make(map[string]string)
 		for _, v := range lines {
-			if v[:4] == "// @" {
-				s := strings.Split(v[4:], " ")
-				extension[s[0]] = strings.Trim(s[len(s)-1], "\r")
+			v = strings.TrimSpace(v)
+			if strings.HasPrefix(v, "// @") {
+				lineContent := strings.TrimSpace(v[4:])
+				s := regexp.MustCompile(`\s+`).Split(lineContent, 2)
+				if len(s) == 1 {
+					extension[s[0]] = ""
+				} else if len(s) > 1 {
+					extension[s[0]] = s[1]
+				}
 			}
 		}
 		extension["url"] = de2.Name()

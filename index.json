@@ -1,7 +1,7 @@
 [
  {
   "author": "qizaru",
-  "description": "content",
+  "description": "Extension for accessing 345movie.net content",
   "icon": "https://345movie.net/favicon.ico",
   "lang": "all",
   "license": "MIT",
@@ -64,7 +64,7 @@
   "webSite": "https://animex.one"
  },
  {
-  "author": "(viridius-hub)",
+  "author": "Virus (viridius-hub)",
   "icon": "https://anilibria.top/static/favicon-96x96.png",
   "lang": "ru",
   "license": "MIT",
@@ -77,8 +77,8 @@
   "webSite": "https://anilibria.top/api/v1"
  },
  {
-  "author": "(koikiss-dev)",
-  "description": "https://github.com/koikiss-dev/jimov_api",
+  "author": "Yako (koikiss-dev)",
+  "description": "This project is an open-source API for retrieving multimedia content such as anime, movies and series, news, and manga in both Spanish and English. https://github.com/koikiss-dev/jimov_api",
   "icon": "https://animeflv.vc/static/img/icon/logo.png",
   "lang": "es",
   "license": "MIT",
@@ -135,7 +135,7 @@
   "name": "Animeworld",
   "nsfw": "false",
   "package": "animeworld",
-  "tags": "italian",
+  "tags": "anime, italian",
   "type": "bangumi",
   "url": "animeworld.js",
   "version": "v0.0.1",
@@ -243,7 +243,7 @@
  },
  {
   "author": "vvsolo",
-  "description": "client",
+  "description": "A simple IPTV client",
   "icon": "https://s11.ax1x.com/2024/01/11/pFCMKit.png",
   "lang": "all",
   "license": "MIT",
@@ -357,8 +357,8 @@
   "webSite": "https://www.cyc-anime.net"
  },
  {
-  "author": "Weiske",
-  "description": "Club",
+  "author": "Christian Weiske",
+  "description": "Video material provided by the Chaos Computer Club",
   "icon": "https://media.ccc.de/favicon-96x96.png",
   "lang": "en",
   "license": "AGPL",
@@ -422,7 +422,7 @@
  },
  {
   "author": "OshekharO",
-  "description": "shows.",
+  "description": "EZTV is a BitTorrent distribution group for TV shows.",
   "icon": "https://eztvx.to/favicon.ico",
   "lang": "en",
   "license": "MIT",
@@ -628,7 +628,7 @@
  },
  {
   "author": "vvsolo",
-  "description": "iptv-org",
+  "description": "IPTV sources from iptv-org",
   "icon": "https://avatars.githubusercontent.com/u/55937028?s=200\u0026v=4",
   "lang": "all",
   "license": "MIT",
@@ -666,7 +666,7 @@
   "webSite": "https://javhd.icu"
  },
  {
-  "author": "hualiong",
+  "author": "SendHX \u0026 hualiong",
   "icon": "https://www.jisuzy.com/template/default/images/site_logo.png",
   "lang": "zh-cn",
   "license": "MIT",
@@ -735,7 +735,7 @@
   "name": "Komiku.com",
   "nsfw": "false",
   "package": "komiku.com",
-  "tags": "indonesia",
+  "tags": "manhwa, manhua, manga, indonesia",
   "type": "manga",
   "url": "komiku.com.js",
   "version": "v0.0.1",
@@ -749,7 +749,7 @@
   "name": "Kuromanhua.xyz",
   "nsfw": "false",
   "package": "komiku.com",
-  "tags": "indonesia",
+  "tags": "manhwa, manhua, manga, indonesia",
   "type": "manga",
   "url": "kuromanhua.xyz.js",
   "version": "v0.0.1",
@@ -781,7 +781,7 @@
   "webSite": "https://letv.im"
  },
  {
-  "author": "hualiong",
+  "author": "appdevelpo \u0026 hualiong",
   "icon": "https://libvio.art/statics/img/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
@@ -844,7 +844,7 @@
   "webSite": "https://www.mhua5.com"
  },
  {
-  "author": "hualiong",
+  "author": "Monster \u0026 hualiong",
   "icon": "https://tse1-mm.cn.bing.net/th/id/OIP-C.KCerrBL9dq9e8ydGaiyy2QAAAA",
   "lang": "zh-cn",
   "license": "MIT",
@@ -945,7 +945,7 @@
  },
  {
   "author": "MiaoMint",
-  "description": "https://github.com/Enime-Project/api.enime.moe",
+  "description": "Enime API is an open source API service for developers to access anime info (as well as their video sources) https://github.com/Enime-Project/api.enime.moe",
   "icon": "https://avatars.githubusercontent.com/u/74993083?s=200\u0026v=4",
   "lang": "all",
   "license": "MIT",
@@ -996,7 +996,7 @@
  },
  {
   "author": "MiaoMint",
-  "description": "info",
+  "description": "YTS.mx API is an open source API service for developers to access torrent info",
   "icon": "https://yts.gg/assets/images/website/apple-touch-icon-144x144.png",
   "lang": "all",
   "license": "MIT",
@@ -1060,7 +1060,7 @@
  },
  {
   "author": "appdevelpo",
-  "description": "more.",
+  "description": "A BitTorrent community focused on Eastern Asian media including anime, manga, music, and more.",
   "icon": "https://nyaa.si/static/favicon.png",
   "lang": "en",
   "license": "MIT",
@@ -1291,11 +1291,11 @@
  },
  {
   "author": "OshekharO",
-  "description": "Tambayan.",
+  "description": "Watch anime online with Tagalog/Filipino dubs on Senpai Tambayan.",
   "icon": "https://senpaitambayan.com/assets/images/favicon.ico",
   "lang": "fil",
   "license": "MIT",
-  "name": "Tambayan",
+  "name": "Senpai Tambayan",
   "package": "senpaitambayan.com",
   "type": "bangumi",
   "url": "senpaitambayan.com.js",
@@ -1535,7 +1535,7 @@
   "icon": "https://truyen.tangthuvien.vn/images/icon-favico.png",
   "lang": "vi",
   "license": "MIT",
-  "name": "viện",
+  "name": "Tàng thư viện",
   "nsfw": "false",
   "package": "vn.tangthuvien",
   "type": "fikushon",
@@ -1761,7 +1761,7 @@
   "icon": "https://oss-cdn.meowa.cn/mxtheme/images/favicon.png",
   "lang": "zh-cn",
   "license": "MIT",
-  "name": "CC",
+  "name": "樱花动漫 CC",
   "package": "yinhuadm",
   "type": "bangumi",
   "url": "yinhuadm.js",

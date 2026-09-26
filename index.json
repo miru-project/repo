@@ -417,7 +417,7 @@
   "package": "eroticmv.com",
   "type": "bangumi",
   "url": "eroticmv.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.4",
   "webSite": "https://eroticmv.com"
  },
  {
@@ -545,7 +545,7 @@
   "package": "hanime1.me",
   "type": "bangumi",
   "url": "hanime1.me.js",
-  "version": "v0.0.1",
+  "version": "v0.0.3",
   "webSite": "https://hanime1.me"
  },
  {
@@ -633,11 +633,10 @@
   "lang": "all",
   "license": "MIT",
   "name": "IPTV-ORG",
-  "nsfw": "false",
   "package": "iptv-org",
   "type": "bangumi",
   "url": "iptv-org.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://iptv-org.github.io/iptv"
  },
  {
@@ -663,7 +662,7 @@
   "package": "javhd.icu",
   "type": "bangumi",
   "url": "javhd.icu.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://javhd.icu"
  },
  {
@@ -758,7 +757,7 @@
  },
  {
   "author": "hualiong",
-  "icon": "https://lyzy8.top/upload/site/20240405-1/0abc49d6b935f5ff17488568f99d2d52.png",
+  "icon": "https://lanyanzy.com/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
   "name": "老鸭资源",
@@ -766,8 +765,8 @@
   "package": "laoyazy.com",
   "type": "bangumi",
   "url": "laoyazy.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://laoyazy.com"
+  "version": "v0.0.3",
+  "webSite": "https://lanyanzy.com"
  },
  {
   "author": "appdevelpo",
@@ -933,7 +932,7 @@
  },
  {
   "author": "hualiong",
-  "icon": "https://moduzy.vip/favicon.ico",
+  "icon": "https://moduzy.com/favicon.ico",
   "lang": "zh-cn",
   "license": "MIT",
   "name": "魔都资源网",
@@ -941,8 +940,8 @@
   "package": "moduzy.com",
   "type": "bangumi",
   "url": "moduzy.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://moduzy.vip"
+  "version": "v0.0.3",
+  "webSite": "https://moduzy.com"
  },
  {
   "author": "MiaoMint",
@@ -1127,7 +1126,7 @@
  },
  {
   "author": "OshekharO",
-  "icon": "https://haha888.xyz/wp-content/uploads/2024/03/cropped-Screenshot-from-2024-03-02-10-42-19-192x192.png",
+  "icon": "https://cc.ovvtv.com/favicon.ico",
   "lang": "jp",
   "license": "MIT",
   "name": "在线影院",
@@ -1135,8 +1134,8 @@
   "package": "p7av.com",
   "type": "bangumi",
   "url": "p7av.com.js",
-  "version": "v0.0.2",
-  "webSite": "https://www.haha888.xyz"
+  "version": "v0.0.3",
+  "webSite": "https://cc.ovvtv.com"
  },
  {
   "author": "bachig26",
@@ -1235,7 +1234,7 @@
   "package": "rule34video.com",
   "type": "bangumi",
   "url": "rule34video.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.3",
   "webSite": "https://rule34video.com"
  },
  {
@@ -1689,7 +1688,7 @@
   "package": "xhamster.com",
   "type": "bangumi",
   "url": "xhamster.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.3",
   "webSite": "https://xhamster.com"
  },
  {
@@ -1702,7 +1701,7 @@
   "package": "xnxx.com",
   "type": "bangumi",
   "url": "xnxx.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://www.xnxx.com"
  },
  {
@@ -1715,7 +1714,7 @@
   "package": "xvideos.com",
   "type": "bangumi",
   "url": "xvideos.com.js",
-  "version": "v0.0.1",
+  "version": "v0.0.2",
   "webSite": "https://www.xvideos.com"
  },
  {

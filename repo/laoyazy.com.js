@@ -1,30 +1,22 @@
 // ==MiruExtension==
 // @name         老鸭资源
-// @version      v0.0.2
+// @version      v0.0.3
 // @author       hualiong
 // @lang         zh-cn
 // @license      MIT
-// @icon         https://lyzy8.top/upload/site/20240405-1/0abc49d6b935f5ff17488568f99d2d52.png
+// @icon         https://lanyanzy.com/favicon.ico
 // @package      laoyazy.com
 // @type         bangumi
-// @webSite      https://laoyazy.com
+// @webSite      https://lanyanzy.com
 // @nsfw         true
 // ==/MiruExtension==
 export default class extends Extension {
   genres = {};
 
   domains = [
-    "lyzy1.top",
-    "lyzy2.top",
-    "lyzy3.top",
-    "lyzy4.top",
-    "lyzy5.top",
-    "lyzy6.top",
-    "lyzy7.top",
-    "lyzy8.top",
-    "lyzy9.top",
-    "lyzy10.top",
-    "api.apilyzy.com",
+    "lanyanzy.com",
+    "lyzy111.cc",
+    "lyzy112.cc",
   ];
 
   dict = new Map([
@@ -90,8 +82,7 @@ export default class extends Extension {
   }
 
   async latest(page) {
-    const h = (new Date().getUTCHours() + 9) % 24;
-    const res = await this.$get(`&pg=${page}&h=${h || 24}`);
+    const res = await this.$get(`&pg=${page}`);
     return res.list.map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,

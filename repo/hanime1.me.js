@@ -77,11 +77,7 @@ export default class extends Extension {
     }
   
     async detail(url) {
-        const res = await this.request(url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-            }
-        });
+        const res = await this.request(url);
 
         const coverMatch = res.match(/"thumbnailUrl":[\s]*["']([^"']+)["']/) || res.match(/meta property="og:image" content="([^"]+)"/);
         const titleMatch = res.match(/<title>(.+?)(?:&nbsp;|- hanime1\.me|<\/title>)/) || res.match(/meta property="og:title" content="([^"]+)"/);
@@ -136,7 +132,6 @@ export default class extends Extension {
           type: url.includes(".m3u8") ? "hls" : "mp4",
           url: url,
           headers: {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Referer": "https://hanime1.me/"
           }
         };
@@ -145,7 +140,6 @@ export default class extends Extension {
       const res = await this.request("", {
         headers: {
           "Miru-Url": url,
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
           "Referer": "https://hanime1.me/"
         }
       });
@@ -157,7 +151,6 @@ export default class extends Extension {
         type: playUrl.includes(".m3u8") ? "hls" : "mp4",
         url: playUrl || "",
         headers: {
-          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
           "Referer": "https://hanime1.me/"
         }
       };

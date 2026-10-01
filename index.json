@@ -1782,6 +1782,19 @@
   "webSite": "https://yomovies.church"
  },
  {
+  "author": "Miru",
+  "icon": "https://www.youtube.com/s/desktop/f5fe135d/img/favicon.ico",
+  "lang": "all",
+  "license": "MIT",
+  "name": "YouTube",
+  "nsfw": "false",
+  "package": "youtube.com",
+  "type": "bangumi",
+  "url": "youtube.com.js",
+  "version": "v0.0.1",
+  "webSite": "https://www.youtube.com"
+ },
+ {
   "author": "OshekharO",
   "icon": "https://yurineko.net/img/logo-footer.png",
   "lang": "vi",

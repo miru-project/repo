@@ -1,6 +1,6 @@
 // ==MiruExtension==
 // @name         暴风资源[高清无水印]
-// @version      v0.0.2
+// @version      v0.0.4
 // @author       jason
 // @lang         zh-cn
 // @license      MIT
@@ -14,9 +14,11 @@ export default class extends Extension {
   genres = {};
 
   domains = [
+    "apibfzy.com",      // 官网主接口
+    "bfzyapi.com",      // 备用
     "bfzy.tv",
-    "bfzyapi.com",
     "by.bfzyapi.com",
+    "app.bfzyapi.com",
   ];
 
   dict = new Map([
@@ -38,7 +40,7 @@ export default class extends Extension {
     return str.replace(/&[a-z]+;/g, (c) => this.dict.get(c) || c);
   }
 
-  async $get(params, count = 3, timeout = 4000) {
+  async $get(params, count = 3, timeout = 8000) {
     try {
       const list = this.domains.map((domain) =>
         this.request("/api.php/provide/vod?ac=detail" + params, {
@@ -65,9 +67,13 @@ export default class extends Extension {
 
   async load() {
     const res = await this.$get("&ac=list");
-    res.class.forEach((e) => {
-      this.genres[e.type_id] = e.type_name;
-    });
+    if (res?.class && Array.isArray(res.class)) {
+      res.class.forEach((e) => {
+        this.genres[e.type_id] = e.type_name;
+      });
+    } else {
+      console.log("load: class data missing", res);
+    }
   }
 
   async createFilter() {
@@ -84,7 +90,7 @@ export default class extends Extension {
   async latest(page) {
     const h = (new Date().getUTCHours() + 9) % 24;
     const res = await this.$get(`&pg=${page}&h=${h || 24}`);
-    return res.list.map((e) => ({
+    return (res.list || []).map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,
       cover: e.vod_pic,
@@ -96,8 +102,10 @@ export default class extends Extension {
     if (!kw && !(filter?.genres?.[0])) {
       return this.latest(page);
     }
-    const res = await this.$get(`&wd=${kw}&t=${filter?.genres?.[0] ?? ""}&pg=${page}`);
-    return res.list.map((e) => ({
+    const res = await this.$get(
+      `&wd=${kw}&t=${filter?.genres?.[0] ?? ""}&pg=${page}`
+    );
+    return (res.list || []).map((e) => ({
       title: e.vod_name,
       url: `${e.vod_id}`,
       cover: e.vod_pic,
@@ -106,24 +114,60 @@ export default class extends Extension {
   }
 
   async detail(id) {
+    const res = await this.$get(`&ids=${id}`);
+    const anime = res.list?.[0];
+    if (!anime) throw new Error("详情获取失败");
+
     let desc = "无";
-    const anime = (await this.$get(`&ids=${id}`)).list[0];
     const blurb = this.text(anime.vod_blurb);
     const content = this.text(anime.vod_content);
-    desc = desc.length < blurb?.length ? blurb : desc;
-    desc = desc.length < content.length ? content : desc;
-    const urls = anime.vod_play_url
-      .split("#")
-      .filter((e) => e)
-      .map((e) => {
-        const s = e.split("$");
-        return { name: s[0], url: s[1] };
-      });
-    return { title: anime.vod_name, cover: anime.vod_pic, desc, episodes: [{ title: this.name, urls }] };
+    desc = desc.length < (blurb?.length || 0) ? blurb : desc;
+    desc = desc.length < (content?.length || 0) ? content : desc;
+
+    // 解析多线路（$$$ 分隔）
+    const playFrom = (anime.vod_play_from || "bfzym3u8").split("$$$");
+    const playUrl = (anime.vod_play_url || "").split("$$$");
+
+    const episodes = [];
+    const originalLinks = []; // 收集所有原链接，放到描述里
+
+    playFrom.forEach((from, idx) => {
+      const urls = (playUrl[idx] || "")
+        .split("#")
+        .filter((e) => e)
+        .map((e) => {
+          const s = e.split("$");
+          const name = s[0] || `第${idx + 1}集`;
+          const url = s[1] || s[0];
+          if (url && url.startsWith("http")) {
+            originalLinks.push(`${name}: ${url}`);
+          }
+          return { name, url };
+        });
+
+      if (urls.length > 0) {
+        episodes.push({
+          title: from || "原链接",
+          urls,
+        });
+      }
+    });
+
+    // 把原链接追加到描述末尾，方便复制
+    if (originalLinks.length > 0) {
+      desc += "\n\n—— 视频原链接 ——\n" + originalLinks.join("\n");
+    }
+
+    return {
+      title: anime.vod_name,
+      cover: anime.vod_pic,
+      desc,
+      episodes,
+    };
   }
 
   async watch(url) {
-    console.log(url);
+    console.log("播放原链接:", url);
     return { type: "hls", url };
   }
 }

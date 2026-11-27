@@ -13,7 +13,7 @@ Miru extensions repository | [Miru App Download](https://github.com/miru-project
 | AniGoGo | ani.gogo | v0.0.4 | OshekharO | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/ani.gogo.js) |
 | AniLiberty | aniliberty | v0.1.0 | Virus (viridius-hub) | ru | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/aniliberty.js) |
 | AnimeFlv | anime.flv | v0.0.2 | Yako (koikiss-dev) | es | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.flv.js) |
-| girigiri爱动漫 | anime.girigirilove.com | v0.0.3 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.girigirilove.com.js) |
+| girigiri爱动漫 | anime.girigirilove.com | v0.0.4 | appdevelpo | zh | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/anime.girigirilove.com.js) |
 | Animeazu | animeazu.com | v0.0.1 | JerukPurut404 | pr | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animeazu.com.js) |
 | Animepahe | animepahe.ru | v0.0.3 | appdevelpo | en | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animepahe.ru.js) |
 | Animeworld | animeworld | v0.0.1 | Nazz | it | bangumi | [Source Code](https://github.com/miru-project/repo/blob/main/repo/animeworld.js) |

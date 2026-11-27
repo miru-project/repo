@@ -91,7 +91,7 @@
  },
  {
   "author": "appdevelpo",
-  "icon": "https://anime.girigirilove.com/upload/site/20230603-1/9e57505c4e140f30c70aac0cc93fa9ad.png",
+  "icon": "https://jpg.girigirilove.com/brand/icon.png",
   "lang": "zh",
   "license": "MIT",
   "name": "girigiri爱动漫",
@@ -99,7 +99,7 @@
   "package": "anime.girigirilove.com",
   "type": "bangumi",
   "url": "anime.girigirilove.com.js",
-  "version": "v0.0.3",
+  "version": "v0.0.4",
   "webSite": "https://anime.girigirilove.com"
  },
  {
